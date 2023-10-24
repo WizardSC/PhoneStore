@@ -43,49 +43,82 @@
                         <i class="filter__label-icon fa-solid fa-filter"></i>
                         <span class="filter__label-heading">Bộ lọc</span>
                         <ul class="filter__list">
-                            <li class="filter__item">
+                            <li class="filter__item filter__item--has-brand">
                                 <span class="filter__item-name">Hãng</span>
                                 <i class="filter__item-icon fa-solid fa-sort-down"></i>
 
                                 <div class="filter__brand">
                                     <ul class="filter__brand-list">
                                         <li class="filter__brand-item">
-                                            <img class="filter__brand-img" src=" https://cdn.tgdd.vn/Brand/1/logo-iphone-220x48.png" alt="" width="68" height="30">
+                                            <img class="filter__brand-img"
+                                                src=" https://cdn.tgdd.vn/Brand/1/logo-iphone-220x48.png" alt=""
+                                                width="68" height="30">
                                         </li>
                                         <li class="filter__brand-item">
-                                            <img class="filter__brand-img" src="https://cdn.tgdd.vn/Brand/1/samsungnew-220x48-1.png" alt="" width="68" height="30">
+                                            <img class="filter__brand-img"
+                                                src="https://cdn.tgdd.vn/Brand/1/samsungnew-220x48-1.png" alt=""
+                                                width="68" height="30">
                                         </li>
                                         <li class="filter__brand-item">
-                                            <img class="filter__brand-img" src="https://cdn.tgdd.vn/Brand/1/OPPO42-b_5.jpg" alt="" width="68" height="30">
+                                            <img class="filter__brand-img"
+                                                src="https://cdn.tgdd.vn/Brand/1/OPPO42-b_5.jpg" alt="" width="68"
+                                                height="30">
                                         </li>
                                         <li class="filter__brand-item">
-                                            <img class="filter__brand-img" src="https://cdn.tgdd.vn/Brand/1/logo-xiaomi-220x48-5.png" alt="" width="68" height="30">
+                                            <img class="filter__brand-img"
+                                                src="https://cdn.tgdd.vn/Brand/1/logo-xiaomi-220x48-5.png" alt=""
+                                                width="68" height="30">
                                         </li>
                                         <li class="filter__brand-item">
-                                            <img class="filter__brand-img" src="https://cdn.tgdd.vn/Brand/1/vivo-logo-220-220x48-3.png" alt="" width="68" height="30">
+                                            <img class="filter__brand-img"
+                                                src="https://cdn.tgdd.vn/Brand/1/vivo-logo-220-220x48-3.png" alt=""
+                                                width="68" height="30">
                                         </li>
                                         <li class="filter__brand-item">
-                                            <img class="filter__brand-img" src="https://cdn.tgdd.vn/Brand/1/Realme42-b_37.png" alt="" width="68" height="30">
+                                            <img class="filter__brand-img"
+                                                src="https://cdn.tgdd.vn/Brand/1/Realme42-b_37.png" alt="" width="68"
+                                                height="30">
                                         </li>
                                         <li class="filter__brand-item">
-                                            <img class="filter__brand-img" src="https://cdn.tgdd.vn/Brand/1/Nokia42-b_21.jpg" alt="" width="68" height="30">
+                                            <img class="filter__brand-img"
+                                                src="https://cdn.tgdd.vn/Brand/1/Nokia42-b_21.jpg" alt="" width="68"
+                                                height="30">
                                         </li>
                                         <li class="filter__brand-item">
-                                            <img class="filter__brand-img" src="https://cdn.tgdd.vn/Brand/1/Masstel42-b_0.png" alt="" width="68" height="30">
+                                            <img class="filter__brand-img"
+                                                src="https://cdn.tgdd.vn/Brand/1/Masstel42-b_0.png" alt="" width="68"
+                                                height="30">
                                         </li>
                                         <li class="filter__brand-item">
-                                            <img class="filter__brand-img" src="https://cdn.tgdd.vn/Brand/1/Itel42-b_54.jpg" alt="" width="68" height="30">
+                                            <img class="filter__brand-img"
+                                                src="https://cdn.tgdd.vn/Brand/1/Itel42-b_54.jpg" alt="" width="68"
+                                                height="30">
                                         </li>
                                         <li class="filter__brand-item">
-                                            <img class="filter__brand-img" src="https://cdn.tgdd.vn/Brand/1/Mobell42-b_19.jpg" alt="" width="68" height="30">
+                                            <img class="filter__brand-img"
+                                                src="https://cdn.tgdd.vn/Brand/1/Mobell42-b_19.jpg" alt="" width="68"
+                                                height="30">
                                         </li>
                                     </ul>
                                 </div>
                             </li>
-                            <li class="filter__item">
+                            <li class="filter__item filter__item--has-price">
                                 <span class="filter__item-name">Giá</span>
 
                                 <i class="filter__item-icon fa-solid fa-sort-down"></i>
+
+                                <div class="filter__item-price">
+                                    <div class="filter__item-price-wrap">
+                                        <i class="filter__item-price-icon fa-solid fa-bars-staggered"></i>
+                                        <div class="filter__item-price-label">Lựa chọn mức giá phù hợp</div>
+
+                                    </div>
+                                    <div class="filter__item-price-range">
+                                        <input type="number" id="filter__item-price-min-price" name="filter__item-price-min-price" placeholder="Giá tối thiểu">
+                                        ---------
+                                        <input type="number" id="filter__item-price-max-price" name="filter__item-price-max-price" placeholder="Giá tối đa">
+                                    </div>
+                                </div>
                             </li>
                             <li class="filter__item">
                                 <span class="filter__item-name">RAM</span>
@@ -99,8 +132,8 @@
                             </li>
                         </ul>
                     </div>
-                    
-                    
+
+
                 </div>
                 <div class="product row">
                     <div class="col l-2-4 m-4 c-12">
