@@ -1,0 +1,97 @@
+/* Product item */
+
+.product-item {
+    position: relative;
+    box-shadow: 0 1px 2px 0 rgba(60, 64, 67, .1), 0 2px 6px 2px rgba(60, 64, 67, .15);
+    border-radius: 8px;
+    background-color: var(--white-color);
+    margin-top: 10px;
+    padding: 10px 10px 20px;
+}
+
+.product-item__img-wrap {
+    text-align: center;
+}
+
+.product-item__img {
+    width: 160px;
+    height: auto;
+}
+
+.product-item__name h3 {
+    font-size: 1.4rem;
+    color: #444;
+    font-weight: 600;
+    line-height: 1.8rem;
+    height: 3.6rem;
+    /* Dành cho tên SP quá dài */
+    overflow: hidden;
+    display: block;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+
+.product-item__name {
+    margin-bottom: 30px;
+}
+
+.product-item__price {
+    display: flex;
+    align-items: flex-end;
+    line-height: 1.4;
+}
+
+.product-item__price-old {
+    font-size: 1.4rem;
+    color: #707070;
+    font-weight: 600;
+    text-decoration: line-through;
+    margin-left: 6px;
+}
+
+.product-item__price-new {
+    font-size: 1.6rem;
+    color: var(--primary-color);
+    font-weight: 700;
+
+}
+
+.product-item__action{
+    margin-top: 18px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.product-item__rating{
+    color: #F49F0B;
+    font-size: 1.5rem;
+}
+
+.product-item__like{
+    font-size: 1.5rem;
+
+}
+
+.product-item__sale{
+    position: absolute;
+    top: 0;
+    left: -4px;
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    font-size: 1.2rem;
+    font-weight: 700;
+    padding: 4px 8px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    
+}
+
+.product-item__sale::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    border-top: 4px solid var(--primary-color);
+    border-left: 4px solid transparent;
+}

@@ -4,11 +4,14 @@
     margin: 0;
     box-sizing: inherit;
 }
-
+:root{
+    --white-color: #fff;
+    --primary-color: #D70119;
+}
 html {
     font-size: 62.5%;
     line-height: 1.6rem;
-    font-family:'Spartan', sans-serif;
+    font-family: Helvetica, Arial, sans-serif;
     box-sizing: border-box;
 }
 
