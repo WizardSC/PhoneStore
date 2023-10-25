@@ -288,6 +288,8 @@
     height: 36px;
     position: relative;
     overflow: hidden;
+    cursor: pointer;
+
 }
 
 .filter__brand-item::before{
@@ -398,6 +400,7 @@
 
     display: none;
 }
+
 .filter__item.filter__item--has-ram .filter__ram{
     display: block;
 }
@@ -423,8 +426,15 @@
     border-radius: 2px;
     font-size: 1.4rem;
     color: var(--text-color);
+    cursor: pointer;
 }
-
+.filter__ram-item:hover{
+    border: 1px solid var(--border-hover-color);
+}
+.filter__ram-item.active{
+    background-color: var(--filter-item-color);
+    border: 1px solid var(--border-hover-color);
+}
 .filter__ram-item:last-child{
     margin-right: 0;
 }
@@ -441,6 +451,7 @@
 }
 .filter__item.filter__item--has-rom  .filter__rom{
     display: block;
+    
 }
 .filter__rom-list{
     display: flex;
@@ -453,9 +464,16 @@
     font-size: 1.4rem;
     border-radius: 2px;
     color: var(--text-color);
+    cursor: pointer;
    
 }
-
+.filter__rom-item:hover{
+    border: 1px solid var(--border-hover-color);
+}
+.filter__rom-item.active{
+    background-color: var(--filter-item-color);
+    border: 1px solid var(--border-hover-color);
+}
 .filter__rom::before{
     position: absolute;
     content: "";
