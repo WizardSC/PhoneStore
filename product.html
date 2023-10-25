@@ -43,18 +43,18 @@
                         <i class="filter__label-icon fa-solid fa-filter"></i>
                         <span class="filter__label-heading">Bộ lọc</span>
                         <ul class="filter__list">
-                            <li class="filter__item filter__item--has-brand">
+                            <li class="filter__item">
                                 <span class="filter__item-name">Hãng</span>
                                 <i class="filter__item-icon fa-solid fa-sort-down"></i>
 
                                 <div class="filter__brand">
                                     <ul class="filter__brand-list">
-                                        <li class="filter__brand-item">
+                                        <li class="filter__brand-item ">
                                             <img class="filter__brand-img"
                                                 src=" https://cdn.tgdd.vn/Brand/1/logo-iphone-220x48.png" alt=""
                                                 width="68" height="30">
                                         </li>
-                                        <li class="filter__brand-item">
+                                        <li class="filter__brand-item active">
                                             <img class="filter__brand-img"
                                                 src="https://cdn.tgdd.vn/Brand/1/samsungnew-220x48-1.png" alt=""
                                                 width="68" height="30">
@@ -99,36 +99,57 @@
                                                 src="https://cdn.tgdd.vn/Brand/1/Mobell42-b_19.jpg" alt="" width="68"
                                                 height="30">
                                         </li>
+                                        
                                     </ul>
                                 </div>
                             </li>
-                            <li class="filter__item filter__item--has-price">
+                            <li class="filter__item">
                                 <span class="filter__item-name">Giá</span>
 
                                 <i class="filter__item-icon fa-solid fa-sort-down"></i>
 
-                                <div class="filter__item-price">
-                                    <div class="filter__item-price-wrap">
-                                        <i class="filter__item-price-icon fa-solid fa-bars-staggered"></i>
-                                        <div class="filter__item-price-label">Lựa chọn mức giá phù hợp</div>
+                                <div class="filter__price">
+                                    <div class="filter__price-wrap">
+                                        <i class="filter__price-icon fa-solid fa-bars-staggered"></i>
+                                        <div class="filter__price-label">Lựa chọn mức giá phù hợp</div>
 
                                     </div>
-                                    <div class="filter__item-price-range">
-                                        <input type="number" id="filter__item-price-min-price" name="filter__item-price-min-price" placeholder="Giá tối thiểu">
+                                    <div class="filter__price-range">
+                                        <input type="number" id="filter__price-min-price" name="filter__price-min-price" placeholder="Giá tối thiểu">
                                         ---------
-                                        <input type="number" id="filter__item-price-max-price" name="filter__item-price-max-price" placeholder="Giá tối đa">
+                                        <input type="number" id="filter__price-max-price" name="filter__price-max-price" placeholder="Giá tối đa">
                                     </div>
                                 </div>
                             </li>
                             <li class="filter__item">
                                 <span class="filter__item-name">RAM</span>
-
                                 <i class="filter__item-icon fa-solid fa-sort-down"></i>
+
+                                <div class="filter__ram">
+                                    <ul class="filter__ram-list">
+                                        <li class="filter__ram-item">2 GB</li>
+                                        <li class="filter__ram-item">3 GB</li>
+                                        <li class="filter__ram-item">4 GB</li>
+                                        <li class="filter__ram-item">6 GB</li>
+                                        <li class="filter__ram-item">8 GB</li>
+                                        <li class="filter__ram-item">12 GB</li>
+                                    </ul>
+                                </div>
                             </li>
                             <li class="filter__item">
                                 <span class="filter__item-name">Bộ nhớ trong</span>
-
                                 <i class="filter__item-icon fa-solid fa-sort-down"></i>
+
+                                <div class="filter__rom">
+                                    <ul class="filter__rom-list">
+                                        <li class="filter__rom-item">32 GB</li>
+                                        <li class="filter__rom-item">64 GB</li>
+                                        <li class="filter__rom-item">128 GB</li>
+                                        <li class="filter__rom-item">256 GB</li>
+                                        <li class="filter__rom-item">512 GB</li>
+                                        <li class="filter__rom-item">1 TB</li>
+                                    </ul>
+                                </div>
                             </li>
                         </ul>
                     </div>
@@ -412,6 +433,8 @@
             </div>
         </div>
     </div>
+
+    <script src="assets/js/product.js"></script>
 </body>
 
 </html>
