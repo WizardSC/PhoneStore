@@ -43,5 +43,12 @@ prevbtn.addEventListener('mouseenter', () => {
 prevbtn.addEventListener('mouseleave', ()=>{
   isHover = false;
 });
+nextbtn.addEventListener('mouseenter', () => {
+  isHover = true; 
+})
+
+nextbtn.addEventListener('mouseleave', ()=>{
+  isHover = false;
+});
 
 setInterval(changeSlider, 2000);
