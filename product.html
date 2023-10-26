@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="assets/css/base.css">
+    <link rel="stylesheet" href="assets/css/grid.css">
+    <link rel="stylesheet" href="assets/css/product.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <div class="app">
+        <!-- Phần header -->
+        <header class="header">
+            <div class="grid wide header__navbar">
+                <a href="#">
+                    <h1>PHONE STORE</h1>
+                </a>
+                <div class="header__navbar-search">
+                    <label for="search"><i class="fa-solid fa-magnifying-glass"></i></label>
+                    <input id="search" type="text" placeholder="Bạn cần tìm gì?">
+                </div>
+                <ul class="header__navbar-list">
+                    <li><a href="#">Trang chủ</a></li>
+                    <li><a href="">Sản phẩm</a></li>
+                    <li><a href="">Liên lạc</a></li>
+                    <li><a href="">Đăng nhập</a></li>
+                </ul>
+            </div>
+        </header>
+
+        <!-- Phần nội dung -->
+        <div class="content">
+            <div class="grid wide">
+                <!-- Tìm kiếm & filter -->
+                <div class="filter">
+                    <div class="filter__label">
+                        <i class="filter__label-icon fa-solid fa-filter"></i>
+                        <span class="filter__label-heading">Bộ lọc</span>
+                        <ul class="filter__list">
+                            <li class="filter__item">
+                                <span class="filter__item-name">Hãng</span>
+                                <i class="filter__item-icon fa-solid fa-sort-down"></i>
+
+                                <div class="filter__brand">
+                                    <ul class="filter__brand-list">
+                                        <li class="filter__brand-item ">
+                                            <img class="filter__brand-img"
+                                                src=" https://cdn.tgdd.vn/Brand/1/logo-iphone-220x48.png" alt=""
+                                                width="68" height="30">
+                                        </li>
+                                        <li class="filter__brand-item">
+                                            <img class="filter__brand-img"
+                                                src="https://cdn.tgdd.vn/Brand/1/samsungnew-220x48-1.png" alt=""
+                                                width="68" height="30">
+                                        </li>
+                                        <li class="filter__brand-item">
+                                            <img class="filter__brand-img"
+                                                src="https://cdn.tgdd.vn/Brand/1/OPPO42-b_5.jpg" alt="" width="68"
+                                                height="30">
+                                        </li>
+                                        <li class="filter__brand-item">
+                                            <img class="filter__brand-img"
+                                                src="https://cdn.tgdd.vn/Brand/1/logo-xiaomi-220x48-5.png" alt=""
+                                                width="68" height="30">
+                                        </li>
+                                        <li class="filter__brand-item">
+                                            <img class="filter__brand-img"
+                                                src="https://cdn.tgdd.vn/Brand/1/vivo-logo-220-220x48-3.png" alt=""
+                                                width="68" height="30">
+                                        </li>
+                                        <li class="filter__brand-item">
+                                            <img class="filter__brand-img"
+                                                src="https://cdn.tgdd.vn/Brand/1/Realme42-b_37.png" alt="" width="68"
+                                                height="30">
+                                        </li>
+                                        <li class="filter__brand-item">
+                                            <img class="filter__brand-img"
+                                                src="https://cdn.tgdd.vn/Brand/1/Nokia42-b_21.jpg" alt="" width="68"
+                                                height="30">
+                                        </li>
+                                        <li class="filter__brand-item">
+                                            <img class="filter__brand-img"
+                                                src="https://cdn.tgdd.vn/Brand/1/Masstel42-b_0.png" alt="" width="68"
+                                                height="30">
+                                        </li>
+                                        <li class="filter__brand-item">
+                                            <img class="filter__brand-img"
+                                                src="https://cdn.tgdd.vn/Brand/1/Itel42-b_54.jpg" alt="" width="68"
+                                                height="30">
+                                        </li>
+                                        <li class="filter__brand-item">
+                                            <img class="filter__brand-img"
+                                                src="https://cdn.tgdd.vn/Brand/1/Mobell42-b_19.jpg" alt="" width="68"
+                                                height="30">
+                                        </li>
+                                        
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="filter__item">
+                                <span class="filter__item-name">Giá</span>
+
+                                <i class="filter__item-icon fa-solid fa-sort-down"></i>
+
+                                <div class="filter__price">
+                                    <div class="filter__price-wrap">
+                                        <i class="filter__price-icon fa-solid fa-bars-staggered"></i>
+                                        <div class="filter__price-label">Lựa chọn mức giá phù hợp</div>
+
+                                    </div>
+                                    <div class="filter__price-range">
+                                        <input type="number" id="filter__price-min-price" name="filter__price-min-price" placeholder="Giá tối thiểu">
+                                        ---------
+                                        <input type="number" id="filter__price-max-price" name="filter__price-max-price" placeholder="Giá tối đa">
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="filter__item">
+                                <span class="filter__item-name">RAM</span>
+                                <i class="filter__item-icon fa-solid fa-sort-down"></i>
+
+                                <div class="filter__ram">
+                                    <ul class="filter__ram-list">
+                                        <li class="filter__ram-item">2 GB</li>
+                                        <li class="filter__ram-item">3 GB</li>
+                                        <li class="filter__ram-item">4 GB</li>
+                                        <li class="filter__ram-item">6 GB</li>
+                                        <li class="filter__ram-item">8 GB</li>
+                                        <li class="filter__ram-item">12 GB</li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="filter__item">
+                                <span class="filter__item-name">Bộ nhớ trong</span>
+                                <i class="filter__item-icon fa-solid fa-sort-down"></i>
+
+                                <div class="filter__rom">
+                                    <ul class="filter__rom-list">
+                                        <li class="filter__rom-item">32 GB</li>
+                                        <li class="filter__rom-item">64 GB</li>
+                                        <li class="filter__rom-item">128 GB</li>
+                                        <li class="filter__rom-item">256 GB</li>
+                                        <li class="filter__rom-item">512 GB</li>
+                                        <li class="filter__rom-item">1 TB</li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+
+                </div>
+                <div class="product row">
+                    <!-- <div class="col l-2-4 m-4 c-12">
+                        <div class="product-item">
+                            <div class="product-item__img-wrap">
+                                <img class="product-item__img"
+                                    src="https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:80/plain/https://cellphones.com.vn/media/catalog/product/s/a/samsung-galaxy-s23-ultra.png"
+                                    alt="" width="358" height="358">
+                            </div>
+                            <div class="product-item__name">
+                                <h3>Samsung Galaxy S23 Ultra 256GB</h3>
+
+                            </div>
+                            <div class="product-item__price">
+                                <div class="product-item__price-new">21.790.000đ</div>
+                                <div class="product-item__price-old">31.990.000đ</div>
+
+                            </div>
+                            <div class="product-item__action">
+                                <div class="product-item__rating">
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                </div>
+                                <div class="product-item__like">
+                                    <i class="fa-regular fa-heart" style="color: #d70119;"></i>
+                                </div>
+                            </div>
+                            <div class="product-item__sale">
+                                <p class="product-item__sale-detail">Giảm 32%</p>
+                            </div>
+
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Phần pagination -->
+        <div class="grid wide">
+            <div class="pagination">
+                <div class="pagination__btn-prev">
+                    <i class="fa-solid fa-angle-left"></i>
+                </div>
+                <ul class="pagination__list">
+                    <li class="pagination__item active" data-value="1">1</li>
+                    <li class="pagination__item" data-value="2">2</li>
+                    <li class="pagination__item" data-value="3">3</li>
+                    <li class="pagination__item" data-value="4">4</li>
+                    <li class="pagination__item" data-value="5">5</li>
+                </ul>
+                <div class="pagination__btn-next">
+                    <i class="fa-solid fa-angle-right"></i>
+                </div>
+            </div>     
+        </div>
+    </div>
+    <script src="assets/js/constructor.js"></script>
+    <script src="assets/js/dataProduct.js"> </script>
+
+    <script src="assets/js/product.js"></script>
+</body>
+
+</html>
