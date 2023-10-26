@@ -1,0 +1,50 @@
+.contact__header{
+    height: 100px;
+    background-color: var(--primary-color);
+    text-align: center;
+    padding: 10px 0;
+    color: var(--text-color);
+}
+.text-contact{
+    display: flex;
+    justify-content: center;
+}
+.contact-icon{
+    margin-left: 5px;
+    margin-right: 10px;
+}
+.text{
+}
+.text:hover{
+    color: aliceblue;
+    transition: linear 0.3s;
+    cursor: pointer;
+    transform: scale(1.1);
+}
+/* body */
+.container{
+    display: flex;
+    padding-top:20px ;
+}
+.form-support{
+    width: 100%;
+    display: block;
+    padding-left: 10px;
+}
+.infor__customer{
+    display: block;
+    width: 100%;
+    height: 70%;
+    text-align: center;
+    justify-content: center;
+}
+.name ,.phone ,.email{
+}
+input{
+    display: block;
+    justify-content: center;
+}
+.address{
+    width: 100%;
+    height: 30%;
+}
