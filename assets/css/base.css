@@ -7,6 +7,9 @@
 :root{
     --white-color: #fff;
     --primary-color: #D70119;
+    --border-hover-color: #D60019;
+    --text-color: #333;
+    --filter-item-color: #FFF3F2;
 }
 html {
     font-size: 62.5%;
