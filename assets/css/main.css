@@ -6,6 +6,7 @@
     position:sticky;
     top:0;
     left:0;
+    box-shadow: 3px 3px 5px rgba(0,0,0,0.6);
 }
 .header__navbar{
     display:flex;
@@ -70,12 +71,13 @@
 /* for tablet */
 @media only screen and (min-width:740px) and ( max-width:1024px){ 
     
+    
 }
 /* for moblie */
 @media only screen and (max-width:740px){
     
 }
-/* CSS phan content__product */
+/* --------------------------------------------------CSS phan content__product------------------------------------------------------------------------- */
 .content__product{
     text-align:center;
     background-image:url("https://i.pinimg.com/564x/06/58/65/065865f87b20e2fa1c1a6f8423ecfe43.jpg");
@@ -90,7 +92,25 @@
     font-style:italic;
     margin-right:10px;
     font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    
 }
+.blinking-text {
+    color:rgb(219, 222, 14);;
+    animation: blink 3s infinite;
+    transition:0.2s;
+  }
+  
+  @keyframes blink {
+    0% {
+      color:rgb(37, 37, 3);;
+    }
+    50% {
+      color:rgb(219, 222, 14);
+    }
+    100% {
+      color: rgb(82, 8, 8);
+    }
+  }
 .content__product .lastweek{
     color:white;
     font-size:25px;
@@ -177,44 +197,126 @@
 .content__product .des .notice i:hover{
     font-weight:600;
 }
-/* CSS content__news*/
-button .white{
-    font-size:13px;
+/* ------------------------------------------- CSS content__news---------------------------------------------------------------- */
+button.white{
+    font-size:16px;
     font-weight:600;
     padding:12px 18px;
     color:white;
     background-color:transparent;
-    border-radius:4px;
+    border-radius:6px;
     cursor:pointer;
     border:1px solid white;
     outline:none;
     transition:0.2s;
 }
 .content__news{
+    padding-top:15px;
+    text-align:center;
+}
+.content__news h3{
+    font-size:27px;
+    color:rgb(28, 27, 26);
+}
+.content__news .content__news-new{
     display:flex;
     justify-content: space-between;
     flex-wrap:wrap;
-    padding:10px;
-    margin-top:10px;
+    padding-top:20px;
 }
-.content__news h3{
-    font-size:30px;
-}
-.content__news .content__news-banner{
-    margin-top:10px;
+.content__news-new .content__news-banner{
     display:flex;
     flex-direction: column;
     justify-content: center;
     align-items:flex-start;
-    background-image: url("https://cdn2.cellphones.com.vn/insecure/rs:fill:385:0/q:100/plain/https://cellphones.com.vn/sforum/wp-content/uploads/2023/10/Xiaomi-14-14-Pro-teasercvoer.jpg");
-    min-width:500px;
-    height:40vh;
+    background-image:url("https://cdn2.cellphones.com.vn/insecure/rs:fill:385:0/q:100/plain/https://cellphones.com.vn/sforum/wp-content/uploads/2023/10/Xiaomi-14-14-Pro-teasercvoer.jpg");
+    min-width:580px;
+    height:30vh;
     background-size:cover;
-    background-repeat:no-repeat;
     background-position:center;
-    padding:30px;
+    padding:20px;
+    background-repeat:no-repeat;
+    border-radius:20px;
+    box-shadow:2px 2px 4px rgba(0,0,0,0.3);
+}
+.content__news-new .content__news-banner h4{
+    font-size:14px;
+    color:white;
+}
+.content__news-new .content__news-banner h2{
+    font-size:25px;
+    color:white;
+}
+
+.content__news-new .content__news-banner:hover button{
+    background:transparent;
+    border:2px solid rgb(111, 170, 230);
+    padding:20px;
+}
+.content__news-new .banner1{
+    background-image:url("https://cdn2.cellphones.com.vn/insecure/rs:fill:385:0/q:100/plain/https://cellphones.com.vn/sforum/wp-content/uploads/2023/10/su-kien-apple.jpg");
+}
+
+.content__news-new .content__news-banner:hover button.apple{
+    background:transparent;
+    border:2px solid white;
+    padding:20px;
+}
+.content__news-new2 .content__news-box{
+    display:flex;
+    padding-top:25px;
+    border:1px solid transparent;
+    outline:none;
+    border-radius:20px;
+    box-shadow:2px 2px 3px rgba(0,0,0,0.3);
+}
+.content__news-new2 .content__news-box img{
+    width:30%;
+    border-radius:20px;
+    margin-right:20px;
+}
+.content__news-box .button__news-button{
+    display:flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    text-align:start;
+    justify-content: center;
+    padding:10px;
 
 }
+.content__news-box .button__news-button p{
+    font-size:14px;
+    padding-top:10px;
+    padding-bottom:10px;
+    color:rgb(59, 63, 67);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align:justify;
+}
+button.normal{
+    border:1px solid transparent;
+    padding:10px;
+    width:100px;
+    color:rgb(250, 246, 246);
+    border-radius:20px;
+    background:rgb(55, 31, 31);
+    transition:0.2s;
+    cursor:pointer;
+}
+.content__news-box .button__news-button button:hover {
+    background-color:rgb(252, 247, 247);
+    color:rgb(2, 2, 2);
+    border:1px solid black;
+
+    
+}
+
+
+
+
+
+
+
+
 
 
 
