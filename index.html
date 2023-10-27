@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +8,9 @@
     <link rel="stylesheet" href="assets/css/base.css">
     <link rel="stylesheet" href="assets/css/main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/slider.css">
 </head>
+
 <body>
     <div class="app">
         <!-- Trọng làm phần header với content_product,content__news này nha :3 -->
@@ -23,13 +26,78 @@
                 </div>
                 <ul class="header__navbar-list">
                     <li><a href="index.html" class="active">Trang chủ</a></li>
-                    <li><a href="product.html" >Sản phẩm</a></li>
+                    <li><a href="product.html">Sản phẩm</a></li>
                     <li><a href="">Liên lạc</a></li>
                     <li><a href="">Đăng nhập</a></li>
                 </ul>
             </div>
         </header>
-
+        <div class="imgBackground">
+            <img src="assets/img/imgBackground.webp" alt="">
+        </div>
+        <section class="slider-product-one">
+            <div class="container">
+                <div class="slider-product-one-content">
+                    <div class="slider-product-one-content-btn">
+                        <i onmouseover="stopSlider()" class="prev-btn"><ion-icon
+                                name="chevron-back-outline"></ion-icon></i>
+                        <i class="next-btn"><ion-icon name="chevron-forward-outline"></ion-icon></i>
+                    </div>
+                    <div class="slider-product-one-content-container">
+                        <div class="slider-product-one-content-items-content">
+                            <div class="slider-product-one-content-items">
+                                <div class="slider-product-one-content-item">
+                                    <a href="">
+                                        <img src="assets/img/imgSlider/img1.webp" width="100%" alt="">
+                                    </a>
+                                </div>
+                                <div class="slider-product-one-content-item">
+                                    <a href="">
+                                        <img src="assets/img/imgSlider/img2.webp" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="slider-product-one-content-items">
+                                <div class="slider-product-one-content-item">
+                                    <a href="">
+                                        <img src="assets/img/imgSlider/img3.webp" alt="">
+                                    </a>
+                                </div>
+                                <div class="slider-product-one-content-item">
+                                    <a href="">
+                                        <img src="assets/img/imgSlider/img4.webp" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="slider-product-one-content-items">
+                                <div class="slider-product-one-content-item">
+                                    <a href="">
+                                        <img src="assets/img/imgSlider/img5.webp" alt="">
+                                    </a>
+                                </div>
+                                <div class="slider-product-one-content-item">
+                                    <a href="">
+                                        <img src="assets/img/imgSlider/img6.webp" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="slider-product-one-content-items">
+                                <div class="slider-product-one-content-item">
+                                    <a href="">
+                                        <img src="assets/img/imgSlider/img7.webp" alt="">
+                                    </a>
+                                </div>
+                                <div class="slider-product-one-content-item">
+                                    <a href="">
+                                        <img src="assets/img/imgSlider/img8.webp" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
         <!-- PHAN CONTENT -->
         <section id="content">
             <div class="grid ">
@@ -38,7 +106,8 @@
                     <h2 class="flashsale blinking-text">FLASH SALE   <span class="lastweek"> This Weekend Only</span></h2>
                     <div class="content__product-container">
                         <div class="pro">
-                            <img src="https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:80/plain/https://cellphones.com.vn/media/catalog/product/i/p/iphone-15-pro-max_3.png" alt="">
+                            <img src="https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:80/plain/https://cellphones.com.vn/media/catalog/product/i/p/iphone-15-pro-max_3.png"
+                                alt="">
                             <div class="des">
                                 <h5>iPhone 15 Pro Max 256GB | Chính hãng VN/A</h5>
                                 <div class="star">
@@ -59,7 +128,8 @@
                             </div>
                         </div>
                         <div class="pro">
-                            <img src="https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:80/plain/https://cellphones.com.vn/media/catalog/product/s/a/samsung-galaxy-s22-ultra-12gb-256gb.png" alt="">
+                            <img src="https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:80/plain/https://cellphones.com.vn/media/catalog/product/s/a/samsung-galaxy-s22-ultra-12gb-256gb.png"
+                                alt="">
                             <div class="des">
                                 <h5>Samsung Galaxy S22 Ultra (12GB-256GB)</h5>
                                 <div class="star">
@@ -80,7 +150,8 @@
                             </div>
                         </div>
                         <div class="pro">
-                            <img src="https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:80/plain/https://cellphones.com.vn/media/catalog/product/1/_/1_251_1.jpg " alt="">
+                            <img src="https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:80/plain/https://cellphones.com.vn/media/catalog/product/1/_/1_251_1.jpg "
+                                alt="">
                             <div class="des">
                                 <h5>iPhone 12 Pro Max 128GB | Chính hãng VN/A</h5>
                                 <div class="star">
@@ -101,7 +172,8 @@
                             </div>
                         </div>
                         <div class="pro">
-                            <img src="https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:80/plain/https://cellphones.com.vn/media/catalog/product/i/p/iphone-14-pro_2__4.png" alt="">
+                            <img src="https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:80/plain/https://cellphones.com.vn/media/catalog/product/i/p/iphone-14-pro_2__4.png"
+                                alt="">
                             <div class="des">
                                 <h5>iPhone 14 Pro Max 128GB | Chính hãng VN/A</h5>
                                 <div class="star">
@@ -122,7 +194,8 @@
                             </div>
                         </div>
                         <div class="pro">
-                            <img src="https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:80/plain/https://cellphones.com.vn/media/catalog/product/x/i/xiaomi-redmi-note-12-8gb-128gb_1__1_2.png" alt="">
+                            <img src="https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:80/plain/https://cellphones.com.vn/media/catalog/product/x/i/xiaomi-redmi-note-12-8gb-128gb_1__1_2.png"
+                                alt="">
                             <div class="des">
                                 <h5>Xiaomi Redmi Note 12 8GB 128GB</h5>
                                 <div class="star">
@@ -143,7 +216,8 @@
                             </div>
                         </div>
                         <div class="pro">
-                            <img src="https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:80/plain/https://cellphones.com.vn/media/catalog/product/r/e/realme-11-pro.png" alt="">
+                            <img src="https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:80/plain/https://cellphones.com.vn/media/catalog/product/r/e/realme-11-pro.png"
+                                alt="">
                             <div class="des">
                                 <h5>realmi 11 Pro (8GB-256GB)</h5>
                                 <div class="star">
@@ -164,7 +238,8 @@
                             </div>
                         </div>
                         <div class="pro">
-                            <img src="https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:80/plain/https://cellphones.com.vn/media/catalog/product/r/e/realme-11-vang-1.jpg" alt="">
+                            <img src="https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:80/plain/https://cellphones.com.vn/media/catalog/product/r/e/realme-11-vang-1.jpg"
+                                alt="">
                             <div class="des">
                                 <h5>realmi 11 8GB 128GB</h5>
                                 <div class="star">
@@ -185,7 +260,8 @@
                             </div>
                         </div>
                         <div class="pro">
-                            <img src="https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:80/plain/https://cellphones.com.vn/media/catalog/product/x/i/xiaomi-13t_1_2.png" alt="">
+                            <img src="https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:80/plain/https://cellphones.com.vn/media/catalog/product/x/i/xiaomi-13t_1_2.png"
+                                alt="">
                             <div class="des">
                                 <h5>Xiaomi 13T 12GB 256GB</h5>
                                 <div class="star">
@@ -241,10 +317,13 @@
                 </section>
             </div>
         </section>
-        
+
         <div class="footer">
 
         </div>
     </div>
 </body>
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+<script src="assets/js/slider.js"></script>
 </html>
