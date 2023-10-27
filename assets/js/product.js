@@ -78,21 +78,22 @@ Array.from(listROMItems).forEach(function (rom) {
 //Render product lên giao diện
 function renderProduct() {
     const htmls = productArr.map(function (product, index) {
+
         return `
-        <div class="col l-2-4 m-4 c-12">
-        <div class="product-item">
+        <div class="col l-2-4 m-4 c-6">
+        <div class="product-item" data-index="${product.productID}">
             <div class="product-item__img-wrap">
                 <img class="product-item__img"
-                    src="https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:80/plain/https://cellphones.com.vn/media/catalog/product/s/a/samsung-galaxy-s23-ultra.png"
+                    src="${product.img}"
                     alt="" width="358" height="358">
             </div>
             <div class="product-item__name">
-                <h3>Samsung Galaxy S23 Ultra 256GB</h3>
+                <h3>${product.name}</h3>
 
             </div>
             <div class="product-item__price">
-                <div class="product-item__price-new">21.790.000đ</div>
-                <div class="product-item__price-old">31.990.000đ</div>
+                <div class="product-item__price-new">${money.formatCurrencytoVND(product.price_old)}</div>
+                <div class="product-item__price-old">${money.formatCurrencytoVND(product.price_current)}</div>
 
             </div>
             <div class="product-item__action">
@@ -108,7 +109,7 @@ function renderProduct() {
                 </div>
             </div>
             <div class="product-item__sale">
-                <p class="product-item__sale-detail">Giảm 32%</p>
+                <p class="product-item__sale-detail">Giảm ${product.sale}%</p>
             </div>
 
         </div>
@@ -117,5 +118,50 @@ function renderProduct() {
     })
     productContainer.innerHTML = htmls.join('')
 }
-
 renderProduct()
+
+// Nhấn nút trang kế tiếp, trang trước đó
+
+// Lấy tất cả các phần tử HTML cần sử dụng
+const btnNextPage = document.querySelector('.pagination__btn-next');
+const btnPrevPage = document.querySelector('.pagination__btn-prev');
+const paginationItems = document.querySelectorAll('.pagination__item');
+
+let currentPage = 1; // Trang hiện tại
+const maxVisiblePages = 5; // Số trang tối đa có thể hiển thị
+
+// Xử lý sự kiện khi nhấn nút "Trang tiếp theo"
+btnNextPage.addEventListener('click', () => {
+    if (currentPage < paginationItems.length) {
+        // Loại bỏ lớp active khỏi trang hiện tại
+        paginationItems[currentPage - 1].classList.remove('active');
+        // Tăng currentPage lên
+        currentPage++;
+        // Đặt lớp active cho trang mới
+        paginationItems[currentPage - 1].classList.add('active');
+    }
+});
+
+// Xử lý sự kiện khi nhấn nút "Trang trước"
+btnPrevPage.addEventListener('click', () => {
+    if (currentPage > 1) {
+        // Loại bỏ lớp active khỏi trang hiện tại
+        paginationItems[currentPage - 1].classList.remove('active');
+        // Giảm currentPage xuống
+        currentPage--;
+        // Đặt lớp active cho trang mới
+        paginationItems[currentPage - 1].classList.add('active');
+    }
+});
+
+// Xử lý sự kiện khi nhấn vào một trang cụ thể
+paginationItems.forEach(item => {
+    item.addEventListener('click', () => {
+        const page = parseInt(item.getAttribute('data-value'));
+        // Loại bỏ lớp active khỏi trang hiện tại
+        paginationItems[currentPage - 1].classList.remove('active');
+        // Đặt lớp active cho trang được chọn
+        item.classList.add('active');
+        currentPage = page;
+    });
+});
