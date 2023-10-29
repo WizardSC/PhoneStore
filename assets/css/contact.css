@@ -1,9 +1,21 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
 .contact__header{
     height: 100px;
     background-color: var(--primary-color);
     text-align: center;
     padding: 10px 0;
-    color: var(--text-color);
+}
+.title-header{
+    display: flex;
+    justify-content: center;
+}
+.icon-header{
+    height: 30px;
+    width: 30px;
 }
 .text-contact{
     display: flex;
@@ -21,16 +33,17 @@
     color: var(--text-color);
     transition: linear 0.3s;
     cursor: pointer;
-    transform: scale(0.9);
+    transform: scale(1.1);
 }
 /* body */
 .container{
     display: flex;
     padding-top:20px ;
+    padding-bottom: 20px;
 }
 .form-support{
     width: 100%;
-    padding-left: 10px;
+    padding-left: 10px ;
 }
 .infor__customer{
     /* background-image: linear-gradient(90deg ,rgb(139, 84, 84),rgb(196, 94, 94)); */
@@ -39,12 +52,6 @@
     display: block;
     text-align: center;
     padding: 10px 10px;
-}
-.name ,.phone ,.email,.mess{
-    position: relative;
-    display: block;
-    margin: 10px 0;
-    justify-content: center;
 }
 .title{
     display: flex;
@@ -63,75 +70,112 @@
     font-size: 25px;
     margin-top: 3px;
 }
-label{
-    color: var(--text-color);
-    font-size: 20px;
+.text-describe{
+    font-size: 15px;
+    margin-top: 5px;
 }
-input{
-    width: 400px;
-    height: 40px;
-    padding: 5px;
-    border-radius: 20px;
+.contact-us__form{
     display: flex;
-    border: 1px solid var(--primary-color);
-    margin-left: 100px;
-}
-textarea{
-    border-radius: 10px;
-    border: 1px solid var(--primary-color);
-    resize: none;
-    margin-top: 10px;
-    margin-left: 35px;
-    padding: 5px;
-}
-input:focus-visible, textarea :focus-visible{
-    outline: 1px solid greenyellow;
-    border: none;
-}
-.mess{
-   margin-top: 10px;
-}
-.mess-submit-btn{
-    color: #fff;
-    border-radius: 20px;
-    background-image: linear-gradient(180deg,#7a3737,var(--primary-color));
-    height: 30px;
-    width: 80px;
-    margin-left: 10px;
-}
-.mess-submit-btn:hover{
-    cursor: pointer;
-    transform: scale(1.1);
-    transition: linear 0.2s;
-}
-.address{
-    padding-top: 30px ;
-    display: flex;
-    justify-content: space-between;
-}
-.address-store,.phone-store ,.email-store{
-    display: flex;
-    font-size: 20px;
+    justify-content:space-between;
 }
 .cover{
     padding: 5px;
-    border: 2px solid var(--primary-color);
-    border-radius: 100%;
-    margin-right: 10px;
+    width: 50%;
 }
-img{
-    height: 20px;
-    width: 25px;
+.contact-us__infor{
+    display: grid;
+    column-gap: 5px;
+    row-gap: 5px;
+}
+.name{
+    font-size: 18px;
+    margin-top: 20px;
+    text-align: start;
 }
 .infor{
-    margin-top: 10px;
+    padding: 7px;
+    margin-top: 5px;
+    border-radius: 20px;
+    border: 1px solid var(--primary-color);
 }
-.link{
+.infor:focus{
+    outline:1px solid greenyellow;
+    border: none;
+}
+.mess{
+    resize: none;
+}
+.text-rule{
+    font-size: 15px;
+    color: rgb(57, 55, 146);
+    margin: 10px 0;
+}
+.link-rule{
     text-decoration: none;
+    color: var(--primary-color);
+}
+.link-rule:hover{
+    color : red ;
+    transition : linear 0.3s ;
+    text-decoration: underline;
+}
+.contact-btn__submit{
+    border-radius: 20px;
+    width : 100px;
+    height : 30px ;
+    background-image: linear-gradient(150deg , var(--primary-color), #fff);
+    color: rgb(4, 3, 3);
+    cursor: pointer;
+    box-shadow: 1px 0 0 0 var(--text-color);
+    margin : 10px 0;
+}
+.contact-btn__submit:hover{
+    transform: scale(1.1);
+    transition: linear 0.2s;
+}
+.contact__store{
+    display: flex;
+    justify-content: space-between;
+    padding-top: 40px;
+    border-top: 4px solid var(--primary-color) ;
+}
+.infor-describe__store{
+    width: 60%;
+    border-right: 2px solid var(--text-color);
+}
+.infor-contact__store{
+    padding-left: 50px;
+    text-align: center;
+    width: 40%;
+}
+.title-describe , .title-contact{
+    font-size: 30px;
+}
+.describe{
+    font-size: 16px;
+    margin: 10px 0;
+    line-height: 30px;
+}
+.contact--method{
+    display: flex;
+    margin: 10px 0;
+}
+.rim{
+    border: 1px solid var(--primary-color);
+    border-radius: 50%;
+    padding: 5px;
+}
+.picture{
+    width: 30px;
+    height: 20px;
+}
+.link-contact{
+    text-decoration: none;
+    font-size: 15px;
+    margin-top: 10px;
+    margin-left: 10px;
     color: var(--text-color);
 }
-link:hover{
-    opacity: 0.7;
-    text-decoration: dotted;
-    transition: linear 0.3s;
+.link-contact:hover{
+    opacity: 0.6;
 }

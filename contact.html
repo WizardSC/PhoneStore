@@ -8,16 +8,34 @@
     <link rel="stylesheet" href="./assets/css/grid.css">
     <link rel="stylesheet" href="./assets/css/contact.css">
     <link rel="stylesheet" href="./fontawesome-free-6.4.0-web/css/all.min.css">
+    <link rel="stylesheet" href="./assets/css/main.css">
 </head>
 <body>
     <div class="contact">
         <!-- Header  -->
-        <header class="contact__header">
-            <h2>Hỗ Trợ Khách Hàng</h2>
+        <!-- <header class="contact__header">
+            <h2 style="color: #f4f5f5;">Hỗ Trợ Khách Hàng <i class="fa-solid fa-headset"></i></h2>
             <div class="text-contact">
                 <h3 class="text">Trang Chủ</h3>
                 <i class="fa-solid fa-angle-up fa-rotate-90 contact-icon"></i>
                 <h3 class="text" style="color: black;">Liên Hệ</h3>
+            </div>
+        </header> -->
+        <header class="header">
+            <div class="grid header__navbar">
+                <a href="#">
+                    <h1>URPHONE</h1>
+                </a>
+                <div class="header__navbar-search">
+                    <label for="search"><i class="fa-solid fa-magnifying-glass"></i></label>
+                    <input id="search" type="text" placeholder="Bạn cần tìm gì?">
+                </div>
+                <ul class="header__navbar-list">
+                    <li><a href="index.html" class="active">Trang chủ</a></li>
+                    <li><a href="product.html">Sản phẩm</a></li>
+                    <li><a href="">Liên lạc</a></li>
+                    <li><a href="">Đăng nhập</a></li>
+                </ul>
             </div>
         </header>
         <!-- body -->
@@ -33,43 +51,71 @@
                                 <h3 class="title-text">Liên Hệ Với Chúng Tôi</h3>
                                 <i class="fa-solid fa-phone-volume fa-shake icon-title" style="color: #51331f;"></i>  
                             </div>
-                            <div class="name">
-
-                                <label for="" class="name-customer">USER</label>
-                                <i class="fa-solid fa-user icon"></i>
+                            <p class="text-describe">Mọi thắc mắc và yêu cầu cần hỗ trợ vui lòng để thông tin tại đây.</p>
+                            <p class="text-describe">Chúng tôi sẽ gửi phản hồi nhanh nhất có thể.</p>
+                        <div class="contact-us__form">
+                            <div class="cover">
+                                <div class="contact-us__infor">
+                                    <label for="" class="name">Họ tên *</label>
+                                    <input type="text" class="infor" placeholder="Họ và tên">
+                                </div>
+                                <div class="contact-us__infor">
+                                    <label for="" class="name">Số điện thoại *</label>
+                                    <input type="text" class="infor" placeholder="Điện thoại liên lạc">
+                                </div>
                             </div>
-                            <input type="text" name="" id="" placeholder="Họ và tên">
-                            <div class="phone">
-                                <label for="" class="phone-customer">TELEPHONE</label>
-                                <i class="fa-solid fa-phone icon"></i>
+                           <div class="cover">
+                            <div class="contact-us__infor">
+                                <label for="" class="name">Email *</label>
+                                <input type="email" class="infor" placeholder="abc@gmail.com">
                             </div>
-                            <input type="text" name="" id="" placeholder="Vui lòng nhập số điện thoại ">
-                            <div class="email">
-                                <label for="" class="email-customer">EMAIL</label>
-                                <i class="fa-solid fa-envelope icon"></i>
+                            <div class="contact-us__infor">
+                                <label for="" class="name">Địa chỉ *</label>
+                                <input type="text" class="infor" placeholder="Địa chỉ">
                             </div>
-                            <input type="email" name="" id="" placeholder="Email">
-                            <div class="mess"></div>
-                                <textarea placeholder="Nội dung cần hỗ trợ" name="" id="" cols="37" rows="8"></textarea>
-                                <button class="mess-submit-btn" type="submit">Gửi liên hệ</button>
+                           </div>
+                        </div>
+                        <div class="contact-us__infor">
+                            <label  for="" class="name">Nội dung *</label>
+                            <textarea name="" id="" cols="74" rows="3" class="infor mess" placeholder="Nhập lời nhắn ..."></textarea>
+                        </div>
+                        <p class="text-rule">Khi nhấn " Gửi " , bạn đã đồng ý <a class="link-rule" href="">Điều khoản sử dụng </a>và <a class="link-rule" href="">Chính sách bảo mật</a></p>
+                        <button class="contact-btn__submit" type="submit">Gửi</button>
+                    </form>   
+            </div>
+            </div>
+            <div class="grid wide">
+                <div class="contact__store">
+                    <div class="infor-describe__store">
+                        <h2 class="title-describe">Cửa hàng điện thoại URPHONE</h2>
+                        <div class="infor-describe">
+                            <p class="describe">URPHONE tự tin là của hàng điện thoại hàng đầu Việt Nam .</p>
+                            <p class="describe">Đảm bảo mua hàng chính hãng. </p>
+                            <p class="describe">Được hoàn trả trong vòng 7 ngày sau khi sử dụng sản phẩm.</p>
+                            <p class="describe">Sở hữu giấy chứng nhận đăng kí doanh nghiệp</p>
                         </div>
                     </div>
-                </form>
-                <div class="address">
-                    <div class="address-store">
-                        <div class="cover"><img src="https://tse4.mm.bing.net/th?id=OIP.Sj4bhkhC37E8vMkPkWVEQgHaEP&pid=Api&P=0&h=180" alt=""></div>
-                        <div class="infor"><a class="link" href="https://www.google.com/maps/place/Tr%C6%B0%E1%BB%9Dng+%C4%90%E1%BA%A1i+h%E1%BB%8Dc+S%C3%A0i+G%C3%B2n/@10.7599171,106.6796834,17z/data=!3m1!4b1!4m6!3m5!1s0x31752f1b7c3ed289:0xa06651894598e488!8m2!3d10.7599171!4d106.6822583!16s%2Fm%2F02qvnkv?entry=ttu">Trường đại học Sài Gòn</a></div>
-                    </div>
-                    <div class="phone-store">
-                        <div class="cover"><img src="https://tse1.mm.bing.net/th?id=OIP.kH-6cPLQ0BZeBmzsvOzErwHaHa&pid=Api&P=0&h=180" alt=""></div>
-                        <div class="infor"><a class="link" href="">19002321</a></div>
-                    </div>
-                    <div class="email-store">
-                        <div class="cover"> <img src="https://tse1.explicit.bing.net/th?id=OIP.lbA0kWf6zwOfd2pPlR4tQgHaFn&pid=Api&P=0&h=180" alt=""></i></div>
-                        <div class="infor"><a class="link" href="">TrươngSaiGon@gmail.com</a></div>
+                    <div class="infor-contact__store">
+                        <h2 class="title-contact">Liên lạc</h2>
+                        <div class="infor-contact">
+                            <div class="contact--method">
+                                <div class="rim">
+                                    <img class="picture" src="https://tse4.mm.bing.net/th?id=OIP.Sj4bhkhC37E8vMkPkWVEQgHaEP&pid=Api&P=0&h=180" alt="">
+                                </div>
+                                <a class="link-contact" href="">Trường Đại Học Sài Gòn</a></div>
+                            <div class="contact--method">
+                                <div class="rim">
+                                    <img class="picture" src="https://tse2.mm.bing.net/th?id=OIP.SChygu1GdIYrC5ZztBThggHaHa&pid=Api&P=0&h=180" alt="">
+                                </div>
+                                <a class="link-contact" href="">19001526</a></div>
+                            <div class="contact--method">
+                                <div class="rim">
+                                    <img class="picture" src="https://tse1.mm.bing.net/th?id=OIP.lbA0kWf6zwOfd2pPlR4tQgHaFn&pid=Api&P=0&h=180" alt="">
+                                </div>
+                                <a class="link-contact" href="">TruongSaiGon@gmail.com</a></div>
+                        </div>
                     </div>
                 </div>
-            </div>
             </div>
 </body>
 </html>
