@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="./assets/css/contact.css">
     <link rel="stylesheet" href="./fontawesome-free-6.4.0-web/css/all.min.css">
     <link rel="stylesheet" href="./assets/css/main.css">
+    <script src="./assets/js/contact.js"></script>
 </head>
 <body>
     <div class="contact">
@@ -45,7 +46,7 @@
                         <iframe style="border-radius: 10px;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.6697268382204!2d106.68225830000002!3d10.7599171!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f1b7c3ed289%3A0xa06651894598e488!2zVHLGsOG7nW5nIMSQ4bqhaSBo4buNYyBTw6BpIEfDsm4!5e0!3m2!1svi!2s!4v1698301655486!5m2!1svi!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
                     <!-- Form -->
-                    <form class="form-support">
+                    <form class="form-support" id="form-support" >
                         <div action="" class="infor__customer">
                             <div class="title">
                                 <h3 class="title-text">Liên Hệ Với Chúng Tôi</h3>
@@ -55,23 +56,27 @@
                             <p class="text-describe">Chúng tôi sẽ gửi phản hồi nhanh nhất có thể.</p>
                         <div class="contact-us__form">
                             <div class="cover">
-                                <div class="contact-us__infor">
+                                <div class="contact-us__infor ">
                                     <label for="" class="name">Họ tên *</label>
-                                    <input type="text" class="infor" placeholder="Họ và tên">
+                                    <input id="name" type="text" class="infor" placeholder="Họ và tên">
+                                    <span class="form-message"></span>
                                 </div>
                                 <div class="contact-us__infor">
                                     <label for="" class="name">Số điện thoại *</label>
-                                    <input type="text" class="infor" placeholder="Điện thoại liên lạc">
+                                    <input id="phone" type="text" class="infor" placeholder="Điện thoại liên lạc">
+                                    <span class="form-message"></span>
                                 </div>
                             </div>
                            <div class="cover">
                             <div class="contact-us__infor">
                                 <label for="" class="name">Email *</label>
-                                <input type="email" class="infor" placeholder="abc@gmail.com">
+                                <input id="email" type="email" class="infor" placeholder="abc@gmail.com">
+                                <span class="form-message"></span>
                             </div>
                             <div class="contact-us__infor">
                                 <label for="" class="name">Địa chỉ *</label>
-                                <input type="text" class="infor" placeholder="Địa chỉ">
+                                <input id="address" type="text" class="infor" placeholder="Địa chỉ">
+                                <span class="form-message"></span>
                             </div>
                            </div>
                         </div>
@@ -117,5 +122,17 @@
                     </div>
                 </div>
             </div>
+    <!-- <script>
+        Validator(
+            {
+                form : '#form-support' ,
+                rules :[
+                Validator.isRequire('#name'),
+                Validator.isEmail('#email'),
+                Validator.isRequire('#phone'),
+                Validator.isRequire('#address')
+                ]
+            });
+    </script> -->
 </body>
 </html>
