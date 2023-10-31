@@ -179,3 +179,7 @@
 .link-contact:hover{
     opacity: 0.6;
 }
+.infor-association{
+    display: flex;
+    
+}
