@@ -7,7 +7,7 @@ const productArr = [
         "Samsung",
         ["8 GB", "12 GB"],
         ["512 GB", "256 GB", "1 TB"],
-        31
+        30
 
     ),
     new Product(
@@ -29,7 +29,7 @@ const productArr = [
         "Samsung",
         ["8 GB"],
         ["128 GB", "512 GB"],
-        3
+        45
     ),
     new Product(
         "Samsung Galaxy A04",
@@ -39,7 +39,7 @@ const productArr = [
         "Samsung",
         ["3 GB", "4 GB"],
         ["32 GB", "64 GB"],
-        3
+        13
     ),
     new Product(
         "Samsung Galaxy A14 5G",
@@ -49,7 +49,7 @@ const productArr = [
         "Samsung",
         ["4 GB"],
         ["128 GB"],
-        33
+        13
     ),
     new Product(
         "Samsung Galaxy A54 5G",
@@ -59,7 +59,7 @@ const productArr = [
         "Samsung",
         ["8 GB"],
         ["128 GB", "256 GB"],
-        33
+        11
     ),
     new Product(
         "Samsung Galaxy S23 5G",
@@ -69,7 +69,7 @@ const productArr = [
         "Samsung",
         ["8 GB"],
         ["128 GB"],
-        33
+        30
     ),
     new Product(
         "Samsung Galaxy Z Fold5 5G",
@@ -79,7 +79,7 @@ const productArr = [
         "Samsung",
         ["12 GB"],
         ["256 GB", "512 GB", "1 TB"],
-        33
+        19
     ),
     new Product(
         "Samsung Galaxy S23 FE 5G",
@@ -89,7 +89,7 @@ const productArr = [
         "Samsung",
         ["8 GB"],
         ["128 GB"],
-        33
+        6
     ),
     new Product(
         "Samsung Galaxy A04",
@@ -99,57 +99,57 @@ const productArr = [
         "Samsung",
         ["3 GB", "4 GB"],
         ["32 GB", "64 GB"],
-        33
+        13
     ),
     new Product(
         "Masstel FAMI 60 4G",
-        700000.0,
         800000.0,
+        700000.0,
         ['https://cdn.tgdd.vn/Products/Images/42/264121/masstel-fami-60-thumb-600x600.jpeg'],
         "Masstel",
         ["1 GB"],
         ["16 GB"],
-        3
+        12
     ),
     new Product(
         "Masstel Lux 20",
-        650000.0,
         700000.0,
+        650000.0,
         ['https://cdn.tgdd.vn/Products/Images/42/285027/masstel-lux-20-vang-thumb-600x600.jpeg'],
         "Masstel",
         ["1 GB"],
         ["16 GB"],
-        33
+        7
     ),
     new Product(
         "Masstel Lux 10",
-        530000.0,
         600000.0,
+        530000.0,
         ['https://cdn.tgdd.vn/Products/Images/42/299611/masstel-lux-10-vang-thumb-600x600.jpg'],
         "Masstel",
         ["1 GB"],
         ["16 GB"],
-        33
+        11
     ),
     new Product(
         "Masstel IZI 26",
-        500000.0,
         550000.0,
+        500000.0,
         ['https://cdn.tgdd.vn/Products/Images/42/299610/masstel-izi-26-4g-thum-600x600.jpg'],
         "Masstel",
         ["1 GB"],
         ["16 GB"],
-        33
+        9
     ),
     new Product(
         "Masstel IZI 10 4G",
-        370000.0,
         400000.0,
+        370000.0,
         ['https://cdn.tgdd.vn/Products/Images/42/265311/masstel-izi-10-4g-xanh-thumb-600x600.jpg'],
         "Masstel",
         ["1 GB"],
         ["16 GB"],
-        33
+        7
     ),
     new Product(
         "Xiaomi 13T 12GB 256GB",
