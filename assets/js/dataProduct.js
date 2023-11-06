@@ -16,8 +16,8 @@ const productArr = [
         2990000.0,
         ['https://cdn.tgdd.vn/Products/Images/42/313199/samsung-galaxy-a05-thumb-600x600.jpg'],
         "Samsung",
-        ["8 GB", "64 GB"],
-        ["  128 GB"],
+        ["8 GB"],
+        ["128 GB"],
         3
 
     ),
@@ -461,8 +461,8 @@ const productArr = [
         32190000.0,
         ['https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:80/plain/https://cellphones.com.vn/media/catalog/product/i/p/iphone-15-pro-max_3.png'],
         "iPhone",
-        ["256GB"],
-        ["512GB","1TB"],
+        ["8 GB"],
+        ["256 GB","512 GB","1 TB"],
         2
     ),
     new Product(
@@ -471,8 +471,8 @@ const productArr = [
         24790000.0,
         ['https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:80/plain/https://cellphones.com.vn/media/catalog/product/i/p/iphone-14-pro_2__5.png'],
         "iPhone",
-        ["128GB","256GB"],
-        ["512GB","1TB"],
+        ["6 GB"],
+        ["128 GB","256 GB","512 GB","1 TB"],
         11
     ),
     new Product(
@@ -481,8 +481,8 @@ const productArr = [
         20490000.0,
         ['https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:80/plain/https://cellphones.com.vn/media/catalog/product/i/p/iphone-15-plus_1__1.png'],
         "iPhone",
-        ["128GB"],
-        ["256GB","512GB"],
+        ["8 GB"],
+        ["128 GB","256 GB","512 GB"],
         4
     ),
     new Product(
@@ -491,8 +491,8 @@ const productArr = [
         15250000.0,
         ['https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:80/plain/https://cellphones.com.vn/media/catalog/product/i/p/iphone-13_2_.png'],
         "iPhone",
-        ["128GB"],
-        ["256GB","512GB"],
+        ["4 GB"],
+        ["128 GB","256 GB","512 GB"],
         14
     ),
     new Product(
@@ -501,8 +501,8 @@ const productArr = [
         37790000.0,
         ['https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:80/plain/https://cellphones.com.vn/media/catalog/product/i/p/iphone-15-pro-max_5.png'],
         "iPhone",
-        ["512GB"],
-        ["1TB"],
+        ["8 GB"],
+        ["512 GB","1 TB"],
         3
     ),
     new Product(
@@ -511,9 +511,8 @@ const productArr = [
         22190000.0,
         ['https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:80/plain/https://cellphones.com.vn/media/catalog/product/i/p/iphone-14-pro_2__4.png'],
         "iPhone",
-        ["128GB","256GB"],
-        ["512GB","1TB"],
-        ["iPhone"],
+        ["6 GB"],
+        ["128 GB","256 GB","512 GB","1 TB"],
         14
     ),
     new Product(
@@ -522,9 +521,9 @@ const productArr = [
         24490000.0,
         ['https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:80/plain/https://cellphones.com.vn/media/catalog/product/i/p/iphone-15-plus_1_.png'],
         "iPhone",
-        ["128GB"],
-        ["256GB","512GB"],
-        0
+        ["8 GB"],
+        ["128 GB","256 GB","512 GB"],
+        1
     ),
     new Product(
         "iPhone 14 128GB",
@@ -532,8 +531,8 @@ const productArr = [
         16790000.0,
         ['https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:80/plain/https://cellphones.com.vn/media/catalog/product/i/p/iphone-14_1.png'],
         "iPhone",
-        ["128GB"],
-        ["256GB","512GB"],
+        ["6 GB"],
+        ["128 GB","256 GB","512 GB"],
         18
     ),
     new Product(
@@ -542,8 +541,8 @@ const productArr = [
         22990000.0,
         ['https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:80/plain/https://cellphones.com.vn/media/catalog/product/i/p/iphone-13-pro-max.png'],
         "iPhone",
-        ["128GB","256GB"],
-        ["512GB","1TB"],
+        ["4 GB"],
+        ["128 GB","512 GB","1 TB"],
         17
     ),
     new Product(
@@ -552,8 +551,8 @@ const productArr = [
         12390000.0,
         ['https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:80/plain/https://cellphones.com.vn/media/catalog/product/i/p/iphone-12.png'],
         "iPhone",
-        ["64GB","128GB"],
-        ["256GB"],
+        ["4 GB"],
+        ["64 GB","128 GB","256 GB"],
         16
     ),
     new Product(
@@ -562,8 +561,8 @@ const productArr = [
         6590000.0,
         ['https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:80/plain/https://cellphones.com.vn/media/catalog/product/o/p/oppo-reno-8t-4g-256gb.png'],
         "OPPO",
-        ["8G"],
-        ["256GB"],
+        ["8 GB"],
+        ["256 GB"],
         16
     ),
     new Product(
@@ -572,8 +571,8 @@ const productArr = [
         4190000.0,
         ['https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:80/plain/https://cellphones.com.vn/media/catalog/product/o/p/oppo-a58_1_1.png'],
         "OPPO",
-        ["6GB"],
-        ["128GB"],
+        ["6 GB"],
+        ["128 GB"],
         6
     ),
     new Product(
@@ -582,8 +581,8 @@ const productArr = [
         7890000.0,
         ['https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:80/plain/https://cellphones.com.vn/media/catalog/product/o/p/oppo-reno-8t.png'],
         "OPPO",
-        ["8GB"],
-        ["128GB"],
+        ["8 GB"],
+        ["128 GB"],
         21
     ),
     new Product(
@@ -592,8 +591,8 @@ const productArr = [
         4550000.0,
         ['https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:80/plain/https://cellphones.com.vn/media/catalog/product/o/p/oppo-a55_1_.png'],
         "OPPO",
-        ["8GB"],
-        ["128GB"],
+        ["8 GB"],
+        ["128 GB"],
         20
     ),
     new Product(
@@ -602,8 +601,8 @@ const productArr = [
         2990000.0,
         ['https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:80/plain/https://cellphones.com.vn/media/catalog/product/o/p/oppo-a55_1_1.png'],
         "OPPO",
-        ["4GB"],
-        ["64GB"],
+        ["4 GB"],
+        ["64 GB"],
         5
     ),
 
