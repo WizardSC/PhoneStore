@@ -13,6 +13,7 @@
     align-items:center;
     justify-content:space-between;
     padding:12px 20px;
+    position: relative;
 }
 .header__navbar a{
     text-decoration: none;
@@ -37,7 +38,7 @@
     margin-top:5px;
 }
 .header__navbar-search input{
-    width:500px;
+    width:400px;
     border-radius: 5px;
     border:none;
     outline:none;
@@ -49,33 +50,40 @@
 }
 .header__navbar-list li{
     list-style: none;
-    padding:0 20px;
     position:relative;
+}
+.header__navbar-list button{
+    display:none;
+}
+.header__navbar-list .fa-basket-shopping{
+    color:white;
+    padding-right:6px;
+}
+.header__navbar-list .fa-gear{
+    font-size:18px;
 }
 .header__navbar-list li a{
     text-decoration: none;
     font-size:14px;
     font-weight:600;
     color:white;
-    /* transition:0.3s ease; */
     transition: transform 0.2s;
     display:inline-block;
+    padding: 2px 15px;
 }
 .header__navbar-list li a:hover,
-.header__navbar-list li a.active
-{   
+.header__navbar-list li a.active,
+.header__navbar-list li a .fa-basket-shopping:hover,
+.header__navbar-list li a .fa-basket-shopping.active{   
     transform: scale(1.1); /* Thu nhỏ chúng xuống */
-    color: rgb(53, 51, 51);
+    /* color: rgb(53, 51, 51); */
+    opacity:calc(0.7);
 }
 
-/* for tablet */
-@media only screen and (min-width:740px) and ( max-width:1024px){ 
-    
-    
-}
-/* for moblie */
-@media only screen and (max-width:740px){
-    
+.header__navbar #head_menu {
+    color: white;
+    font-size: 14px;
+    display: none;
 }
 /* --------------------------------------------------CSS phan content__product------------------------------------------------------------------------- */
 .content__product{
@@ -96,7 +104,7 @@
 }
 .blinking-text {
     color:rgb(219, 222, 14);;
-    animation: blink 3s infinite;
+    animation: blink 1.7s infinite;
     transition:0.2s;
   }
   
@@ -148,6 +156,10 @@
     width:100%;
     border-radius:20px;
     min-width:100%;
+}
+.content__product .pro img:hover{
+    transform:scale(1.03);
+    transition:0.4s;
 }
 .content__product .pro .des{
     text-align:start;
@@ -213,16 +225,19 @@ button.white{
 .content__news{
     padding-top:15px;
     text-align:center;
+    line-height:3vh;
 }
 .content__news h3{
     font-size:27px;
     color:rgb(28, 27, 26);
+    line-height: 40px;
 }
 .content__news .content__news-new{
     display:flex;
     justify-content: space-between;
-    flex-wrap:wrap;
+    /* flex-wrap:wrap; */
     padding-top:20px;
+
 }
 .content__news-new .content__news-banner{
     display:flex;
@@ -230,14 +245,16 @@ button.white{
     justify-content: center;
     align-items:flex-start;
     background-image:url("https://cdn2.cellphones.com.vn/insecure/rs:fill:385:0/q:100/plain/https://cellphones.com.vn/sforum/wp-content/uploads/2023/10/Xiaomi-14-14-Pro-teasercvoer.jpg");
-    min-width:580px;
+    /* min-width:580px; */
+    width: 80vh;
     height:30vh;
     background-size:cover;
     background-position:center;
     padding:20px;
     background-repeat:no-repeat;
     border-radius:20px;
-    box-shadow:2px 2px 4px rgba(0,0,0,0.3);
+    box-shadow:0px 0px 7px rgba(0,0,0,0.6);
+    
 }
 .content__news-new .content__news-banner h4{
     font-size:14px;
@@ -262,18 +279,21 @@ button.white{
     border:2px solid white;
     padding:20px;
 }
+.content__news-new2{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap:30px;
+}
 .content__news-new2 .content__news-box{
-    display:flex;
-    padding-top:25px;
+    margin-top:20px;
     border:1px solid transparent;
     outline:none;
     border-radius:20px;
-    box-shadow:2px 2px 3px rgba(0,0,0,0.3);
+    box-shadow:0px 0px 7px rgba(0,0,0,0.3);
 }
 .content__news-new2 .content__news-box img{
-    width:30%;
+    width:100%;
     border-radius:20px;
-    margin-right:20px;
 }
 .content__news-box .button__news-button{
     display:flex;
@@ -291,6 +311,8 @@ button.white{
     color:rgb(59, 63, 67);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-align:justify;
+   
+    
 }
 button.normal{
     border:1px solid transparent;
@@ -298,16 +320,126 @@ button.normal{
     width:100px;
     color:rgb(250, 246, 246);
     border-radius:20px;
-    background:rgb(55, 31, 31);
+    background:#eb2c06;
     transition:0.2s;
     cursor:pointer;
+    font-weight:500;
 }
 .content__news-box .button__news-button button:hover {
     background-color:rgb(252, 247, 247);
     color:rgb(2, 2, 2);
     border:1px solid black;
+}
+/* for tablet */
+@media only screen and ( min-width:740px) and ( max-width:1024px){ 
+    .content__news .content__news-new{
+        display:none;
+    } 
+    .content__news .content__news-new2{
+        display:flex;
+        flex-direction: column;
 
+    }
+    .content__news-new2 .content__news-box{
+        display:flex;
+        
+        height: 200px;
+        width: 100%;
+    }
+    .button__news-button{
+        width: max-content;
+        
+    }
+    .content__news-new2 .content__news-box img{
+        width: 250px;
+        background-size: contain;
+    }
+    .content__news-box .button__news-button{
+        justify-content: space-between;  
+        /* align-items: center;    */
+    }
     
+    .content__news-box .button__news-button h4{
+        /* text-align: justify; */
+        
+        font-size: 16px;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow:ellipsis;
+        /* width: 100%; */
+    }
+    .content__news-box .button__news-button p{
+        
+        margin-bottom: 10px;
+        width: auto;
+        height: 52px;   
+        /* white-space:nowrap; */
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow:ellipsis;
+
+    }
+}
+/* for moblie */
+@media only screen and (max-width:740px){
+    .content__news .content__news-new{
+        display:none;
+    } 
+    .content__news .content__news-new2{
+        display:flex;
+        flex-direction: column;
+
+    }
+    .content__news-new2 .content__news-box{
+        display:flex;
+        
+        height: 200px;
+        width: 100%;
+    }
+    .button__news-button{
+        width: max-content;
+        
+    }
+    .content__news-new2 .content__news-box img{
+        width: 250px;
+        background-size: contain;
+    }
+    .content__news-box .button__news-button{
+        justify-content: space-between;  
+        /* align-items: center;    */
+    }
+    
+    .content__news-box .button__news-button h4{
+        /* text-align: justify; */
+        display: block;
+        font-size: 17px;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow:ellipsis;
+        /* width: 100%; */
+    }
+    .content__news-box .button__news-button p{
+        
+        margin-bottom: 10px;
+        width: auto;
+        /* line-height: 1.4px; */
+        height: 52px;   
+        /* white-space:nowrap; */
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow:ellipsis;
+
+    }
+    
+
 }
 
 
