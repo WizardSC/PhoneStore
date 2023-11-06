@@ -1,0 +1,118 @@
+:root {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --backgroundColor: #d80018;
+    --highlightedColor: #df3346;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.app {
+    height: 10000px;
+}
+#form {
+    width: 100%;
+    height: 100%;
+    background-color: #3a3b3c50;
+    position: fixed;
+    top: 0;
+    display: none;
+}
+#loginPopup,
+#signUpPopup {
+    display: none;
+}
+#formContainer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 350px;
+    height: 350px;
+}
+
+
+.loginForm {
+    width: 350px;
+    height: 350px;
+    background-color: white;
+    text-align: center;
+    justify-content: center;
+    border: 1px solid black;
+    border-radius: 15px;
+}
+
+.loginForm__title {
+    height: 50px;
+    background-color: var(--backgroundColor);
+    border-radius: 15px 15px 0 0;
+    color: white;
+    margin-bottom: 20px;
+    line-height: 50px;
+    cursor: default;
+}
+
+.loginForm__textfield label {
+    display: inline-block;
+    width: 80%;
+    font-size: 14px;
+    text-align: left;
+}
+
+.loginForm__textfield input {
+    width: 80%;
+    padding: 5px 10px 5px 10px;
+    margin: 0 0 15px 0;
+    border: 0;
+    border-bottom: 1px solid black;
+    outline: 0;
+    font-size: 16px;
+}
+
+.loginForm__forgotPassword {
+    width: 80%;
+    padding: 0 0 10px 0;
+    font-size: 13px;
+    text-align: right;
+    display: inline-block;
+}
+
+.loginForm__loginButton {
+    width: 80%;
+    padding: 10px 15px;
+    background-color: var(--backgroundColor);
+    color: white;
+    font-size: 18px;
+    border-radius: 15px;
+    border: 0;
+}
+
+.loginForm__loginButton:hover {
+    background-color: var(--highlightedColor);
+}
+
+.loginForm__Question {
+    padding: 7px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.loginForm__Question p {
+    padding: 3px;
+}
+
+.loginForm__loginSignUpQuestion,
+.loginForm__forgotPassword {
+    color: blue;
+
+}
+
+.loginForm__loginSignUpQuestion:hover,
+.loginForm__forgotPassword:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+/* SIGN UP */
