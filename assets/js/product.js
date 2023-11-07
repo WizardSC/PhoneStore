@@ -30,8 +30,8 @@ function renderProduct(listProduct) {
 
             </div>
             <div class="product-item__price">
-                <div class="product-item__price-new">${money.formatCurrencytoVND(product.price_old)}</div>
-                <div class="product-item__price-old">${money.formatCurrencytoVND(product.price_current)}</div>
+                <div class="product-item__price-new">${money.formatCurrencytoVND(product.price_current)}</div>
+                <div class="product-item__price-old">${money.formatCurrencytoVND(product.price_old)}</div>
 
             </div>
             <div class="product-item__action">
@@ -183,7 +183,7 @@ const maxPriceInput = $('#filter__price-max-price')
 let myChoiceBrand = []
 let myChoiceRAM = []
 let myChoiceROM = []
-let myPriceRange = [0, 0]
+let myPriceRange = [NaN, NaN]
 //Hiển thị các thẻ filter khi nhấn vào từng item lọc
 Array.from(listFilterItems).forEach(function (filterItem, index) {
     filterItem.addEventListener('click', function (e) {
@@ -249,11 +249,17 @@ function checkPriceRange(value) {
 minPriceInput.addEventListener('blur', function (e) {
     checkPriceRange("minPrice");
     console.log(myPriceRange[0], myPriceRange[1]);
+    
+    
+    applyFilters();
+
+
 });
 
 maxPriceInput.addEventListener('blur', function (e) {
     checkPriceRange("maxPrice");
     console.log(myPriceRange[0], myPriceRange[1]);
+    applyFilters();
 
 });
 //Ngăn chăn hành vi nổi bọt của các popup filter
@@ -358,7 +364,12 @@ Array.from(listROMItems).forEach(function (rom) {
 
 function applyFilters() {
     let result = data.getProducts();
-
+    if(!isNaN(myPriceRange[0]) && !isNaN(myPriceRange[1])){
+        let tempListProduct = [];
+        console.log("Di vao day")
+        tempListProduct = tempListProduct.concat(filterProductPrice(result, myPriceRange[0], myPriceRange[1]));
+        result = tempListProduct;
+    }
     if (myChoiceBrand.length > 0) {
         let tempListProduct = [];
         for (let i = 0; i < myChoiceBrand.length; i++) {
@@ -403,6 +414,15 @@ function filterProductBrand(productArr, productBrand) {
     productBrand = productBrand.toLowerCase();
     productArr.forEach(item => {
         if (item.brand === (productBrand)) {
+            result.push(item)
+        }
+    })
+    return result;
+}
+function filterProductPrice(productArr, productMinPrice, productMaxPrice){
+    let result = []
+    productArr.forEach(item => {
+        if(item.price_current >= productMinPrice && item.price_current <= productMaxPrice){      
             result.push(item)
         }
     })
