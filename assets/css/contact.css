@@ -40,6 +40,16 @@
     display: flex;
     padding-top:20px ;
     padding-bottom: 20px;
+    position: relative;
+    isolation: isolate;
+}
+.container::after{
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    opacity:0.8 ;
+    background-image: linear-gradient(0deg , #fff , var(--primary-color));
 }
 .form-support{
     width: 100%;
@@ -91,6 +101,7 @@
     font-size: 18px;
     margin-top: 20px;
     text-align: start;
+    color: rgb(43, 35, 35);
 }
 .infor{
     padding: 7px;
@@ -99,7 +110,7 @@
     border: 1px solid var(--text-color);
 }
 .infor:focus{
-    outline:2px solid red;
+    outline: 3px solid red ;
     border: none;
 }
 .mess{
@@ -123,15 +134,16 @@
     border-radius: 20px;
     width : 100px;
     height : 30px ;
-    background-image: linear-gradient(150deg , var(--primary-color), #fff);
-    color: rgb(4, 3, 3);
+    background-color: rgb(3, 3, 3);
+    color: rgb(255, 255, 255);
     cursor: pointer;
     box-shadow: 1px 0 0 0 var(--text-color);
     margin : 10px 0;
 }
 .contact-btn__submit:hover{
-    transform: scale(1.1);
+    transform: scale(1.2);
     transition: linear 0.2s;
+    opacity: 0.7;
 }
 .contact__store{
     display: flex;
@@ -159,13 +171,14 @@
 .contact--method{
     display: flex;
     margin: 10px 0;
+    margin-left: 40px;
 }
 .rim{
     border: 1px solid var(--primary-color);
     border-radius: 50%;
     padding: 5px;
 }
-.picture{
+.picture-contact{
     width: 30px;
     height: 20px;
 }
@@ -181,5 +194,82 @@
 }
 .infor-association{
     display: flex;
-    
+    justify-content: center;
+}
+.picture{
+    margin: 0 15px;
+    height: 30px;
+    width: 30px;
+}
+.picture:hover{
+    transform: scale(1.1);
+    transition: linear 0.3;
+    box-shadow: 0 0 3px var(--text-color);
+    border: 3px;
+}
+/* Mobile */
+@media only screen and (max-width : 740px)
+{
+    .container{
+        flex-direction: column-reverse;
+    }
+    .map{
+        display: flex;
+        justify-content: center;
+    }
+    .form-support{
+        margin-top: 20px;
+    }
+    .contact__store{
+        display: block;
+        justify-content: center;
+    }
+    .infor-describe__store{
+        border: none;
+        text-align: center;
+        width: 100%;
+    }
+    .infor-contact__store{
+        width: 100%;
+        justify-content: center;
+    }
+    .or{
+        display: none;
+    }
+    .infor-contact{
+        display: flex;
+        justify-content: center;
+        padding: 10px 10px;
+    }
+    .rim{
+        border: none;
+    }
+}
+/* Tablet */
+@media only screen and (min-width : 740px) and (max-width : 1200px)
+{
+    .container{
+        display: block;
+        justify-content: center;
+    }
+    .container::after{
+        background-image: none;
+    }
+    .map{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .form-support{
+        width: 50%;
+        top: 200px;
+        display: block;
+        left: 25%;
+        background-image: linear-gradient(0deg , #fff , var(--primary-color));
+        border-radius: 20px;
+    }
+    .contact__store{
+        margin-top: 200px;
+    }
 }
