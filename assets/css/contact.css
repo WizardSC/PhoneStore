@@ -168,6 +168,33 @@
     margin: 10px 0;
     line-height: 30px;
 }
+.logo{
+    border-radius: 10px;
+    display: flex;
+    justify-content: start;
+}
+.logo-item{
+    width: 150px;
+    height: 40px;
+    color: aliceblue;
+    margin-right: 20px;
+    border-radius: 10px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+.logo-item:hover{
+    animation: move 0.5s linear;
+}
+@keyframes move{
+    from{
+        transform: translateY(0);
+        opacity: 1;
+    }
+    to{
+        transform: translateY(-10px);
+        opacity: 0.7;
+    }
+}
 .contact--method{
     display: flex;
     margin: 10px 0;
@@ -191,6 +218,8 @@
 }
 .link-contact:hover{
     opacity: 0.6;
+    font-style: italic;
+    transition: linear 0.3s;
 }
 .infor-association{
     display: flex;
@@ -207,6 +236,7 @@
     box-shadow: 0 0 3px var(--text-color);
     border: 3px;
 }
+/* responsive */
 /* Mobile */
 @media only screen and (max-width : 740px)
 {
@@ -259,9 +289,11 @@
         width: 100%;
         display: flex;
         justify-content: center;
+        position: relative;
     }
 
     .form-support{
+        position: absolute;
         width: 50%;
         top: 200px;
         display: block;
