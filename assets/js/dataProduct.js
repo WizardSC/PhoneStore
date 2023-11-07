@@ -21,6 +21,7 @@ const productArr = [
         3
 
     ),
+<<<<<<<<< Temporary merge branch 1
     new Product(
         "Samsung Galaxy Z Flip4 5G",
         23990000.0,
