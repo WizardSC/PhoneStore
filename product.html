@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="assets/css/base.css">
     <link rel="stylesheet" href="assets/css/grid.css">
     <link rel="stylesheet" href="assets/css/product.css">
-    
+
 
 
 </head>
@@ -28,9 +28,9 @@
                     <input id="search" type="text" placeholder="Bạn cần tìm gì?">
                 </div>
                 <ul class="header__navbar-list">
-                    <li><a href="#">Trang chủ</a></li>
-                    <li><a href="">Sản phẩm</a></li>
-                    <li><a href="">Liên lạc</a></li>
+                    <li><a href="index.html">Trang chủ</a></li>
+                    <li><a href="product.html">Sản phẩm</a></li>
+                    <li><a href="contact.html">Liên lạc</a></li>
                     <li><a href="">Đăng nhập</a></li>
                 </ul>
             </div>
@@ -41,8 +41,8 @@
                 <div class="slider-product-one-content">
                     <div class="slider-product-one-content-btn">
                         <i onmouseover="stopSlider()" class="prev-btn"><ion-icon
-                            name="chevron-back-outline"></ion-icon></i>
-                    <i class="next-btn"><ion-icon name="chevron-forward-outline"></ion-icon></i>
+                                name="chevron-back-outline"></ion-icon></i>
+                        <i class="next-btn"><ion-icon name="chevron-forward-outline"></ion-icon></i>
                     </div>
                     <div class="slider-product-one-content-container">
                         <div class="slider-product-one-content-items-content">
@@ -102,7 +102,11 @@
         <!-- Phần nội dung -->
         <div class="content">
             <div class="grid wide">
-              
+                <div class="search">
+                    <i class="fa-solid fa-magnifying-glass search__icon-search"></i>
+                    <input type="text" class="search__input" placeholder="Nhập thông tin tìm kiếm">
+                    <i class="fa-solid fa-x search__icon-close"></i>                
+                </div>
                 <!-- Tìm kiếm & filter -->
                 <div class="filter">
                     <div class="filter__label">
@@ -165,7 +169,7 @@
                                                 src="https://cdn.tgdd.vn/Brand/1/Mobell42-b_19.jpg" alt="" width="68"
                                                 height="30">
                                         </li>
-                                        
+
                                     </ul>
                                 </div>
                             </li>
@@ -181,9 +185,11 @@
 
                                     </div>
                                     <div class="filter__price-range">
-                                        <input type="tel" id="filter__price-min-price" name="filter__price-min-price" placeholder="Giá tối thiểu">
+                                        <input type="tel" id="filter__price-min-price" name="filter__price-min-price"
+                                            placeholder="Giá tối thiểu">
                                         ---------
-                                        <input type="tel" id="filter__price-max-price" name="filter__price-max-price" placeholder="Giá tối đa">
+                                        <input type="tel" id="filter__price-max-price" name="filter__price-max-price"
+                                            placeholder="Giá tối đa">
                                     </div>
                                 </div>
                             </li>
@@ -219,12 +225,19 @@
                                 </div>
                             </li>
                         </ul>
-                    </div>
+                        <div class="filter__space">
 
+                        </div>
+                        <div class="filter__limit-product">
+                            <span class="filter__limit-product-label">Số lượng sản phẩm trên 1 trang:</span>
+                            <input type="text" class="filter__limit-product-input">
+                        </div>
+                    </div>
+                    
 
                 </div>
                 <div class="product row">
-                    
+
                     <!-- <div class="col l-2-4 m-4 c-12">
                         <div class="product-item">
                             <div class="product-item__img-wrap">
@@ -290,9 +303,74 @@
                 <div class="pagination__btn-next">
                     <i class="fa-solid fa-angle-right"></i>
                 </div> -->
-            </div>     
+            </div>
+        </div>
+        <div class="modal">
+            <div class="modal__overlay">
+    
+            </div>
+            <div class="modal__body">
+                <div class="product-detail">
+                    <div class="product-detail__body">
+                        <img src="https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:80/plain/https://cellphones.com.vn/media/catalog/product/s/a/samsung-galaxy-s23-ultra.png" alt="" class="product-detail__img">
+                        <div class="product-detail__info">
+                            <h3 class="product-detail__info-name">
+                                Samsung Galaxy S23 Ultra 256GB
+                            </h3>
+                            <span class="product-detail__info-label">
+                                <span class="product-detail__info-label-name">RAM</span>
+                                <div class="product-detail__info-ram">
+                                    8 GB
+                                </div>
+                                <div class="product-detail__info-ram">
+                                    12 GB
+                                </div>
+                            </span>
+                            <span class="product-detail__info-label">
+                                <span class="product-detail__info-label-name">ROM</span>
+                                <div class="product-detail__info-rom">
+                                    512 GB
+                                </div>
+                                <div class="product-detail__info-rom">
+                                   1 TB
+                                </div>
+                            </span>
+                            <div class="product-detail__info-price">
+                                <span class="product-detail__info-price-old">30.990.000đ</span>
+                                <span class="product-detail__info-price-current">16.990.000đ</span>
+                            </div>
+                            <div class="product-detail__info-img">
+                                <img src="https://cdn2.cellphones.com.vn/insecure/rs:fill:0:120/q:80/plain/https://dashboard.cellphones.com.vn/storage/dt-ss-sv-2-productbanner.jpg" alt="">
+                            </div>
+                            <div class="product-detail__info-promotion">
+                                <h4 class="product-detail__info-promotion-heading">
+                                    <i class="fa-solid fa-gift"></i>
+                                    <span>Khuyến mãi</span>
+                                </h4>
+                                <div class="product-detail__info-promotion-content">
+                                    <div class="product-detail__info-promotion-wrap">
+                                        <p>1</p>
+                                        <span>Trả góp 12 tháng 0 lãi, 0đ trả trước qua Samsung Finance+ (Xem chi tiết)</span>
+                                    </div>
+                                    <div class="product-detail__info-promotion-wrap">
+                                        <p>2</p>
+                                    <span>Nhận ngay ưu đãi YouTube Premium dành cho chủ sở hữu Samsung Galaxy</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-detail__info-btn">
+                                <button class="product-detail__btn-buy-now">MUA NGAY</button>
+                                <button class="product-detail__btn-add-to-cart">
+                                    <i class="fa-solid fa-cart-shopping"></i><span>Thêm vào giỏ</span></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+    <!-- Chi tiết sản phẩm -->
+    
     <script src="assets/js/slider.js"></script>
     <script src="assets/js/constructor.js"></script>
     <script src="assets/js/dataProduct.js"> </script>
