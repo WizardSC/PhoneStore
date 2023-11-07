@@ -6,7 +6,7 @@ const productContainer = $('.product.row')
 
 //Render product lên giao diện
 function renderProduct(listProduct) {
-    
+
     if (listProduct == null || listProduct.length == 0) {
         productContainer.innerHTML =
             `<div class="product__not-found">
@@ -55,9 +55,9 @@ function renderProduct(listProduct) {
     `
     })
     productContainer.innerHTML = htmls.join('')
-    
-    
-    
+
+
+
 }
 renderProduct(data.getProducts())
 let thisPage = 1; //trang hiện tại
@@ -75,7 +75,7 @@ function loadItem() {
         }
     })
     listPage(listItem);
-   
+
 }
 loadItem();
 function listPage(listItem) {
@@ -179,8 +179,8 @@ const listROMItems = $$('.filter__rom-item')
 
 //Array các giá trị filter của brand, ram, rom
 let myChoiceBrand = []
-let mychoiceRAM = []
-let mychoiceROM = []
+let myChoiceRAM = []
+let myChoiceROM = []
 //Hiển thị các thẻ filter khi nhấn vào từng item lọc
 Array.from(listFilterItems).forEach(function (filterItem, index) {
     filterItem.addEventListener('click', function (e) {
@@ -225,6 +225,9 @@ Array.from(listFilterItems).forEach(function (filterItem, index) {
 })();
 
 // Duyệt qua các brand item, khi click vào thì add active
+
+
+// Duyệt qua các brand item, khi click vào thì add active
 Array.from(listBrandItems).forEach(function (brand) {
     brand.addEventListener("click", function (e) {
         brand.classList.toggle('active');
@@ -247,21 +250,106 @@ Array.from(listBrandItems).forEach(function (brand) {
                 }
             }
         }
-        let result = data.getProducts();
-        if (myChoiceBrand.length > 0) {
-            let tempListProduct = [];
-            for (let i = 0; i < myChoiceBrand.length; i++) {
+        applyFilters();
+    });
+});
 
-                tempListProduct = tempListProduct.concat(filterProductBrand(data.getProducts(), myChoiceBrand[i]))
-
+// Duyệt qua các RAM item, khi click vào thì add active
+Array.from(listRAMItems).forEach(function (ram) {
+    ram.addEventListener("click", function (e) {
+        ram.classList.toggle('active');
+        let itemValue = ram.getAttribute("data-value");
+        if (ram.classList.contains('active')) {
+            let isExist = false;
+            for (let i = 0; i < myChoiceRAM.length; i++) {
+                if (myChoiceRAM[i] === itemValue) {
+                    isExist = true;
+                    break;
+                }
             }
-            result = tempListProduct;
+            if (!isExist) {
+                myChoiceRAM.push(itemValue);
+            }
+        } else {
+            for (let i = 0; i < myChoiceRAM.length; i++) {
+                if (myChoiceRAM[i] === itemValue) {
+                    myChoiceRAM.splice(i, 1);
+                    break; // Thêm break để ngăn xóa nhiều phần tử
+                }
+            }
         }
-        renderProduct(result)
-        loadItem()
+        applyFilters();
+    });
+});
+Array.from(listROMItems).forEach(function (rom) {
+    rom.addEventListener("click", function (e) {
+        rom.classList.toggle('active');
+        let itemValue = rom.getAttribute("data-value");
+        if (rom.classList.contains('active')) {
+            let isExist = false;
+            for (let i = 0; i < myChoiceROM.length; i++) {
+                if (myChoiceROM[i] === itemValue) {
+                    isExist = false;
+                    break;
+                }
+            }
+            if (!isExist) {
+                myChoiceROM.push(itemValue);
+            }
+        } else {
+            for (let i = 0; i < myChoiceROM.length; i++) {
+                if (myChoiceROM[i] === itemValue) {
+                    myChoiceROM.splice(i, 1);
+                }
+            }
+        }
+        applyFilters();
+
     })
 })
 
+function applyFilters() {
+    let result = data.getProducts();
+
+    if (myChoiceBrand.length > 0) {
+        let tempListProduct = [];
+        for (let i = 0; i < myChoiceBrand.length; i++) {
+            tempListProduct = tempListProduct.concat(filterProductBrand(result, myChoiceBrand[i]));
+        }
+        result = tempListProduct;
+    }
+    if (myChoiceRAM.length > 0) {
+        let tempProductSet = {};
+        for (let i = 0; i < myChoiceRAM.length; i++) {
+            const filteredProducts = filterProductRam(result, myChoiceRAM[i]);
+            filteredProducts.forEach(product => {
+                tempProductSet[product.name] = product;
+            });
+        }
+        result = Object.values(tempProductSet);
+    }
+
+    if(myChoiceROM.length > 0){
+        let tempProductSet = {};
+        for(let i = 0; i < myChoiceROM.length; i++) {
+            const filteredProducts = filterProductRom(result, myChoiceROM[i]);
+            filteredProducts.forEach(product => {
+                tempProductSet[product.name] = product;
+            })
+            
+        }
+        console.log(tempProductSet);
+        result = Object.values(tempProductSet);
+    }
+
+    
+
+    // Tương tự, áp dụng bộ lọc cho myChoiceROM nếu cần
+
+
+    renderProduct(result);
+    loadItem();
+}
 function filterProductBrand(productArr, productBrand) {
     let result = []
     productBrand = productBrand.toLowerCase();
@@ -272,19 +360,30 @@ function filterProductBrand(productArr, productBrand) {
     })
     return result;
 }
+function filterProductRam(productArr, productRAM) {
+    let result = [];
+    productArr.forEach(item => {
+        if (Array.isArray(item.ram)) {
+            if (item.ram.some(ram => ram.toLowerCase().trim() === productRAM.toLowerCase().trim())) {
+                result.push(item);
+            }
+        }
+    });
+    return result;
+}
 
-Array.from(listRAMItems).forEach(function (ram) {
-    ram.addEventListener("click", function (e) {
-        ram.classList.toggle('active');
+function filterProductRom(productArr, productROM){
+    let result = [];
+    productArr.forEach(item => {
+        if (Array.isArray(item.rom)) {
+            if(item.rom.some(rom => rom.toLowerCase().trim() === productROM.toLowerCase().trim())) {
+                result.push(item);
+            }
+        }
     })
-})
-
-Array.from(listROMItems).forEach(function (rom) {
-    rom.addEventListener("click", function (e) {
-        rom.classList.toggle('active');
-    })
-})
-
+    return result
+}
+// console.log(filterProductRom(productArr, "256 GB"))
 
 // Pagination
 // const ulTag = document.querySelector('.pagination__list')
