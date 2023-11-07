@@ -235,7 +235,6 @@ button.white{
 .content__news .content__news-new{
     display:flex;
     justify-content: space-between;
-    /* flex-wrap:wrap; */
     padding-top:20px;
 
 }
@@ -245,7 +244,6 @@ button.white{
     justify-content: center;
     align-items:flex-start;
     background-image:url("https://cdn2.cellphones.com.vn/insecure/rs:fill:385:0/q:100/plain/https://cellphones.com.vn/sforum/wp-content/uploads/2023/10/Xiaomi-14-14-Pro-teasercvoer.jpg");
-    /* min-width:580px; */
     width: 80vh;
     height:30vh;
     background-size:cover;
@@ -311,8 +309,6 @@ button.white{
     color:rgb(59, 63, 67);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-align:justify;
-   
-    
 }
 button.normal{
     border:1px solid transparent;
@@ -332,23 +328,39 @@ button.normal{
 }
 /* for tablet */
 @media only screen and ( min-width:740px) and ( max-width:1024px){ 
+    .content__product .content__product-container{
+        padding-top:0;
+        padding-left:60px;
+        padding-right:60px;
+    }
+    .content__product-container .pro{
+        width:200px; 
+    }
+    .content__product .pro .des .price h4{
+        margin-right:5px;
+        font-size:14px;
+    }
+    .content__product .pro .des .price p{
+        padding-bottom:0;
+    }
+    .content__news{
+       line-height:2vh;
+    }
     .content__news .content__news-new{
         display:none;
     } 
     .content__news .content__news-new2{
         display:flex;
         flex-direction: column;
-
+        grid-gap:5px;
     }
     .content__news-new2 .content__news-box{
         display:flex;
-        
         height: 200px;
         width: 100%;
     }
     .button__news-button{
         width: max-content;
-        
     }
     .content__news-new2 .content__news-box img{
         width: 250px;
@@ -356,65 +368,84 @@ button.normal{
     }
     .content__news-box .button__news-button{
         justify-content: space-between;  
-        /* align-items: center;    */
     }
     
-    .content__news-box .button__news-button h4{
-        /* text-align: justify; */
-        
+    .content__news-box .button__news-button h4{     
         font-size: 16px;
         display: -webkit-box;
         -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
         overflow: hidden;
         text-overflow:ellipsis;
-        /* width: 100%; */
     }
     .content__news-box .button__news-button p{
         
         margin-bottom: 10px;
         width: auto;
         height: 52px;   
-        /* white-space:nowrap; */
         display: -webkit-box;
         -webkit-line-clamp: 3;
         -webkit-box-orient: vertical;
         overflow: hidden;
         text-overflow:ellipsis;
-
     }
 }
+
 /* for moblie */
 @media only screen and (max-width:740px){
+    .content__product .flashsale{
+        line-height:30px;
+    }
+    
+    .content__product .content__product-container{
+        padding-top:0;
+        padding-left:40px;
+        padding-right:40px;
+    }
+    .content__product-container .pro{
+        width:180px; 
+    }
+    .content__product .pro .des .price h4{
+        margin-right:5px;
+        font-size:14px;
+    }
+    .content__product .pro .des .price p{
+        padding-bottom:0;
+    }
+    .cotent__news{
+        line-height:2vh;
+    }
     .content__news .content__news-new{
         display:none;
     } 
     .content__news .content__news-new2{
         display:flex;
         flex-direction: column;
-
+        grid-gap:5px;
     }
     .content__news-new2 .content__news-box{
         display:flex;
-        
         height: 200px;
         width: 100%;
     }
     .button__news-button{
         width: max-content;
-        
     }
     .content__news-new2 .content__news-box img{
-        width: 250px;
+        width: 200px;
         background-size: contain;
+        height:150px;
+        margin-top:10px;
+        
     }
     .content__news-box .button__news-button{
-        justify-content: space-between;  
-        /* align-items: center;    */
+        justify-content:space-between; 
+    
     }
     
     .content__news-box .button__news-button h4{
-        /* text-align: justify; */
+        padding:0;
+        width:auto;
         display: block;
         font-size: 17px;
         display: -webkit-box;
@@ -422,15 +453,11 @@ button.normal{
         -webkit-box-orient: vertical;
         overflow: hidden;
         text-overflow:ellipsis;
-        /* width: 100%; */
     }
     .content__news-box .button__news-button p{
-        
-        margin-bottom: 10px;
+        margin-bottom: 5px;
         width: auto;
-        /* line-height: 1.4px; */
         height: 52px;   
-        /* white-space:nowrap; */
         display: -webkit-box;
         -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
