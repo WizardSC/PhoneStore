@@ -30,8 +30,8 @@ function renderProduct(listProduct) {
 
             </div>
             <div class="product-item__price">
-                <div class="product-item__price-new">${money.formatCurrencytoVND(product.price_old)}</div>
-                <div class="product-item__price-old">${money.formatCurrencytoVND(product.price_current)}</div>
+                <div class="product-item__price-new">${money.formatCurrencytoVND(product.price_current)}</div>
+                <div class="product-item__price-old">${money.formatCurrencytoVND(product.price_old)}</div>
 
             </div>
             <div class="product-item__action">
@@ -176,11 +176,14 @@ const filterROM = $('.filter__rom')
 const listBrandItems = $$('.filter__brand-item')
 const listRAMItems = $$('.filter__ram-item')
 const listROMItems = $$('.filter__rom-item')
+const minPriceInput = $('#filter__price-min-price')
+const maxPriceInput = $('#filter__price-max-price')
 
 //Array các giá trị filter của brand, ram, rom
 let myChoiceBrand = []
 let myChoiceRAM = []
 let myChoiceROM = []
+let myPriceRange = [NaN, NaN]
 //Hiển thị các thẻ filter khi nhấn vào từng item lọc
 Array.from(listFilterItems).forEach(function (filterItem, index) {
     filterItem.addEventListener('click', function (e) {
@@ -206,6 +209,57 @@ Array.from(listFilterItems).forEach(function (filterItem, index) {
     });
     // Ngăn chặn sự kiện "click" từ việc lan truyền lên từ các phần tử con trong .filter__brand
 
+
+});
+minPriceInput.addEventListener('keyup', function (e) {
+    let inputValue = minPriceInput.value;
+    inputValue = inputValue.replace(/[^0-9]/g, '');
+    minPriceInput.value = inputValue;
+});
+
+maxPriceInput.addEventListener('keyup', function (e) {
+    let inputValue = maxPriceInput.value;
+    inputValue = inputValue.replace(/[^0-9]/g, '');
+    maxPriceInput.value = inputValue;
+});
+
+function checkPriceRange(value) {
+    let minPrice = parseInt(minPriceInput.value);
+    let maxPrice = parseInt(maxPriceInput.value);
+
+    if (minPrice < 300000) {
+        minPriceInput.value = 300000;
+        myPriceRange[0] = 300000;
+    } else if (maxPrice > 48000000) {
+        maxPriceInput.value = 48000000;
+        myPriceRange[1] = 48000000;
+    } else if (minPrice > maxPrice) {
+        if (value === "minPrice") {
+            minPriceInput.value = 300000;
+            myPriceRange[0] = 300000;
+        } else if (value === "maxPrice") {
+            maxPriceInput.value = 48000000;
+            myPriceRange[1] = 48000000;
+        }
+    } else {
+        myPriceRange[0] = minPrice;
+        myPriceRange[1] = maxPrice;
+    }
+}
+minPriceInput.addEventListener('blur', function (e) {
+    checkPriceRange("minPrice");
+    console.log(myPriceRange[0], myPriceRange[1]);
+    
+    
+    applyFilters();
+
+
+});
+
+maxPriceInput.addEventListener('blur', function (e) {
+    checkPriceRange("maxPrice");
+    console.log(myPriceRange[0], myPriceRange[1]);
+    applyFilters();
 
 });
 //Ngăn chăn hành vi nổi bọt của các popup filter
@@ -310,7 +364,12 @@ Array.from(listROMItems).forEach(function (rom) {
 
 function applyFilters() {
     let result = data.getProducts();
-
+    if(!isNaN(myPriceRange[0]) && !isNaN(myPriceRange[1])){
+        let tempListProduct = [];
+        console.log("Di vao day")
+        tempListProduct = tempListProduct.concat(filterProductPrice(result, myPriceRange[0], myPriceRange[1]));
+        result = tempListProduct;
+    }
     if (myChoiceBrand.length > 0) {
         let tempListProduct = [];
         for (let i = 0; i < myChoiceBrand.length; i++) {
@@ -329,20 +388,20 @@ function applyFilters() {
         result = Object.values(tempProductSet);
     }
 
-    if(myChoiceROM.length > 0){
+    if (myChoiceROM.length > 0) {
         let tempProductSet = {};
-        for(let i = 0; i < myChoiceROM.length; i++) {
+        for (let i = 0; i < myChoiceROM.length; i++) {
             const filteredProducts = filterProductRom(result, myChoiceROM[i]);
             filteredProducts.forEach(product => {
                 tempProductSet[product.name] = product;
             })
-            
+
         }
         console.log(tempProductSet);
         result = Object.values(tempProductSet);
     }
 
-    
+
 
     // Tương tự, áp dụng bộ lọc cho myChoiceROM nếu cần
 
@@ -360,6 +419,15 @@ function filterProductBrand(productArr, productBrand) {
     })
     return result;
 }
+function filterProductPrice(productArr, productMinPrice, productMaxPrice){
+    let result = []
+    productArr.forEach(item => {
+        if(item.price_current >= productMinPrice && item.price_current <= productMaxPrice){      
+            result.push(item)
+        }
+    })
+    return result;
+}
 function filterProductRam(productArr, productRAM) {
     let result = [];
     productArr.forEach(item => {
@@ -372,11 +440,11 @@ function filterProductRam(productArr, productRAM) {
     return result;
 }
 
-function filterProductRom(productArr, productROM){
+function filterProductRom(productArr, productROM) {
     let result = [];
     productArr.forEach(item => {
         if (Array.isArray(item.rom)) {
-            if(item.rom.some(rom => rom.toLowerCase().trim() === productROM.toLowerCase().trim())) {
+            if (item.rom.some(rom => rom.toLowerCase().trim() === productROM.toLowerCase().trim())) {
                 result.push(item);
             }
         }
