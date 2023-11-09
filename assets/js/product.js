@@ -184,6 +184,7 @@ let myChoiceBrand = []
 let myChoiceRAM = []
 let myChoiceROM = []
 let myPriceRange = [NaN, NaN]
+let mySearchProduct = "";
 //Hiển thị các thẻ filter khi nhấn vào từng item lọc
 Array.from(listFilterItems).forEach(function (filterItem, index) {
     filterItem.addEventListener('click', function (e) {
@@ -366,9 +367,14 @@ function applyFilters() {
     let result = data.getProducts();
     if(!isNaN(myPriceRange[0]) && !isNaN(myPriceRange[1])){
         let tempListProduct = [];
-        console.log("Di vao day")
+        
         tempListProduct = tempListProduct.concat(filterProductPrice(result, myPriceRange[0], myPriceRange[1]));
         result = tempListProduct;
+    }
+    if (searchProduct !== ""){
+        let tempListProduct = [];
+        tempListProduct = tempListProduct.concat(searchProduct(result, mySearchProduct))
+        result = tempListProduct
     }
     if (myChoiceBrand.length > 0) {
         let tempListProduct = [];
@@ -451,6 +457,19 @@ function filterProductRom(productArr, productROM) {
     })
     return result
 }
+
+function searchProduct(productArr, input){
+    let result = [];
+    input = input.toLowerCase(); // Chuyển đổi input và item.name thành chữ thường (không phân biệt chữ hoa/chữ thường)
+
+    productArr.forEach(item => {
+        if (item.name.toLowerCase().includes(input)) {
+            console.log(item.name);
+            result.push(item);
+        }
+    });
+    return result;
+}
 // console.log(filterProductRom(productArr, "256 GB"))
 
 // Pagination
@@ -530,7 +549,45 @@ window.addEventListener("scroll", () => {
         filter.style.marginTop = "20" + "px";
     }
 });
+// JS cho thanh search
 
+const searchInput = $('.search__input')
+const searchIconClose = $('.search__icon-close')
+
+
+searchInput.addEventListener('input', function(e){
+    if(searchInput.value !== ""){
+        searchIconClose.classList.add('active')
+    } else {
+        searchIconClose.classList.remove('active')
+    }
+})
+
+searchIconClose.addEventListener('click', function(){
+    if(searchIconClose.classList.contains('active')){
+        searchIconClose.classList.remove('active')
+        searchInput.value = ""
+    }
+})
+
+searchInput.addEventListener('keydown', function(e){
+    if(e.key === "Enter"){
+        mySearchProduct = searchInput.value;
+    }
+
+    applyFilters()
+    
+})
+
+// Thay đổi số lượng sản phẩm trên 1 trang
+const filterLimitProduct = $('.filter__limit-product-input')
+
+filterLimitProduct.addEventListener('keydown', function(e){
+    if(e.key === "Enter"){
+       limit = filterLimitProduct.value
+       loadItem();
+    }
+})
 // const filterItems = document.querySelectorAll(".filter__item");
 //     filterItems.forEach(item => {
 //         item.addEventListener("click", () => {

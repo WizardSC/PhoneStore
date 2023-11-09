@@ -92,14 +92,14 @@ const productArr = [
         6
     ),
     new Product(
-        "Samsung Galaxy A04",
+        "Samsung Galaxy ZFlip 512GB",
         2990000.0,
-        2590000.0,
-        ['https://cdn.tgdd.vn/Products/Images/42/275434/samsung-galaxy-a04-thumb-xanh-600x600.jpg'],
+        2190000.0,
+        ['https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:80/plain/https://cellphones.com.vn/media/catalog/product/s/a/samsung-galaxy-z-flip-5-256gb_1_5.png'],
         "Samsung",
-        ["3 GB", "4 GB"],
-        ["32 GB", "64 GB"],
-        13
+        ["8GB"],
+        ["256 GB", "512 GB"],
+        23
     ),
     new Product(
         "Masstel FAMI 60 4G",
