@@ -1,16 +1,15 @@
-const navbar=document.querySelector(".header__navbar-list ");
-console.log(navbar);
-const exit=document.querySelector(".header__navbar-list button");
-console.log(exit);
-const menu=document.getElementById("head_menu");
-console.log(menu);
+const login=document.querySelector(".login")
+const user=document.querySelector(".user")
 
-menu.addEventListener('click',function(){
-    navbar.classList.toggle('active');
-});
-exit.addEventListener('click',function(){
-    navbar.classList.remove('active');
-});
+console.log(login)
+console.log(user)
+
+login.addEventListener('click',function(e){
+    e.preventDefault()
+    if(login.classList.contains('active1')){
+        user.classList.add('active1')
+    }
+})
 
 
 
