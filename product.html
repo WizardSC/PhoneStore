@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-
+    <link rel="stylesheet" href="assets/css/slider.css">
     <link rel="stylesheet" href="assets/css/base.css">
     <link rel="stylesheet" href="assets/css/grid.css">
     <link rel="stylesheet" href="assets/css/product.css">
@@ -310,23 +310,34 @@
     
             </div>
             <div class="modal__body">
+                <!-- Chi tiết sản phẩm -->
                 <div class="product-detail">
+                    <div class="product-detail__header">
+                        <div class="product-detail__text">
+                            <i class="fa-solid fa-circle-info"></i>
+                            Chi tiết sản phẩm
+                        </div>
+                        <div class="product-detail__btn-close">
+                            <i class="fa-solid fa-x"></i>
+                        </div>
+                    </div>
                     <div class="product-detail__body">
                         <img src="https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:80/plain/https://cellphones.com.vn/media/catalog/product/s/a/samsung-galaxy-s23-ultra.png" alt="" class="product-detail__img">
                         <div class="product-detail__info">
                             <h3 class="product-detail__info-name">
                                 Samsung Galaxy S23 Ultra 256GB
                             </h3>
-                            <span class="product-detail__info-label">
+                            <span class="product-detail__info-label product-detail__info-label--ram">
                                 <span class="product-detail__info-label-name">RAM</span>
-                                <div class="product-detail__info-ram">
+                                
+                                <!-- <div class="product-detail__info-ram">
                                     8 GB
                                 </div>
                                 <div class="product-detail__info-ram">
                                     12 GB
-                                </div>
+                                </div> -->
                             </span>
-                            <span class="product-detail__info-label">
+                            <span class="product-detail__info-label product-detail__info-label--rom">
                                 <span class="product-detail__info-label-name">ROM</span>
                                 <div class="product-detail__info-rom">
                                     512 GB
@@ -368,14 +379,35 @@
                 </div>
             </div>
         </div>
+        <!-- Alert -->
+        <div class="toast">
+            <div class="toast__wrapper">
+                <div class="toast__content">
+                    <i class="fa-solid fa-check toast__icon-info"></i>
+    
+                    <div class="toast__message">
+                        <div class="toast__message-title">
+                            Thành công
+                        </div>
+                        <div class="toast__message-desc">
+                            Sản phẩm đã được thêm vào giỏ của bạn
+                        </div>
+                    </div>
+                </div>
+                <i class="fa-solid fa-xmark toast__icon-close"></i>
+                <div class="toast__progress"></div>
+            </div>       
+        </div>
     </div>
-    <!-- Chi tiết sản phẩm -->
+    
     
     <script src="assets/js/slider.js"></script>
     <script src="assets/js/constructor.js"></script>
     <script src="assets/js/dataProduct.js"> </script>
     <script src="assets/js/localStorage.js"></script>
     <script src="assets/js/product.js"></script>
+    <script src="assets/js/modal.js"></script>
+
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
