@@ -60,24 +60,24 @@
                                 <div class="contact-us__infor ">
                                     <label for="" class="name">Họ tên *</label>
                                     <input id="name" type="text" class="infor" placeholder="Họ và tên">
-                                    <span class="form-message"></span>
+                                    <span class="form-message"> </i></span>
                                 </div>
                                 <div class="contact-us__infor">
                                     <label for="" class="name">Số điện thoại *</label>
                                     <input id="phone" type="text" class="infor" placeholder="Điện thoại liên lạc">
-                                    <span class="form-message"></span>
+                                    <span class="form-message" > </i></span>
                                 </div>
                             </div>
                            <div class="cover">
                             <div class="contact-us__infor">
                                 <label for="" class="name">Email *</label>
                                 <input id="email" type="email" class="infor" placeholder="abc@gmail.com">
-                                <span class="form-message"></span>
+                                <span class="form-message" ></span>
                             </div>
                             <div class="contact-us__infor">
                                 <label for="" class="name">Địa chỉ *</label>
                                 <input id="address" type="text" class="infor" placeholder="Địa chỉ">
-                                <span class="form-message"></span>
+                                <span class="form-message"  ></span>
                             </div>
                            </div>
                         </div>
@@ -139,17 +139,18 @@
                     </div>
                 </div>
             </div>
-    <!-- <script>
+    <script>
         Validator(
             {
                 form : '#form-support' ,
                 rules :[
                 Validator.isRequire('#name'),
+                Validator.isUserName('#name'),
                 Validator.isEmail('#email'),
-                Validator.isRequire('#phone'),
-                Validator.isRequire('#address')
+                Validator.isPhone('#phone'),
+                Validator.minLength ('#address')
                 ]
             });
-    </script> -->
+    </script>
 </body>
 </html>
