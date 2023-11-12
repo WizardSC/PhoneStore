@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/login.css">
+    <script src="assets/js/login.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <div class="app">
+            <button id="test" onclick="LoginPopupOpen()">Here</button>
+            <div id="form">
+                <div id="formContainer">
+                    <div class="loginForm" id="loginPopup">
+                        <div class="loginForm__title">
+                            <h3>ĐĂNG NHẬP</h3>
+                        </div>
+                        <form action="" class="loginForm__input">
+                            <div class="loginForm__textfield">
+                                <label for="username" title="Nhập tên đăng nhập">Tên đăng nhập</label>
+                                <input type="text" name="" id="username" required>
+                            </div>
+                            <div class="loginForm__textfield">
+                                <label for="password" title="Nhập mật khẩu">Mật khẩu</label>
+                                <input type="password" name="" id="password" required>
+                            </div>
+                            <div class="loginForm__forgotPassword">
+                                <p>Quên mật khẩu?</p>
+                            </div>
+                            <button class="loginForm__loginButton" type="submit">Đăng nhập</button>
+                            <div class="loginForm__signUpQuestion">
+                        </form>
+                        <div class="loginForm__Question">
+                            <p>Chưa có tài khoản?</p>
+                            <p class="loginForm__loginSignUpQuestion" onclick="SignUpPopupOpen()">Đăng ký ngay</p>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="loginForm" id="signUpPopup">
+                    <div class="loginForm__title">
+                        <h3>ĐĂNG KÝ</h3>
+                    </div>
+                    <form action="" class="loginForm__input">
+                        <div class="loginForm__textfield">
+                            <label for="username" title="Nhập tên đăng nhập">Tên đăng nhập</label>
+                            <input type="text" name="" id="username" required>
+                        </div>
+                        <div class="loginForm__textfield">
+                            <label for="email" title="Nhập mật khẩu">Email</label>
+                            <input type="email" name="" id="email" required>
+                        </div>
+                        <div class="loginForm__textfield">
+                            <label for="password" title="Nhập mật khẩu">Mật khẩu</label>
+                            <input type="password" name="" id="password" required>
+                        </div>
+                        <button class="loginForm__loginButton" type="submit">Đăng ký</button>
+                    </form>
+                    <div class="loginForm__Question">
+                        <p>Đã có tài khoản?</p>
+                        <p class="loginForm__loginSignUpQuestion" onclick="LoginPopupOpen()">Đăng nhập</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+</body>
+
+</html>

@@ -9,27 +9,49 @@
     <link rel="stylesheet" href="assets/css/main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="assets/css/slider.css">
+    <link rel="stylesheet" href="assets/css/footer.css">
 </head>
 
 <body>
     <div class="app">
-        <!-- Trọng làm phần header với content_product,content__news này nha :3 -->
-        <!-- PHAN HEADER -->
+        <!-- ---------------------------------PHAN HEADER -------------------------------------------------------------->
         <header class="header">
             <div class="grid header__navbar">
                 <a href="#">
                     <h1>URPHONE</h1>
                 </a>
-                <div class="header__navbar-search">
-                    <label for="search"><i class="fa-solid fa-magnifying-glass"></i></label>
-                    <input id="search" type="text" placeholder="Bạn cần tìm gì?">
-                </div>
+                <!-- CheckBox dể hiện navbar -->
+                <input hidden  type="checkbox" name="" id="nav-input" class="navbar-input">
+
+                <label for="nav-input" style="cursor:pointer">
+                  <i class="fas fa-bars " id="head_menu"></i>
+                </label>
+
+                <label for="nav-input"class="header__navbar-overplay"></label>
+
+                <!-- Navbar khi PC -->
                 <ul class="header__navbar-list">
                     <li><a href="index.html" class="active">Trang chủ</a></li>
                     <li><a href="product.html">Sản phẩm</a></li>
                     <li><a href="">Liên lạc</a></li>
-                    <li><a href="">Đăng nhập</a></li>
+                    <li><a href=""><i class="fa-solid fa-basket-shopping "></i></a></li>
+                    <li><a href="" class="login active1">Đăng nhập</a></li>
+                    <li ><a href="" class="user " ><span>Nguyen </span><i class="fa-solid fa-user   "></i></a></li>
                 </ul>
+                
+                <!-- Navbar khi responsive -->
+                <nav class="nav__list">
+                  <label for="nav-input" class="nav-close">
+                    <i class="fa-solid fa-xmark"></i>
+                  </label>
+                  <ul class="header__navbar-list-responsive">
+                    <li><a href="index.html" class="navbar-link-responsive active">Trang chủ</a></li>
+                    <li><a href="product.html" class="navbar-link-responsive">Sản phẩm</a></li>
+                    <li><a href="" class="navbar-link-responsive">Liên lạc</a></li>
+                    <li><a href="" class="navbar-link-responsive"><i class="fa-solid fa-basket-shopping "></i></a></li>
+                    <li><a href=""  class="navbar-link-responsive">Đăng nhập</a></li>
+                  </ul>
+                </nav>
             </div>
         </header>
         <div class="imgBackground">
@@ -98,14 +120,17 @@
                 </div>
             </div>
         </section>
-        <!-- PHAN CONTENT -->
+        <!-- --------------------------------------PHAN CONTENT--------------------------------------------------------- -->
         <section id="content">
-            <div class="grid ">
+            <div class="grid">
                 <!-- PHAN PRODUCT -->
                 <section class="content__product">
                     <h2 class="flashsale blinking-text">FLASH SALE   <span class="lastweek"> This Weekend Only</span></h2>
                     <div class="content__product-container">
-                        <div class="pro">
+                      
+                    <!-- </div>
+                    <!-- <div class="content__product-container">
+                        <!-- <div class="pro">
                             <img src="https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:80/plain/https://cellphones.com.vn/media/catalog/product/i/p/iphone-15-pro-max_3.png"
                                 alt="">
                             <div class="des">
@@ -280,8 +305,8 @@
                                     <i class="fa-regular fa-heart"></i>
                                 </div>
                             </div>
-                        </div>
-                    </div>
+                        </div> -->
+                    </div>  -->
                 </section>
                 <section class="content__news">
                     <h3>BẢN TIN CÔNG NGHỆ</h3>
@@ -302,28 +327,179 @@
                             <img src="https://cdn.sforum.vn/sforum/wp-content/uploads/2023/10/ma-iphone-vca-2.jpeg" alt="">
                             <div class="button__news-button">
                                 <h4>iPhone VC/A của nước nào?</h4>
-                                <p>Mã VC/A thường được tìm thấy trên hộp sản phẩm hoặc trong phần cài đặt của điện thoại, là một mã định danh đặc biệt mà Apple sử dụng để chỉ rõ mô hình của điện thoại cũng như quốc gia hoặc khu vực mà nó được dành riêng để bán. Mã VC/A được hiểu là dành cho thị trường Canada. Điều này không có nghĩa là chiếc iPhone được sản xuất tại Canada, mà chỉ rõ rằng nó được cấu hình phần mềm và phần cứng để phù hợp với các yêu cầu và tiêu chuẩn của thị trường nước này....</p>
+                                <p>Mã VC/A thường được tìm thấy trên hộp sản phẩm hoặc trong phần cài đặt của điện thoại, là một mã định danh đặc...</p>
                                 <button class="normal">Xem thêm</button>
                             </div>
                         </div >
                         <div class="content__news-box">
                             <img src="https://cdn2.cellphones.com.vn/insecure/rs:fill:385:0/q:100/plain/https://cellphones.com.vn/sforum/wp-content/uploads/2023/10/Xiaomi-HyperOS-1-1.jpeg" alt="">
                             <div class="button__news-button">
-                                <h4>Khắc phục những điều này, Xiaomi Hyper OS sẽ trở nên hoàn hảo hơn</h4>
-                                <p>Xiaomi đã dập tắt tin đồn bằng cách xác nhận rằng họ sẽ không phát hành MIUI 15 và nó được thay thế bằng giao diện người dùng HyperOS mới. Tên phần mềm gợi ý một bản nâng cấp toàn diện hơn so với các giao diện phần mềm trước đây của Xiaomi. Chúng ta đã thấy một số ảnh chụp màn hình bị rò rỉ của HyperOS nhưng vẫn chưa có gì chắc chắn. Vì vậy, trang Androidauthority vừa chia sẻ một danh sách mong muốn những điều Xiaomi nên khắc phục với HyperOS...</p>
+                                <h4>Mẹo trên Xiaomi Hyper OS</h4>
+                                <p>Xiaomi đã dập tắt tin đồn bằng cách xác nhận rằng họ sẽ không phát hành MIUI 15 và nó được thay thế bằng...</p>
                                 <button class="normal">Xem thêm</button>
                             </div>
+                        </div>
+                        <div class="content__news-box">
+                            <img src="https://cdn2.cellphones.com.vn/insecure/rs:fill:385:0/q:100/plain/https://cellphones.com.vn/sforum/wp-content/uploads/2023/10/xiaomi-14-pro-ra-mat.jpg" alt="">
+                            <div class="button__news-button">
+                                <h4>Xiaomi 14 Pro ra mắt</h4>
+                                <p>Xiaomi 14 Pro không nhỏ gọn như Xiaomi 14. Tuy nhiên, nó chia sẻ cùng một ngôn ngữ thiết kế với...</p>
+                                <button class="normal">Xem thêm</button>
+                            </div>
+                        </div>
                     </div>          
                 </section>
             </div>
         </section>
-
         <div class="footer">
-
+            <footer >
+            <div class="footer-top">
+              <div class="footer-top-column">
+                <div class="footer-icon">URPHONE</div>
+                <p id="brand">Siêu thị chính hãng - uy tín số 1 Việt Nam</p>
+              </div>
+              <div class="footer-top-column">
+                <h3>BẠN CẦN HỖ TRỢ</h3>
+                <div class="phone-support">1900 9696</div>
+                <p>Địa chỉ: 273 An Dương Vương, Phường 3, Quận 5 , Thành Phố Hồ Chí Minh</p>
+                <p>Email: ursupport@gmail.com</p>
+                <h4>Theo dõi chúng tôi trên</h4>
+                <div class="footer-social-logo">
+                  <ul>
+                    <li class="social-logo">
+                      <a href="">
+                        <ion-icon class="inner-icon" name="logo-facebook"></ion-icon>
+                      </a>
+                    </li>
+                    <li class="social-logo">
+                      <a href="">
+                        <ion-icon class="inner-icon" name="logo-twitter"></ion-icon>
+                      </a>
+                    </li>
+                    <li class="social-logo">
+                      <a href="">
+                        <ion-icon class="inner-icon" name="logo-youtube"></ion-icon>
+                      </a>
+                    </li>
+                    <li class="social-logo">
+                      <a href="">
+                        <ion-icon class="inner-icon" name="logo-instagram"></ion-icon>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="footer-top-column">
+                <h3>HƯỚNG DẪN MUA HÀNG</h3>
+                <ul class="list-link">
+                  <li class="link">
+                    <a href="">Trang chủ</a>
+                  </li>
+                  <li class="link">
+                    <a href="">Giới thiệu</a>
+                  </li>
+                  <li class="link">
+                    <a href="">Danh mục</a>
+                  </li>
+                  <li class="link">
+                    <a href="">Tin tức</a>
+                  </li>
+                  <li class="link">
+                    <a href="">Liên hệ</a>
+                  </li>
+                  <li class="link">
+                    <a href="">Hướng dẫn sử dụng</a>
+                  </li>
+                </ul>
+                <div class="footer-payment-methods">
+                  <div class="container-paymentmethods">
+                    <h4>Thanh toán</h4>
+                    <ul class="link-paymentmethods">
+                      <li class="link-paymentmethod">
+                        <a href="">
+                          <img src="assets/img/imageFooter/stripe1.jpg" alt="">
+                        </a>
+                      </li>
+                      <li class="link-paymentmethod">
+                        <a href="">
+                          <img src="assets/img/imageFooter/mastercard1.png" alt="">
+                        </a>
+                      </li>
+                      <li class="link-paymentmethod">
+                        <a href="">
+                          <img  id="discover-img" src="assets/img/imageFooter/discover1.png" alt="">
+                        </a>
+                      </li>
+                    </ul>
+                    <ul class="link-paymentmethods">
+                      <li class="link-paymentmethod">
+                        <a href="">
+                          <img src="assets/img/imageFooter/paypal1.png" alt="">
+                        </a>
+                      </li>
+                      <li class="link-paymentmethod">
+                        <a href="">
+                          <img src="assets/img/imageFooter/applePay.png" alt="">
+                        </a>
+                      </li>
+                      <li class="link-paymentmethod">
+                        <a href="">
+                          <img src="assets/img/imageFooter/visa1.png" alt="">
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="footer-top-column">
+                <h3>CHÍNH SÁCH CHUNG</h3>
+                <ul class="list-link">
+                  <li class="link">
+                    <a href="">Bảo trì - Bảo hành - Đổi trả</a>
+                  </li>
+                  <li class="link">
+                    <a href="">Quy định giao hàng</a>
+                  </li>
+                  <li class="link">
+                    <a href="">Điều khoản sử dụng</a>
+                  </li>
+                  <li class="link">
+                    <a href="">Thỏa thuận người dùng</a>
+                  </li>
+                  <li class="link">
+                    <a href="">Chính sách hoàn tiền</a>
+                  </li>
+                  <li class="link">
+                    <a href="">Chính sách xử lý dữ lệu cá nhân</a>
+                  </li>
+                </ul>
+                <ul>
+                  <li>
+                    <a href="">
+                      <img class="protected" src="assets/img/imageFooter/logoSaleNoti.png" alt="">
+                    </a>
+                  </li>
+                </ul>
+                <ul>
+                  <li>
+                    <a href="">
+                      <img id="dmca" class="protected" src="assets/img/imageFooter/icon_protected.png" alt="">
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="footer-bottom"></div>
+            </footer>
         </div>
     </div>
 </body>
+<script src="footer.js"></script>
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 <script src="assets/js/slider.js"></script>
+<script src="assets/js/navbar.js"></script>
+<script src="assets/js/constructor.js"></script>
+<script src="assets/js/dataProduct.js"></script>
+<script src="assets/js/index.js"></script>
 </html>

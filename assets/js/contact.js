@@ -16,13 +16,13 @@ function Validator(option)
                     {
                         errorElement.innerText = errorMessage;
                         inputElement.parentElement.classList.add('message');
-                        // inputElement.parentElement.classList.add('');
+                        inputElement.parentElement.classList.add('show');
                     }
                     else
                     {
                         errorElement.innerText ='';
                         inputElement.parentElement.classList.remove('message');
-    
+                        inputElement.parentElement.classList.remove('show');
                     }
                 }
                 // xử lí trường hợp khi nhập vào ô input
@@ -66,7 +66,7 @@ Validator.minLength = function(selector){
         selector: selector,
         test: function(value) {
             var length = value.length;
-            return (length >= 6 && length <= 30) ? undefined : 'Vui lòng nhập giữa 6 và 30 ký tự';
+            return (length >= 2 && length <= 30) ? undefined : 'Đây không phải là địa chỉ';
         }
     };
 };
@@ -81,7 +81,10 @@ Validator.isUserName = function(selector){
                 return 'Vui lòng không nhập kí tự đặc biệt trong tên';
             } else if(value.length > 30) {
                 return 'Tên không được quá 30 ký tự';
-            } else {
+            } else if(value.length < 5) {
+                return ' Tên quá ngắn ';
+            }
+             else {
                 return undefined; // Không có lỗi
             }
         }

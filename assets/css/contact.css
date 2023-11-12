@@ -273,12 +273,14 @@
     }
     .rim{
         border: none;
+        padding: 0;
     }
     .infor-contact{
         display: block;
     }
     .contact--method{
         justify-content: center;    
+        margin:  5px 0;
     }
     .logo{
         justify-content: center;
@@ -311,4 +313,7 @@
 .form-message{
     color: red;
     font-size: 15px;
+}
+.show :invalid{
+    background-color: red;
 }
