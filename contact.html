@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./assets/css/base.css">
+    <link rel="stylesheet" href="./assets/css/grid.css">
+    <link rel="stylesheet" href="./assets/css/contact.css">
+    <link rel="stylesheet" href="./fontawesome-free-6.4.0-web/css/all.min.css">
+    <link rel="stylesheet" href="./assets/css/main.css">
+    <script src="./assets/js/contact.js"></script>
+</head>
+<body>
+    <div class="contact">
+        <!-- Header  -->
+        <!-- <header class="contact__header">
+            <h2 style="color: #f4f5f5;">Hỗ Trợ Khách Hàng <i class="fa-solid fa-headset"></i></h2>
+            <div class="text-contact">
+                <h3 class="text">Trang Chủ</h3>
+                <i class="fa-solid fa-angle-up fa-rotate-90 contact-icon"></i>
+                <h3 class="text" style="color: black;">Liên Hệ</h3>
+            </div>
+        </header> -->
+    <header class="header">
+            <div class="grid header__navbar">
+                <a href="#">
+                    <h1>URPHONE</h1>
+                </a>
+                <!-- CheckBox dể hiện navbar -->
+                <input hidden  type="checkbox" name="" id="nav-input" class="navbar-input">
+
+                <label for="nav-input" style="cursor:pointer">
+                  <i class="fas fa-bars " id="head_menu"></i>
+                </label>
+
+                <label for="nav-input"class="header__navbar-overplay"></label>
+
+                <!-- Navbar khi PC -->
+                <ul class="header__navbar-list">
+                    <li><a href="index.html" class="active">Trang chủ</a></li>
+                    <li><a href="product.html">Sản phẩm</a></li>
+                    <li><a href="">Liên lạc</a></li>
+                    <li><a href=""><i class="fa-solid fa-basket-shopping "></i></a></li>
+                    <li><a href="" class="login active1">Đăng nhập</a></li>
+                    <li ><a href="" class="user " ><span>Nguyen </span><i class="fa-solid fa-user   "></i></a></li>
+                </ul>
+                
+                <!-- Navbar khi responsive -->
+                <nav class="nav__list">
+                  <label for="nav-input" class="nav-close">
+                    <i class="fa-solid fa-xmark"></i>
+                  </label>
+                  <ul class="header__navbar-list-responsive">
+                    <li><a href="index.html" class="navbar-link-responsive active">Trang chủ</a></li>
+                    <li><a href="product.html" class="navbar-link-responsive">Sản phẩm</a></li>
+                    <li><a href="" class="navbar-link-responsive">Liên lạc</a></li>
+                    <li><a href="" class="navbar-link-responsive"><i class="fa-solid fa-basket-shopping "></i></a></li>
+                    <li><a href=""  class="navbar-link-responsive">Đăng nhập</a></li>
+                  </ul>
+                </nav>
+            </div>
+        </header>
+        <!-- body -->
+            <div class="grid wide">
+                <div class="container">
+
+                    <div class="map">
+                        <iframe style="border-radius: 10px;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.6697268382204!2d106.68225830000002!3d10.7599171!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f1b7c3ed289%3A0xa06651894598e488!2zVHLGsOG7nW5nIMSQ4bqhaSBo4buNYyBTw6BpIEfDsm4!5e0!3m2!1svi!2s!4v1698301655486!5m2!1svi!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                    <!-- Form -->
+                    <form class="form-support" id="form-support" >
+                        <div action="" class="infor__customer">
+                            <div class="title">
+                                <h3 class="title-text">Liên Hệ Với Chúng Tôi</h3>
+                                <i class="fa-solid fa-phone-volume fa-shake icon-title" style="color: #51331f;"></i>  
+                            </div>
+                            <p class="text-describe">Mọi thắc mắc và yêu cầu cần hỗ trợ vui lòng để thông tin tại đây.</p>
+                            <p class="text-describe">Chúng tôi sẽ gửi phản hồi nhanh nhất có thể.</p>
+                        <div class="contact-us__form">
+                            <div class="cover">
+                                <div class="contact-us__infor ">
+                                    <label for="" class="name">Họ tên *</label>
+                                    <input id="name" type="text" class="infor" placeholder="Họ và tên">
+                                    <span class="form-message"> </i></span>
+                                </div>
+                                <div class="contact-us__infor">
+                                    <label for="" class="name">Số điện thoại *</label>
+                                    <input id="phone" type="text" class="infor" placeholder="Điện thoại liên lạc">
+                                    <span class="form-message" > </i></span>
+                                </div>
+                            </div>
+                           <div class="cover">
+                            <div class="contact-us__infor">
+                                <label for="" class="name">Email *</label>
+                                <input id="email" type="email" class="infor" placeholder="abc@gmail.com">
+                                <span class="form-message" ></span>
+                            </div>
+                            <div class="contact-us__infor" >
+                                <label for="" class="name">Địa chỉ *</label>
+                                <input id="address" type="text" class="infor" placeholder="Địa chỉ">
+                                <span class="form-message"  ></span>
+                            </div>
+                           </div>
+                        </div>
+                        <div class="contact-us__infor">
+                            <label  for="" class="name">Nội dung *</label>
+                            <textarea name="" id="feedback" cols="74" rows="3" class="infor mess" placeholder="Nhập lời nhắn ..."></textarea>
+                            <span class="form-message" ></span>
+                        </div>
+                        <p class="text-rule">Khi nhấn " Gửi " , bạn đã đồng ý <a class="link-rule" href="">Điều khoản sử dụng </a>và <a class="link-rule" href="">Chính sách bảo mật</a></p>
+                        <button class="contact-btn__submit" type="submit">Gửi</button>
+                    </form>   
+            </div>
+            </div>
+            <div class="grid wide">
+                <div class="contact__store">
+                    <div class="infor-describe__store">
+                        <h2 class="title-describe">Cửa hàng điện thoại URPHONE</h2>
+                        <div class="infor-describe">
+                            <p class="describe">URPHONE tự tin là của hàng điện thoại hàng đầu Việt Nam .</p>
+                            <p class="describe">Đảm bảo mua hàng chính hãng. </p>
+                            <p class="describe">Được hoàn trả trong vòng 7 ngày sau khi sử dụng sản phẩm.</p>
+                            <p class="describe">Sở hữu giấy chứng nhận đăng kí doanh nghiệp</p>
+                        </div>
+                        <div class="logo">
+                           <a href=""> <img class="logo-item" src="https://cdn2.cellphones.com.vn/x30,webp/media/logo/corp-members/dienthoaivui.png" alt=""></a>
+                            <a href=""><img class="logo-item" src="https://cdn2.cellphones.com.vn/x30,webp/media/logo/corp-members/sforum.png" alt=""></a>
+                            <a href=""><img class="logo-item" src="https://cdn2.cellphones.com.vn/x30,webp/media/logo/corp-members/schanel.png" alt=""></a>
+                        </div>
+                    </div>
+                    <div class="infor-contact__store">
+                        <h2 class="title-contact">Liên lạc</h2>
+                        <div class="infor-contact">
+                            <div class="infor-association">
+                                <a href=""><img src="https://1.bp.blogspot.com/-S8HTBQqmfcs/XN0ACIRD9PI/AAAAAAAAAlo/FLhccuLdMfIFLhocRjWqsr9cVGdTN_8sgCPcBGAYYCw/s1600/f_logo_RGB-Blue_1024.png" alt="" class="picture"></a>
+                                <a href=""><img src="https://tse4.mm.bing.net/th?id=OIP.JtmXSh_uyZBaTg1eXd-NtgHaHa&pid=Api&P=0&h=180" alt="" class="picture"></a>
+                                <a href=""><img src="https://tse1.mm.bing.net/th?id=OIP.Y2vQKjDkRQ4Bpz7hZvJaOQHaHB&pid=Api&P=0&h=180" alt="" class="picture"></a>
+                                <a href=""><img src="https://tse2.mm.bing.net/th?id=OIP.IMt2d1p04pNAyBdnlHC7-gAAAA&pid=Api&P=0&h=180" alt="" class="picture"></a>
+                            </div>
+                            <div class="or">
+                                <h2 style="font-size: 20px;">Hoặc</h2>
+                            </div>
+                        </div>
+                        <div class="infor-contact">
+                            <div class="contact--method">
+                                <div class="rim">
+                                    <img class="picture-contact" src="https://tse4.mm.bing.net/th?id=OIP.Sj4bhkhC37E8vMkPkWVEQgHaEP&pid=Api&P=0&h=180" alt="">
+                                </div>
+                                <a class="link-contact" href="">Trường Đại Học Sài Gòn</a></div>
+                            <div class="contact--method">
+                                <div class="rim">
+                                    <img class="picture-contact" src="https://tse2.mm.bing.net/th?id=OIP.SChygu1GdIYrC5ZztBThggHaHa&pid=Api&P=0&h=180" alt="">
+                                </div>
+                                <a class="link-contact" href="">19001526</a></div>
+                            <div class="contact--method">
+                                <div class="rim">
+                                    <img class="picture-contact" src="https://tse1.mm.bing.net/th?id=OIP.lbA0kWf6zwOfd2pPlR4tQgHaFn&pid=Api&P=0&h=180" alt="">
+                                </div>
+                                <a class="link-contact" href="">urphonesupport@gmail.com</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    <script>
+        Validator(
+            {
+                form : '#form-support' ,
+                rules :[
+                Validator.isRequire('#name'),
+                Validator.isUserName('#name'),
+                Validator.isEmail('#email'),
+                Validator.isPhone('#phone'),
+                Validator.minLength('#address'),
+                Validator.isFeedBack('#feedback')
+                ]
+            });
+    </script>
+</body>
+</html>
