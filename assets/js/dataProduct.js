@@ -97,7 +97,7 @@ const productArr = [
         2190000.0,
         ['https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:80/plain/https://cellphones.com.vn/media/catalog/product/s/a/samsung-galaxy-z-flip-5-256gb_1_5.png'],
         "Samsung",
-        ["8GB"],
+        ["8 GB"],
         ["256 GB", "512 GB"],
         23
     ),

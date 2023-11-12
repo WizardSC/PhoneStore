@@ -16,6 +16,15 @@ class data {
     }
 }
 
+class user {
+    static loadUsers(listUser){
+        localStorage.listUsers = JSON.stringify(listUser);
+        if(localStorage.listUsers){
+            return true;
+        }
+        return false;
+    }
+}
 //Load data lên localStorage
 if (data.getProducts() === null) {
     data.loadProducts(productArr);
