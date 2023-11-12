@@ -1,4 +1,3 @@
-
 const $ = document.querySelector.bind(document)
 const $$ = document.querySelectorAll.bind(document)
 
@@ -19,7 +18,7 @@ function renderProduct(listProduct) {
     const htmls = listProduct.map(function (product, index) {
         return `
         <div class="col l-2-4 m-4 c-6">
-        <div class="product-item" data-index="${product.productID}">
+        <div class="product-item" data-id="${product.productID}">
             <div class="product-item__img-wrap">
                 <img class="product-item__img"
                     src="${product.img}"
@@ -56,10 +55,24 @@ function renderProduct(listProduct) {
     })
     productContainer.innerHTML = htmls.join('')
 
+    //Add sự kiện cho những sản phẩm được render lên giao diện
+    getDetailProduct();
 
 
 }
 renderProduct(data.getProducts())
+
+function getDetailProduct(){
+    const productItem = $$('.product-item')
+    productItem.forEach(item =>{
+        item.addEventListener('click', () =>{
+            openDetailProduct(item.dataset.id)
+        })
+    })
+}
+
+
+
 let thisPage = 1; //trang hiện tại
 let limit = 10; //giới hạn sản phẩm 1 trang
 function loadItem() {
@@ -464,7 +477,6 @@ function searchProduct(productArr, input){
 
     productArr.forEach(item => {
         if (item.name.toLowerCase().includes(input)) {
-            console.log(item.name);
             result.push(item);
         }
     });
@@ -598,3 +610,5 @@ filterLimitProduct.addEventListener('keydown', function(e){
 //             });
 //         });
 //     });
+
+
