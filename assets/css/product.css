@@ -865,8 +865,6 @@
 .product-detail{
     padding: 16px;
     background-color: var(--white-color);
-    display:none;
-    
 }
 
 .product-detail__body{
@@ -1083,7 +1081,9 @@
         padding:6px;
         width:90px;
     }
-    
+    .product-detail{
+        
+    }
 }
 
 /* for moblie */
