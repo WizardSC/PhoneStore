@@ -1,16 +1,33 @@
-const navbar=document.querySelector(".header__navbar-list ");
-console.log(navbar);
-const exit=document.querySelector(".header__navbar-list button");
-console.log(exit);
-const menu=document.getElementById("head_menu");
-console.log(menu);
+const login=document.querySelector(".login")
+const user=document.querySelector(".user")
 
-menu.addEventListener('click',function(){
-    navbar.classList.toggle('active');
-});
-exit.addEventListener('click',function(){
-    navbar.classList.remove('active');
-});
+console.log(login)
+console.log(user)
+
+login.addEventListener('click',function(e){
+    e.preventDefault()
+    if(login.classList.contains('active1')){
+        user.classList.add('active1')
+        login.classList.remove('active1')
+    }
+})
+
+const login1=document.querySelector(".login1")
+const user1=document.querySelector(".user1")
+
+console.log(login1)
+console.log(user1)
+
+// login1.addEventListener('click',function(e){
+//     e.preventDefault()
+//     if(login1.classList.contains('active2')){
+//         user1.classList.add('active2')
+//         login1.remove('active2')
+//     }
+// })
+
+
+
 
 
 
