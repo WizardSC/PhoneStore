@@ -1,9 +1,10 @@
 function Validator(option)
 {
+    var  selectorRules = {};
     var formElenment = document.querySelector(option.form);
     if(formElenment)
     {
-        option.rules.forEach(function(rule){
+        option.rules.forEach(function(rule){    
             var inputElement = formElenment.querySelector(rule.selector);
             var errorElement = inputElement.parentElement.querySelector('.form-message');
             if(inputElement)
@@ -16,13 +17,13 @@ function Validator(option)
                     {
                         errorElement.innerText = errorMessage;
                         inputElement.parentElement.classList.add('message');
-                        inputElement.parentElement.classList.add('show');
+                        inputElement.parentElement.classList.add('invalid');
                     }
                     else
                     {
                         errorElement.innerText ='';
                         inputElement.parentElement.classList.remove('message');
-                        inputElement.parentElement.classList.remove('show');
+                        inputElement.parentElement.classList.remove('invalid');
                     }
                 }
                 // xử lí trường hợp khi nhập vào ô input
@@ -32,13 +33,14 @@ function Validator(option)
                 }
             }
         })
+        console.log(selectorRules);
     }
 }
 Validator.isRequire = function(selector) {
     return {
         selector : selector,
         test : function (value) {
-            return value.trim() ? undefined : ' Vui lòng nhập  trường này !!' ;
+            return value.trim() ? undefined : ' Vui lòng nhập  trường này' ;
         }
     };
 }
@@ -47,10 +49,9 @@ Validator.isEmail = function(selector) {
         selector : selector ,
         test : function(value) {
             var regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-            return regex.test(value) ? undefined : 'Vui lòng nhập Email  !! ';
+            return regex.test(value) ? undefined : 'Vui lòng nhập Email ';
         }
     };
-
 }
 Validator.isPhone = function(selector){
     return {
@@ -81,12 +82,21 @@ Validator.isUserName = function(selector){
                 return 'Vui lòng không nhập kí tự đặc biệt trong tên';
             } else if(value.length > 30) {
                 return 'Tên không được quá 30 ký tự';
-            } else if(value.length < 5) {
+            } else if(value.length < 3) {
                 return ' Tên quá ngắn ';
             }
              else {
                 return undefined; // Không có lỗi
             }
+        }
+    };
+};
+Validator.isFeedBack = function(selector){
+    return {
+        selector: selector,
+        test: function(value) {
+            var length = value.length;
+            return (length >0 && length <= 30) ? undefined : 'Nội dung không thể để trống';
         }
     };
 };

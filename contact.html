@@ -22,7 +22,7 @@
                 <h3 class="text" style="color: black;">Liên Hệ</h3>
             </div>
         </header> -->
-        <header class="header">
+    <header class="header">
             <div class="grid header__navbar">
                 <a href="#">
                     <h1>URPHONE</h1>
@@ -81,31 +81,32 @@
                             <div class="cover">
                                 <div class="contact-us__infor ">
                                     <label for="" class="name">Họ tên *</label>
-                                    <input id="name" type="text" class="infor show" placeholder="Họ và tên">
+                                    <input id="name" type="text" class="infor" placeholder="Họ và tên">
                                     <span class="form-message"> </i></span>
                                 </div>
                                 <div class="contact-us__infor">
                                     <label for="" class="name">Số điện thoại *</label>
-                                    <input id="phone" type="text" class="infor show" placeholder="Điện thoại liên lạc">
+                                    <input id="phone" type="text" class="infor" placeholder="Điện thoại liên lạc">
                                     <span class="form-message" > </i></span>
                                 </div>
                             </div>
                            <div class="cover">
                             <div class="contact-us__infor">
                                 <label for="" class="name">Email *</label>
-                                <input id="email" type="email" class="infor show" placeholder="abc@gmail.com">
+                                <input id="email" type="email" class="infor" placeholder="abc@gmail.com">
                                 <span class="form-message" ></span>
                             </div>
-                            <div class="contact-us__infor">
+                            <div class="contact-us__infor" >
                                 <label for="" class="name">Địa chỉ *</label>
-                                <input id="address" type="text" class="infor show" placeholder="Địa chỉ">
+                                <input id="address" type="text" class="infor" placeholder="Địa chỉ">
                                 <span class="form-message"  ></span>
                             </div>
                            </div>
                         </div>
                         <div class="contact-us__infor">
                             <label  for="" class="name">Nội dung *</label>
-                            <textarea name="" id="" cols="74" rows="3" class="infor mess" placeholder="Nhập lời nhắn ..."></textarea>
+                            <textarea name="" id="feedback" cols="74" rows="3" class="infor mess" placeholder="Nhập lời nhắn ..."></textarea>
+                            <span class="form-message" ></span>
                         </div>
                         <p class="text-rule">Khi nhấn " Gửi " , bạn đã đồng ý <a class="link-rule" href="">Điều khoản sử dụng </a>và <a class="link-rule" href="">Chính sách bảo mật</a></p>
                         <button class="contact-btn__submit" type="submit">Gửi</button>
@@ -170,7 +171,8 @@
                 Validator.isUserName('#name'),
                 Validator.isEmail('#email'),
                 Validator.isPhone('#phone'),
-                Validator.minLength ('#address')
+                Validator.minLength('#address'),
+                Validator.isFeedBack('#feedback')
                 ]
             });
     </script>
