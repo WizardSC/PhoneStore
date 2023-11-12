@@ -1081,12 +1081,6 @@
         padding:6px;
         width:90px;
     }
-    .prev-btn{
-        z-index:0;
-    }
-    .next-btn{
-        z-index:0;
-    }
     .product-detail{
         
     }
@@ -1138,29 +1132,4 @@
    .filter{
     z-index:0;
    }
-    .prev-btn{
-        z-index:0;
-    }
-    .next-btn{
-        z-index:0;
-    }
-    .product-detail{
-        width:90vw;
-        margin-top:100px;
-    }
-    .product-detail__body {
-        display:contents;
-        width:80vw;
-        height:60vh;
-        align-items: center;
-    }
-    .product-detail__img{
-        width:250px;
-        height:250px;
-        margin-left:20px;
-    }
-    .product-detail__info{
-        
-        
-    }
 }
