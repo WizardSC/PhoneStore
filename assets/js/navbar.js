@@ -1,22 +1,22 @@
-const login=document.querySelector(".login")
-const user=document.querySelector(".user")
+const navbarLogin=document.querySelector(".login")
+const navbarUser=document.querySelector(".user")
 
-console.log(login)
-console.log(user)
+console.log(navbarLogin)
+console.log(navbarUser)
 
-login.addEventListener('click',function(e){
+navbarLogin.addEventListener('click',function(e){
     e.preventDefault()
-    if(login.classList.contains('active1')){
-        user.classList.add('active1')
-        login.classList.remove('active1')
+    if(navbarLogin.classList.contains('active1')){
+        navbarUser.classList.add('active1')
+        navbarLogin.classList.remove('active1')
     }
 })
 
-const login1=document.querySelector(".login1")
-const user1=document.querySelector(".user1")
+const navbarLogin1=document.querySelector(".login1")
+const navbarUser1=document.querySelector(".user1")
 
-console.log(login1)
-console.log(user1)
+console.log(navbarLogin1)
+console.log(navbarUser1)
 
 // login1.addEventListener('click',function(e){
 //     e.preventDefault()
