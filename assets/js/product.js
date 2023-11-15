@@ -548,14 +548,15 @@ function searchProduct(productArr, input){
 const filter = document.querySelector('.filter')
 const filterLabel = document.querySelector('.filter__label')
 
-console.log(filter)
 const filterTopOffset = filter.offsetTop;
 console.log(filterTopOffset)
 window.addEventListener("scroll", () => {
     if (window.scrollY >= filterTopOffset) {
         filter.style.position = "fixed";
         filter.style.top = "0";
-        filter.style.marginTop = "0";
+        filter.style.marginTop = "88" + "px";
+        
+
     } else {
         filter.style.position = "static";
         filter.style.marginTop = "20" + "px";

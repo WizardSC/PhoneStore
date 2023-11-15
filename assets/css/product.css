@@ -2,8 +2,8 @@
 .header{
     width:100%;
     background-color: #D70018;
-    z-index:999;
-    position:sticky;
+    z-index: 1;
+    position:fixed;
     top:0;
     left:0;
     box-shadow: 3px 3px 5px rgba(0,0,0,0.6);
@@ -145,7 +145,7 @@
 }
 .header__navbar li{
     list-style-type:none;
-    margin-top:20px;
+    
 }
 /*------slider-product------*/
 /*------slider-product------*/
@@ -157,7 +157,7 @@
     justify-content: center;
     align-items: center;
     height: 100%;
-    margin-top: 0px;
+    margin-top: 110px;
     height: 180px;
 }
 
