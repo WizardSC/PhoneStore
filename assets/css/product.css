@@ -2,7 +2,9 @@
 .header{
     width:100%;
     background-color: #D70018;
-    z-index: 1;
+
+    z-index:1;
+
     position:fixed;
     top:0;
     left:0;
@@ -10,7 +12,7 @@
 }
 .header__navbar{
     display:flex;
-    align-items:center;
+   align-items: center;
     justify-content:space-between;
     padding:12px 20px;
     position: relative;
@@ -24,7 +26,7 @@
 }
 .header__navbar-list {
     display:flex;
-    align-items:center;
+    /* align-items:center; */
     justify-content:center;
 }
 .header__navbar-list li{
@@ -145,7 +147,7 @@
 }
 .header__navbar li{
     list-style-type:none;
-    
+
 }
 /*------slider-product------*/
 /*------slider-product------*/
@@ -1311,9 +1313,9 @@ display: flex;
    .filter__limit-product-input{
     width:130px;
    }
-   .filter{
+   /* .filter{
     z-index:0;
-   }
+   } */
     .prev-btn{
         z-index:0;
     }
