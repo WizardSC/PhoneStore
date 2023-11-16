@@ -1,6 +1,8 @@
 
 const modal = $('.modal')
-const header=document.querySelector('.header');
+
+const header = document.querySelector('.header');
+
 const productDetail = $('.product-detail')
 const productDetailClose = $('.product-detail__btn-close')
 const btnAddToCart = $('.product-detail__btn-add-to-cart')
@@ -15,6 +17,7 @@ function showModal() {
     filterLabel.classList.add('inactive')
     prevbtn.style.zIndex = '0'
     nextbtn.style.zIndex = '0'
+    
     // filterLabel.style.zIndex = '-1'
 }
 function hideModal() {
@@ -24,6 +27,7 @@ function hideModal() {
     filterLabel.classList.remove('inactive')
     prevbtn.style.zIndex = '1'
     nextbtn.style.zIndex = '1'
+    
 
 
 }
@@ -97,7 +101,9 @@ function showToastMessage(icon, title, description, color) {
         const toastMsgDesc = toastWrapper.querySelector('.toast__message-desc')
         const toastIconInfo = toastWrapper.querySelector('.toast__icon-info')
         const toastProgress = toastWrapper.querySelector('.toast__progress')
-        toastWrapper.style.zIndex="2";
+
+        toastWrapper.style.zIndex = "2";
+
         toastIconInfo.className = icon + " toast__icon-info";
         toastMsgTitle.innerText = title
         toastMsgDesc.innerText = description

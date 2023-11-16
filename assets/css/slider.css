@@ -97,12 +97,12 @@
 }
 
 .prev-btn {
-  z-index: 100;
+  z-index: 1;
   transform: translateX(-10px) translateY(-50%);
 }
 
 .next-btn {
-  z-index: 100;
+  z-index: 1;
   transform: translateX(10px) translateY(-50%);
 }
 

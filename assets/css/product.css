@@ -2,7 +2,9 @@
 .header{
     width:100%;
     background-color: #D70018;
+
     z-index:1;
+
     position:fixed;
     top:0;
     left:0;
@@ -145,6 +147,7 @@
 }
 .header__navbar li{
     list-style-type:none;
+
 }
 /*------slider-product------*/
 /*------slider-product------*/
