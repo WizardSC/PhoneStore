@@ -1,5 +1,6 @@
 
 const modal = $('.modal')
+const header=document.querySelector('.header');
 const productDetail = $('.product-detail')
 const productDetailClose = $('.product-detail__btn-close')
 const btnAddToCart = $('.product-detail__btn-add-to-cart')
@@ -96,6 +97,7 @@ function showToastMessage(icon, title, description, color) {
         const toastMsgDesc = toastWrapper.querySelector('.toast__message-desc')
         const toastIconInfo = toastWrapper.querySelector('.toast__icon-info')
         const toastProgress = toastWrapper.querySelector('.toast__progress')
+        toastWrapper.style.zIndex="2";
         toastIconInfo.className = icon + " toast__icon-info";
         toastMsgTitle.innerText = title
         toastMsgDesc.innerText = description

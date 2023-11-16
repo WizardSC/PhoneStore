@@ -18,13 +18,13 @@ const navbarUser1=document.querySelector(".user1")
 console.log(navbarLogin1)
 console.log(navbarUser1)
 
-// login1.addEventListener('click',function(e){
-//     e.preventDefault()
-//     if(login1.classList.contains('active2')){
-//         user1.classList.add('active2')
-//         login1.remove('active2')
-//     }
-// })
+navbarLogin1.addEventListener('click',function(e){
+    e.preventDefault()
+    if(navbarLogin1.classList.contains('active2')){
+        navbarUser1.classList.add('active2')
+        navbarLogin1.remove('active2')
+    }
+})
 
 
 
