@@ -11,10 +11,39 @@ class Product {
         this.rom = rom
         this.sale = sale
     }
+    static getProducts(){
+        if(localStorage.listProducts){
+            return JSON.parse(localStorage.listProducts);
+        }
+        return null;
+    }
+    static getProductID(myProductID){
+        const list = Product.getProducts();
+        if(!list || list.length === 0 ) return null;
+        let product = null;
+        list.forEach(item => {
+            if(item.productID === myProductID){
+                product = item;
+            }
+        })
+        return product;
+    }
+}
+class ProductInCart{
+    static totalCart = 0;
+    constructor(productID, product_price, quantity, productIMG){
+        this.cartID = ++ProductInCart.totalCart;
+        this.productID = productID;
+        this.product_price = product_price;
+        this.quantity = quantity;
+        this.productIMG = productIMG;
+        this.totalPrice = this.quantity * this.product_price;
+    }
 }
 class User{
     static userID = 0;
-    constructor(username, password, email, phone, full_name, address, ngay_lap, is_admin){
+    cartList = [];
+    constructor(username, password, email, phone, full_name, address, ngay_lap, is_admin, is_active){
         this.userID = ++User.userID;
         this.username = username;
         this.password = password;
@@ -24,13 +53,33 @@ class User{
         this.address = address;
         this.ngay_lap = Date.now();
         this.isAdmin = is_admin;
+        this.isActive = is_active;
     }
+    //load danh sách user lên LocalStorage
     static loadUsers(listUser){
         localStorage.listUsers = JSON.stringify(listUser);
         if(localStorage.listUsers){
             return true;
         }
         return false;
+    }
+    // Lấy danh sách user từ LocalStorage trả về mảng
+    static getUsers(){
+        if(localStorage.listUsers){
+            return JSON.parse(localStorage.listUsers);
+        }
+        return null;
+    }
+    static getUserID(userID){
+        const listUsers = User.getUsers();
+        if (!listUsers || listUsers.length ===0) return null;
+        var accountz = null;
+        listUsers.forEach(account => {
+            if (account.userID === userID) {
+                accountz = account;
+            }
+        })
+        return accountz;
     }
     static setLoginState(userid){
         if(userid == null || userid == undefined) {
@@ -48,15 +97,60 @@ class User{
         }
         return null;
     }
+    // Update giỏ hàng của user
+    static updateUserCart(userID, newCartList){
+        const list = User.getUsers();
+        if(!list || list.length == 0) return false;
+        var isSet = false;
+        newCartList = cart.getNoDuplicatesProducts(newCartList);
+        list.forEach((item) => {
+            if(item.userID == userID){
+                item.cartList = newCartList;
+                User.loadUsers(list);
+                isSet = true;
+            }
+        })
+        return isSet;
+    }
 }
 // Load data users lên localStorage
 class cart{
     static getCartList(userID){
-        const myUser = user.getUserID(userID);
+        const myUser = User.getUserID(userID);
         if(myUser){
             return myUser.cartList;
         }
         return [];
+    }
+    // Đảm bảo giỏ hàng không có 2 sản phẩm giống nhau
+    static getNoDuplicatesProducts(list){
+        if (!list || list.length === 0)
+            return [];
+        var result = [];
+        var hasProductId = [];
+        list.forEach((myCart, i) => {
+            if (hasProductId.indexOf(i) === -1) {
+                var soluong = myCart.soluong;
+                hasProductId.push(i);
+                for (let j = i + 1; j < list.length; j++)
+                    if (cart.Equals(myCart, list[j])) {
+                        soluong += list[j].soluong;
+                        hasProductId.push(j);
+                    }
+                result.push(new ProductInCart(myCart.productId, myCart.product_price, soluong, myCart.productImg));
+            }
+
+        })
+        return result;
+    }
+    static addItemCart(userID, productID, quantity){
+        const myList = cart.getCartList(userID)
+        const myProduct = Product.getProductID(productID)
+        myList.push(new ProductInCart(productID, myProduct.price,quantity, myProduct.img[0]));
+        if(User.updateUserCart(userID, myList)){
+            return true;
+        }
+        return false;
     }
 }
 class money {
@@ -66,4 +160,3 @@ class money {
         return formattedTien.replace(/,/g, ".") + "₫";
     }
 }
-

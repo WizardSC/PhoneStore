@@ -26,8 +26,9 @@ class user {
     }
 }
 //Load data lên localStorage
-if (data.getProducts() === null) {
+if (Product.getProducts() === null) {
     data.loadProducts(productArr);
 }
-User.loadUsers(productArr);
-
+if (User.getUsers() === null) {
+    User.loadUsers(userArr);
+}

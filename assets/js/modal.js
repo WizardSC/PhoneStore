@@ -171,9 +171,13 @@ function closeCartModal(){
 }
 function renderProductCart(){
     const userID = User.checkLoginId()
-    let html = '';
-    
+    // if(userID){
+        cart.addItemCart(2,3,2)
+    // }
+
 }
+
+renderProductCart()
 // Toast
 btnCloseToast.addEventListener("click", () => {
     toast.classList.remove('active')
