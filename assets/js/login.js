@@ -68,11 +68,11 @@ function ValidateFormLogin() {
     let username = document.forms["login-form"]["username"];
     let password = document.forms["login-form"]["password"];
     check[0] = ValidateUsername(username, alertUsername[0]);
-    check[1] = ValidatePassword(password, alertPassword[0]);    
+    check[1] = ValidatePassword(password, alertPassword[0]);
     result = check[0] * check[1];
     if (result == 0) {
         console.log("Dang nhap khong thanh cong!");
-        return false;   
+        return false;
     } else return true;
 }
 function ValidateFormRegister() {
@@ -92,7 +92,7 @@ function ValidateFormRegister() {
     }
     if (result == 0) {
         console.log("Dang ky khong thanh cong!");
-        return false;   
+        return false;
     } else return true;
 }
 
@@ -101,6 +101,8 @@ function ValidateFullName(fullName, alertFullName) {
     if (fullName.value == "") {
         alertFullName.innerHTML = `*Họ và tên không được bỏ trống`;
         check = check * 0;
+    } if (/\d/.test(fullName.value)){
+        alertFullName.innerHTML = `*Họ và tên không được có số`;
     } else {
         alertFullName.innerHTML = "";
     }
@@ -111,8 +113,8 @@ function ValidateUsername(username, alertUsername) {
     if (username.value == "") {
         alertUsername.innerHTML = `*Tên đăng nhập không được bỏ trống`;
         check = check * 0;
-    } else if (username.value.length < 5 || username.value.length > 12) {
-        alertUsername.innerHTML = `*Tên đăng nhập cần có độ dài từ 6-12 kí tự`;
+    } else if (username.value.length < 8 || username.value.length > 30) {
+        alertUsername.innerHTML = `*Tên đăng nhập cần có độ dài từ 8-30 kí tự`;
         check = check * 0;
     } else if (username.value.match(usernameRegex) == null) {
         alertUsername.innerHTML = `*Các kí tự được chấp nhận là a-z, A-Z và 0-9`;
@@ -142,8 +144,8 @@ function ValidatePassword(password, alertPassword) {
     if (password.value == "") {
         alertPassword.innerHTML = `*Mật khẩu không được bỏ trống`;
         check = check * 0;
-    } else if (password.value.length < 5 || password.value.length > 12) {
-        alertPassword.innerHTML = `*Mật khẩu cần có độ dài từ 6-12 kí tự`;
+    } else if (password.value.length < 8 || password.value.length > 30) {
+        alertPassword.innerHTML = `*Mật khẩu cần có độ dài từ 8-30 kí tự`;
         check = check * 0;
     } else if (password.value.match(passwordRegex) == null) {
         alertPassword.innerHTML = `*Các kí tự được chấp nhận là a-z, A-Z và 0-9`;
@@ -186,15 +188,15 @@ registerForm.addEventListener('submit', RegisterFunction);
 function RegisterFunction(event) {
     event.preventDefault();
     const myFormData = new FormData(event.target);
-    const formDataObj = {
-        fullName: "",
-        username: "",
-        email: "",
-        password: "",
-    };
-    formDataObj.fullName = myFormData.get("full-name");
-    formDataObj.email = myFormData.get("email");
-    formDataObj.username = myFormData.get("username");
-    formDataObj.password = myFormData.get("password");
-    console.log(formDataObj);
+    newUser = new User(
+        username = myFormData.get("username"),
+        password = myFormData.get("password"),
+        email = myFormData.get("email"),
+        phone = "",
+        full_name = myFormData.get("full-name"),
+        address = "",
+        is_admin = "",
+    );
+    userArr.push(newUser);
+    console.log(userArr[0]);
 };
