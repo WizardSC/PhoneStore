@@ -156,15 +156,48 @@ body {
     font-style: italic;
     color: red;
 }
-
+.question-responsive {
+    display: none;
+}
+.close-button {
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    background-color: transparent;
+    color: var(--white-color);
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    cursor: pointer;
+}
 @media only screen and (max-width: 740px) {
     .container {
-        max-height: 375px;
+        min-height: 500px;
+        max-width: 350px;
+    }
+    .container__right {
+        display: none;
+    }
+    .question-responsive {
+        display: block;
+        margin-top: 10px;
+        color: var(--text-color);
+    }
+    .question-responsive a {
+        text-decoration: none;
+        color: var(--primary-color);
+    }
+    .close-button {
+        color: var(--text-color);
     }
 }
 
 @media only screen and (min-width: 740px) and (max-width: 1024px){
     .container {
-        max-height: 350px;
+        height: 360px;
+    }
+    .span {
+        display: none;
     }
 }
