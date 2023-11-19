@@ -62,10 +62,10 @@ function renderProduct(listProduct) {
 }
 renderProduct(data.getProducts())
 
-function getDetailProduct(){
+function getDetailProduct() {
     const productItem = $$('.product-item')
-    productItem.forEach(item =>{
-        item.addEventListener('click', () =>{
+    productItem.forEach(item => {
+        item.addEventListener('click', () => {
             openDetailProduct(item.dataset.id)
         })
     })
@@ -198,6 +198,7 @@ let myChoiceRAM = []
 let myChoiceROM = []
 let myPriceRange = [NaN, NaN]
 let mySearchProduct = "";
+let mySort = "";
 //Hiển thị các thẻ filter khi nhấn vào từng item lọc
 Array.from(listFilterItems).forEach(function (filterItem, index) {
     filterItem.addEventListener('click', function (e) {
@@ -263,8 +264,8 @@ function checkPriceRange(value) {
 minPriceInput.addEventListener('blur', function (e) {
     checkPriceRange("minPrice");
     console.log(myPriceRange[0], myPriceRange[1]);
-    
-    
+
+
     applyFilters();
 
 
@@ -378,13 +379,13 @@ Array.from(listROMItems).forEach(function (rom) {
 
 function applyFilters() {
     let result = data.getProducts();
-    if(!isNaN(myPriceRange[0]) && !isNaN(myPriceRange[1])){
+    if (!isNaN(myPriceRange[0]) && !isNaN(myPriceRange[1])) {
         let tempListProduct = [];
-        
+
         tempListProduct = tempListProduct.concat(filterProductPrice(result, myPriceRange[0], myPriceRange[1]));
         result = tempListProduct;
     }
-    if (searchProduct !== ""){
+    if (searchProduct !== "") {
         let tempListProduct = [];
         tempListProduct = tempListProduct.concat(searchProduct(result, mySearchProduct))
         result = tempListProduct
@@ -416,8 +417,12 @@ function applyFilters() {
             })
 
         }
-        console.log(tempProductSet);
         result = Object.values(tempProductSet);
+    }
+    if(mySort !== "") {
+        let tempListProduct = [];
+        tempListProduct = tempListProduct.concat(sortProduct(result, mySort))
+        result = tempListProduct
     }
 
 
@@ -438,10 +443,10 @@ function filterProductBrand(productArr, productBrand) {
     })
     return result;
 }
-function filterProductPrice(productArr, productMinPrice, productMaxPrice){
+function filterProductPrice(productArr, productMinPrice, productMaxPrice) {
     let result = []
     productArr.forEach(item => {
-        if(item.price_current >= productMinPrice && item.price_current <= productMaxPrice){      
+        if (item.price_current >= productMinPrice && item.price_current <= productMaxPrice) {
             result.push(item)
         }
     })
@@ -471,7 +476,7 @@ function filterProductRom(productArr, productROM) {
     return result
 }
 
-function searchProduct(productArr, input){
+function searchProduct(productArr, input) {
     let result = [];
     input = input.toLowerCase(); // Chuyển đổi input và item.name thành chữ thường (không phân biệt chữ hoa/chữ thường)
 
@@ -482,6 +487,39 @@ function searchProduct(productArr, input){
     });
     return result;
 }
+
+// Duyệt qua sort item
+
+const sortItems = $$('.sort__item')
+Array.from(sortItems).forEach(sortItem => {
+    sortItem.addEventListener('click', () => {
+        if (sortItem.classList.contains('active')) {
+            // Nếu sortItem đã active, thì loại bỏ active và đặt mySort thành rỗng
+            sortItem.classList.remove('active');
+            mySort = '';
+        } else {
+            // Nếu sortItem chưa active, loại bỏ active từ tất cả các item khác và thêm active cho sortItem
+            sortItems.forEach(item => {
+                item.classList.remove('active');
+            });
+            sortItem.classList.add('active');
+            mySort = sortItem.getAttribute('data-value');
+        }
+        applyFilters();
+    })
+})
+
+function sortProduct(productArr, type) {
+    let result = [];
+    if (type === 'asc') {
+        result = productArr.sort((a, b) => a.price_current - b.price_current)
+    } else if (type === 'desc') {
+        result = productArr.sort((a, b) => b.price_current - a.price_current)
+
+    }
+    return result;
+}
+
 // console.log(filterProductRom(productArr, "256 GB"))
 
 // Pagination
@@ -568,37 +606,37 @@ const searchInput = $('.search__input')
 const searchIconClose = $('.search__icon-close')
 
 
-searchInput.addEventListener('input', function(e){
-    if(searchInput.value !== ""){
+searchInput.addEventListener('input', function (e) {
+    if (searchInput.value !== "") {
         searchIconClose.classList.add('active')
     } else {
         searchIconClose.classList.remove('active')
     }
 })
 
-searchIconClose.addEventListener('click', function(){
-    if(searchIconClose.classList.contains('active')){
+searchIconClose.addEventListener('click', function () {
+    if (searchIconClose.classList.contains('active')) {
         searchIconClose.classList.remove('active')
         searchInput.value = ""
     }
 })
 
-searchInput.addEventListener('keydown', function(e){
-    if(e.key === "Enter"){
+searchInput.addEventListener('keydown', function (e) {
+    if (e.key === "Enter") {
         mySearchProduct = searchInput.value;
     }
 
     applyFilters()
-    
+
 })
 
 // Thay đổi số lượng sản phẩm trên 1 trang
 const filterLimitProduct = $('.filter__limit-product-input')
 
-filterLimitProduct.addEventListener('keydown', function(e){
-    if(e.key === "Enter"){
-       limit = filterLimitProduct.value
-       loadItem();
+filterLimitProduct.addEventListener('keydown', function (e) {
+    if (e.key === "Enter") {
+        limit = filterLimitProduct.value
+        loadItem();
     }
 })
 // const filterItems = document.querySelectorAll(".filter__item");
@@ -612,22 +650,22 @@ filterLimitProduct.addEventListener('keydown', function(e){
 //         });
 //     });
 
-const navbarLogin=document.querySelector(".login")
-const navbarUser=document.querySelector(".user")
+const navbarLogin = document.querySelector(".login")
+const navbarUser = document.querySelector(".user")
 
 console.log(navbarLogin)
 console.log(navbarUser)
 
-navbarLogin.addEventListener('click',function(e){
+navbarLogin.addEventListener('click', function (e) {
     e.preventDefault()
-    if(navbarLogin.classList.contains('active1')){
+    if (navbarLogin.classList.contains('active1')) {
         navbarUser.classList.add('active1')
         navbarLogin.classList.remove('active1')
     }
 })
 
-const navbarLogin1=document.querySelector(".login1")
-const navbarUser1=document.querySelector(".user1")
+const navbarLogin1 = document.querySelector(".login1")
+const navbarUser1 = document.querySelector(".user1")
 
 console.log(navbarLogin1)
 console.log(navbarUser1)

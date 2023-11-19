@@ -24,37 +24,42 @@
                     <h1>URPHONE</h1>
                 </a>
                 <!-- CheckBox dể hiện navbar -->
-                <input hidden  type="checkbox" name="" id="nav-input" class="navbar-input">
+                <input hidden type="checkbox" name="" id="nav-input" class="navbar-input">
 
                 <label for="nav-input" style="cursor:pointer">
-                  <i class="fas fa-bars " id="head_menu"></i>
+                    <i class="fas fa-bars " id="head_menu"></i>
                 </label>
 
-                <label for="nav-input"class="header__navbar-overplay"></label>
+                <label for="nav-input" class="header__navbar-overplay"></label>
 
                 <!-- Navbar khi PC -->
                 <ul class="header__navbar-list">
-                    <li><a href="index.html" >Trang chủ</a></li>
+                    <li><a href="index.html">Trang chủ</a></li>
                     <li><a href="product.html" class="active">Sản phẩm</a></li>
                     <li><a href="contact.html">Liên lạc</a></li>
                     <li><a href=""><i class="fa-solid fa-basket-shopping "></i></a></li>
                     <li><a href="" class="login active1">Đăng nhập</a></li>
-                    <li ><a href="" class="user " ><span>Nguyen </span><i class="fa-solid fa-user   "></i></a></li>
+                    <li><a href="" class="user "><span>Nguyen </span><i class="fa-solid fa-user   "></i></a></li>
                 </ul>
-                
+
                 <!-- Navbar khi responsive -->
                 <nav class="nav__list">
-                  <label for="nav-input" class="nav-close">
-                    <i class="fa-solid fa-xmark"></i>
-                  </label>
-                  <ul class="header__navbar-list-responsive">
-                    <li><a href="index.html" class="navbar-link-responsive active"><i class="fa-solid fa-house"></i> Trang chủ</a></li>
-                    <li><a href="product.html" class="navbar-link-responsive"><i class="fa-solid fa-list"></i> Sản phẩm</a></li>
-                    <li><a href="" class="navbar-link-responsive"><i class="fa-solid fa-phone"></i> Liên lạc</a></li>
-                    <li><a href="" class="navbar-link-responsive"><i class="fa-solid fa-cart-shopping"></i> Giỏ hàng</a></li>
-                    <li><a href=""  class="navbar-link-responsive login1 active2">Đăng nhập</a></li>
-                    <li ><a href=""class="navbar-link-responsive user1"><i class="fa-solid fa-circle-user"></i><span> Nguyen </span></a></li>
-                  </ul>
+                    <label for="nav-input" class="nav-close">
+                        <i class="fa-solid fa-xmark"></i>
+                    </label>
+                    <ul class="header__navbar-list-responsive">
+                        <li><a href="index.html" class="navbar-link-responsive active"><i class="fa-solid fa-house"></i>
+                                Trang chủ</a></li>
+                        <li><a href="product.html" class="navbar-link-responsive"><i class="fa-solid fa-list"></i> Sản
+                                phẩm</a></li>
+                        <li><a href="" class="navbar-link-responsive"><i class="fa-solid fa-phone"></i> Liên lạc</a>
+                        </li>
+                        <li><a href="" class="navbar-link-responsive"><i class="fa-solid fa-cart-shopping"></i> Giỏ
+                                hàng</a></li>
+                        <li><a href="" class="navbar-link-responsive login1 active2">Đăng nhập</a></li>
+                        <li><a href="" class="navbar-link-responsive user1"><i
+                                    class="fa-solid fa-circle-user"></i><span> Nguyen </span></a></li>
+                    </ul>
                 </nav>
             </div>
         </header>
@@ -125,12 +130,13 @@
         <!-- Phần nội dung -->
         <div class="content">
             <div class="grid wide">
+                <!-- Thanh tìm kiếm -->
                 <div class="search">
                     <i class="fa-solid fa-magnifying-glass search__icon-search"></i>
                     <input type="text" class="search__input" placeholder="Nhập thông tin tìm kiếm">
-                    <i class="fa-solid fa-x search__icon-close"></i>                
+                    <i class="fa-solid fa-x search__icon-close"></i>
                 </div>
-                <!-- Tìm kiếm & filter -->
+                <!-- filter -->
                 <div class="filter">
                     <div class="filter__label">
                         <i class="filter__label-icon fa-solid fa-filter"></i>
@@ -238,6 +244,7 @@
 
                                 <div class="filter__rom">
                                     <ul class="filter__rom-list">
+                                        <li class="filter__rom-item" data-value="16 GB">16 GB</li>
                                         <li class="filter__rom-item" data-value="32 GB">32 GB</li>
                                         <li class="filter__rom-item" data-value="64 GB">64 GB</li>
                                         <li class="filter__rom-item" data-value="128 GB">128 GB</li>
@@ -256,8 +263,20 @@
                             <input type="text" class="filter__limit-product-input">
                         </div>
                     </div>
-                    
 
+
+                </div>
+                <!-- Thanh sắp xếp -->
+                <div class="sort">
+                    <div class="sort__heading">Sắp xếp</div>
+                    <div class="sort__item" data-value="asc">
+                        <i class="fa-solid fa-arrow-up-wide-short"></i>
+                        <span class="sort__item-label">Giá Thấp - Cao</span>
+                    </div>
+                    <div class="sort__item" data-value="desc">
+                        <i class="fa-solid fa-arrow-down-wide-short"></i>
+                        <span class="sort__item-label">Giá Cao - Thấp</span>
+                    </div>
                 </div>
                 <div class="product row">
 
@@ -328,9 +347,9 @@
                 </div> -->
             </div>
         </div>
-        <div class="modal" >
+        <div class="modal">
             <div class="modal__overlay">
-    
+
             </div>
             <div class="modal__body">
                 <!-- Chi tiết sản phẩm -->
@@ -345,14 +364,15 @@
                         </div>
                     </div>
                     <div class="product-detail__body">
-                        <img src="https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:80/plain/https://cellphones.com.vn/media/catalog/product/s/a/samsung-galaxy-s23-ultra.png" alt="" class="product-detail__img">
+                        <img src="https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:80/plain/https://cellphones.com.vn/media/catalog/product/s/a/samsung-galaxy-s23-ultra.png"
+                            alt="" class="product-detail__img">
                         <div class="product-detail__info">
                             <h3 class="product-detail__info-name">
                                 Samsung Galaxy S23 Ultra 256GB
                             </h3>
                             <span class="product-detail__info-label product-detail__info-label--ram">
                                 <span class="product-detail__info-label-name">RAM</span>
-                                
+
                                 <!-- <div class="product-detail__info-ram">
                                     8 GB
                                 </div>
@@ -366,7 +386,7 @@
                                     512 GB
                                 </div>
                                 <div class="product-detail__info-rom">
-                                   1 TB
+                                    1 TB
                                 </div>
                             </span>
                             <div class="product-detail__info-price">
@@ -374,7 +394,8 @@
                                 <span class="product-detail__info-price-current">16.990.000đ</span>
                             </div>
                             <div class="product-detail__info-img">
-                                <img src="https://cdn2.cellphones.com.vn/insecure/rs:fill:0:120/q:80/plain/https://dashboard.cellphones.com.vn/storage/dt-ss-sv-2-productbanner.jpg" alt="">
+                                <img src="https://cdn2.cellphones.com.vn/insecure/rs:fill:0:120/q:80/plain/https://dashboard.cellphones.com.vn/storage/dt-ss-sv-2-productbanner.jpg"
+                                    alt="">
                             </div>
                             <div class="product-detail__info-promotion">
                                 <h4 class="product-detail__info-promotion-heading">
@@ -384,11 +405,12 @@
                                 <div class="product-detail__info-promotion-content">
                                     <div class="product-detail__info-promotion-wrap">
                                         <p>1</p>
-                                        <span>Trả góp 12 tháng 0 lãi, 0đ trả trước qua Samsung Finance+ (Xem chi tiết)</span>
+                                        <span>Trả góp 12 tháng 0 lãi, 0đ trả trước qua Samsung Finance+ (Xem chi
+                                            tiết)</span>
                                     </div>
                                     <div class="product-detail__info-promotion-wrap">
                                         <p>2</p>
-                                    <span>Nhận ngay ưu đãi YouTube Premium dành cho chủ sở hữu Samsung Galaxy</span>
+                                        <span>Nhận ngay ưu đãi YouTube Premium dành cho chủ sở hữu Samsung Galaxy</span>
                                     </div>
                                 </div>
                             </div>
@@ -407,7 +429,7 @@
             <div class="toast__wrapper">
                 <div class="toast__content">
                     <i class="fa-solid fa-check toast__icon-info"></i>
-    
+
                     <div class="toast__message">
                         <div class="toast__message-title">
                             Thành công
@@ -419,12 +441,12 @@
                 </div>
                 <i class="fa-solid fa-xmark toast__icon-close"></i>
                 <div class="toast__progress"></div>
-            </div>       
+            </div>
         </div>
     </div>
 
     <!-- Chi tiết sản phẩm -->
-    
+
     <script src="assets/js/slider.js"></script>
     <script src="assets/js/constructor.js"></script>
     <script src="assets/js/dataProduct.js"> </script>
@@ -436,8 +458,8 @@
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
 
-    
-    
+
+
 </body>
 
 </html>
