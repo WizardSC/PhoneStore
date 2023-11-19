@@ -12,7 +12,20 @@ class Product {
         this.sale = sale
     }
 }
-
+class User{
+    static userID = 0;
+    constructor(username, password, email, phone, full_name, address, ngay_lap, is_admin){
+        this.userID = ++User.userID;
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.phone = phone;
+        this.full_name = full_name;
+        this.address = address;
+        this.ngay_lap = Date.now();
+        this.isAdmin = is_admin;
+    }
+}
 class money {
     static formatCurrencytoVND(tien) {
         let nf = new Intl.NumberFormat('en-US');
