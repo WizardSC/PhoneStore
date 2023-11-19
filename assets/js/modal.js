@@ -1,17 +1,19 @@
 
-const modal = $('.modal')
+const modal = $('.modal__body')
 const header = document.querySelector('.header');
 const productDetail = $('.product-detail')
 const productDetailClose = $('.product-detail__btn-close')
 const btnAddToCart = $('.product-detail__btn-add-to-cart')
 const btnBuyNow = $('.product-detail__btn-buy-now')
+
+const productCart = $('.modal__cart')
+console.log(productCart)
+
 const toast = $('.toast__wrapper')
 const btnCloseToast = $('.toast__icon-close')
 const toastProgress = $('.toast__progress')
-console.log(productDetailClose)
 function showModal() {
     modal.classList.add('active')
-    modal.classList
     //Sửa lỗi filterLabel, next prev btn ở slider bị z-index cùng cấp với chi tiết sản phẩm
     filterLabel.classList.add('inactive')
     prevbtn.style.zIndex = '0'
@@ -32,6 +34,8 @@ function hideModal() {
 }
 //Mở chi tiết sản phẩm lên
 function openDetailProduct(productID) {
+    showModal()
+    productDetail.classList.add('active')
     if (!productID) return;
     const list = data.getProducts()
     if (!list || list.length == 0) return null;
@@ -84,13 +88,13 @@ function openDetailProduct(productID) {
     priceCurrent.innerText = money.formatCurrencytoVND(product.price_current)
     img.setAttribute("src", product.img)
 
-    showModal()
 
 
 }
 productDetailClose.addEventListener("click", closeDetailProduct)
 function closeDetailProduct() {
     hideModal()
+    productDetail.classList.remove('active')
 
 }
 function showToastMessage(icon, title, description, color) {
@@ -101,7 +105,7 @@ function showToastMessage(icon, title, description, color) {
         const toastIconInfo = toastWrapper.querySelector('.toast__icon-info')
         const toastProgress = toastWrapper.querySelector('.toast__progress')
 
-        toastWrapper.style.zIndex = "2";
+        toastWrapper.style.zIndex = "4";
 
         toastIconInfo.className = icon + " toast__icon-info";
         toastMsgTitle.innerText = title
@@ -122,23 +126,55 @@ function showToastMessage(icon, title, description, color) {
 
 }
 btnAddToCart.addEventListener("click", () => {
-
-    showToastMessage(
-        "fa-solid fa-circle-exclamation",
-        "Thêm thất bại",
-        "Bạn phải đăng nhập để thêm hàng vào giỏ",
-        "#FF4444"
-    )
-
+    const loginID = User.checkLoginId()
+    if (loginID) {
+        closeDetailProduct()
+        openCartModal()
+        
+    }
+    else {
+        showToastMessage(
+            "fa-solid fa-circle-exclamation",
+            "Thêm thất bại",
+            "Bạn phải đăng nhập để thêm hàng vào giỏ",
+            "#FF4444"
+        )
+    }
 })
 btnBuyNow.addEventListener('click', () => {
-    showToastMessage(
-        "fa-solid fa-circle-exclamation",
-        "Mua thất bại",
-        "Bạn phải đăng nhập mới có thể chọn mua sản phẩm",
-        "#FF4444"
-    )
+    const loginID = User.checkLoginId()
+    if (loginID) {
+        hideModal()
+        
+    } else {
+        showToastMessage(
+            "fa-solid fa-circle-exclamation",
+            "Mua thất bại",
+            "Bạn phải đăng nhập mới có thể chọn mua sản phẩm",
+            "#FF4444"
+        )
+    }
 })
+
+const productCartClose = $('.modal__cart-close')
+productCartClose.addEventListener('click', () =>{
+    closeCartModal()
+})
+// Cart
+function openCartModal(){
+    showModal()
+    productCart.classList.add('active')
+}
+function closeCartModal(){
+    hideModal()
+    productCart.classList.remove('active')
+}
+function renderProductCart(){
+    const userID = User.checkLoginId()
+    let html = '';
+    
+}
+// Toast
 btnCloseToast.addEventListener("click", () => {
     toast.classList.remove('active')
     setTimeout(() => {
@@ -153,3 +189,5 @@ btnDangNhap.addEventListener("click", e => {
     e.preventDefault();
     // LoginPopupOpen();
 });
+
+User.setLoginState(1)

@@ -54,31 +54,40 @@ h6{
 }
 /* Modal */
 .modal{
-    position: fixed;
+    /* position: fixed;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
-    /* display: flex; */
-    display: none;
+    display: flex;
+    display: none; */
 
 }
 .modal.active{
-    display: flex;
+    /* display: flex; */
 }
-.modal__overlay{
+/* .modal__overlay{
     position: absolute;
     width: 100%;
     height: 100%;
     background-color: rgba(0,0,0,0.4);
     z-index: 2;
 
-}
+} */
 .modal__body{
-    
+    display:none;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0.4);
     margin: auto;
-    position: relative;
+    position: fixed;
     z-index: 3;
 
+}
+
+.modal__body.active{
+    display: block;
 }
 
