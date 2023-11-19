@@ -29,4 +29,5 @@ class user {
 if (data.getProducts() === null) {
     data.loadProducts(productArr);
 }
+User.loadUsers(productArr);
 
