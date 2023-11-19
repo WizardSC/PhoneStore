@@ -25,6 +25,39 @@ class User{
         this.ngay_lap = Date.now();
         this.isAdmin = is_admin;
     }
+    static loadUsers(listUser){
+        localStorage.listUsers = JSON.stringify(listUser);
+        if(localStorage.listUsers){
+            return true;
+        }
+        return false;
+    }
+    static setLoginState(userid){
+        if(userid == null || userid == undefined) {
+            localStorage.loginID = 0;
+        } else {
+            if(Number.isInteger(userid)){
+                localStorage.loginID = userid;
+            }
+        }
+    }
+    static checkLoginId() {
+        if (localStorage.loginID) {
+            const a = parseInt(localStorage.loginID);
+            if (a > 0) return a;
+        }
+        return null;
+    }
+}
+// Load data users lên localStorage
+class cart{
+    static getCartList(userID){
+        const myUser = user.getUserID(userID);
+        if(myUser){
+            return myUser.cartList;
+        }
+        return [];
+    }
 }
 class money {
     static formatCurrencytoVND(tien) {
