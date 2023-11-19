@@ -520,84 +520,34 @@ function sortProduct(productArr, type) {
     return result;
 }
 
-// console.log(filterProductRom(productArr, "256 GB"))
-
-// Pagination
-// const ulTag = document.querySelector('.pagination__list')
-// let totalPages = 20;
-// function element(totalPages, page) {
-//     let liTag = '';
-//     let activeLi;
-//     let beforePages = page - 1; //Lấy số trang hiển thị trừ 1
-//     let afterPages = page + 1; //Lấy số trang hiển thị cộng 1
-//     if (page > 1) { //Nếu số trang lớn hơn 1 thì thêm 1 li để hiển thị btn prev
-//         liTag += `<li class="pagination__item button pagination__item-btn-prev" onclick="element(totalPages,${page - 1})"><span><i class="fa-solid fa-angle-left"></i>Trước đó</span></li>`
-//     }
-//     if (page > 2) { //Nếu page > 2 thì luôn thêm thẻ trang thứ 1
-//         liTag += `<li class="pagination__item numb" onclick="element(totalPages,1)""><span>1</span></li>`
-//         if (page > 3) { //Nếu page > 3 thì add thêm 1 dấu chấm
-//             liTag += `<li class="pagination__item dots"><span>...</span></li>`
-//         }
-//     }
-//     if (page == totalPages) {
-//         beforePages = beforePages - 2;
-//     } else if (page == totalPages - 1) {
-//         beforePages = beforePages - 1;
-//     }
-
-//     if (page == 1) {
-//         afterPages = afterPages + 2;
-//     } else if (page == 2) {
-//         afterPages = afterPages + 1;
-//     }
-//     for (let pageLength = beforePages; pageLength <= afterPages; pageLength++) {
-//         if (pageLength > totalPages) {
-//             continue;
-//         }
-//         if (pageLength == 0) {
-//             pageLength = pageLength + 1;
-//         }
-//         if (page == pageLength) {
-//             activeLi = "active";
-//         } else {
-//             activeLi = "";
-//         }
-//         liTag += `<li class="pagination__item numb ${activeLi}" onclick="element(totalPages,${pageLength})"><span>${pageLength}</span></li>`;
-//     }
-//     if (page < totalPages - 1) { //Nếu page > 2 thì luôn thêm thẻ trang thứ 1
-//         if (page < totalPages - 2) {
-//             liTag += `<li class="pagination__item dots"><span>...</span></li>`
-//         }
-//         liTag += `<li class="pagination__item numb" onclick="element(totalPages,${totalPages})"><span>${totalPages}</span></li>`
-
-//     }
-//     if (page < totalPages) { //Nếu trang hiển thị nhỏ hơn tổng trang thì thêm 1 li để hiển thị btn next
-//         liTag += `<li class="pagination__item button pagination__item-btn-next" onclick="element(totalPages,${page + 1})"><span>Kế tiếp<i class="fa-solid fa-angle-right"></i></span></li>`
-
-//     }
-//     ulTag.innerHTML = liTag;
-// }
-// let count = Math.ceil(listItem.length / limit);
-
-// element(totalPages, 1);
-
 
 //Khi cuộn quá filter thì đặt filter là position fixed
 const filter = document.querySelector('.filter')
 const filterLabel = document.querySelector('.filter__label')
+const prevBtnSlider = document.querySelector('.prev-btn');
+const nextBtnSlider = document.querySelector('.next-btn');
+
 
 const filterTopOffset = filter.offsetTop;
 console.log(filterTopOffset)
 window.addEventListener("scroll", () => {
+    if(window.scrollY > 0){
+        prevBtnSlider.style.zIndex = "0";
+        nextBtnSlider.style.zIndex = "0";
+    } else {
+        prevBtnSlider.style.zIndex = "1";
+        nextBtnSlider.style.zIndex = "1";
+
+    }
     if (window.scrollY >= filterTopOffset) {
         filter.style.position = "fixed";
         filter.style.top = "0";
-
         filter.style.marginTop = "88" + "px";
 
     } else {
         filter.style.position = "static";
         filter.style.marginTop = "20" + "px";
+
     }
 });
 // JS cho thanh search
@@ -639,36 +589,26 @@ filterLimitProduct.addEventListener('keydown', function (e) {
         loadItem();
     }
 })
-// const filterItems = document.querySelectorAll(".filter__item");
-//     filterItems.forEach(item => {
-//         item.addEventListener("click", () => {
-//             // Cuộn tới vị trí filterTopOffset
-//             window.scrollTo({
-//                 top: filterTopOffset - 1,
-//                 behavior: "smooth" // Thêm hiệu ứng cuộn mượt
-//             });
-//         });
-//     });
 
-const navbarLogin = document.querySelector(".login")
-const navbarUser = document.querySelector(".user")
+// const navbarLogin = document.querySelector(".login")
+// const navbarUser = document.querySelector(".user")
 
-console.log(navbarLogin)
-console.log(navbarUser)
+// console.log(navbarLogin)
+// console.log(navbarUser)
 
-navbarLogin.addEventListener('click', function (e) {
-    e.preventDefault()
-    if (navbarLogin.classList.contains('active1')) {
-        navbarUser.classList.add('active1')
-        navbarLogin.classList.remove('active1')
-    }
-})
+// navbarLogin.addEventListener('click', function (e) {
+//     e.preventDefault()
+//     if (navbarLogin.classList.contains('active1')) {
+//         navbarUser.classList.add('active1')
+//         navbarLogin.classList.remove('active1')
+//     }
+// })
 
-const navbarLogin1 = document.querySelector(".login1")
-const navbarUser1 = document.querySelector(".user1")
+// const navbarLogin1 = document.querySelector(".login1")
+// const navbarUser1 = document.querySelector(".user1")
 
-console.log(navbarLogin1)
-console.log(navbarUser1)
+// console.log(navbarLogin1)
+// console.log(navbarUser1)
 
 // login1.addEventListener('click',function(e){
 //     e.preventDefault()

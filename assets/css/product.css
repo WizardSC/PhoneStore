@@ -1053,16 +1053,17 @@
 
 /* Toast */
 .toast {
-    height: 100vh;
+    /* height: 100vh; */
 
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    display: none;
+    /* display: none; */
 }
 
 .toast__wrapper {
+
     position:fixed;
     top: 3%;
     right: 30px;
