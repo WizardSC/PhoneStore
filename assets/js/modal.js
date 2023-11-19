@@ -1,8 +1,6 @@
 
 const modal = $('.modal')
-
 const header = document.querySelector('.header');
-
 const productDetail = $('.product-detail')
 const productDetailClose = $('.product-detail__btn-close')
 const btnAddToCart = $('.product-detail__btn-add-to-cart')
@@ -13,11 +11,12 @@ const toastProgress = $('.toast__progress')
 console.log(productDetailClose)
 function showModal() {
     modal.classList.add('active')
+    modal.classList
     //Sửa lỗi filterLabel, next prev btn ở slider bị z-index cùng cấp với chi tiết sản phẩm
     filterLabel.classList.add('inactive')
     prevbtn.style.zIndex = '0'
     nextbtn.style.zIndex = '0'
-    
+
     // filterLabel.style.zIndex = '-1'
 }
 function hideModal() {
@@ -27,7 +26,7 @@ function hideModal() {
     filterLabel.classList.remove('inactive')
     prevbtn.style.zIndex = '1'
     nextbtn.style.zIndex = '1'
-    
+
 
 
 }
@@ -123,7 +122,7 @@ function showToastMessage(icon, title, description, color) {
 
 }
 btnAddToCart.addEventListener("click", () => {
-    
+
     showToastMessage(
         "fa-solid fa-circle-exclamation",
         "Thêm thất bại",
@@ -132,7 +131,7 @@ btnAddToCart.addEventListener("click", () => {
     )
 
 })
-btnBuyNow.addEventListener('click', () =>{
+btnBuyNow.addEventListener('click', () => {
     showToastMessage(
         "fa-solid fa-circle-exclamation",
         "Mua thất bại",
@@ -147,3 +146,10 @@ btnCloseToast.addEventListener("click", () => {
 
     }, 300);
 })
+// Đăng nhập
+const btnDangNhap = document.getElementById('btnDangNhap')
+
+btnDangNhap.addEventListener("click", e => {
+    e.preventDefault();
+    // LoginPopupOpen();
+});
