@@ -34,7 +34,7 @@ body {
 }
 
 /* CONTAINER */
-.container {
+.login-container {
     width: 80%;
     max-width: 750px;
     height: 400px;
@@ -172,7 +172,7 @@ body {
     cursor: pointer;
 }
 @media only screen and (max-width: 740px) {
-    .container {
+    .login-container {
         min-height: 500px;
         max-width: 350px;
     }
@@ -194,7 +194,7 @@ body {
 }
 
 @media only screen and (min-width: 740px) and (max-width: 1024px){
-    .container {
+    .login-container {
         height: 360px;
     }
     .span {

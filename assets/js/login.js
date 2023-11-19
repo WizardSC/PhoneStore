@@ -1,14 +1,14 @@
 const form = document.getElementById("form");
-const login = document.getElementsByClassName("login");
-const register = document.getElementsByClassName("register");
+const login = document.getElementsByClassName("login-form");
+const register = document.getElementsByClassName("register-form");
 var fullNameRegex = /^[a-zA-Z_ÀÁÂÃÈÉÊẾÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêếìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\ ]+$/;
 var alertFullName = document.getElementsByClassName("alert-full-name");
-var alertUsername = document.getElementsByClassName("alert-username");
 var usernameRegex = /^[a-zA-Z0-9]+$/;
-var alertEmail = document.getElementsByClassName("alert-email");
+var alertUsername = document.getElementsByClassName("alert-username");
 var emailRegex = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-var alertPassword = document.getElementsByClassName("alert-password");
+var alertEmail = document.getElementsByClassName("alert-email");
 var passwordRegex = /^[a-zA-Z0-9!@#$%&*]+$/;
+var alertPassword = document.getElementsByClassName("alert-password");
 var alertRepeatPassword = document.getElementsByClassName("alert-repeat-password");
 
 // Mo/Tat popup
@@ -101,8 +101,9 @@ function ValidateFullName(fullName, alertFullName) {
     if (fullName.value == "") {
         alertFullName.innerHTML = `*Họ và tên không được bỏ trống`;
         check = check * 0;
-    } if (/\d/.test(fullName.value)){
+    } else if (/\d/.test(fullName.value)){
         alertFullName.innerHTML = `*Họ và tên không được có số`;
+        check = check * 0;
     } else {
         alertFullName.innerHTML = "";
     }

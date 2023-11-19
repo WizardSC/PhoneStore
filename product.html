@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="assets/css/base.css">
     <link rel="stylesheet" href="assets/css/grid.css">
     <link rel="stylesheet" href="assets/css/product.css">
+    <link rel="stylesheet" href="assets/css/login.css">
 
 </head>
 
@@ -37,7 +38,7 @@
                     <li><a href="product.html" class="active">Sản phẩm</a></li>
                     <li><a href="contact.html">Liên lạc</a></li>
                     <li><a href=""><i class="fa-solid fa-basket-shopping "></i></a></li>
-                    <li><a href="" class="login active1" id="btnDangNhap">Đăng nhập</a></li>
+                    <li><a href="" class="login active1" id="btnDangNhap" onclick="LoginPopupOpen()">Đăng nhập</a></li>
                     <li><a href="" class="user "><span>Nguyen </span><i class="fa-solid fa-user   "></i></a></li>
                 </ul>
 
@@ -55,7 +56,7 @@
                         </li>
                         <li><a href="" class="navbar-link-responsive"><i class="fa-solid fa-cart-shopping"></i> Giỏ
                                 hàng</a></li>
-                        <li id="btnDangNhap">Đăng nhập</li>
+                        <li id="btnDangNhap" onclick="LoginPopupOpen()">Đăng nhập</li>
                         <!-- <li><a href="" class="navbar-link-responsive user1"><i
                                     class="fa-solid fa-circle-user"></i><span> Nguyen </span></a></li> -->
                     </ul>
@@ -441,6 +442,97 @@
                 <i class="fa-solid fa-xmark toast__icon-close"></i>
                 <div class="toast__progress"></div>
             </div>
+            <div class="form" id="form">
+                <div class="login-container center">
+                    <div class="container__left">
+                        <div class="container__form center">
+                            <div class="form-content__login login-form center" id="login">
+                                <h3 class="form-content__title title">Đăng nhập</h3>
+                                <div class="span"></div>
+                                <form name="login-form" id="login-form">
+                                    <div class="form-content__input">
+                                        <div class="icon"><i class="fa-solid fa-user"></i></div>
+                                        <input name="username" type="text" placeholder="Tên đăng nhập">
+                                    </div>
+                                    <div class="alert-username alert"></div>
+                                    <div class="form-content__input">
+                                        <div class="icon"><i class="fa-solid fa-lock"></i></div>
+                                        <input name="password" type="password" placeholder="Mật khẩu" class="password">
+                                        <div class="icon">
+                                            <i class="fa-solid fa-eye hide-password" onclick="HidePassword()"></i>
+                                            <i class="fa-solid fa-eye-slash show-password" onclick="ShowPassword()"></i>
+                                        </div>
+                                    </div>
+                                    <div class="alert-password alert"></div>
+                                    <button type="submit" class="btn" onclick="return ValidateFormLogin()">Đăng nhập</button>
+                                </form>
+                                <div class="question-responsive">
+                                    <p>Bạn chưa có tài khoản? <a href="#" onclick="RegisterPopupOpen()">Đăng ký</a></p>
+                                </div>
+                            </div>
+                            <div class="form-content__register register-form center" id="register">
+                                <h3 class="form-content__title title">Đăng ký</h3>
+                                <div class="span"></div>
+                                <form name="register-form" id="register-form">
+                                    <div class="form-content__input">
+                                        <i class="fa-solid fa-id-card"></i>
+                                        <input name="full-name" type="text" placeholder="Họ và tên">
+                                    </div>
+                                    <div class="alert-full-name alert"></div>
+                                    <div class="form-content__input">
+                                        <i class="fa-solid fa-user"></i>
+                                        <input name="username" type="text" placeholder="Tên đăng nhập">
+                                    </div>
+                                    <div class="alert-username alert"></div>
+                                    <div class="form-content__input">
+                                        <i class="fa-solid fa-envelope"></i>
+                                        <input name="email" type="text" placeholder="Email">
+                                    </div>
+                                    <div class="alert-email alert"></div>
+                                    <div class="form-content__input">
+                                        <i class="fa-solid fa-lock"></i>
+                                        <input name="password" type="password" placeholder="Mật khẩu" class="password">
+                                        <i class="fa-solid fa-eye hide-password" onclick="HidePassword()"></i>
+                                        <i class="fa-solid fa-eye-slash show-password" onclick="ShowPassword()"></i>
+                                    </div>
+                                    <div class="alert-password alert"></div>
+                                    <div class="form-content__input">
+                                        <i class="fa-solid fa-lock"></i>
+                                        <input name="repeat-password" type="password" placeholder="Nhập lại mật khẩu" class="repeat-password">
+                                        <i class="fa-solid fa-eye hide-password" onclick="HideRepeatPassword()"></i>
+                                        <i class="fa-solid fa-eye-slash show-password" onclick="ShowRepeatPassword()"></i>
+                                    </div>
+                                    <div class="alert-repeat-password alert"></div>
+                                    <button type="submit" class="btn" onclick="return ValidateFormRegister()">Đăng ký</button>
+                                </form>
+                                <div class="question-responsive">
+                                    <p>Bạn đã có tài khoản? <a href="#" onclick="LoginPopupOpen()">Đăng nhập</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container__right">
+                        <div class="container__sidebar center">
+                            <div class="form-sidebar__login login-form center" id="login">
+                                <h3 class="form-sidebar__title title">Bạn chưa có tài khoản?</h3>
+                                <div class="form-sidebar__description">
+                                    <p>Đăng ký thành viên để nhận được những ưu đãi tốt nhất của chúng tôi!</p>
+                                </div>
+                                <button class="btn" onclick="RegisterPopupOpen()">Đăng ký</button>
+                            </div>
+                            <div class="form-sidebar__register register-form center" id="register">
+                                <h3 class="form-sidebar__title title">Bạn đã có tài khoản?</h3>
+                                <div class="form-sidebar__description">
+                                    <p>Đăng nhập để tiếp tục trải nghiệm mua sắm không giới hạn ngay nào!!</p>
+                                </div>
+                                <button class="btn" onclick="LoginPopupOpen()">Đăng nhập</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="close-button" onclick="document.getElementById('form').style.display = 'none';">
+                        <i class="fa-solid fa-x"></i>
+                    </div>
+                </div>
         </div>
         
         <!-- Chi tiết sản phẩm -->
@@ -451,6 +543,7 @@
         <script src="assets/js/localStorage.js"></script>
         <script src="assets/js/product.js"></script>
         <script src="assets/js/modal.js"></script>
+        <script src="assets/js/login.js"></script>
         <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
         <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
