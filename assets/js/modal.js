@@ -87,6 +87,7 @@ function openDetailProduct(productID) {
     priceOld.innerText = money.formatCurrencytoVND(product.price_old)
     priceCurrent.innerText = money.formatCurrencytoVND(product.price_current)
     img.setAttribute("src", product.img)
+    btnAddToCart.setAttribute("onclick", `addToCart(${productID})`);
 
 
 
@@ -125,9 +126,10 @@ function showToastMessage(icon, title, description, color) {
     }
 
 }
-btnAddToCart.addEventListener("click", () => {
+function addToCart(productID){
     const loginID = User.checkLoginId()
     if (loginID) {
+        cart.addItemCart(loginID,productID,1)
         closeDetailProduct()
         openCartModal()
 
@@ -140,7 +142,8 @@ btnAddToCart.addEventListener("click", () => {
             "#FF4444"
         )
     }
-})
+}
+
 btnBuyNow.addEventListener('click', () => {
     const loginID = User.checkLoginId()
     if (loginID) {
@@ -227,7 +230,10 @@ function renderProductCart() {
             cart.updateCartItemQuantity(userID, cartID, 1)
             renderProductCart()
         })
-        console.log(cartID)
+        btnDeleteItem.addEventListener('click', () => { 
+            cart.removeCartItem(userID, cartID)
+            renderProductCart()
+        })
     })
 
 }
