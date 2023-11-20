@@ -19,6 +19,7 @@ class Product {
     }
     static getProductID(myProductID) {
         const list = Product.getProducts();
+
         if (!list || list.length === 0) return null;
         let product = null;
         list.forEach(item => {
@@ -84,16 +85,16 @@ class User {
     }
     static setLoginState(userid) {
         if (userid == null || userid == undefined) {
-            localStorage.loginID = 0;
+            localStorage.userID = 0;
         } else {
             if (Number.isInteger(userid)) {
-                localStorage.loginID = userid;
+                localStorage.userID = userid;
             }
         }
     }
     static checkLoginId() {
-        if (localStorage.loginID) {
-            const a = parseInt(localStorage.loginID);
+        if (localStorage.userID) {
+            const a = parseInt(localStorage.userID);
             if (a > 0) return a;
         }
         return null;
@@ -158,7 +159,6 @@ class cart {
     static addItemCart(userID, productID, quantity) {
         const myList = cart.getCartList(userID)
         const myProduct = Product.getProductID(productID)
-
         myList.push(new ProductInCart(productID, myProduct.price_current, quantity, myProduct.img[0]));
         if (User.updateUserCart(userID, myList)) {
             return true;

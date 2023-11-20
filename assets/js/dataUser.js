@@ -1,7 +1,7 @@
 const userArr = [
     new User(
         "wizardsc",
-        "toan123",
+        "toan123456",
         "toanhuynh1114@gmail.com",
         "0814099714",
         "Huỳnh Phúc Toàn",

@@ -129,6 +129,8 @@ function showToastMessage(icon, title, description, color) {
 function addToCart(productID){
     const loginID = User.checkLoginId()
     if (loginID) {
+        console.log("a" + productID)
+        console.log(loginID)
         cart.addItemCart(loginID,productID,1)
         closeDetailProduct()
         openCartModal()
@@ -253,7 +255,7 @@ btnDangNhap.addEventListener("click", e => {
     // LoginPopupOpen();
 });
 
-User.setLoginState(1)
+User.setLoginState(2)
 
 
 
