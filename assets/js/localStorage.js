@@ -32,3 +32,6 @@ if (Product.getProducts() === null) {
 if (User.getUsers() === null) {
     User.loadUsers(userArr);
 }
+if(User.checkLoginId() === null){
+    User.setLoginState()
+}
