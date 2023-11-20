@@ -114,6 +114,37 @@ class User {
         })
         return isSet;
     }
+
+    // Kiểm tra tên đăng nhập
+    static isExistUsername(username) {
+        const list = User.getUsers();
+        if (!list || list.length === 0) return false;
+        let isExist = false;
+        list.forEach((user) => {
+            if (user.username === username) {
+                isExist = true;
+            }
+        })
+        return isExist;
+    }
+    // Kiểm tra tên đăng nhập và mật khẩu
+    static checkUserToLogin(username, password){
+        const list = User.getUsers();
+        if(!list || list.length === 0) return false;
+        let userID
+        list.forEach((user) => {
+            if(user.username === username && user.password === password) {
+                userID = user.userID
+            }
+        })
+        if(!userID) return false;
+        User.setLoginState(userID) 
+        return true;      
+    }
+    //Đăng xuất
+    static logOut(){
+        User.setLoginState(null);
+    }
 }
 // Load data users lên localStorage
 class cart {
@@ -125,12 +156,12 @@ class cart {
         return [];
     }
     //Lấy ID cart muốn thực hiện các hành vi
-    static getCartID(userID, cartID){
+    static getCartID(userID, cartID) {
         const list = cart.getCartList(userID);
-        if(!list || list.length === 0) return null;
+        if (!list || list.length === 0) return null;
         let myCart = null;
-        list.forEach(item =>{
-            if(item.cartID === cartID)
+        list.forEach(item => {
+            if (item.cartID === cartID)
                 myCart = item
         })
         return myCart
@@ -171,11 +202,11 @@ class cart {
         return true;
     }
     // Tăng/Giảm số lượng của 1 item trong cart
-    static updateCartItemQuantity(userID, cartID, quantity){
+    static updateCartItemQuantity(userID, cartID, quantity) {
         const myList = cart.getCartList(userID)
-        if(!myList || myList.length === 0) return null;
+        if (!myList || myList.length === 0) return null;
         myList.forEach(item => {
-            if(item.cartID === cartID){
+            if (item.cartID === cartID) {
                 item.quantity = item.quantity + quantity;
                 item.totalPrice = item.quantity * item.product_price
                 User.updateUserCart(userID, myList)
@@ -183,27 +214,27 @@ class cart {
         })
     }
     //Remove sản phẩm khỏi giỏ hàng
-    static removeCartItem(userID, cartID){
-        const myList= cart.getCartList(userID)
-        if(!myList || myList.length === 0) return null;
+    static removeCartItem(userID, cartID) {
+        const myList = cart.getCartList(userID)
+        if (!myList || myList.length === 0) return null;
         let isDeleted = false
         myList.forEach((item, index) => {
-            if(item.cartID === cartID){
-                myList.splice(index,1)
-                if(myList === null) myList = [];
+            if (item.cartID === cartID) {
+                myList.splice(index, 1)
+                if (myList === null) myList = [];
                 User.updateUserCart(userID, myList)
                 isDeleted = true
             }
         })
-        return isDeleted 
+        return isDeleted
     }
     // Tỉnh tổng tiền các sản phẩm trong giỏ hàng
-    static getTotalMoney(userID){
+    static getTotalMoney(userID) {
         const myList = cart.getCartList(userID)
-        if(!myList || myList.length === 0) return 0;
+        if (!myList || myList.length === 0) return 0;
         let sum = 0;
         sum = myList.reduce((total, cartItem) => {
-           return total + cartItem.totalPrice
+            return total + cartItem.totalPrice
         }, 0)
         return sum;
     }

@@ -1,4 +1,4 @@
-
+const modalContainer = $('.modal')
 const modal = $('.modal__body')
 const header = document.querySelector('.header');
 const productDetail = $('.product-detail')
@@ -12,10 +12,16 @@ console.log(productCart)
 const toast = $('.toast__wrapper')
 const btnCloseToast = $('.toast__icon-close')
 const toastProgress = $('.toast__progress')
+// modalContainer.addEventListener('click', (e) =>{
+//     e.stopPropagation()
+//     closeDetailProduct()
+//     closeCartModal()
+// })
+
 function showModal() {
     modal.classList.add('active')
     //Sửa lỗi filterLabel, next prev btn ở slider bị z-index cùng cấp với chi tiết sản phẩm
-    filterLabel.classList.add('inactive')
+    // filterLabel.classList.add('inactive')
     prevbtn.style.zIndex = '0'
     nextbtn.style.zIndex = '0'
 
@@ -25,7 +31,7 @@ function hideModal() {
     modal.classList.remove('active')
     //Sửa lỗi filterLabel, next prev btn ở slider bị z-index cùng cấp với chi tiết sản phẩm
 
-    filterLabel.classList.remove('inactive')
+    // filterLabel.classList.remove('inactive')
     prevbtn.style.zIndex = '1'
     nextbtn.style.zIndex = '1'
 
@@ -160,7 +166,9 @@ btnBuyNow.addEventListener('click', () => {
         )
     }
 })
-
+productCart.addEventListener("click",(e) => {
+    e.stopPropagation()
+})
 const productCartClose = $('.modal__cart-close')
 productCartClose.addEventListener('click', () => {
     closeCartModal()
@@ -255,9 +263,15 @@ btnDangNhap.addEventListener("click", e => {
     // LoginPopupOpen();
 });
 
-User.setLoginState(2)
 
 
+// Click vào giỏ hàng
+const headerCartBtn = $('.header__navbar-cart-icon')
+
+headerCartBtn.addEventListener("click", e => {
+    e.preventDefault();
+    openCartModal();
+})
 
 
 
