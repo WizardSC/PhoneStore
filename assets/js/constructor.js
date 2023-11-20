@@ -182,6 +182,21 @@ class cart {
             }
         })
     }
+    //Remove sản phẩm khỏi giỏ hàng
+    static removeCartItem(userID, cartID){
+        const myList= cart.getCartList(userID)
+        if(!myList || myList.length === 0) return null;
+        let isDeleted = false
+        myList.forEach((item, index) => {
+            if(item.cartID === cartID){
+                myList.splice(index,1)
+                if(myList === null) myList = [];
+                User.updateUserCart(userID, myList)
+                isDeleted = true
+            }
+        })
+        return isDeleted 
+    }
     // Tỉnh tổng tiền các sản phẩm trong giỏ hàng
     static getTotalMoney(userID){
         const myList = cart.getCartList(userID)
