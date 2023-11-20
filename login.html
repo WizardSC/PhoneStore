@@ -4,70 +4,105 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/css/login.css">
-    <script src="assets/js/login.js"></script>
+    <link rel="stylesheet" href="assets/css/loginForm.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <title>Document</title>
 </head>
 
 <body>
-    <div>
-        <div class="app">
-            <button id="test" onclick="LoginPopupOpen()">Here</button>
-            <div id="form">
-                <div id="formContainer">
-                    <div class="loginForm" id="loginPopup">
-                        <div class="loginForm__title">
-                            <h3>ĐĂNG NHẬP</h3>
-                        </div>
-                        <form action="" class="loginForm__input">
-                            <div class="loginForm__textfield">
-                                <label for="username" title="Nhập tên đăng nhập">Tên đăng nhập</label>
-                                <input type="text" name="" id="username" required>
+    <div class="app">
+        <button onclick="LoginPopupOpen()" class="btn">dang nhap</button>
+    </div>
+    <div class="form" id="form">
+        <div class="container center">
+            <div class="container__left">
+                <div class="container__form center">
+                    <div class="form-content__login login center" id="login">
+                        <h3 class="form-content__title title">Đăng nhập</h3>
+                        <div class="span"></div>
+                        <form name="login-form" id="login-form">
+                            <div class="form-content__input">
+                                <div class="icon"><i class="fa-solid fa-user"></i></div>
+                                <input name="username" type="text" placeholder="Tên đăng nhập">
                             </div>
-                            <div class="loginForm__textfield">
-                                <label for="password" title="Nhập mật khẩu">Mật khẩu</label>
-                                <input type="password" name="" id="password" required>
+                            <div class="alert-username alert"></div>
+                            <div class="form-content__input">
+                                <div class="icon"><i class="fa-solid fa-lock"></i></div>
+                                <input name="password" type="password" placeholder="Mật khẩu" class="password">
+                                <div class="icon">
+                                    <i class="fa-solid fa-eye hide-password" onclick="HidePassword()"></i>
+                                    <i class="fa-solid fa-eye-slash show-password" onclick="ShowPassword()"></i>
+                                </div>
                             </div>
-                            <div class="loginForm__forgotPassword">
-                                <p>Quên mật khẩu?</p>
-                            </div>
-                            <button class="loginForm__loginButton" type="submit">Đăng nhập</button>
-                            <div class="loginForm__signUpQuestion">
+                            <div class="alert-password alert"></div>
+                            <button type="submit" class="btn" onclick="return ValidateFormLogin()">Đăng nhập</button>
                         </form>
-                        <div class="loginForm__Question">
-                            <p>Chưa có tài khoản?</p>
-                            <p class="loginForm__loginSignUpQuestion" onclick="SignUpPopupOpen()">Đăng ký ngay</p>
-                        </div>
+                    </div>
+                    <div class="form-content__register register center" id="register">
+                        <h3 class="form-content__title title">Đăng ký</h3>
+                        <div class="span"></div>
+                        <form name="register-form" id="register-form">
+                            <div class="form-content__input">
+                                <i class="fa-solid fa-id-card"></i>
+                                <input name="full-name" type="text" placeholder="Họ và tên">
+                            </div>
+                            <div class="alert-full-name alert"></div>
+                            <div class="form-content__input">
+                                <i class="fa-solid fa-user"></i>
+                                <input name="username" type="text" placeholder="Tên đăng nhập">
+                            </div>
+                            <div class="alert-username alert"></div>
+                            <div class="form-content__input">
+                                <i class="fa-solid fa-envelope"></i>
+                                <input name="email" type="text" placeholder="Email">
+                            </div>
+                            <div class="alert-email alert"></div>
+                            <div class="form-content__input">
+                                <i class="fa-solid fa-lock"></i>
+                                <input name="password" type="password" placeholder="Mật khẩu" class="password">
+                                <i class="fa-solid fa-eye hide-password" onclick="HidePassword()"></i>
+                                <i class="fa-solid fa-eye-slash show-password" onclick="ShowPassword()"></i>
+                            </div>
+                            <div class="alert-password alert"></div>
+                            <div class="form-content__input">
+                                <i class="fa-solid fa-lock"></i>
+                                <input name="repeat-password" type="password" placeholder="Nhập lại mật khẩu" class="repeat-password">
+                                <i class="fa-solid fa-eye hide-password" onclick="HideRepeatPassword()"></i>
+                                <i class="fa-solid fa-eye-slash show-password" onclick="ShowRepeatPassword()"></i>
+                            </div>
+                            <div class="alert-repeat-password alert"></div>
+                            <button type="submit" class="btn" onclick="return ValidateFormRegister()">Đăng ký</button>
+                        </form>
                     </div>
                 </div>
-
-
-                <div class="loginForm" id="signUpPopup">
-                    <div class="loginForm__title">
-                        <h3>ĐĂNG KÝ</h3>
+            </div>
+            <div class="container__right">
+                <div class="container__sidebar center">
+                    <div class="form-sidebar__login login center" id="login">
+                        <h3 class="form-sidebar__title title">Bạn chưa có tài khoản?</h3>
+                        <div class="form-sidebar__description">
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium voluptatum voluptas,
+                                molestias id quibusdam pariatur. Modi nostrum sint praesentium culpa, ipsa, eligendi
+                                alias
+                                veritatis dolorum optio, atque accusantium consequatur sapiente.</p>
+                        </div>
+                        <button class="btn" onclick="RegisterPopupOpen()">Đăng ký</button>
                     </div>
-                    <form action="" class="loginForm__input">
-                        <div class="loginForm__textfield">
-                            <label for="username" title="Nhập tên đăng nhập">Tên đăng nhập</label>
-                            <input type="text" name="" id="username" required>
+                    <div class="form-sidebar__register register center" id="register">
+                        <h3 class="form-sidebar__title title">Bạn đã có tài khoản?</h3>
+                        <div class="form-sidebar__description">
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium voluptatum voluptas,
+                                molestias id quibusdam pariatur. Modi nostrum sint praesentium culpa, ipsa, eligendi
+                                alias
+                                veritatis dolorum optio, atque accusantium consequatur sapiente.</p>
                         </div>
-                        <div class="loginForm__textfield">
-                            <label for="email" title="Nhập mật khẩu">Email</label>
-                            <input type="email" name="" id="email" required>
-                        </div>
-                        <div class="loginForm__textfield">
-                            <label for="password" title="Nhập mật khẩu">Mật khẩu</label>
-                            <input type="password" name="" id="password" required>
-                        </div>
-                        <button class="loginForm__loginButton" type="submit">Đăng ký</button>
-                    </form>
-                    <div class="loginForm__Question">
-                        <p>Đã có tài khoản?</p>
-                        <p class="loginForm__loginSignUpQuestion" onclick="LoginPopupOpen()">Đăng nhập</p>
+                        <button class="btn" onclick="LoginPopupOpen()">Đăng nhập</button>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+    <script src="assets/js/loginForm.js"></script>
 </body>
 
 </html>
