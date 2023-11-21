@@ -1,4 +1,4 @@
-
+const modalContainer = $('.modal')
 const modal = $('.modal__body')
 const header = document.querySelector('.header');
 const productDetail = $('.product-detail')
@@ -12,10 +12,16 @@ console.log(productCart)
 const toast = $('.toast__wrapper')
 const btnCloseToast = $('.toast__icon-close')
 const toastProgress = $('.toast__progress')
+// modalContainer.addEventListener('click', (e) =>{
+//     e.stopPropagation()
+//     closeDetailProduct()
+//     closeCartModal()
+// })
+
 function showModal() {
     modal.classList.add('active')
     //Sửa lỗi filterLabel, next prev btn ở slider bị z-index cùng cấp với chi tiết sản phẩm
-    filterLabel.classList.add('inactive')
+    // filterLabel.classList.add('inactive')
     prevbtn.style.zIndex = '0'
     nextbtn.style.zIndex = '0'
 
@@ -25,7 +31,7 @@ function hideModal() {
     modal.classList.remove('active')
     //Sửa lỗi filterLabel, next prev btn ở slider bị z-index cùng cấp với chi tiết sản phẩm
 
-    filterLabel.classList.remove('inactive')
+    // filterLabel.classList.remove('inactive')
     prevbtn.style.zIndex = '1'
     nextbtn.style.zIndex = '1'
 
@@ -87,6 +93,7 @@ function openDetailProduct(productID) {
     priceOld.innerText = money.formatCurrencytoVND(product.price_old)
     priceCurrent.innerText = money.formatCurrencytoVND(product.price_current)
     img.setAttribute("src", product.img)
+    btnAddToCart.setAttribute("onclick", `addToCart(${productID})`);
 
 
 
@@ -125,12 +132,15 @@ function showToastMessage(icon, title, description, color) {
     }
 
 }
-btnAddToCart.addEventListener("click", () => {
+function addToCart(productID){
     const loginID = User.checkLoginId()
     if (loginID) {
+        console.log("a" + productID)
+        console.log(loginID)
+        cart.addItemCart(loginID,productID,1)
         closeDetailProduct()
         openCartModal()
-        
+
     }
     else {
         showToastMessage(
@@ -140,12 +150,13 @@ btnAddToCart.addEventListener("click", () => {
             "#FF4444"
         )
     }
-})
+}
+
 btnBuyNow.addEventListener('click', () => {
     const loginID = User.checkLoginId()
     if (loginID) {
         hideModal()
-        
+
     } else {
         showToastMessage(
             "fa-solid fa-circle-exclamation",
@@ -155,24 +166,86 @@ btnBuyNow.addEventListener('click', () => {
         )
     }
 })
-
+productCart.addEventListener("click",(e) => {
+    e.stopPropagation()
+})
 const productCartClose = $('.modal__cart-close')
-productCartClose.addEventListener('click', () =>{
+productCartClose.addEventListener('click', () => {
     closeCartModal()
 })
 // Cart
-function openCartModal(){
+function openCartModal() {
     showModal()
     productCart.classList.add('active')
+    renderProductCart()
 }
-function closeCartModal(){
+function closeCartModal() {
     hideModal()
     productCart.classList.remove('active')
 }
-function renderProductCart(){
+function renderProductCart() {
     const userID = User.checkLoginId()
+    const userCart = cart.getCartList(userID)
+    const cartContainer = $('.modal__cart-container')
     let html = '';
-    
+    userCart.forEach(cartItem => {
+        html += `
+        <div class="modal__cart-item" data-value="${cartItem.cartID}">
+            <div class="modal__cart-left">
+                <img src="${cartItem.productIMG}"
+                    alt="" class="modal__cart-item-img">
+            </div>
+            <div class="model__cart-right">
+                <div class="modal__cart-item-title">
+                    ${cartItem.storeProduct.name}
+                </div>
+                <div class="modal__cart-item-counter">
+                    <div class="modal__cart-item-decrease">
+                        <i class="fa-solid fa-angle-left"></i>
+                    </div>
+                    <div class="modal__cart-item-quantity">${cartItem.quantity}</div>
+                    <div class="modal__cart-item-increase">
+                        <i class="fa-solid fa-angle-right"></i>
+                    </div>
+                </div>
+
+                <div class="modal__cart-item-price">
+                    ${money.formatCurrencytoVND(cartItem.product_price)}
+                </div>
+            </div>
+            <div class="modal__cart-item-close">
+                <i class="fa-solid fa-trash"></i>
+            </div>
+        </div>
+        `
+    })
+
+    cartContainer.innerHTML = html;
+    const totalPriceCart = $('.modal__cart-info-price')
+    totalPriceCart.innerText = money.formatCurrencytoVND(cart.getTotalMoney(userID))
+    const listCartItems = $$('.modal__cart-item')
+    listCartItems.forEach(cartItem => {
+        const cartID = parseInt(cartItem.getAttribute('data-value'))
+        const btnIncrease = cartItem.querySelector('.modal__cart-item-increase')
+        const btnDecrease = cartItem.querySelector('.modal__cart-item-decrease')
+        const btnDeleteItem = cartItem.querySelector('.modal__cart-item-close')
+        btnDecrease.addEventListener('click', () => {
+            const myCart = cart.getCartID(userID, cartID)
+            if (myCart.quantity > 1) {
+                cart.updateCartItemQuantity(userID, cartID, -1)
+                renderProductCart()
+            }
+        })
+        btnIncrease.addEventListener('click', () => {
+            cart.updateCartItemQuantity(userID, cartID, 1)
+            renderProductCart()
+        })
+        btnDeleteItem.addEventListener('click', () => { 
+            cart.removeCartItem(userID, cartID)
+            renderProductCart()
+        })
+    })
+
 }
 // Toast
 btnCloseToast.addEventListener("click", () => {
@@ -190,4 +263,15 @@ btnDangNhap.addEventListener("click", e => {
     // LoginPopupOpen();
 });
 
-User.setLoginState(1)
+
+
+// Click vào giỏ hàng
+const headerCartBtn = $('.header__navbar-cart-icon')
+
+headerCartBtn.addEventListener("click", e => {
+    e.preventDefault();
+    openCartModal();
+})
+
+
+

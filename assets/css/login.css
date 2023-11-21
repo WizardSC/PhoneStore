@@ -1,118 +1,186 @@
-:root {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    --backgroundColor: #d80018;
-    --highlightedColor: #df3346;
-}
 
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
-.app {
-    height: 10000px;
-}
-#form {
+.form {
     width: 100%;
     height: 100%;
-    background-color: #3a3b3c50;
     position: fixed;
     top: 0;
+    background-color: #33333350;
     display: none;
 }
-#loginPopup,
-#signUpPopup {
-    display: none;
-}
-#formContainer {
+
+.center {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 350px;
-    height: 350px;
 }
 
-
-.loginForm {
-    width: 350px;
-    height: 350px;
+/* CONTAINER */
+.login-container {
+    width: 80%;
+    max-width: 750px;
+    height: 400px;
+    border: 0;
+    border-radius: 15px;
     background-color: white;
-    text-align: center;
     justify-content: center;
-    border: 1px solid black;
-    border-radius: 15px;
-}
-
-.loginForm__title {
-    height: 50px;
-    background-color: var(--backgroundColor);
-    border-radius: 15px 15px 0 0;
-    color: white;
-    margin-bottom: 20px;
-    line-height: 50px;
-    cursor: default;
-}
-
-.loginForm__textfield label {
-    display: inline-block;
-    width: 80%;
-    font-size: 14px;
-    text-align: left;
-}
-
-.loginForm__textfield input {
-    width: 80%;
-    padding: 5px 10px 5px 10px;
-    margin: 0 0 15px 0;
-    border: 0;
-    border-bottom: 1px solid black;
-    outline: 0;
-    font-size: 16px;
-}
-
-.loginForm__forgotPassword {
-    width: 80%;
-    padding: 0 0 10px 0;
-    font-size: 13px;
-    text-align: right;
-    display: inline-block;
-}
-
-.loginForm__loginButton {
-    width: 80%;
-    padding: 10px 15px;
-    background-color: var(--backgroundColor);
-    color: white;
-    font-size: 18px;
-    border-radius: 15px;
-    border: 0;
-}
-
-.loginForm__loginButton:hover {
-    background-color: var(--highlightedColor);
-}
-
-.loginForm__Question {
-    padding: 7px 0;
     display: flex;
-    justify-content: center;
+    font-size: 16px;
+    overflow: hidden;
 }
 
-.loginForm__Question p {
-    padding: 3px;
+.container__left,
+.container__right {
+    width: 50%;
+    position: relative;
 }
 
-.loginForm__loginSignUpQuestion,
-.loginForm__forgotPassword {
-    color: blue;
-
+.container__left {
+    text-align: center;
 }
 
-.loginForm__loginSignUpQuestion:hover,
-.loginForm__forgotPassword:hover {
+.container__form,
+.container__sidebar {
+    width: 100%;
+    height: 100%;
+}
+
+.span {
+    background-color: #333;
+    height: 1px;
+    display: block;
+    margin: 0 0 20px 0;
+}
+
+.form-content__input {
+    width: 100%;
+    text-align: center;
+    display: flex;
+    background-color: #EBE3D5;
+    border-radius: 10px;
+    font-size: 16px;
+    overflow: hidden;
+}
+
+.form-content__input i {
+    width: 35px;
+    line-height: 35px;
+    background-color: #B0A695;
+    border-radius: 10px;
+}
+
+.form-content__input input {
+    width: 205px;
+    height: 35px;
+    padding: 5px 5px;
+    background-color: transparent;
+    border: 0;
+    outline: 0;
+}
+
+.form-content__input .show-password,
+.form-content__input .hide-password {
+    background-color: transparent;
     cursor: pointer;
-    text-decoration: underline;
 }
 
-/* SIGN UP */
+.form-content__input .hide-password {
+    display: none;
+}
+
+.container__right {
+    text-align: right;
+    color: #fff;
+    background-color: var(--primary-color);
+}
+
+.form-content__login,
+.form-content__register {
+    width: 275px;
+}
+
+.form-sidebar__login,
+.form-sidebar__register {
+    width: 90%;
+}
+
+.form-sidebar__description p {
+    margin: 0 0 30px 0;
+}
+
+.container__right .btn {
+    border: 1px solid #fff;
+}
+
+.title {
+    /* height: 60px; */
+    text-transform: uppercase;
+    font-size: 23px;
+    padding: 10px 0;
+}
+
+.btn {
+    width: 120px;
+    height: 40px;
+    margin: 5px 0 0 0;
+    border: 0;
+    border-radius: 10px;
+    background-color: var(--primary-color);
+    color: #fff;
+    cursor: pointer;
+}
+
+.alert {
+    text-align: left;
+    font-size: 12px;
+    margin: 3px;
+    height: 12px;
+    font-style: italic;
+    color: red;
+}
+.question-responsive {
+    display: none;
+}
+.close-button {
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    background-color: transparent;
+    color: var(--white-color);
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    cursor: pointer;
+}
+@media only screen and (max-width: 740px) {
+    .login-container {
+        min-height: 500px;
+        max-width: 350px;
+    }
+    .container__right {
+        display: none;
+    }
+    .question-responsive {
+        display: block;
+        margin-top: 10px;
+        color: var(--text-color);
+    }
+    .question-responsive a {
+        text-decoration: none;
+        color: var(--primary-color);
+    }
+    .close-button {
+        color: var(--text-color);
+    }
+}
+
+@media only screen and (min-width: 740px) and (max-width: 1024px){
+    .login-container {
+        height: 360px;
+    }
+    .span {
+        display: none;
+    }
+}
+
