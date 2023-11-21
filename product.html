@@ -37,11 +37,22 @@
                     <li><a href="index.html" >Trang chủ</a></li>
                     <li><a href="product.html" class="active">Sản phẩm</a></li>
                     <li><a href="contact.html">Liên lạc</a></li>
-                    <li><a href=""><i class="fa-solid fa-basket-shopping "></i></a></li>
+                    <li class="shopping"><a href=""><i class="fa-solid fa-basket-shopping "></i></a>
+                        <!-- <span class="quantity">0</span> -->
+                    </li>
+                    
                     <li><a href="" class="login active1">Đăng nhập</a></li>
                     <li ><a href="" class="user " ><span>Nguyen </span><i class="fa-solid fa-user   "></i></a></li>
                 </ul>
-                
+                <!-- Giỏ hàng -->
+                <!-- <div class="cart">
+                    <h1>Giỏ hàng</h1>
+                    <ul class="cart__listCart"></ul>
+                    <div class="cart__checkOut">
+                        <div class="cart__checkOut-total">0</div>
+                        <div class="cart__checkOut-closeShopping">Đóng</div>
+                    </div>
+                </div> -->
                 <!-- Navbar khi responsive -->
                 <nav class="nav__list">
                   <label for="nav-input" class="nav-close">
@@ -401,7 +412,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>  
         <!-- Alert -->
         <div class="toast">
             <div class="toast__wrapper">
@@ -431,6 +442,7 @@
     <script src="assets/js/localStorage.js"></script>
     <script src="assets/js/product.js"></script>
     <script src="assets/js/modal.js"></script>
+    <script src="assets/js/cart.js"></script>
 
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>

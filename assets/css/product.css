@@ -133,7 +133,6 @@
     width:100%;
     
 }
-
 .navbar-input:checked ~ .nav__list{
     transform:translateX(0%);
 }
@@ -149,6 +148,74 @@
     list-style-type:none;
 
 }
+/* ----------------------------------------------------Giỏ hàng---------------------------*/
+/* .header__navbar-list .shopping{
+    position:relative;
+}
+.header__navbar-list .quantity{
+    background-color:white;
+    color:#D70018;
+    display:flex;
+    border-radius:50%;
+    position:absolute;
+    top:-5px;
+    left:57%;
+    padding:2px 7px;
+    font-size:10px;
+    align-items:center;
+    justify-content: center;;
+}
+.cart{
+    position:fixed;
+    top:0;
+    right:0;
+    /* left:100%; */
+    /* width:500px;
+    background-color:white;
+    height:100vh; */
+    /* transition:0.5s; */
+    /* display:none; */
+    /* transform:translateX(100%);
+    transition:0.5s;
+}
+.cart h1{
+    color:black;
+    font-weight:100;
+    margin:0;
+    padding: 0 20px;
+    height:80px;
+    display:flex;
+    align-items:center;
+}
+.cart .cart__checkOut{
+    position:absolute;
+    bottom:0;
+    width:100%;
+    display:grid;
+    grid-template-columns: repeat(2,1fr);
+
+}
+.cart .cart__checkOut div{
+    background-color:#D70018;
+    width:100%;
+    height:40px;
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    font-weight:bold;
+    cursor:pointer;
+}
+.cart .cart__checkOut div:nth-child(1){
+    color:white;
+}
+.cart .cart__checkOut div:nth-child(2){
+    background:white;
+}
+
+.cart.activeCart{
+    transform: translateX(0%);
+} */ 
+
 /*------slider-product------*/
 /*------slider-product------*/
 .slider-product-one-content {
