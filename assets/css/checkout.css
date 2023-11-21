@@ -1,0 +1,236 @@
+/* Checkout content */
+.content{
+    margin-top: 100px;
+}
+
+.info-account{
+    background-color: white;
+    box-shadow: 0 1px 10px rgba(0, 0, 0, .5);
+    border-radius: 5px;
+    padding: 8px 20px;
+    padding-top: 20px;
+    display: none;
+}
+
+.info-account.active{
+    display: block;
+}
+
+.info-account__heading,
+.info-invoice__heading{
+    font-size: 2.2rem;
+    color: var(--primary-color)
+
+}
+.info-account__heading{
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 2.4rem;
+    font-weight: 530;
+}
+.info-account__content{
+    margin-top: 10px;
+}
+
+.info-account__wrapper{
+    display: flex;
+    padding: 12px 0;
+    align-items: center;
+}
+
+.info-account__label{
+    font-size: 1.6rem;
+    font-weight: 500;
+    width: 150px;
+}
+
+.info-account__input{
+    flex-grow: 1;
+    padding: 8px;
+    outline: none;
+    border-radius: 4px;
+    font-size: 1.6rem;
+}
+
+.info-account__input:focus{
+    border: 2px solid var(--border-hover-color);
+    border-radius: 4px;
+
+
+}
+.info-account__btn-wrapper{
+    display: flex;
+    justify-content: center;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.info-account__btn{
+    border: 1px solid var(--primary-color);
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    font-weight: bold;
+    text-align: center;
+    font-size: 1.8rem;
+    padding: 12px;
+    width: max-content;
+    border-radius: 3px;
+    user-select: none;
+}
+.info-account__btn:hover{
+    opacity: 0.8;
+    cursor: pointer;
+}
+.info-address{
+    background-color: white;
+    box-shadow: 0 1px 10px rgba(0, 0, 0, .5);
+    border-radius: 5px;
+    padding: 8px 20px;
+    padding-top: 20px;
+    display: none;
+}
+
+.info-address.active{
+    display: block;
+}
+
+.info-address__header{
+    display: flex;
+    align-items: center;
+    font-size: 1.8rem;
+    color: var(--primary-color);
+}
+.info-address__header i{
+    padding-right: 10px;
+}
+
+.info-address__content{
+    display: flex;
+    align-items: center;
+}
+
+.info-address__left{
+    padding: 8px;
+}
+.info-address__label{
+    padding: 10px 4px;
+    padding: 15px 0px;
+    display: flex;
+    align-items: center;
+}
+
+.info-address__label span{
+    font-size: 1.5rem;
+    font-weight: 550;
+    width: 100px;
+    padding-right: 18px;
+    align-items: center;
+    justify-content: center;
+}
+
+.info-address__title{
+    font-size: 1.5rem;
+    padding: rgna()
+}
+
+
+.info-address__button{
+    border: 1px solid var(--primary-color);
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    font-weight: bold;
+    height: 40px;
+    text-align: center;
+    font-size: 1.8rem;
+    padding: 12px;
+    width: max-content;
+    border-radius: 3px;
+    user-select: none;
+    margin-left: 66px;
+}
+
+.info-address__button:hover{
+    opacity: 0.8;
+}
+.info-invoice__content{
+    margin-top: 12px;
+}
+.info-invoice__item{
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    margin-bottom: 10px;
+    padding: 8px;
+    width: 100%;
+}
+.info-invoice{
+    margin-top: 20px;
+    background-color: white;
+    box-shadow: 0 1px 10px rgba(0, 0, 0, .5);
+    border-radius: 5px;
+    padding: 8px 20px;
+    padding-top: 20px;
+}
+
+.info-invoice__header{
+    display: flex;
+    justify-content: space-between;
+    padding: 6px;
+
+    border-bottom: 1px solid #e3e3e3;
+}
+
+.info-invoice__label{
+    font-size: 1.4rem;
+    padding-right: 8px;
+}
+
+.info-invoice__number{
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.info-invoice__status{
+    font-size: 1.6rem;
+    color: var(--primary-color);
+    
+}
+
+.info-invoice__content{
+    flex-grow: 1;
+    
+}
+
+.info-invoice__wrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    
+}
+
+.info-invoice__container{
+    padding: 8px;
+}
+.info-invoice__order-date-wrap,
+.info-invoice__total-wrap{
+    padding: 8px;
+}
+
+.info-invoice__order-date-label,
+.info-invoice__total-label{
+    font-size: 1.5rem;
+}
+
+.info-invoice__order-time,
+.info-invoice__total-price{
+    font-size: 1.6rem;
+    font-weight: 540;
+}
+
+.info-invoice__details-btn{
+    padding: 8px 16px;
+    border: 2px solid #e04040;
+    border-radius: 10px;
+    width: 120px;
+    height: max-content;
+    font-size: 1.5rem;
+    text-align: center;
+}

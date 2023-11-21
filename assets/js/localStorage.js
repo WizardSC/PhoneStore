@@ -35,3 +35,8 @@ if (User.getUsers() === null) {
 if(User.checkLoginId() === null){
     User.setLoginState()
 }
+
+if(Invoice.getInvoices() === null){
+    Invoice.loadInvoices([])
+    //truyền vào 1 mảng rỗng
+}
