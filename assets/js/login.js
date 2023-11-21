@@ -121,11 +121,7 @@ function ValidateUsername(username, alertUsername) {
     } else if (username.value.match(usernameRegex) == null) {
         alertUsername.innerHTML = `*Các kí tự được chấp nhận là a-z, A-Z và 0-9`;
         check = check * 0;
-    }
-    else {
-        alertUsername.innerHTML = "";
-    }
-    if (!User.isExistUsername(username.value)) {
+    } else if (!User.isExistUsername(username.value)) {
         alertUsername.innerHTML = `*Tên đăng nhập không tồn tại trên hệ thống`;
         usernameLogin = null;
         check = check * 0;
@@ -200,7 +196,7 @@ function LoginFunction(event) {
     };
     loginFormDataObj.username = loginFormData.get("username");
     loginFormDataObj.password = loginFormData.get("password");
-    closeFormLogin()
+    closeFormLogin();
     location.reload(); //tải lại trang
 
 };
