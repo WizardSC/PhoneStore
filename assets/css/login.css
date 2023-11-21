@@ -13,10 +13,6 @@
     box-sizing: border-box;
 }
 
-body {
-    height: 10000px;
-}
-
 .form {
     width: 100%;
     height: 100%;
