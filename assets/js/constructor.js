@@ -10,7 +10,7 @@ class Product {
         this.ram = ram
         this.rom = rom
         this.sale = sale
-    }
+    }   
     static getProducts() {
         if (localStorage.listProducts) {
             return JSON.parse(localStorage.listProducts);

@@ -256,6 +256,6 @@ function changeNoneLoggedUser() {
 const logOutBtn = $('#logout__btn')
 logOutBtn.addEventListener('click',() => {
     User.logOut();
-    location.reload()
+    location.reload();
 })
 

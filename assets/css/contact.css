@@ -81,6 +81,7 @@
     font-weight:1300;
     font-family:Helvetica, Arial, sans-serif;
     color:#7a0f1c;
+    margin-top: 12px;
 }
 .fa-phone-volume:before, .fa-volume-control-phone:before{
     margin-left:7px;
@@ -330,7 +331,7 @@
         width: 100%;
         display: block;
         /* left: 25%; */
-        background-image: linear-gradient(0deg , #fff , rgb(190, 98, 98));
+        /* background-image: linear-gradient(0deg , #fff , rgb(190, 98, 98)); */
         border-radius: 20px;
     }
     .logo{
@@ -342,4 +343,5 @@
     color: red;
     font-size: 15px;
     margin: 3px 0;
+    line-height: 1.1;
 }
