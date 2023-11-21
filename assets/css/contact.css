@@ -65,7 +65,7 @@
     height : 100%;
     display: block;
     text-align: center;
-    padding: 20px;
+    padding: 20px;  
     border:1px solid #7a0f1c;
     border-radius:4px;
     line-height:10px;
@@ -74,6 +74,7 @@
 .title{
     display: flex;
     justify-content: center;
+    margin-bottom: 10px;
 }
 .title-text{
     margin: 5px;
@@ -81,6 +82,7 @@
     font-weight:1300;
     font-family:Helvetica, Arial, sans-serif;
     color:#7a0f1c;
+    margin-top: 8px;
 }
 .fa-phone-volume:before, .fa-volume-control-phone:before{
     margin-left:7px;
@@ -94,7 +96,6 @@
 }
 .icon-title{
     font-size: 25px;
-    margin-top: 3px;
 }
 .text-describe{
     font-size: 13px;
@@ -312,6 +313,9 @@
     .logo{
         justify-content: center;
     }
+    .text-rule{
+        line-height: 1.6;
+    }
 }
 /* Tablet */
 @media only screen and (min-width : 740px) and (max-width : 1240px)
@@ -330,7 +334,7 @@
         width: 100%;
         display: block;
         /* left: 25%; */
-        background-image: linear-gradient(0deg , #fff , rgb(190, 98, 98));
+        /* background-image: linear-gradient(0deg , #fff , rgb(190, 98, 98)); */
         border-radius: 20px;
     }
     .logo{
