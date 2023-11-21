@@ -4,7 +4,6 @@ function Validator(option) {
   btnSubmitInContactForm.addEventListener("click", function (e) {
     e.preventDefault();
   });
-  var selectorRules = {};
   var formElenment = document.querySelector(option.form);
   if (formElenment) {
     option.rules.forEach(function (rule) {
@@ -31,7 +30,6 @@ function Validator(option) {
         };
       }
     });
-    console.log(selectorRules);
   }
 }
 Validator.isRequire = function (selector) {
@@ -85,7 +83,7 @@ Validator.isUserName = function (selector) {
       } else if (value.length > 30) {
         return "Tên không được quá 30 ký tự";
       } else if (value.length < 3) {
-        return " Tên quá ngắn ";
+        return " Tên không hợp lệ ";
       } else {
         return undefined; // Không có lỗi
       }
