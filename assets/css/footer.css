@@ -15,30 +15,28 @@
   justify-content: space-between;
   margin-right: 5px;
 }
-p{
+.pcol2{
   padding-top: 10px;
   font-size: medium;
   padding-bottom: 10px;
   line-height: 1.5;
 }
-a{
+.link .link-col3{
   font-size: 17px;
   color: black;
   text-decoration: none;
 }
-h3{
+.h3{
   font-family: Arial, Helvetica, sans-serif;
   font-size: 16px;
   padding-bottom: 15px;
 }
-li{
-  padding-bottom: 10px;
-}
-a:hover{
+.link .link-col3:hover{
   color:red;
 }
 /*-------column1---------*/
 #brand{
+  margin-top: 5px;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 19px;
 }
@@ -61,10 +59,13 @@ a:hover{
   padding-top: 15px;
   padding-bottom: 15px;
 }
+.ul-list .link{
+  padding-bottom: 10px;
+}
 ul{
-  padding: 0;
   font: none;
   list-style: none;
+  padding: 0;
 }
 .footer-social-logo{
   width: 100%;
@@ -79,7 +80,7 @@ ul{
   width: 25px;
   height: 25px;
 }
-h4{
+.h4{
   font-family: Arial, Helvetica, sans-serif;
   font-size: 15px;
   padding-top: 10px;
