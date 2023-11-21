@@ -101,7 +101,7 @@ function ValidateFullName(fullName, alertFullName) {
     if (fullName.value == "") {
         alertFullName.innerHTML = `*Họ và tên không được bỏ trống`;
         check = check * 0;
-    } else if (/\d/.test(fullName.value)){
+    } else if (/\d/.test(fullName.value)) {
         alertFullName.innerHTML = `*Họ và tên không được có số`;
         check = check * 0;
     } else {
@@ -109,6 +109,7 @@ function ValidateFullName(fullName, alertFullName) {
     }
     return check;
 }
+let usernameLogin
 function ValidateUsername(username, alertUsername) {
     let check = 1;
     if (username.value == "") {
@@ -123,6 +124,15 @@ function ValidateUsername(username, alertUsername) {
     }
     else {
         alertUsername.innerHTML = "";
+    }
+    if (!User.isExistUsername(username.value)) {
+        alertUsername.innerHTML = `*Tên đăng nhập không tồn tại trên hệ thống`;
+        usernameLogin = null;
+        check = check * 0;
+    }
+    else {
+        alertUsername.innerHTML = "";
+        usernameLogin = username.value;
     }
     return check;
 }
@@ -154,6 +164,14 @@ function ValidatePassword(password, alertPassword) {
     } else {
         alertPassword.innerHTML = "";
     }
+    if (usernameLogin != null) {
+        if (User.checkUserToLogin(usernameLogin, password.value)) {
+            alertPassword.innerHTML = "";
+        } else {
+            alertPassword.innerHTML = `*Sai mật khẩu`;
+            check = check * 0;
+        }
+    }
     return check;
 }
 function ValidateRepeatPassword(password, repeat_password, alertRepeatPassword) {
@@ -182,7 +200,9 @@ function LoginFunction(event) {
     };
     loginFormDataObj.username = loginFormData.get("username");
     loginFormDataObj.password = loginFormData.get("password");
-    console.log(loginFormDataObj);
+    closeFormLogin()
+    location.reload(); //tải lại trang
+
 };
 const registerForm = document.getElementById("register-form");
 registerForm.addEventListener('submit', RegisterFunction);
@@ -201,3 +221,41 @@ function RegisterFunction(event) {
     userArr.push(newUser);
     console.log(userArr[0]);
 };
+
+// Close form
+const btnCloseFormLogin = $('.login__close-form-btn')
+btnCloseFormLogin.addEventListener('click', closeFormLogin)
+
+function closeFormLogin() {
+    form.style.display = 'none';
+}
+
+// Các hàm giúp Đăng nhập hiện thông tin user, đăng xuất hiện nút đăng nhập
+if (User.checkLoginId()) {
+    changeLoggedUser()
+} else {
+    changeNoneLoggedUser()
+}
+
+function changeLoggedUser() {
+    const noneLoggedUser = $('.header__navbar-item--none-logged')
+    const loggedUser = $('.header__navbar-item--logged')
+    const username = $('.header__navbar-username')
+    username.innerText = User.getUserID(User.checkLoginId()).full_name
+    noneLoggedUser.classList.remove('active')
+    loggedUser.classList.add('active')
+}
+
+function changeNoneLoggedUser() {
+    const noneLoggedUser = $('.header__navbar-item--none-logged')
+    const loggedUser = $('.header__navbar-item--logged')
+    noneLoggedUser.classList.add('active')
+    loggedUser.classList.remove('active')
+}
+
+const logOutBtn = $('#logout__btn')
+logOutBtn.addEventListener('click',() => {
+    User.logOut();
+    location.reload()
+})
+

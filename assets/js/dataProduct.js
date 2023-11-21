@@ -93,8 +93,8 @@ const productArr = [
     ),
     new Product(
         "Samsung Galaxy ZFlip 512GB",
-        2990000.0,
-        2190000.0,
+        29990000.0,
+        19990000.0,
         ['https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:80/plain/https://cellphones.com.vn/media/catalog/product/s/a/samsung-galaxy-z-flip-5-256gb_1_5.png'],
         "Samsung",
         ["8 GB"],

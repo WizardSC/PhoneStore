@@ -540,13 +540,13 @@ window.addEventListener("scroll", () => {
 
     }
     if (window.scrollY >= filterTopOffset) {
-        filter.style.position = "fixed";
-        filter.style.top = "0";
-        filter.style.marginTop = "88" + "px";
+        // filter.style.position = "fixed";
+        // filter.style.top = "0";
+        // filter.style.marginTop = "74" + "px";
 
     } else {
-        filter.style.position = "static";
-        filter.style.marginTop = "20" + "px";
+        // filter.style.position = "static";
+        // filter.style.marginTop = "20" + "px";
 
     }
 });
