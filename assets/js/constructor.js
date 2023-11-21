@@ -265,7 +265,7 @@ class money {
 
 class Invoice {
     static total = 0
-    constructor(cartList, userID, orderTime){
+    constructor(cartList, userID, orderTime) {
         this.invoiceID = Invoice.getInvoices() === null ? ++Invoice.total : Invoice.getLastInvoiceID() + 1;
         this.cartList = cartList;
         this.userID = userID;
@@ -281,39 +281,81 @@ class Invoice {
         return false;
     }
     // Lấy danh sách hóa đơn từ local storage trả về mảng
-    static getInvoices(){
-        if(localStorage.listInvoices){
+    static getInvoices() {
+        if (localStorage.listInvoices) {
             return JSON.parse(localStorage.listInvoices);
         }
         return null;
     }
 
     //load mã hóa đơn mới nhất
-    static getLastInvoiceID(){
+    static getLastInvoiceID() {
         const myList = Invoice.getInvoices();
-        if(!myList || myList.length === 0) return null;
+        if (!myList || myList.length === 0) return null;
         return myList[myList.length - 1].invoiceID;
     }
+    //Lấy ra 1 hóa đơn với mã HD truyền vào
+    static getInvoiceByInvoiceID(invoiceID) {
+        const list = Invoice.getInvoices()
+        if (!list || list.length === 0) return null
+        let foundInvoice = null;
+        list.forEach(invoice => {
+            if (invoice.invoiceID === invoiceID) {
+                foundInvoice = invoice
+            }
+        })
+        return foundInvoice;
+    }
+    // Lấy ra tổng tiền của hóa đơn
+    static getTotalPriceOfInvoice(invoiceID) {
+        // const invoice = Invoice.getInvoiceByInvoiceID(invoiceID)
+        // let sum=0;
+        // invoice.cartList.forEach(currentItem => {
+        //     sum += currentItem.totalPrice
+        // })
+        // return sum;
+        const invoice = Invoice.getInvoiceByInvoiceID(invoiceID);
+        if (!invoice) return 0;
+        // Sử dụng reduce để tính tổng giá trị totalPrice
+        const sum = invoice.cartList.reduce((accumulator, currentItem) =>
+            accumulator + currentItem.totalPrice
+            , 0);
+        return sum;
+    }
     //Lấy ra danh sách hóa đơn của 1 User ID
-    static getInvoiceByUserID(userID){
+    static getInvoiceByUserID(userID) {
         const myList = Invoice.getInvoices()
-        if(!myList || myList.length === 0) return []
+        if (!myList || myList.length === 0) return []
         let result = []
         myList.forEach(invoice => {
-            if(invoice.userID === userID){
+            if (invoice.userID === userID) {
                 result.push(invoice)
             }
         })
         return result
     }
     //Thêm 1 sản phẩm vào hóa đơn khi nhấn nút mua ngay
-    static buyNowProduct(userID, productID, quantity){
-        const list = Invoice.getInvoices()    
-        if(!list) return false
+    static buyNowProduct(userID, productID, quantity) {
+        const list = Invoice.getInvoices()
+        if (!list) return false
         let myProduct
-        myProduct = [new ProductInCart(productID, Product.getProductID(productID).price_current,quantity, Product.getProductID(productID).img[0])]
-        list.push(new Invoice(myProduct,userID,Date.now()))
+        myProduct = [new ProductInCart(productID, Product.getProductID(productID).price_current, quantity, Product.getProductID(productID).img[0])]
+        list.push(new Invoice(myProduct, userID, Date.now()))
         Invoice.loadInvoices(list)
-    }  
+    }
 
+}
+
+class time {
+    static getDateTime(timestamp) {
+        var date = new Date(timestamp)
+        var year = date.getFullYear()
+        var month = date.getMonth() + 1
+        var day = date.getDate()
+        var hours = date.getHours()
+        var minutes = date.getMinutes()
+        var seconds = date.getSeconds();
+        var formattedDateTime
+        return formattedDateTime = day + '/' + month + '/' + year + ' ' + hours + ':' + minutes + ':' + seconds;
+    }
 }
