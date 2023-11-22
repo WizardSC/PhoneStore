@@ -41,7 +41,6 @@ function renderListInvoices() {
     let html = ''
     const list = Invoice.getInvoiceByUserID(User.checkLoginId())
     list.forEach(invoice => {
-        console.log(invoice)
         html += `
         <div class="info-invoice__item">
             <div class="info-invoice__header">
@@ -63,14 +62,14 @@ function renderListInvoices() {
                         <span class="info-invoice__order-date-label">
                             Ngày đặt: 
                         </span>
-                        <span class="info-invoice__order-time">${invoice.orderTime}</span>
+                        <span class="info-invoice__order-time">${time.getDateTime(invoice.orderTime)}</span>
                     </div>
                     <div class="info-invoice__total-wrap">
                         <span class="info-invoice__total-label">
                             Tổng tiền:
                         </span>
                         <span class="info-invoice__total-price">
-                            2990000
+                            ${money.formatCurrencytoVND(Invoice.getTotalPriceOfInvoice(invoice.invoiceID))}
                         </span>
                     </div>
                 </div>
@@ -78,12 +77,73 @@ function renderListInvoices() {
                     Xem chi tiết
                 </div>
             </div>
-        </div>
+            <div class="info-invoice__detail">
         `
+
+        invoice.cartList.forEach(itemCart => {
+            html +=
+            `
+                <div class="info-invoice__detail-item">
+                    <img class="info-invoice__detail-img"
+                                            src="${itemCart.productIMG}"
+                                            alt="">
+                        <div class="info-invoice__detail-content">
+                            <div class="info-invoice__detail-name">
+                                ${itemCart.storeProduct.name}
+                            </div>
+                            <div class="info-invoice__detail-price-wrapper">
+                                <span class="info-invoice__detail-label">
+                                    Đơn giá:
+                                </span>
+                                <span class="info-invoice__detail-price">
+                                    ${money.formatCurrencytoVND(itemCart.product_price)}
+                                </span>
+                            </div>
+                            <div class="info-invoice__detail-quantity-wrapper">
+                                <span class="info-invoice__detail-label">
+                                    Số lượng:
+                                </span>
+                                <span class="info-invoice__detail-quantity">
+                                    ${itemCart.quantity}
+                                </span>
+                            </div>
+                        </div>
+                        <div class="info-invoice__detail-content-right">
+                            <span class="info-invoice__detail-price-label">
+                                Tổng tiền:
+                            </span>
+                            <span class="info-invoice__detail-total-price">
+                                ${money.formatCurrencytoVND(itemCart.totalPrice)}
+                            </span>
+                        </div>
+                </div>
+                
+
+            `
+
+        })
+        html += `</div>
+        </div>`;
+        
     })
 
     const invoiceContainer = $('.info-invoice__content')
     invoiceContainer.innerHTML = html
-}
 
+
+}
 renderListInvoices()
+
+const viewDetailInvoices = $$('.info-invoice__details-btn')
+
+Array.from(viewDetailInvoices).forEach((item) => {
+    item.addEventListener('click', () => {
+        const invoice = item.parentNode.parentNode
+        invoice.querySelector('.info-invoice__detail').classList.toggle('active')
+
+    })
+
+    // detailInvoice.classList.toggle('active')
+
+})
+
