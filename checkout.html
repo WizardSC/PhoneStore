@@ -7,8 +7,9 @@
     <title>Document</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="assets/css/base.css">
-    <link rel="stylesheet" href="assets/css/checkout.css">
     <link rel="stylesheet" href="assets/css/login.css">
+    <link rel="stylesheet" href="assets/css/checkout.css">
+    <link rel="stylesheet" href="assets/css/product.css">
 
     <!-- <link rel="stylesheet" href="assets/"> -->
 </head>
@@ -296,7 +297,163 @@
             </div>
 
         </div>
-        <!-- Start: Phần content -->
+        <div class="modal">
+            <!-- <div class="modal__overlay">
+
+            </div> -->
+            <div class="modal__body">
+                <!-- Chi tiết sản phẩm -->
+                <div class="product-detail">
+                    <div class="product-detail__header">
+                        <div class="product-detail__text">
+                            <i class="fa-solid fa-circle-info"></i>
+                            Chi tiết sản phẩm
+                        </div>
+                        <div class="product-detail__btn-close">
+                            <i class="fa-solid fa-x"></i>
+                        </div>
+                    </div>
+                    <div class="product-detail__body">
+                        <img src="https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:80/plain/https://cellphones.com.vn/media/catalog/product/s/a/samsung-galaxy-s23-ultra.png"
+                            alt="" class="product-detail__img">
+                        <div class="product-detail__info">
+                            <h3 class="product-detail__info-name">
+                                Samsung Galaxy S23 Ultra 256GB
+                            </h3>
+                            <span class="product-detail__info-label product-detail__info-label--ram">
+                                <span class="product-detail__info-label-name">RAM</span>
+
+                                <!-- <div class="product-detail__info-ram">
+                                    8 GB
+                                </div>
+                                <div class="product-detail__info-ram">
+                                    12 GB
+                                </div> -->
+                            </span>
+                            <span class="product-detail__info-label product-detail__info-label--rom">
+                                <span class="product-detail__info-label-name">ROM</span>
+                                <div class="product-detail__info-rom">
+                                    512 GB
+                                </div>
+                                <div class="product-detail__info-rom">
+                                    1 TB
+                                </div>
+                            </span>
+                            <div class="product-detail__info-price">
+                                <span class="product-detail__info-price-old">30.990.000đ</span>
+                                <span class="product-detail__info-price-current">16.990.000đ</span>
+                            </div>
+                            <div class="product-detail__info-img">
+                                <img src="https://cdn2.cellphones.com.vn/insecure/rs:fill:0:120/q:80/plain/https://dashboard.cellphones.com.vn/storage/dt-ss-sv-2-productbanner.jpg"
+                                    alt="">
+                            </div>
+                            <div class="product-detail__info-promotion">
+                                <h4 class="product-detail__info-promotion-heading">
+                                    <i class="fa-solid fa-gift"></i>
+                                    <span>Khuyến mãi</span>
+                                </h4>
+                                <div class="product-detail__info-promotion-content">
+                                    <div class="product-detail__info-promotion-wrap">
+                                        <p>1</p>
+                                        <span>Trả góp 12 tháng 0 lãi, 0đ trả trước qua Samsung Finance+ (Xem chi
+                                            tiết)</span>
+                                    </div>
+                                    <div class="product-detail__info-promotion-wrap">
+                                        <p>2</p>
+                                        <span>Nhận ngay ưu đãi YouTube Premium dành cho chủ sở hữu Samsung Galaxy</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-detail__info-btn">
+                                <button class="product-detail__btn-buy-now">MUA NGAY</button>
+                                <button class="product-detail__btn-add-to-cart">
+                                    <i class="fa-solid fa-cart-shopping"></i><span>Thêm vào giỏ</span></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Chi tiết sản phẩm -->
+                <!-- Giỏ hàng -->
+                <div class="modal__cart">
+                    <div class="modal__cart-wrapper">
+                        <div class="modal__cart-head">
+                            <div class="modal__cart-title">
+                                Giỏ hàng
+                            </div>
+                            <div class="modal__cart-close">
+                                <i class="fa-solid fa-xmark"></i>
+                            </div>
+                        </div>
+
+                        <div class="modal__cart-container">
+                            <div class="modal__cart-item" data-value="1">
+                                <div class="modal__cart-left">
+                                    <img src="https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:80/plain/https://cellphones.com.vn/media/catalog/product/s/a/samsung-galaxy-s23-ultra.png"
+                                        alt="" class="modal__cart-item-img">
+                                </div>
+                                <div class="model__cart-right">
+                                    <div class="modal__cart-item-title">
+                                        Samsung Galaxy S23 Ultra 256GB
+                                    </div>
+                                    <div class="modal__cart-item-counter">
+                                        <div class="modal__cart-item-decrease">
+                                            <i class="fa-solid fa-angle-left"></i>
+                                        </div>
+                                        <div class="modal__cart-item-quantity">1</div>
+                                        <div class="modal__cart-item-increase">
+                                            <i class="fa-solid fa-angle-right"></i>
+                                        </div>
+                                    </div>
+
+                                    <div class="modal__cart-item-price">
+                                        22,190,000đ
+                                    </div>
+                                </div>
+                                <div class="modal__cart-item-close">
+                                    <i class="fa-solid fa-trash"></i>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="modal__cart-footer">
+                            <div class="modal__cart-info">
+                                <div class="modal__cart-info-label">Tổng tiền</div>
+                                <div class="modal__cart-info-price">22,190,000đ</div>
+                            </div>
+                            <div class="modal__cart-checkout">
+                                <i class="fa-solid fa-credit-card"></i>Thanh toán
+                            </div>
+                            <div class="modal__cart-view-invoice">
+                                <i class="fa-solid fa-file-invoice"></i>Xem hóa đơn
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- Giỏ hàng -->
+            </div>
+
+        </div>
+        <!-- Alert -->
+        <div class="toast">
+            <div class="toast__wrapper">
+                <div class="toast__content">
+                    <i class="fa-solid fa-check toast__icon-info"></i>
+
+                    <div class="toast__message">
+                        <div class="toast__message-title">
+                            Thành công
+                        </div>
+                        <div class="toast__message-desc">
+                            Sản phẩm đã được thêm vào giỏ của bạn
+                        </div>
+                    </div>
+                </div>
+                <i class="fa-solid fa-xmark toast__icon-close"></i>
+                <div class="toast__progress"></div>
+            </div>
+        </div>
+        <!-- End: Phần content -->
 
         <!-- Phần footer -->
 
@@ -405,7 +562,9 @@
 <script src="assets/js/dataProduct.js"> </script>
 <script src="assets/js/dataUser.js"></script>
 <script src="assets/js/localStorage.js"></script>
+<script src="assets/js/productModal.js"></script>
 <script src="assets/js/checkout.js"></script>
 <script src="assets/js/login.js"></script>
+<script src="assets/js/loginModal.js"></script>
 
 </html>
