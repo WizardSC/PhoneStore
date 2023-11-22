@@ -273,7 +273,3 @@ headerCartBtn.addEventListener("click", e => {
     openCartModal();
 })
 
-function redirectToOrderPage() {
-    location.href = './checkout.html'
-}
-
