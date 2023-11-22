@@ -12,7 +12,7 @@ class Product {
         this.ram = ram
         this.rom = rom
         this.sale = sale
-    }   
+    }
     static getProducts() {
         if (localStorage.listProducts) {
             return JSON.parse(localStorage.listProducts);
@@ -101,6 +101,25 @@ class User {
         }
         return null;
     }
+    static checkIsAdmin() {
+        if (localStorage.isAdmin) {
+           let isAdmin = localStorage.isAdmin === 'true'
+           return isAdmin
+        }
+        return null
+    }
+    static setIsAdmin(isAdmin) {
+        if (isAdmin == null || isAdmin == undefined) {
+            localStorage.isAdmin = false;
+        } else {
+            if (isAdmin === true) {
+                localStorage.isAdmin = true;
+            } else {
+                localStorage.isAdmin = false;
+            }
+        }
+    }
+
     // Update giỏ hàng của user
     static updateUserCart(userID, newCartList) {
         const list = User.getUsers();
@@ -134,18 +153,23 @@ class User {
         const list = User.getUsers();
         if (!list || list.length === 0) return false;
         let userID
+        let isAdmin = false;
         list.forEach((user) => {
             if (user.username === username && user.password === password) {
-                userID = user.userID
+                userID = user.userID;
+                (user.isAdmin == 1) ? isAdmin = true : false;
             }
         })
+        console.log(isAdmin)
         if (!userID) return false;
         User.setLoginState(userID)
+        User.setIsAdmin(isAdmin)
         return true;
     }
     //Đăng xuất
     static logOut() {
         User.setLoginState(null);
+        User.setIsAdmin(null);
     }
 
     // Cập nhật địa chỉ và số ĐT
@@ -161,6 +185,8 @@ class User {
         User.loadUsers(list)
         return true;
     }
+
+
 }
 // Load data users lên localStorage
 class cart {
@@ -245,9 +271,9 @@ class cart {
         return isDeleted
     }
     // Remove tất cả sản phẩm khỏi giỏ hàng
-    static removeAllCartItems(userID){
+    static removeAllCartItems(userID) {
         const myList = []
-        if(User.updateUserCart(userID,myList)){
+        if (User.updateUserCart(userID, myList)) {
             return true;
         }
         return false;
@@ -352,11 +378,11 @@ class Invoice {
         Invoice.loadInvoices(list)
     }
     // Mua hàng với danh sách sản phẩm trong giỏ hàng và tạo hóa đơn
-    static checkoutListProductAndCreateInvoice(userID, cartList){
+    static checkoutListProductAndCreateInvoice(userID, cartList) {
         const list = Invoice.getInvoices()
-        if(!list) return false;
-        if(!cartList || cartList.length === 0) return false;
-        list.push(new Invoice(cartList,userID, Date.now()))
+        if (!list) return false;
+        if (!cartList || cartList.length === 0) return false;
+        list.push(new Invoice(cartList, userID, Date.now()))
         Invoice.loadInvoices(list)
         cart.removeAllCartItems()
         return true;
@@ -375,5 +401,13 @@ class time {
         var seconds = date.getSeconds();
         var formattedDateTime
         return formattedDateTime = day + '/' + month + '/' + year + ' ' + hours + ':' + minutes + ':' + seconds;
+    }
+}
+
+class admin {
+    static redirectToAdmin(isAdmin) {
+        if(isAdmin == false){
+            console.log("admin")
+        }
     }
 }

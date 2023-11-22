@@ -34,9 +34,18 @@ if (User.getUsers() === null) {
 }
 if(User.checkLoginId() === null){
     User.setLoginState()
+    User.setIsAdmin()
 }
 
 if(Invoice.getInvoices() === null){
     Invoice.loadInvoices([])
     //truyền vào 1 mảng rỗng
+}
+
+function redirectToOrderPage() {
+    location.href = './checkout.html'
+}
+
+function redirectToAdminPage() {
+    location.href = './admin.html'
 }

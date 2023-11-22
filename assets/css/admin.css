@@ -1,13 +1,19 @@
 
-.body{
-  width: 100%;
-}
+/* Heading */
 .top-line{
-  width: 83%;
+  /* width: 100%; */
   margin-left: 17%;
-  height: 50px;
-  background-color:whitesmoke;
-  margin-bottom: 10px;
+  background-color:var(--white-color);
+  border-bottom: 1px solid black;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Thêm đường bóng */
+  /* margin-bottom: 10px; */
+}
+
+.top-line__heading{
+  display: block;
+  font-size: 3rem;
+  text-align: center;
+  height: auto;
 }
 .sidebar{
   position: fixed;
@@ -31,24 +37,48 @@ ul{
   margin-top: 25px;
   margin-left: 90px;
 }
-.sidebar .logo-details div p{
-  margin-top: -10px;
-  text-align: center;
-  height: 30px;
+/* Info user */
+.info__detail{
+  padding-bottom: 80px;
 }
-.sidebar .nav-links{
-  margin-top: 10px;
+.info__container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-.sidebar .nav-links li{
-  position: relative;
-  list-style: none;
+.info__hello{
+  font-size: 1.5rem;
+}
+.info__name{
+  padding-top: 6px;
+  font-size: 1.6rem;
+  font-weight: 600;
+
+}
+/* List item sidebar */
+.nav-links{
+  list-style-type: none;
+  
+}
+.nav-links__item{
+  /* padding-left: 10px; */
+  display: flex;
+  align-items: center;
   height: 60px;
   width: 100%;
+  cursor: pointer;
+}
+
+.nav-links__name{
+  font-size: 1.6rem;
+  font-weight: 500;
+  padding-left: 10px;
 }
 #log-out{
   margin-top: 95%;
   margin-bottom: 0px;
 }
+
 .sidebar .active{
   color: black;
   font-family: var(--font-family-sarabun);
@@ -72,27 +102,23 @@ ul{
   margin-right: 5px;
   margin-left: 29px;
 }
+/* Content */
+#content{
+  /* margin-top: -20px; */
+  margin-left: 17%;
+}
 /*------*/
 .home-section{
   position: absolute;
   margin-right: 0px;
-  margin-left: 17%;
+  /* margin-left: 17%; */
   width: 83%;
   height: 100%;
   float: left;
   background-color:white;
 }
-.row-time{
-  display: flex;
-  box-shadow: 0 5px 10px rgba(0,0,0,0.1);
-  position: relative;
-  margin-left: 10%;
-  width: 80%;
-  border-radius: 5px;
-}
-.time-line{
-  width: 50%;
-}
+
+
 #clock{
   margin-left: 19%;
   margin-top: 15px;
@@ -177,10 +203,4 @@ ul{
   box-shadow: 0 5px 10px rgba(0,0,0,0.1);
   width: 98%;
   height: 360px;
-}
-.row-time .time-line li a{
-  color: black;
-  margin-left: 15px;
-  text-decoration: none;
-  list-style: none;
 }

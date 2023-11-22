@@ -22,6 +22,17 @@ const userArr = [
         "",
         false,
         true
+    ),
+    new User(
+        "nakunnamcuong",
+        "nakunnamcuong",
+        "nakunnamcuong@gmail.com",
+        "0814099714",
+        "Nguyễn Nam Cường",
+        "Đà Nẵng, Việt Nam",
+        "",
+        true,
+        true
     )
     
 ]
