@@ -16,8 +16,27 @@ class data {
     }
 }
 
+class user {
+    static loadUsers(listUser){
+        localStorage.listUsers = JSON.stringify(listUser);
+        if(localStorage.listUsers){
+            return true;
+        }
+        return false;
+    }
+}
 //Load data lên localStorage
-if (data.getProducts() === null) {
+if (Product.getProducts() === null) {
     data.loadProducts(productArr);
 }
+if (User.getUsers() === null) {
+    User.loadUsers(userArr);
+}
+if(User.checkLoginId() === null){
+    User.setLoginState()
+}
 
+if(Invoice.getInvoices() === null){
+    Invoice.loadInvoices([])
+    //truyền vào 1 mảng rỗng
+}

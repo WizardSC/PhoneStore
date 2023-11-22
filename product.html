@@ -7,12 +7,12 @@
     <title>Document</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
-    <link rel="stylesheet" href="assets/css/base.css">
+    <link rel="stylesheet" href="assets/css/slider.css">
     <link rel="stylesheet" href="assets/css/grid.css">
+    <link rel="stylesheet" href="assets/css/login.css">
+    <link rel="stylesheet" href="assets/css/base.css">
     <link rel="stylesheet" href="assets/css/product.css">
     
-
-
 </head>
 
 <body>
@@ -21,18 +21,72 @@
         <header class="header">
             <div class="grid wide header__navbar">
                 <a href="#">
-                    <h1>PHONE STORE</h1>
+                    <h1>URPHONE</h1>
                 </a>
-                <div class="header__navbar-search">
-                    <label for="search"><i class="fa-solid fa-magnifying-glass"></i></label>
-                    <input id="search" type="text" placeholder="Bạn cần tìm gì?">
-                </div>
+                <!-- CheckBox dể hiện navbar -->
+                <input hidden type="checkbox" name="" id="nav-input" class="navbar-input">
+
+                <label for="nav-input" style="cursor:pointer">
+                    <i class="fas fa-bars " id="head_menu"></i>
+                </label>
+
+                <label for="nav-input" class="header__navbar-overplay"></label>
+
+                <!-- Navbar khi PC -->
                 <ul class="header__navbar-list">
-                    <li><a href="#">Trang chủ</a></li>
-                    <li><a href="">Sản phẩm</a></li>
-                    <li><a href="">Liên lạc</a></li>
-                    <li><a href="">Đăng nhập</a></li>
+                    <li><a href="index.html">Trang chủ</a></li>
+                    <li><a href="product.html" class="active">Sản phẩm</a></li>
+                    <li><a href="contact.html">Liên lạc</a></li>
+                    
+                    <li class="header__navbar-item">
+                        <div class="header__navbar-item--none-logged active">
+                            <div class="header__navbar-login" id="btnDangNhap" onclick="LoginPopupOpen()">
+                                Đăng nhập
+                            </div>
+                        </div>
+
+                        <div class="header__navbar-item--logged ">
+                            <i class="fa-solid fa-basket-shopping header__navbar-cart-icon"></i>
+                            <div class="header__navbar-user-wrap">
+                                <div class="header__navbar-user">
+                                    <img class="header__navbar-user-img" src="https://down-vn.img.susercontent.com/file/57c388a98552051b188b48864e95a4bf_tn" alt="">
+                                    <div class="header__navbar-username">Lee Changsub</div>
+                                </div>
+                                <div class="header__navbar-dropdown">
+                                    <div class="header__navbar-dropdown-item">Đơn hàng mua</div>
+                                    <div class="header__navbar-dropdown-item" id="logout__btn">Đăng xuất</div>
+    
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <li><a href="" class="login active1" id="btnDangNhap" onclick="LoginPopupOpen()">Đăng nhập</a>
+
+                        </li>
+
+                        <li><a href="" class="user "><span>Nguyen </span><i class="fa-solid fa-user"></i></a></li> -->
+
+                    </li>
                 </ul>
+
+                <!-- Navbar khi responsive -->
+                <nav class="nav__list">
+                    <label for="nav-input" class="nav-close">
+                        <i class="fa-solid fa-xmark"></i>
+                    </label>
+                    <ul class="header__navbar-list-responsive">
+                        <li><a href="index.html" class="navbar-link-responsive active"><i class="fa-solid fa-house"></i>
+                                Trang chủ</a></li>
+                        <li><a href="product.html" class="navbar-link-responsive"><i class="fa-solid fa-list"></i> Sản
+                                phẩm</a></li>
+                        <li><a href="" class="navbar-link-responsive"><i class="fa-solid fa-phone"></i> Liên lạc</a>
+                        </li>
+                        <li><a href="" class="navbar-link-responsive"><i class="fa-solid fa-cart-shopping"></i> Giỏ
+                                hàng</a></li>
+                        <li id="btnDangNhap" onclick="LoginPopupOpen()">Đăng nhập</li>
+                        <!-- <li><a href="" class="navbar-link-responsive user1"><i
+                                    class="fa-solid fa-circle-user"></i><span> Nguyen </span></a></li> -->
+                    </ul>
+                </nav>
             </div>
         </header>
         <!-- Phần slider -->
@@ -41,8 +95,8 @@
                 <div class="slider-product-one-content">
                     <div class="slider-product-one-content-btn">
                         <i onmouseover="stopSlider()" class="prev-btn"><ion-icon
-                            name="chevron-back-outline"></ion-icon></i>
-                    <i class="next-btn"><ion-icon name="chevron-forward-outline"></ion-icon></i>
+                                name="chevron-back-outline"></ion-icon></i>
+                        <i class="next-btn"><ion-icon name="chevron-forward-outline"></ion-icon></i>
                     </div>
                     <div class="slider-product-one-content-container">
                         <div class="slider-product-one-content-items-content">
@@ -102,8 +156,13 @@
         <!-- Phần nội dung -->
         <div class="content">
             <div class="grid wide">
-              
-                <!-- Tìm kiếm & filter -->
+                <!-- Thanh tìm kiếm -->
+                <div class="search">
+                    <i class="fa-solid fa-magnifying-glass search__icon-search"></i>
+                    <input type="text" class="search__input" placeholder="Nhập thông tin tìm kiếm">
+                    <i class="fa-solid fa-x search__icon-close"></i>
+                </div>
+                <!-- filter -->
                 <div class="filter">
                     <div class="filter__label">
                         <i class="filter__label-icon fa-solid fa-filter"></i>
@@ -165,7 +224,7 @@
                                                 src="https://cdn.tgdd.vn/Brand/1/Mobell42-b_19.jpg" alt="" width="68"
                                                 height="30">
                                         </li>
-                                        
+
                                     </ul>
                                 </div>
                             </li>
@@ -181,9 +240,11 @@
 
                                     </div>
                                     <div class="filter__price-range">
-                                        <input type="number" id="filter__price-min-price" name="filter__price-min-price" placeholder="Giá tối thiểu">
+                                        <input type="tel" id="filter__price-min-price" name="filter__price-min-price"
+                                            placeholder="Giá tối thiểu">
                                         ---------
-                                        <input type="number" id="filter__price-max-price" name="filter__price-max-price" placeholder="Giá tối đa">
+                                        <input type="tel" id="filter__price-max-price" name="filter__price-max-price"
+                                            placeholder="Giá tối đa">
                                     </div>
                                 </div>
                             </li>
@@ -193,12 +254,13 @@
 
                                 <div class="filter__ram">
                                     <ul class="filter__ram-list">
-                                        <li class="filter__ram-item">2 GB</li>
-                                        <li class="filter__ram-item">3 GB</li>
-                                        <li class="filter__ram-item">4 GB</li>
-                                        <li class="filter__ram-item">6 GB</li>
-                                        <li class="filter__ram-item">8 GB</li>
-                                        <li class="filter__ram-item">12 GB</li>
+                                        <li class="filter__ram-item" data-value="1 GB">1 GB</li>
+                                        <li class="filter__ram-item" data-value="2 GB">2 GB</li>
+                                        <li class="filter__ram-item" data-value="3 GB">3 GB</li>
+                                        <li class="filter__ram-item" data-value="4 GB">4 GB</li>
+                                        <li class="filter__ram-item" data-value="6 GB">6 GB</li>
+                                        <li class="filter__ram-item" data-value="8 GB">8 GB</li>
+                                        <li class="filter__ram-item" data-value="12 GB">12 GB</li>
                                     </ul>
                                 </div>
                             </li>
@@ -208,22 +270,42 @@
 
                                 <div class="filter__rom">
                                     <ul class="filter__rom-list">
-                                        <li class="filter__rom-item">32 GB</li>
-                                        <li class="filter__rom-item">64 GB</li>
-                                        <li class="filter__rom-item">128 GB</li>
-                                        <li class="filter__rom-item">256 GB</li>
-                                        <li class="filter__rom-item">512 GB</li>
-                                        <li class="filter__rom-item">1 TB</li>
+                                        <li class="filter__rom-item" data-value="16 GB">16 GB</li>
+                                        <li class="filter__rom-item" data-value="32 GB">32 GB</li>
+                                        <li class="filter__rom-item" data-value="64 GB">64 GB</li>
+                                        <li class="filter__rom-item" data-value="128 GB">128 GB</li>
+                                        <li class="filter__rom-item" data-value="256 GB">256 GB</li>
+                                        <li class="filter__rom-item" data-value="512 GB">512 GB</li>
+                                        <li class="filter__rom-item" data-value="1 TB">1 TB</li>
                                     </ul>
                                 </div>
                             </li>
                         </ul>
+                        <div class="filter__space">
+
+                        </div>
+                        <div class="filter__limit-product">
+                            <span class="filter__limit-product-label">Số lượng sản phẩm trên 1 trang:</span>
+                            <input type="text" class="filter__limit-product-input">
+                        </div>
                     </div>
 
 
                 </div>
+                <!-- Thanh sắp xếp -->
+                <div class="sort">
+                    <div class="sort__heading">Sắp xếp</div>
+                    <div class="sort__item" data-value="asc">
+                        <i class="fa-solid fa-arrow-up-wide-short"></i>
+                        <span class="sort__item-label">Giá Thấp - Cao</span>
+                    </div>
+                    <div class="sort__item" data-value="desc">
+                        <i class="fa-solid fa-arrow-down-wide-short"></i>
+                        <span class="sort__item-label">Giá Cao - Thấp</span>
+                    </div>
+                </div>
                 <div class="product row">
-                    
+
                     <!-- <div class="col l-2-4 m-4 c-12">
                         <div class="product-item">
                             <div class="product-item__img-wrap">
@@ -289,16 +371,279 @@
                 <div class="pagination__btn-next">
                     <i class="fa-solid fa-angle-right"></i>
                 </div> -->
-            </div>     
+            </div>
         </div>
-    </div>
-    <script src="assets/js/slider.js"></script>
-    <script src="assets/js/constructor.js"></script>
-    <script src="assets/js/dataProduct.js"> </script>
-    <script src="assets/js/localStorage.js"></script>
-    <script src="assets/js/product.js"></script>
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+        <div class="modal">
+            <!-- <div class="modal__overlay">
+
+            </div> -->
+            <div class="modal__body">
+                <!-- Chi tiết sản phẩm -->
+                <div class="product-detail">
+                    <div class="product-detail__header">
+                        <div class="product-detail__text">
+                            <i class="fa-solid fa-circle-info"></i>
+                            Chi tiết sản phẩm
+                        </div>
+                        <div class="product-detail__btn-close">
+                            <i class="fa-solid fa-x"></i>
+                        </div>
+                    </div>
+                    <div class="product-detail__body">
+                        <img src="https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:80/plain/https://cellphones.com.vn/media/catalog/product/s/a/samsung-galaxy-s23-ultra.png"
+                            alt="" class="product-detail__img">
+                        <div class="product-detail__info">
+                            <h3 class="product-detail__info-name">
+                                Samsung Galaxy S23 Ultra 256GB
+                            </h3>
+                            <span class="product-detail__info-label product-detail__info-label--ram">
+                                <span class="product-detail__info-label-name">RAM</span>
+
+                                <!-- <div class="product-detail__info-ram">
+                                    8 GB
+                                </div>
+                                <div class="product-detail__info-ram">
+                                    12 GB
+                                </div> -->
+                            </span>
+                            <span class="product-detail__info-label product-detail__info-label--rom">
+                                <span class="product-detail__info-label-name">ROM</span>
+                                <div class="product-detail__info-rom">
+                                    512 GB
+                                </div>
+                                <div class="product-detail__info-rom">
+                                    1 TB
+                                </div>
+                            </span>
+                            <div class="product-detail__info-price">
+                                <span class="product-detail__info-price-old">30.990.000đ</span>
+                                <span class="product-detail__info-price-current">16.990.000đ</span>
+                            </div>
+                            <div class="product-detail__info-img">
+                                <img src="https://cdn2.cellphones.com.vn/insecure/rs:fill:0:120/q:80/plain/https://dashboard.cellphones.com.vn/storage/dt-ss-sv-2-productbanner.jpg"
+                                    alt="">
+                            </div>
+                            <div class="product-detail__info-promotion">
+                                <h4 class="product-detail__info-promotion-heading">
+                                    <i class="fa-solid fa-gift"></i>
+                                    <span>Khuyến mãi</span>
+                                </h4>
+                                <div class="product-detail__info-promotion-content">
+                                    <div class="product-detail__info-promotion-wrap">
+                                        <p>1</p>
+                                        <span>Trả góp 12 tháng 0 lãi, 0đ trả trước qua Samsung Finance+ (Xem chi
+                                            tiết)</span>
+                                    </div>
+                                    <div class="product-detail__info-promotion-wrap">
+                                        <p>2</p>
+                                        <span>Nhận ngay ưu đãi YouTube Premium dành cho chủ sở hữu Samsung Galaxy</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-detail__info-btn">
+                                <button class="product-detail__btn-buy-now">MUA NGAY</button>
+                                <button class="product-detail__btn-add-to-cart">
+                                    <i class="fa-solid fa-cart-shopping"></i><span>Thêm vào giỏ</span></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Chi tiết sản phẩm -->
+                <!-- Giỏ hàng -->
+                <div class="modal__cart">
+                    <div class="modal__cart-wrapper">
+                        <div class="modal__cart-head">
+                            <div class="modal__cart-title">
+                                Giỏ hàng
+                            </div>
+                            <div class="modal__cart-close">
+                                <i class="fa-solid fa-xmark"></i>
+                            </div>
+                        </div>
+
+                        <div class="modal__cart-container">
+                            <div class="modal__cart-item" data-value="1">
+                                <div class="modal__cart-left">
+                                    <img src="https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:80/plain/https://cellphones.com.vn/media/catalog/product/s/a/samsung-galaxy-s23-ultra.png"
+                                        alt="" class="modal__cart-item-img">
+                                </div>
+                                <div class="model__cart-right">
+                                    <div class="modal__cart-item-title">
+                                        Samsung Galaxy S23 Ultra 256GB
+                                    </div>
+                                    <div class="modal__cart-item-counter">
+                                        <div class="modal__cart-item-decrease">
+                                            <i class="fa-solid fa-angle-left"></i>
+                                        </div>
+                                        <div class="modal__cart-item-quantity">1</div>
+                                        <div class="modal__cart-item-increase">
+                                            <i class="fa-solid fa-angle-right"></i>
+                                        </div>
+                                    </div>
+
+                                    <div class="modal__cart-item-price">
+                                        22,190,000đ
+                                    </div>
+                                </div>
+                                <div class="modal__cart-item-close">
+                                    <i class="fa-solid fa-trash"></i>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="modal__cart-footer">
+                            <div class="modal__cart-info">
+                                <div class="modal__cart-info-label">Tổng tiền</div>
+                                <div class="modal__cart-info-price">22,190,000đ</div>
+                            </div>
+                            <div class="modal__cart-checkout">
+                                <i class="fa-solid fa-credit-card"></i>Thanh toán
+                            </div>
+                            <div class="modal__cart-view-invoice">
+                                <i class="fa-solid fa-file-invoice"></i>Xem hóa đơn
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- Giỏ hàng -->
+            </div>
+
+        </div>
+        <!-- Alert -->
+        <div class="toast">
+            <div class="toast__wrapper">
+                <div class="toast__content">
+                    <i class="fa-solid fa-check toast__icon-info"></i>
+
+                    <div class="toast__message">
+                        <div class="toast__message-title">
+                            Thành công
+                        </div>
+                        <div class="toast__message-desc">
+                            Sản phẩm đã được thêm vào giỏ của bạn
+                        </div>
+                    </div>
+                </div>
+                <i class="fa-solid fa-xmark toast__icon-close"></i>
+                <div class="toast__progress"></div>
+            </div>
+            <div class="form" id="form">
+                <div class="login-container center">
+                    <div class="container__left">
+                        <div class="container__form center">
+                            <div class="form-content__login login-form center" id="login">
+                                <h3 class="form-content__title title">Đăng nhập</h3>
+                                <div class="span"></div>
+                                <form name="login-form" id="login-form">
+                                    <div class="form-content__input">
+                                        <div class="icon"><i class="fa-solid fa-user"></i></div>
+                                        <input id="login__field-username" name="username" type="text"
+                                            placeholder="Tên đăng nhập">
+                                    </div>
+                                    <div class="alert-username alert"></div>
+                                    <div class="form-content__input">
+                                        <div class="icon"><i class="fa-solid fa-lock"></i></div>
+                                        <input id="login__field-password" name="password" type="password"
+                                            placeholder="Mật khẩu" class="password">
+                                        <div class="icon">
+                                            <i class="fa-solid fa-eye hide-password" onclick="HidePassword()"></i>
+                                            <i class="fa-solid fa-eye-slash show-password" onclick="ShowPassword()"></i>
+                                        </div>
+                                    </div>
+                                    <div class="alert-password alert"></div>
+                                    <button id="login__btn" type="submit" class="btn"
+                                        onclick="return ValidateFormLogin()">Đăng nhập</button>
+                                </form>
+                                <div class="question-responsive">
+                                    <p>Bạn chưa có tài khoản? <a href="#" onclick="RegisterPopupOpen()">Đăng ký</a></p>
+                                </div>
+                            </div>
+                            <div class="form-content__register register-form center" id="register">
+                                <h3 class="form-content__title title">Đăng ký</h3>
+                                <div class="span"></div>
+                                <form name="register-form" id="register-form">
+                                    <div class="form-content__input">
+                                        <i class="fa-solid fa-id-card"></i>
+                                        <input name="full-name" type="text" placeholder="Họ và tên">
+                                    </div>
+                                    <div class="alert-full-name alert"></div>
+                                    <div class="form-content__input">
+                                        <i class="fa-solid fa-user"></i>
+                                        <input name="username" type="text" placeholder="Tên đăng nhập">
+                                    </div>
+                                    <div class="alert-username alert"></div>
+                                    <div class="form-content__input">
+                                        <i class="fa-solid fa-envelope"></i>
+                                        <input name="email" type="text" placeholder="Email">
+                                    </div>
+                                    <div class="alert-email alert"></div>
+                                    <div class="form-content__input">
+                                        <i class="fa-solid fa-lock"></i>
+                                        <input name="password" type="password" placeholder="Mật khẩu" class="password">
+                                        <i class="fa-solid fa-eye hide-password" onclick="HidePassword()"></i>
+                                        <i class="fa-solid fa-eye-slash show-password" onclick="ShowPassword()"></i>
+                                    </div>
+                                    <div class="alert-password alert"></div>
+                                    <div class="form-content__input">
+                                        <i class="fa-solid fa-lock"></i>
+                                        <input name="repeat-password" type="password" placeholder="Nhập lại mật khẩu"
+                                            class="repeat-password">
+                                        <i class="fa-solid fa-eye hide-password" onclick="HideRepeatPassword()"></i>
+                                        <i class="fa-solid fa-eye-slash show-password"
+                                            onclick="ShowRepeatPassword()"></i>
+                                    </div>
+                                    <div class="alert-repeat-password alert"></div>
+                                    <button type="submit" class="btn" onclick="return ValidateFormRegister()">Đăng
+                                        ký</button>
+                                </form>
+                                <div class="question-responsive">
+                                    <p>Bạn đã có tài khoản? <a href="#" onclick="LoginPopupOpen()">Đăng nhập</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container__right">
+                        <div class="container__sidebar center">
+                            <div class="form-sidebar__login login-form center" id="login">
+                                <h3 class="form-sidebar__title title">Bạn chưa có tài khoản?</h3>
+                                <div class="form-sidebar__description">
+                                    <p>Đăng ký thành viên để nhận được những ưu đãi tốt nhất của chúng tôi!</p>
+                                </div>
+                                <button class="btn" onclick="RegisterPopupOpen()">Đăng ký</button>
+                            </div>
+                            <div class="form-sidebar__register register-form center" id="register">
+                                <h3 class="form-sidebar__title title">Bạn đã có tài khoản?</h3>
+                                <div class="form-sidebar__description">
+                                    <p>Đăng nhập để tiếp tục trải nghiệm mua sắm không giới hạn ngay nào!!</p>
+                                </div>
+                                <button class="btn" onclick="LoginPopupOpen()">Đăng nhập</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="login__close-form-btn close-button">
+                        <i class="fa-solid fa-x"></i>
+                    </div>
+                </div>
+            </div>
+
+
+            <script src="assets/js/slider.js"></script>
+            <script src="assets/js/constructor.js"></script>
+            <script src="assets/js/dataProduct.js"> </script>
+            <script src="assets/js/dataUser.js"></script>
+            <script src="assets/js/localStorage.js"></script>
+            <script src="assets/js/product.js"></script>
+            <script src="assets/js/productModal.js"></script>
+            <script src="assets/js/login.js"></script>
+            <script src="assets/js/loginModal.js"></script>
+            <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+            <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+        </div>
+        
+
+
+
 </body>
 
 </html>
