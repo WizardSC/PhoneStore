@@ -161,6 +161,7 @@
 
 .info-invoice__content {
     margin-top: 12px;
+    
 }
 
 .info-invoice__item {
@@ -260,12 +261,21 @@
 /* Chi tiết hóa đơn */
 .info-invoice__detail {
     margin-top: 10px;
+    display: none;
 }
-.info-invoice__detail-item{
-    margin-top: 15px;
+
+.info-invoice__detail.active{
+    display: block;
+}
+
+.info-invoice__detail-item {
+    /* margin-top: 15px; */
     display: flex;
-    padding: 0 60px;
+    padding: 20px 60px;
+    justify-content: space-between;
 }
+
+
 .info-invoice__detail-img {
     width: 120px;
     height: 120px;
@@ -277,6 +287,7 @@
     flex-direction: column;
     justify-content: space-between;
     margin-left: 20px;
+    width: 450px;
 }
 
 .info-invoice__detail-name {
@@ -305,7 +316,7 @@
 }
 
 .info-invoice__detail-content-right {
-    padding-left: 300px;
+    padding-left: 100px;
     display: flex;
     align-items: center;
 }

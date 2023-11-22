@@ -244,6 +244,14 @@ class cart {
         })
         return isDeleted
     }
+    // Remove tất cả sản phẩm khỏi giỏ hàng
+    static removeAllCartItems(userID){
+        const myList = []
+        if(User.updateUserCart(userID,myList)){
+            return true;
+        }
+        return false;
+    }
     // Tỉnh tổng tiền các sản phẩm trong giỏ hàng
     static getTotalMoney(userID) {
         const myList = cart.getCartList(userID)
@@ -342,6 +350,16 @@ class Invoice {
         myProduct = [new ProductInCart(productID, Product.getProductID(productID).price_current, quantity, Product.getProductID(productID).img[0])]
         list.push(new Invoice(myProduct, userID, Date.now()))
         Invoice.loadInvoices(list)
+    }
+    // Mua hàng với danh sách sản phẩm trong giỏ hàng và tạo hóa đơn
+    static checkoutListProductAndCreateInvoice(userID, cartList){
+        const list = Invoice.getInvoices()
+        if(!list) return false;
+        if(!cartList || cartList.length === 0) return false;
+        list.push(new Invoice(cartList,userID, Date.now()))
+        Invoice.loadInvoices(list)
+        cart.removeAllCartItems()
+        return true;
     }
 
 }

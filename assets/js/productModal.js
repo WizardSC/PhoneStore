@@ -252,6 +252,8 @@ function renderProductCart() {
     const btnViewInvoice = $('.modal__cart-view-invoice')
     const btnCheckout = $('.modal__cart-checkout')
     btnCheckout.addEventListener('click', () => {
+        Invoice.checkoutListProductAndCreateInvoice(userID,cart.getCartList(userID))
+        cart.removeAllCartItems(userID)
         redirectToOrderPage()
     })
     btnViewInvoice.addEventListener('click', () => {
