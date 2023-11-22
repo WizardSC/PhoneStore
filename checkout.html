@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/base.css">
+    <link rel="stylesheet" href="assets/css/checkout.css">
+    <link rel="stylesheet" href="assets/css/login.css">
+
+    <!-- <link rel="stylesheet" href="assets/"> -->
+</head>
+
+<body>
+    <div class="app">
+        <!-- Start: Phần header -->
+        <header class="header">
+            <div class="grid wide header__navbar">
+                <a href="#">
+                    <h1>URPHONE</h1>
+                </a>
+                <!-- CheckBox dể hiện navbar -->
+                <input hidden type="checkbox" name="" id="nav-input" class="navbar-input">
+
+                <label for="nav-input" style="cursor:pointer">
+                    <i class="fas fa-bars " id="head_menu"></i>
+                </label>
+
+                <label for="nav-input" class="header__navbar-overplay"></label>
+
+                <!-- Navbar khi PC -->
+                <ul class="header__navbar-list">
+                    <li><a href="index.html">Trang chủ</a></li>
+                    <li><a href="product.html" class="active">Sản phẩm</a></li>
+                    <li><a href="contact.html">Liên lạc</a></li>
+
+                    <li class="header__navbar-item">
+                        <div class="header__navbar-item--none-logged active">
+                            <div class="header__navbar-login" id="btnDangNhap" onclick="LoginPopupOpen()">
+                                Đăng nhập
+                            </div>
+                        </div>
+
+                        <div class="header__navbar-item--logged ">
+                            <i class="fa-solid fa-basket-shopping header__navbar-cart-icon"></i>
+                            <div class="header__navbar-user-wrap">
+                                <div class="header__navbar-user">
+                                    <img class="header__navbar-user-img"
+                                        src="https://down-vn.img.susercontent.com/file/57c388a98552051b188b48864e95a4bf_tn"
+                                        alt="">
+                                    <div class="header__navbar-username">Lee Changsub</div>
+                                </div>
+                                <div class="header__navbar-dropdown">
+                                    <div class="header__navbar-dropdown-item">Đơn hàng mua</div>
+                                    <div class="header__navbar-dropdown-item" id="logout__btn">Đăng xuất</div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <li><a href="" class="login active1" id="btnDangNhap" onclick="LoginPopupOpen()">Đăng nhập</a>
+
+                        </li>
+
+                        <li><a href="" class="user "><span>Nguyen </span><i class="fa-solid fa-user"></i></a></li> -->
+
+                    </li>
+                </ul>
+
+                <!-- Navbar khi responsive -->
+                <nav class="nav__list">
+                    <label for="nav-input" class="nav-close">
+                        <i class="fa-solid fa-xmark"></i>
+                    </label>
+                    <ul class="header__navbar-list-responsive">
+                        <li><a href="index.html" class="navbar-link-responsive active"><i class="fa-solid fa-house"></i>
+                                Trang chủ</a></li>
+                        <li><a href="product.html" class="navbar-link-responsive"><i class="fa-solid fa-list"></i> Sản
+                                phẩm</a></li>
+                        <li><a href="" class="navbar-link-responsive"><i class="fa-solid fa-phone"></i> Liên lạc</a>
+                        </li>
+                        <li><a href="" class="navbar-link-responsive"><i class="fa-solid fa-cart-shopping"></i> Giỏ
+                                hàng</a></li>
+                        <li id="btnDangNhap" onclick="LoginPopupOpen()">Đăng nhập</li>
+                        <!-- <li><a href="" class="navbar-link-responsive user1"><i
+                                    class="fa-solid fa-circle-user"></i><span> Nguyen </span></a></li> -->
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <!-- End: Phần header -->
+        <!-- Start: Phần content -->
+        <div class="content">
+            <div class="grid wide">
+                <div class="info-account active">
+                    <div class="info-account__heading">
+                        Thông tin khách hàng
+                    </div>
+                    <div class="info-account__content">
+                        <div class="info-account__wrapper">
+                            <div class="info-account__label">
+                                Số điện thoại
+                            </div>
+                            <input name="phone" type="text" id="info-account__input--phone" class=" info-account__input"
+                                placeholder="Nhập số điện thoại">
+                        </div>
+                        <div class="info-account__wrapper">
+                            <div class="info-account__label">
+                                Địa chỉ nhận hàng
+                            </div>
+                            <input name="address" type="text" id="info-account__input--address"
+                                class=" info-account__input" placeholder="Nhập địa chỉ nhận hàng">
+
+                        </div>
+                    </div>
+                    <div class="info-account__btn-wrapper">
+                        <div class="info-account__btn">
+                            Cập nhật
+                        </div>
+                    </div>
+                </div>
+                <div class="info-address">
+                    <div class="info-address__header">
+                        <i class="fa-solid fa-location-dot"></i>
+                        Địa chỉ nhận hàng
+                    </div>
+                    <div class="info-address__content">
+                        <div class="info-address__left">
+                            <div class="info-address__label">
+                                <span>Số ĐT</span>
+                                <div class="info-address__title info-address__title--phone">0814099714</div>
+                            </div>
+                            <div class="info-address__label">
+                                <span>Địa chỉ</span>
+                                <div class="info-address__title info-address__title--address">118 CN1, phường Sơn Kỳ,
+                                    quận Tân Phú, TP.HCM</div>
+
+                            </div>
+                        </div>
+                        <div class="info-address__button">
+                            Thay đổi
+                        </div>
+                    </div>
+                </div>
+                <div class="info-invoice">
+                    <div class="info-invoice__heading">
+                        Đơn hàng đã mua
+                    </div>
+
+                    <div class="info-invoice__content">
+                        <div class="info-invoice__item">
+                            <div class="info-invoice__header">
+                                <div class="info-invoice__wrapper">
+                                    <span class="info-invoice__label">
+                                        Đơn hàng
+                                    </span>
+                                    <span class="info-invoice__number">
+                                        #HD001
+                                    </span>
+                                </div>
+                                <div class="info-invoice__status">
+                                    Đã xử lý
+                                </div>
+                            </div>
+                            <div class="info-invoice__wrapper">
+                                <div class="info-invoice__container">
+                                    <div class="info-invoice__order-date-wrap">
+                                        <span class="info-invoice__order-date-label">
+                                            Ngày đặt:
+                                        </span>
+                                        <span class="info-invoice__order-time">21/12/2023 16:44:03 PM</span>
+                                    </div>
+                                    <div class="info-invoice__total-wrap">
+                                        <span class="info-invoice__total-label">
+                                            Tổng tiền:
+                                        </span>
+                                        <span class="info-invoice__total-price">
+                                            2990000
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="info-invoice__details-btn">
+                                    Xem chi tiết
+                                </div>
+                            </div>
+
+                            <div class="info-invoice__detail">
+                                <div class="info-invoice__detail-item">
+                                    <img class="info-invoice__detail-img"
+                                        src="https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:80/plain/https://cellphones.com.vn/media/catalog/product/s/a/samsung-galaxy-s23-ultra.png"
+                                        alt="">
+                                    <div class="info-invoice__detail-content">
+                                        <div class="info-invoice__detail-name">
+                                            Samsung Galaxy S23 Ultra 256GB
+                                        </div>
+                                        <div class="info-invoice__detail-price-wrapper">
+                                            <span class="info-invoice__detail-label">
+                                                Đơn giá:
+                                            </span>
+                                            <span class="info-invoice__detail-price">
+                                                22190000
+                                            </span>
+                                        </div>
+                                        <div class="info-invoice__detail-quantity-wrapper">
+                                            <span class="info-invoice__detail-label">
+                                                Số lượng:
+                                            </span>
+                                            <span class="info-invoice__detail-quantity">
+                                                2
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="info-invoice__detail-content-right">
+                                        <span class="info-invoice__detail-price-label">
+                                            Tổng tiền:
+                                        </span>
+                                        <span class="info-invoice__detail-total-price">
+                                            44380000
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="info-invoice__detail-item">
+                                    <img class="info-invoice__detail-img"
+                                        src="https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:80/plain/https://cellphones.com.vn/media/catalog/product/s/a/samsung-galaxy-s23-ultra.png"
+                                        alt="">
+                                    <div class="info-invoice__detail-content">
+                                        <div class="info-invoice__detail-name">
+                                            Samsung Galaxy S23 Ultra 256GB
+                                        </div>
+                                        <div class="info-invoice__detail-price-wrapper">
+                                            <span class="info-invoice__detail-label">
+                                                Đơn giá:
+                                            </span>
+                                            <span class="info-invoice__detail-price">
+                                                22190000
+                                            </span>
+                                        </div>
+                                        <div class="info-invoice__detail-quantity-wrapper">
+                                            <span class="info-invoice__detail-label">
+                                                Số lượng:
+                                            </span>
+                                            <span class="info-invoice__detail-quantity">
+                                                2
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="info-invoice__detail-content-right">
+                                        <span class="info-invoice__detail-price-label">
+                                            Tổng tiền:
+                                        </span>
+                                        <span class="info-invoice__detail-total-price">
+                                            44380000
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="info-invoice__detail-item">
+                                    <img class="info-invoice__detail-img"
+                                        src="https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:80/plain/https://cellphones.com.vn/media/catalog/product/s/a/samsung-galaxy-s23-ultra.png"
+                                        alt="">
+                                    <div class="info-invoice__detail-content">
+                                        <div class="info-invoice__detail-name">
+                                            Samsung Galaxy S23 Ultra 256GB
+                                        </div>
+                                        <div class="info-invoice__detail-price-wrapper">
+                                            <span class="info-invoice__detail-label">
+                                                Đơn giá:
+                                            </span>
+                                            <span class="info-invoice__detail-price">
+                                                22190000
+                                            </span>
+                                        </div>
+                                        <div class="info-invoice__detail-quantity-wrapper">
+                                            <span class="info-invoice__detail-label">
+                                                Số lượng:
+                                            </span>
+                                            <span class="info-invoice__detail-quantity">
+                                                2
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="info-invoice__detail-content-right">
+                                        <span class="info-invoice__detail-price-label">
+                                            Tổng tiền:
+                                        </span>
+                                        <span class="info-invoice__detail-total-price">
+                                            44380000
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- Start: Phần content -->
+
+        <!-- Phần footer -->
+
+        <!-- Phần footer -->
+        <div class="form" id="form">
+            <div class="login-container center">
+                <div class="container__left">
+                    <div class="container__form center">
+                        <div class="form-content__login login-form center" id="login">
+                            <h3 class="form-content__title title">Đăng nhập</h3>
+                            <div class="span"></div>
+                            <form name="login-form" id="login-form">
+                                <div class="form-content__input">
+                                    <div class="icon"><i class="fa-solid fa-user"></i></div>
+                                    <input id="login__field-username" name="username" type="text"
+                                        placeholder="Tên đăng nhập">
+                                </div>
+                                <div class="alert-username alert"></div>
+                                <div class="form-content__input">
+                                    <div class="icon"><i class="fa-solid fa-lock"></i></div>
+                                    <input id="login__field-password" name="password" type="password"
+                                        placeholder="Mật khẩu" class="password">
+                                    <div class="icon">
+                                        <i class="fa-solid fa-eye hide-password" onclick="HidePassword()"></i>
+                                        <i class="fa-solid fa-eye-slash show-password" onclick="ShowPassword()"></i>
+                                    </div>
+                                </div>
+                                <div class="alert-password alert"></div>
+                                <button id="login__btn" type="submit" class="btn"
+                                    onclick="return ValidateFormLogin()">Đăng nhập</button>
+                            </form>
+                            <div class="question-responsive">
+                                <p>Bạn chưa có tài khoản? <a href="#" onclick="RegisterPopupOpen()">Đăng ký</a></p>
+                            </div>
+                        </div>
+                        <div class="form-content__register register-form center" id="register">
+                            <h3 class="form-content__title title">Đăng ký</h3>
+                            <div class="span"></div>
+                            <form name="register-form" id="register-form">
+                                <div class="form-content__input">
+                                    <i class="fa-solid fa-id-card"></i>
+                                    <input name="full-name" type="text" placeholder="Họ và tên">
+                                </div>
+                                <div class="alert-full-name alert"></div>
+                                <div class="form-content__input">
+                                    <i class="fa-solid fa-user"></i>
+                                    <input name="username" type="text" placeholder="Tên đăng nhập">
+                                </div>
+                                <div class="alert-username alert"></div>
+                                <div class="form-content__input">
+                                    <i class="fa-solid fa-envelope"></i>
+                                    <input name="email" type="text" placeholder="Email">
+                                </div>
+                                <div class="alert-email alert"></div>
+                                <div class="form-content__input">
+                                    <i class="fa-solid fa-lock"></i>
+                                    <input name="password" type="password" placeholder="Mật khẩu" class="password">
+                                    <i class="fa-solid fa-eye hide-password" onclick="HidePassword()"></i>
+                                    <i class="fa-solid fa-eye-slash show-password" onclick="ShowPassword()"></i>
+                                </div>
+                                <div class="alert-password alert"></div>
+                                <div class="form-content__input">
+                                    <i class="fa-solid fa-lock"></i>
+                                    <input name="repeat-password" type="password" placeholder="Nhập lại mật khẩu"
+                                        class="repeat-password">
+                                    <i class="fa-solid fa-eye hide-password" onclick="HideRepeatPassword()"></i>
+                                    <i class="fa-solid fa-eye-slash show-password" onclick="ShowRepeatPassword()"></i>
+                                </div>
+                                <div class="alert-repeat-password alert"></div>
+                                <button type="submit" class="btn" onclick="return ValidateFormRegister()">Đăng
+                                    ký</button>
+                            </form>
+                            <div class="question-responsive">
+                                <p>Bạn đã có tài khoản? <a href="#" onclick="LoginPopupOpen()">Đăng nhập</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container__right">
+                    <div class="container__sidebar center">
+                        <div class="form-sidebar__login login-form center" id="login">
+                            <h3 class="form-sidebar__title title">Bạn chưa có tài khoản?</h3>
+                            <div class="form-sidebar__description">
+                                <p>Đăng ký thành viên để nhận được những ưu đãi tốt nhất của chúng tôi!</p>
+                            </div>
+                            <button class="btn" onclick="RegisterPopupOpen()">Đăng ký</button>
+                        </div>
+                        <div class="form-sidebar__register register-form center" id="register">
+                            <h3 class="form-sidebar__title title">Bạn đã có tài khoản?</h3>
+                            <div class="form-sidebar__description">
+                                <p>Đăng nhập để tiếp tục trải nghiệm mua sắm không giới hạn ngay nào!!</p>
+                            </div>
+                            <button class="btn" onclick="LoginPopupOpen()">Đăng nhập</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="login__close-form-btn close-button">
+                    <i class="fa-solid fa-x"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+<script src="assets/js/constructor.js"></script>
+<script src="assets/js/dataProduct.js"> </script>
+<script src="assets/js/dataUser.js"></script>
+<script src="assets/js/localStorage.js"></script>
+<script src="assets/js/checkout.js"></script>
+<script src="assets/js/login.js"></script>
+
+</html>

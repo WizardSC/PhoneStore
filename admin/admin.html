@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="/admin/admincss/index.css">
+  </head>
+  <body onload="time()">
+    <div class="body">
+      <div class="sidebar">
+          <div class="logo-details">
+            <div>
+            <img id="ad-log" src="data:image/png;base64,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">
+          </div>
+            <div>
+              <p>Admin</p>
+            </div>
+          </div>
+        <ul class="nav-links">
+          <li>
+            <a href="index.html" class="active">
+              <ion-icon class="icon" name="speedometer-outline"></ion-icon>
+              <span class="link_name">Bảng điều khiển</span>
+            </a>
+          </li>
+          <li>
+            <a href="qlnhanvien.html" class="active">
+              <ion-icon class="icon" name="people-circle-outline"></ion-icon>
+              <span class="link_name">Quản lý nhân viên</span>
+            </a>
+          </li>
+          <li>
+            <a href="qlsanpham.html" class="active">
+              <ion-icon class="icon" name="pricetags-outline"></ion-icon>
+              <span class="link_name">Quản lý sản phẩm</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="active" id="log-out">
+              <ion-icon class="icon" name="log-out-outline"></ion-icon>
+              <span class="link_name"></span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="top-line"></div>
+      <section class="home-section">
+        <div class="row-time">
+          <ul class="time-line">
+            <li class="title-ad"><a href="#"><b>Bảng điều khiển</b></a></li>
+          </ul>
+          <div id="clock"></div>
+        </div>
+        <div class="home-content">
+          <div class="content-left">
+            <div class="box-content">
+              <div class="box1">
+                <div class="icon-ad">
+                  <img width="96" height="96" src="https://img.icons8.com/external-flaticons-lineal-color-flat-icons/64/external-clients-home-based-business-flaticons-lineal-color-flat-icons.png" alt="external-clients-home-based-business-flaticons-lineal-color-flat-icons"/>
+                </div>
+                <div class="info">
+                  <h4>Tổng khách hàng</h4>
+                  <p><b>99 khách hàng</b></p>
+                  <p class="info-tong">Tổng khách hàng được quản lý.</p>
+                </div>
+              </div>
+              <div class="box1">
+                <div class="icon-ad">
+                <img src="data:image/png;base64,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">
+                </div>
+                <div class="info">
+                  <h4>Tổng sản phẩm</h4>
+                  <p><b>1000 sản phẩm</b></p>
+                  <p class="info-tong">Tổng số sản phẩm được quản lý.</p>
+                </div>
+              </div>
+              <div class="box1">
+                <div class="icon-ad">
+                  <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAACXBIWXMAAAsTAAALEwEAmpwYAAADiUlEQVR4nO2Yz0tUURTHz18S1tpWLdS1ucmN/djXIqJaTLOKFjVgC7NOC4OCDNtkVJC0SBM0smBgBBGs8MdEtmiiHzP9msjG1Jm5cR9TcN9ENfPu49y83w8cGJ5yZt7n6zn3OUQAAAAAAAAAAABoAk7vUj4VuYa0EEYA8lIYEyAvhrGC/ChyDWkhjADkpTAmQF4MYwU1LuH0ZJfq6WtVbYmWoPTr1HinNZlx9CfXiCKnI7lV7TiyxSh9rXeiy4r8OPqTazR7Iz19rYGQE0NH1YcvhaCOXzkcXNvdvz1yAHH1J9do9kbaEi2BDC3mJ++L+eBae6IlcgBx9SfXaPZG2muCwtgKIK7+5BpRV0QYfU3/LGoAcfUn12j2RlLjnaojua1OkD4kU+M7IwcQV39yjSiSeie66gTZkB9nf3KNqJLC2JIfV39yDdcEMQJoTNB6uWQEMJDZa03+hcw+o/da+RsmICzpU+m1IWlo9qC1AK7OHjJ6fyy9QgBhSbniU0PS3aUz1gIYzfYbvV8WnyCAsKTp3C1D0mJhyloAS4VHRu9M7gYCCEu6/jhpSNqorKnBmf2RRQ3OHFDlyrrR+9pcAgHUy+pWxdW3hqiF/IPIohYLD42en1ffBO8VtS+5ho1Vce8ZqzCTzy823e/+8qW6fqPZs1bWGrmGjZs6n+5W+ZUXhrBKdaOpELT8SrVs9Hr3dTl4DwTwl0fG7xsrdX+5C/kpdfkfzgR9boTXjkb31L1tyN+0E8C1GplPqWq1UidRH8xa7uhSfyBzILMnKP1aP2rqpx39O2F0r5H5U9Y+36YPgNO71O35k7+dhEZZK5fUnYVeq5/NiwC4to7CZ0Ij6J1vc+14FwDXDuaxLNc9ov4J/ag5lj1n7cD1OgD+Vd1qeC4Z/Mesv7bQ3+esl1eD0q/11wvTuZtqeO6Yled8BJCOO1AEoKQlYgLS8iKxgtL/Z5FrSAthBCAvhTEB8mIYK8iPIteQFsIIQF4KYwLkxTBWkB9FriEthBGAvBTGBMiLYawgP4pcQ1oIIwB5KYwJkBfDWEF+FLmGtBBGAPJSGBMgL4axgvwocg1pIYwA5KUwJkBeDGMF+VHkGtJCGAHIS2FMgLwYxgryo8g1pIUwApCXwpgAeTGMFeRHkWtIC2EEIC+FMQHyYhgryI8i15AWwghAXgpjAuTFMFaQH0UAAAAAAAAAAACgxvkBQeEZRUjseSYAAAAASUVORK5CYII=">
+                </div>
+                <div class="info">
+                  <h4>Tổng đơn hàng</h4>
+                  <p><b>350 đơn hàng</b></p>
+                  <p class="info-tong">Tổng số hóa đơn bán hàng trong tháng.</p>
+                </div>
+              </div>
+              <div class="box1">
+                <div class="icon-ad">
+                  <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAACXBIWXMAAAsTAAALEwEAmpwYAAACtUlEQVR4nO2dz2oUQRCHKwjm4km8eUzw4Cmw6SLgYbV7IkLOe9En0CdIXkCfQJ/AvEEewIP3nAWPuYgIcboEBXFklJw7f2anqqt/H9R9uoqZ3Z2vqpYIAAAAAAAAAAAAAAAAwMRIxweSeDAdHR+4LPywenhbIn9ST3Aqxufh2fYmeUMSHxlI7nC5uyAckid+xL37kkJWT2y6bIQ8XjN5QSIf6yeVrxaR35MH+seLRznxH/WEpqvFeM19t7ukmhlWq1s58ql2MuW6RYh8Op6BaqVPu6+0kyg3jL4LL6lGzp/u3ZXEX7UTKDeNGL71y8U9qg2J/E49eWmqIvBbqgnZDzs5ht/qiUvTxL+z7IcdqoGBaEMif9BOmkx/F3wcz0bWySm8UE9WWtOd0IXnZJkvy+WdnMKZ2wKkcDaekaySI79ZdxJKrL0IMbwmi5w/WWzlyD/9F4B/fU/hAVkjx3Ayx2OgxBzXMJ6VWhUtJZoTN3OLFjMFsCJu5hYtJZoSNxqixVQBtMWNhmgp0Yy40RItJZoQN5qipUQT4kZTtJRwL260RUsJ9+JGW7SUcC1uLIiWEm7FjRXRUsKtuLEiWkpoX99axI0l0VLCpbiZQ7SIowJMKm7mEi3irgATiZu5RIs4K8Bk4gYFYN0C4BHEuo+g/3cBPoRFs3sCX0NZv38IP8RYt4MOryJYv4fUwss4ab2LWvt1tLQ+R6AtZMRqzDlJ42H2S2qeJat9+lE8TFPWOv8rnuaJ0ZjFuhP1aE0M+jsl0JyrDNrTDYABDQNgREkZDOkZAGOqylgSN9LioLYlcSMtriqwJG6k1WUdHsVNrmldjUtxEytb2ORK3MRKV5Z5ETd9rUv7PIibXPvayprFTfawuPUCrC5WBsu7DYD19crgDxwMgL8wAQAAAAAAAAAAAAAAAGqUvyfH1jHCJGfpAAAAAElFTkSuQmCC">
+                </div>
+                <div class="info">
+                  <h4>Sắp hết hàng</h4>
+                  <p><b>5 sản phẩm</b></p>
+                  <p class="info-tong">Số sản phẩm cảnh báo hết cần nhập thêm.</p>
+                </div>
+              </div>
+            </div>
+            <div class="table-tab">
+              <h3 class="title-table">Tình trạng đơn hàng</h3>
+              <div>
+                <table class="table-border">
+                  <thead>
+                    <tr>
+                      <th>ID đơn hàng</th>
+                      <th>Tên khách hàng</th>
+                      <th>Tổng tiền</th>
+                      <th>Trạng thái</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>MM1001</td>
+                      <td>Nguyễn Ngọc Ngạn</td>
+                      <td>19.990.000 đ</td>
+                      <td>Đã hoàn thành</td>
+                    </tr>
+                    <tr>
+                      <td>MM1001</td>
+                      <td>Nguyễn Ngọc Ngạn</td>
+                      <td>19.990.000 đ</td>
+                      <td>Đã hoàn thành</td>
+                    </tr>
+                    <tr>
+                      <td>MM1001</td>
+                      <td>Nguyễn Ngọc Ngạn</td>
+                      <td>19.990.000 đ</td>
+                      <td>Đã hoàn thành</td>
+                    </tr>
+                    <tr>
+                      <td>MM1001</td>
+                      <td>Nguyễn Ngọc Ngạn</td>
+                      <td>19.990.000 đ</td>
+                      <td>Đã hoàn thành</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="table-tab">
+              <h3 class="title-table">Khách hàng mới</h3>
+              <div>
+                <table class="table-border">
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Tên khách hàng</th>
+                      <th>Ngày sinh</th>
+                      <th>Số điện thoại</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>#111</td>
+                      <td>Nguyễn Ngọc Ngạn</td>
+                      <td>11/11/2000</td>
+                      <td>0909118119</td>
+                    </tr>
+                    <tr>
+                      <td>#111</td>
+                      <td>Nguyễn Ngọc Ngạn</td>
+                      <td>11/11/2000</td>
+                      <td>0909118119</td>
+                    </tr>
+                    <tr>
+                      <td>#111</td>
+                      <td>Nguyễn Ngọc Ngạn</td>
+                      <td>11/11/2000</td>
+                      <td>0909118119</td>
+                    </tr>
+                    <tr>
+                      <td>#111</td>
+                      <td>Nguyễn Ngọc Ngạn</td>
+                      <td>11/11/2000</td>
+                      <td>0909118119</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="content-right">
+            <div class="chart-table">
+              <h3 class="title-table">Dữ liệu 6 tháng đầu vào</h3>
+              <canvas id="myChart" style="width:100%;max-width:650px"></canvas>
+            </div>
+            <div class="chart-table">
+              <h3 class="title-table">Thống kê 6 tháng doanh thu</h3>
+              <canvas id="myChart1" style="width:100%;max-width:650px"></canvas>
+            </div>
+        </div>
+      </section>
+    </div> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="/admin/adminjs/index.js"></script>
+  </body>
+</html>

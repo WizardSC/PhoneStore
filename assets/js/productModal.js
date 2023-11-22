@@ -40,6 +40,7 @@ function hideModal() {
 }
 //Mở chi tiết sản phẩm lên
 function openDetailProduct(productID) {
+    
     showModal()
     productDetail.classList.add('active')
     if (!productID) return;
@@ -94,7 +95,7 @@ function openDetailProduct(productID) {
     priceCurrent.innerText = money.formatCurrencytoVND(product.price_current)
     img.setAttribute("src", product.img)
     btnAddToCart.setAttribute("onclick", `addToCart(${productID})`);
-
+    btnBuyNow.setAttribute("onclick", `buyNow(${productID})`);
 
 
 }
@@ -132,12 +133,12 @@ function showToastMessage(icon, title, description, color) {
     }
 
 }
-function addToCart(productID){
+function addToCart(productID) {
     const loginID = User.checkLoginId()
     if (loginID) {
         console.log("a" + productID)
         console.log(loginID)
-        cart.addItemCart(loginID,productID,1)
+        cart.addItemCart(loginID, productID, 1)
         closeDetailProduct()
         openCartModal()
 
@@ -151,12 +152,12 @@ function addToCart(productID){
         )
     }
 }
-
-btnBuyNow.addEventListener('click', () => {
-    const loginID = User.checkLoginId()
-    if (loginID) {
+function buyNow(productID) {
+    const userID = User.checkLoginId()
+    if (userID) {
+        Invoice.buyNowProduct(userID, productID, 1)
         hideModal()
-
+        redirectToOrderPage()
     } else {
         showToastMessage(
             "fa-solid fa-circle-exclamation",
@@ -165,8 +166,10 @@ btnBuyNow.addEventListener('click', () => {
             "#FF4444"
         )
     }
-})
-productCart.addEventListener("click",(e) => {
+}
+
+
+productCart.addEventListener("click", (e) => {
     e.stopPropagation()
 })
 const productCartClose = $('.modal__cart-close')
@@ -240,10 +243,21 @@ function renderProductCart() {
             cart.updateCartItemQuantity(userID, cartID, 1)
             renderProductCart()
         })
-        btnDeleteItem.addEventListener('click', () => { 
+        btnDeleteItem.addEventListener('click', () => {
             cart.removeCartItem(userID, cartID)
             renderProductCart()
         })
+    })
+
+    const btnViewInvoice = $('.modal__cart-view-invoice')
+    const btnCheckout = $('.modal__cart-checkout')
+    btnCheckout.addEventListener('click', () => {
+        Invoice.checkoutListProductAndCreateInvoice(userID,cart.getCartList(userID))
+        cart.removeAllCartItems(userID)
+        redirectToOrderPage()
+    })
+    btnViewInvoice.addEventListener('click', () => {
+        redirectToOrderPage()
     })
 
 }
@@ -273,5 +287,7 @@ headerCartBtn.addEventListener("click", e => {
     openCartModal();
 })
 
-
+function redirectToOrderPage() {
+    location.href = './checkout.html'
+}
 

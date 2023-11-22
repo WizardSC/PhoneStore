@@ -14,9 +14,11 @@ const userArr = [
         "changsub",
         "changsub",
         "leechangsub@gmail.com",
-        "0814099714",
+        // "0814099714",
+        "",
         "Lee Changsub",
-        "South Korea",
+        "",
+        // "South Korea",
         "",
         false,
         true
