@@ -20,23 +20,9 @@ const toastProgress = $('.toast__progress')
 
 function showModal() {
     modal.classList.add('active')
-    //Sửa lỗi filterLabel, next prev btn ở slider bị z-index cùng cấp với chi tiết sản phẩm
-    // filterLabel.classList.add('inactive')
-    prevbtn.style.zIndex = '0'
-    nextbtn.style.zIndex = '0'
-
-    // filterLabel.style.zIndex = '-1'
 }
 function hideModal() {
     modal.classList.remove('active')
-    //Sửa lỗi filterLabel, next prev btn ở slider bị z-index cùng cấp với chi tiết sản phẩm
-
-    // filterLabel.classList.remove('inactive')
-    prevbtn.style.zIndex = '1'
-    nextbtn.style.zIndex = '1'
-
-
-
 }
 //Mở chi tiết sản phẩm lên
 function openDetailProduct(productID) {
