@@ -56,6 +56,26 @@ class Product {
         return true;
         
     }
+
+    static updateProduct(productID, name, price_old, price_current, img, brand, ram, rom, sale){
+        const listProduct = Product.getProducts();
+
+        if(!listProduct || listProduct.length === 0) return null;
+        listProduct.forEach(product => {
+            if(product.productID === parseInt(productID)){
+                product.name = name;
+                product.price_old = price_old
+                product.price_current = price_current
+                product.img = img
+                product.brand = brand
+                product.ram = ram
+                product.rom = rom
+                product.sale = sale
+            }
+        })
+        Product.loadProducts(listProduct)
+        return true
+    }
 }
 class ProductInCart {
     static totalCart = 0;

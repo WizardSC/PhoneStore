@@ -5,6 +5,8 @@ const btnSave = $('#btn-save')
 const btnCancel = $('#btn-cancel')
 const btnUpdate = $('.product-table__update-btn')
 const btnDelete = $('.product-table__delete-btn')
+const functionList = $$('.function__item')
+
 
 function loadForm() {
     const userID = User.checkLoginId()
@@ -506,7 +508,7 @@ function renderProductToTable() {
             updateButton.addEventListener('click', () => {
                 const productID = updateButton.getAttribute('data-product-id')
                 const productItem = Product.getProductID(parseInt(productID))
-                updateProduct(productItem)
+                renderProduct(productItem)
 
             })
 
@@ -525,7 +527,9 @@ let productPriceCurrent = document.getElementById('product-price-current');
 let productBrand = document.getElementById('product-brand');
 let productSale = document.getElementById('product-sale');
 let productIMG = document.getElementById('product-img');
-function resetValue(){
+let listROMCheckbox = $$('.checkbox-group-rom input[type="checkbox"]')
+let listRAMCheckbox = $$('.checkbox-group-ram input[type="checkbox"]')
+function resetValue() {
     productId.value = '';
     productName.value = '';
     productPriceOld.value = '';
@@ -535,41 +539,109 @@ function resetValue(){
     productIMG.value = '';
     listRAM = []
     listROM = []
+    Array.from(listROMCheckbox).forEach(item => item.checked = false)
+    Array.from(listRAMCheckbox).forEach(item => item.checked = false)
+
 }
 function addProduct() {
     // Lấy giá trị của các input
-    Array.from($$('.checkbox-group-rom input[type="checkbox"]')).forEach((item, index) => {
+    Array.from(listROMCheckbox).forEach((item, index) => {
         if (item.checked) {
             listROM.push(romValues[index])
         }
-        item.checked = false
     })
-    Array.from($$('.checkbox-group-ram input[type="checkbox"]')).forEach((item, index) => {
+    Array.from(listRAMCheckbox).forEach((item, index) => {
         if (item.checked) {
             listRAM.push(ramValues[index])
         }
-        item.checked = false
 
     })
     Product.addProduct(productName.value, productPriceOld.value, productPriceCurrent.value, productIMG.value, productBrand.value, listRAM, listROM, productSale.value)
 
-    resetValue()7
+    resetValue()
     renderProductToTable()
 
 
 
 }
+function renderProduct(productItem) {
+    resetValue()
+    //active cho thẻ sửa
+    Array.from(functionList).forEach(item => {
+        if (item.classList.contains('active')) item.classList.remove('active')
+        if (item.getAttribute('value') === 'update') {
 
+            item.classList.add('active')
+        }
+    })
+    //Render thông tin sản phẩm lên form
+    productId.value = productItem.productID
+    productName.value = productItem.name
+    productPriceCurrent.value = productItem.price_current
+    productPriceOld.value = productItem.price_old
+    productIMG.value = productItem.img
+    productBrand.value = productItem.brand
+    productSale.value = productItem.sale
+    Array.from(listROMCheckbox).forEach((item) => {
+        productItem.rom.forEach((value) => {
+            if (item.getAttribute('data-value') === value) {
+                item.checked = true
+                listROM.push(value)
+            }
+        })
+    })
 
-btnSave.addEventListener('click', (e) => {
-    e.preventDefault()
-    addProduct()
-})
-
-function updateProduct(productItem) {
+    Array.from(listRAMCheckbox).forEach((item) => {
+        productItem.ram.forEach((value) => {
+            if (item.getAttribute('data-value') === value) item.checked = true
+            listRAM.push(value)
+        })
+    })
 
 }
-console.log(btnUpdate)
+
+btnSave.addEventListener('click', (e) => {
+    e.preventDefault();
+    const isUpdateActive = Array.from(functionList).some(item => {
+        if (item.getAttribute('value') === 'update' && item.classList.contains('active')) {
+            console.log('xin chao');
+            updateProduct();
+            renderProductToTable();
+            return true;
+        }
+        if (item.getAttribute('value') === 'add' && item.classList.contains('active')) {
+            console.log('xin chao add');
+            addProduct();
+            renderProductToTable();
+            return true;
+        }
+        return false;
+    });
+
+    // You can perform additional logic here if needed
+    if (!isUpdateActive) {
+        console.log('No active "update" item found.');
+    }
+});
+
+function updateProduct() {
+    listRAM = []
+    listROM = []
+    //chỉnh sửa thông tin sản phẩm
+    Array.from(listROMCheckbox).forEach((item, index) => {
+        if (item.checked) {
+            listROM.push(romValues[index])
+        }
+    })
+    Array.from(listRAMCheckbox).forEach((item, index) => {
+        if (item.checked) {
+            listRAM.push(ramValues[index])
+        }
+
+    })
+
+    Product.updateProduct(productId.value, productName.value, productPriceOld.value, productPriceCurrent.value, productIMG.value, productBrand.value, listRAM, listROM, productSale.value)
+}
 // Hành động cho nút lưu
 
 // contentContainer.innerHTML = ''
