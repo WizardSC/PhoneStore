@@ -47,111 +47,134 @@
                 </li>
             </ul>
         </div>
-        <div class="top-line">
-            <h1 class="top-line__heading">QUẢN LÝ SẢN PHẨM</h1>
-        </div>
         <div id="content">
-            <ul class="function__list">
-                <li class="function__item">
-                    <span class="function__item-title">
-                        Thêm mới
-                    </span>
-                </li>
-                <li class="function__item">
-                    <span class="function__item-title">
-                        Chỉnh sửa
-                    </span>
-                </li>
-                <li class="function__item">
-                    <span class="function__item-title">
-                        Xóa
-                    </span>
-                </li>
-                <a class="btn-add-staff" href="#">
-                    Tạo sản phẩm mới
-                </a>
 
-            </ul>
-            <form class="add">
-                <div class="form-info-add">
-                    <label class="control-label">Mã sản phẩm</label>
-                    <input id="id" class="form-info" type="text" required>
-                </div>
-                <div class="form-info-add">
-                    <label class="control-label">Tên sản phẩm</label>
-                    <input class="form-info" type="text" id="name" required>
-                </div>
-                <div class="form-info-add">
-                    <label class="control-label">Số lượng</label>
-                    <input class="form-info" type="number" id="number" required>
-                </div>
-                <div class="form-info-add">
-                    <label class="control-label">Giá bán</label>
-                    <input class="form-info" type="number" id="address" required>
-                </div>
-                <div class="form-info-add">
-                    <label class="control-label">Giá vốn</label>
-                    <input class="form-info" type="number" id="phone" required>
-                </div>
-                <div class="form-info-add">
-                    <label class="control-label">Tình trạng</label>
-                    <select id="ex-select1" class="form-info" required>
-                        <option>-- Chọn tình trạng --</option>
-                        <option>Còn hàng</option>
-                        <option>Hết hàng</option>
-                    </select>
-                </div>
-                <div class="form-info-add">
-                    <label class="control-label">Danh mục</label>
-                    <select id="ex-select2" class="form-info" required>
-                        <option>-- Chọn danh mục --</option>
-                        <option>Iphone</option>
-                        <option>Samsung</option>
-                        <option>Oppo</option>
-                        <option>Realme</option>
-                        <option>Redme</option>
-                    </select>
-                </div>
-                <div class="form-info-add">
-                    <label class="control-label">Nhà cung cấp</label>
-                    <select id="ex-select3" class="form-info" required>
-                        <option>-- Chọn nhà cung cấp --</option>
-                        <option>FPT</option>
-                        <option>Thế giới di động</option>
-                        <option>CellphoneS</option>
-                        <option>Apple</option>
-                    </select>
-                </div>
-                <div class="form-info-add">
-                    <label class="control-label">Ảnh 3x4</label>
-                    <div class="myfileupload">
-                        <img src="" alt="">
-                        <input type="file" id="uploadfile" name="ImageUpLoad">
+            <div class="top-line">
+                <h1 class="top-line__heading">QUẢN LÝ SẢN PHẨM</h1>
+            </div>
+
+            <div class="content__container">
+
+                <ul class="function__list">
+                    <li class="function__item">
+                        <span class="function__item-title">
+                            Thêm mới
+                        </span>
+                    </li>
+                    <li class="function__item">
+                        <span class="function__item-title">
+                            Chỉnh sửa
+                        </span>
+                    </li>
+                    <li class="function__item">
+                        <span class="function__item-title">
+                            Xóa
+                        </span>
+                    </li>
+                    <a class="btn-add-staff" href="#">
+                        Tạo sản phẩm mới
+                    </a>
+
+                </ul>
+                <form id="form-admin" class="add">
+                    <div class="form-container">
+                        <div class="form-group">
+                            <label for="product-id" class="form-label">Mã SP</label>
+                            <div>
+                                <input id="product-id" name="product-id" type="text" placeholder="VD: Mã SP: 1"
+                                    class="form-control">
+                            </div>
+                            <span class="form-message"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="product-name" class="form-label">Tên SP</label>
+                            <div>
+                                <input id="product-name" name="product-name" type="text" placeholder="VD: Mã SP: 1"
+                                    class="form-control">
+                            </div>
+                            <span class="form-message"></span>
+                        </div>
+                        <div class="form-info-add">
+                            <label class="control-label">Mã sản phẩm</label>
+                            <input id="id" class="form-info" type="text" required>
+                        </div>
+                        <div class="form-info-add">
+                            <label class="control-label">Tên sản phẩm</label>
+                            <input class="form-info" type="text" id="name" required>
+                        </div>
+                        <div class="form-info-add">
+                            <label class="control-label">Số lượng</label>
+                            <input class="form-info" type="number" id="number" required>
+                        </div>
+                        <div class="form-info-add">
+                            <label class="control-label">Giá bán</label>
+                            <input class="form-info" type="number" id="address" required>
+                        </div>
+                        <div class="form-info-add">
+                            <label class="control-label">Giá vốn</label>
+                            <input class="form-info" type="number" id="phone" required>
+                        </div>
+                        <div class="form-info-add">
+                            <label class="control-label">Tình trạng</label>
+                            <select id="ex-select1" class="form-info" required>
+                                <option>-- Chọn tình trạng --</option>
+                                <option>Còn hàng</option>
+                                <option>Hết hàng</option>
+                            </select>
+                        </div>
+                        <div class="form-info-add">
+                            <label class="control-label">Danh mục</label>
+                            <select id="ex-select2" class="form-info" required>
+                                <option>-- Chọn danh mục --</option>
+                                <option>Iphone</option>
+                                <option>Samsung</option>
+                                <option>Oppo</option>
+                                <option>Realme</option>
+                                <option>Redme</option>
+                            </select>
+                        </div>
+                        <div class="form-info-add">
+                            <label class="control-label">Nhà cung cấp</label>
+                            <select id="ex-select3" class="form-info" required>
+                                <option>-- Chọn nhà cung cấp --</option>
+                                <option>FPT</option>
+                                <option>Thế giới di động</option>
+                                <option>CellphoneS</option>
+                                <option>Apple</option>
+                            </select>
+                        </div>
+                        <div class="form-info-add">
+                            <label class="control-label">Ảnh 3x4</label>
+                            <div class="myfileupload">
+                                <img src="" alt="">
+                                <input type="file" id="uploadfile" name="ImageUpLoad">
+                            </div>
+                        </div>
+                        <div>
+                            <button onclick="add()" class="btn-save">Lưu</button>
+                            <button class="btn-close">Hủy</button>
+                        </div>
                     </div>
+                </form>
+                <div class="table-sff">
+                    <table class="table-manage-staffs" id="render">
+                        <thead>
+                            <tr>
+                                <th>Mã sản phẩm</th>
+                                <th width="250">Tên Sản Phẩm</th>
+                                <th>Ảnh</th>
+                                <th width="100">Số lượng</th>
+                                <th width="140">Giá bán</th>
+                                <th width="100">Giá vốn</th>
+                                <th width="100">Danh mục</th>
+                                <th width="210">Nhà cung cấp</th>
+                                <th width="150">Tính năng</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
                 </div>
-                <div>
-                    <button onclick="add()" class="btn-save">Lưu</button>
-                    <button class="btn-close">Hủy</button>
-                </div>
-            </form>
-            <div class="table-sff">
-                <table class="table-manage-staffs" id="render">
-                    <thead>
-                        <tr>
-                            <th>Mã sản phẩm</th>
-                            <th width="250">Tên Sản Phẩm</th>
-                            <th>Ảnh</th>
-                            <th width="100">Số lượng</th>
-                            <th width="140">Giá bán</th>
-                            <th width="100">Giá vốn</th>
-                            <th width="100">Danh mục</th>
-                            <th width="210">Nhà cung cấp</th>
-                            <th width="150">Tính năng</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                </table>
             </div>
         </div>
 
