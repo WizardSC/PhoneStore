@@ -22,37 +22,68 @@
                     <h1>URPHONE</h1>
                 </a>
                 <!-- CheckBox dể hiện navbar -->
-                <input hidden  type="checkbox" name="" id="nav-input" class="navbar-input">
+                <input hidden type="checkbox" name="" id="nav-input" class="navbar-input">
 
                 <label for="nav-input" style="cursor:pointer">
-                  <i class="fas fa-bars " id="head_menu"></i>
+                    <i class="fas fa-bars " id="head_menu"></i>
                 </label>
 
-                <label for="nav-input"class="header__navbar-overplay"></label>
+                <label for="nav-input" class="header__navbar-overplay"></label>
 
                 <!-- Navbar khi PC -->
                 <ul class="header__navbar-list">
                     <li><a href="index.html" class="active">Trang chủ</a></li>
-                    <li><a href="product.html">Sản phẩm</a></li>
+                    <li><a href="product.html" >Sản phẩm</a></li>
                     <li><a href="contact.html">Liên lạc</a></li>
-                    <li><a href=""><i class="fa-solid fa-basket-shopping "></i></a></li>
-                    <li><a href="" class="login active1" onclick="LoginPopupOpen()">Đăng nhập</a></li>
-                    <li ><a href="" class="user " ><span>Nguyen </span><i class="fa-solid fa-user   "></i></a></li>
+                    
+                    <li class="header__navbar-item">
+                        <div class="header__navbar-item--none-logged active">
+                            <div class="header__navbar-login" id="btnDangNhap" onclick="LoginPopupOpen()">
+                                Đăng nhập
+                            </div>
+                        </div>
+
+                        <div class="header__navbar-item--logged ">
+                            <i class="fa-solid fa-basket-shopping header__navbar-cart-icon"></i>
+                            <div class="header__navbar-user-wrap">
+                                <div class="header__navbar-user">
+                                    <img class="header__navbar-user-img" src="https://down-vn.img.susercontent.com/file/57c388a98552051b188b48864e95a4bf_tn" alt="">
+                                    <div class="header__navbar-username">Lee Changsub</div>
+                                </div>
+                                <div class="header__navbar-dropdown">
+                                    <div class="header__navbar-dropdown-item">Đơn hàng mua</div>
+                                    <div class="header__navbar-dropdown-item" id="logout__btn">Đăng xuất</div>
+    
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <li><a href="" class="login active1" id="btnDangNhap" onclick="LoginPopupOpen()">Đăng nhập</a>
+
+                        </li>
+
+                        <li><a href="" class="user "><span>Nguyen </span><i class="fa-solid fa-user"></i></a></li> -->
+
+                    </li>
                 </ul>
-                
+
                 <!-- Navbar khi responsive -->
                 <nav class="nav__list">
-                  <label for="nav-input" class="nav-close">
-                    <i class="fa-solid fa-xmark"></i>
-                  </label>
-                  <ul class="header__navbar-list-responsive">
-                    <li><a href="index.html" class="navbar-link-responsive active"><i class="fa-solid fa-house"></i> Trang chủ</a></li>
-                    <li><a href="product.html" class="navbar-link-responsive"><i class="fa-solid fa-list"></i> Sản phẩm</a></li>
-                    <li><a href="" class="navbar-link-responsive"><i class="fa-solid fa-phone"></i> Liên lạc</a></li>
-                    <li><a href="" class="navbar-link-responsive"><i class="fa-solid fa-cart-shopping"></i> Giỏ hàng</a></li>
-                    <li><a href=""  class="navbar-link-responsive login1 active2">Đăng nhập</a></li>
-                    <li ><a href=""class="navbar-link-responsive user1"><i class="fa-solid fa-circle-user"></i><span> Nguyen </span></a></li>
-                  </ul>
+                    <label for="nav-input" class="nav-close">
+                        <i class="fa-solid fa-xmark"></i>
+                    </label>
+                    <ul class="header__navbar-list-responsive">
+                        <li><a href="index.html" class="navbar-link-responsive active"><i class="fa-solid fa-house"></i>
+                                Trang chủ</a></li>
+                        <li><a href="product.html" class="navbar-link-responsive"><i class="fa-solid fa-list"></i> Sản
+                                phẩm</a></li>
+                        <li><a href="" class="navbar-link-responsive"><i class="fa-solid fa-phone"></i> Liên lạc</a>
+                        </li>
+                        <li><a href="" class="navbar-link-responsive"><i class="fa-solid fa-cart-shopping"></i> Giỏ
+                                hàng</a></li>
+                        <li id="btnDangNhap" onclick="LoginPopupOpen()">Đăng nhập</li>
+                        <!-- <li><a href="" class="navbar-link-responsive user1"><i
+                                    class="fa-solid fa-circle-user"></i><span> Nguyen </span></a></li> -->
+                    </ul>
                 </nav>
             </div>
         </header>
