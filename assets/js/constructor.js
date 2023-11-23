@@ -1,9 +1,11 @@
 const $ = document.querySelector.bind(document)
 const $$ = document.querySelectorAll.bind(document)
+let romValues = ['16 GB', '32 GB', '64 GB', '128 GB', '256 GB', '512 GB', '1 TB'];
+let ramValues = ['1 GB', '2 GB', '3 GB', '4 GB', '6 GB', '8 GB', '12 GB']
 class Product {
     static lastProductID = 0;
     constructor(name, price_old, price_current, img, brand, ram, rom, sale) {
-        this.productID = ++Product.lastProductID;
+        this.productID = Product.getProducts() === null ? ++Product.lastProductID : (Product.getLastProductID() + 1);
         this.name = name;
         this.price_old = price_old;
         this.price_current = price_current;
@@ -13,12 +15,21 @@ class Product {
         this.rom = rom
         this.sale = sale
     }
+    // Lấy danh sách sản phẩm trả về mảng
     static getProducts() {
         if (localStorage.listProducts) {
             return JSON.parse(localStorage.listProducts);
         }
         return null;
     }
+    //Load danh sách sản phẩm lên localStorage
+    static loadProducts(list){
+        localStorage.listProducts = JSON.stringify(list);
+        if(localStorage.listProducts)
+            return true;
+        return false;
+    }
+    // Lấy ra 1 sản phẩm
     static getProductID(myProductID) {
         const list = Product.getProducts();
 
@@ -30,6 +41,20 @@ class Product {
             }
         })
         return product;
+    }
+    //load mã sản phẩm mới nhất
+    static getLastProductID() {
+        const myList = Product.getProducts();
+        if (!myList || myList.length === 0) return null;
+        return myList[myList.length - 1].productID;
+    }
+    static addProduct(name, price_old, price_current, img, brand, ram, rom, sale){
+        const product = new Product(name, price_old, price_current,img, brand, ram, rom, sale)
+        const list = Product.getProducts();
+        list.push(product);
+        Product.loadProducts(list);
+        return true;
+        
     }
 }
 class ProductInCart {

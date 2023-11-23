@@ -1,13 +1,22 @@
 // Khi load giao diện sẽ cập nhật thông tin user
 const usernameLabel = $('.info__name')
 
+const btnSave = $('#btn-save')
+const btnCancel = $('#btn-cancel')
+const btnUpdate = $('.product-table__update-btn')
+const btnDelete = $('.product-table__delete-btn')
+
 function loadForm() {
     const userID = User.checkLoginId()
     const username = User.getUserID(userID)
     usernameLabel.innerText = username.full_name
+    renderProductToTable()
+
 }
 
 loadForm()
+
+
 const contentContainer = $('#content')
 const listControlItems = $$('.nav-links__item')
 
@@ -463,6 +472,106 @@ Array.from(listControlItems).forEach((item) => {
         }
     })
 })
+
+function renderProductToTable() {
+    const tableBody = $('.product-table__list')
+    const productList = Product.getProducts()
+    let html = ''
+    if (productList) {
+        Array.from(productList).forEach(product => {
+
+            html +=
+                `
+            <tr class="product-table__row">
+                        <td>${product.productID}</td>
+                        <td>${product.name}</td>
+                        <td>${money.formatCurrencytoVND(product.price_old)}</td>
+                        <td>${money.formatCurrencytoVND(product.price_current)}</td>
+                        <td>${product.sale}</td>
+                        <td style="text-transform: capitalize;">${product.brand}</td>
+                        <td>${product.ram}</td>
+                        <td>${product.rom}</td>
+                        <td><img class="product-table__img" src="${product.img}" alt=""></td>
+                        <td>
+                            <button class="product-table__update-btn product-table-btn" data-product-id="${product.productID}">Sửa</button>
+                            <button class="product-table__delete-btn product-table-btn" data-product-id="${product.productID}">Xóa</button>
+                        </td>
+                    </tr>
+            `
+        })
+        tableBody.innerHTML = html
+        const productRowList = $$('.product-table__row')
+        Array.from(productRowList).forEach(row => {
+            const updateButton = row.querySelector('.product-table__update-btn')
+            updateButton.addEventListener('click', () => {
+                const productID = updateButton.getAttribute('data-product-id')
+                const productItem = Product.getProductID(parseInt(productID))
+                updateProduct(productItem)
+
+            })
+
+
+        })
+    }
+
+
+}
+let listROM = [];
+let listRAM = [];
+let productId = document.getElementById('product-id');
+let productName = document.getElementById('product-name');
+let productPriceOld = document.getElementById('product-price-old');
+let productPriceCurrent = document.getElementById('product-price-current');
+let productBrand = document.getElementById('product-brand');
+let productSale = document.getElementById('product-sale');
+let productIMG = document.getElementById('product-img');
+function resetValue(){
+    productId.value = '';
+    productName.value = '';
+    productPriceOld.value = '';
+    productPriceCurrent.value = '';
+    productBrand.selectedIndex = -1; // Bỏ chọn option trong select
+    productSale.value = '';
+    productIMG.value = '';
+    listRAM = []
+    listROM = []
+}
+function addProduct() {
+    // Lấy giá trị của các input
+    Array.from($$('.checkbox-group-rom input[type="checkbox"]')).forEach((item, index) => {
+        if (item.checked) {
+            listROM.push(romValues[index])
+        }
+        item.checked = false
+    })
+    Array.from($$('.checkbox-group-ram input[type="checkbox"]')).forEach((item, index) => {
+        if (item.checked) {
+            listRAM.push(ramValues[index])
+        }
+        item.checked = false
+
+    })
+    Product.addProduct(productName.value, productPriceOld.value, productPriceCurrent.value, productIMG.value, productBrand.value, listRAM, listROM, productSale.value)
+
+    resetValue()7
+    renderProductToTable()
+
+
+
+}
+
+
+btnSave.addEventListener('click', (e) => {
+    e.preventDefault()
+    addProduct()
+})
+
+function updateProduct(productItem) {
+
+}
+console.log(btnUpdate)
+// Hành động cho nút lưu
+
 // contentContainer.innerHTML = ''
 /*thoi gian*/
 function time1() {
