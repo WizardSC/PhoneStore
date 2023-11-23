@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="/assets/css/admin.css">
+    <link rel="stylesheet" href="/assets/css/qlnhanvien.css">
+  </head>
+  <body onload="time()">
+    <div class="body-nhanvien">
+      <div class="sidebar">
+        <div class="logo-details">
+          <div>
+          <img id="ad-log" src="data:image/png;base64,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">
+        </div>
+          <div>
+            <p>Admin</p>
+          </div>
+        </div>
+      <ul class="nav-links">
+        <li>
+          <a href="admin.html" class="active">
+            <ion-icon class="icon" name="speedometer-outline"></ion-icon>
+            <span class="link_name">Bảng điều khiển</span>
+          </a>
+        </li>
+        <li>
+          <a href="qlnhanvien.html" class="active">
+            <ion-icon class="icon" name="people-circle-outline"></ion-icon>
+            <span class="link_name">Quản lý nhân viên</span>
+          </a>
+        </li>
+        <li>
+          <a href="qlsanpham.html" class="active">
+            <ion-icon class="icon" name="pricetags-outline"></ion-icon>
+            <span class="link_name">Quản lý sản phẩm</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="active" id="log-out">
+            <ion-icon class="icon" name="log-out-outline"></ion-icon>
+            <span class="link_name"></span>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="top-line"></div>
+      <div class="staff-manage">
+        <div class="row-time">
+          <ul class="time-line">
+            <li class="title-ad"><a href="#"><b>Quản lý nhân viên</b></a></li>
+          </ul>
+          <div id="clock"></div>
+        </div>
+        <div class="btn-add-staffs">
+          <a class="btn-add-staff" href="#">
+            Tạo mới nhân viên
+          </a>
+        </div>
+        <form class="add">
+            <div class="form-info-add">
+              <label class="control-label">ID nhân viên</label>
+              <input id="id" class="form-info" type="text"  required>
+            </div>
+            <div class="form-info-add">
+              <label class="control-label">Họ và tên</label>
+              <input class="form-info" type="text" id="name" required>
+            </div>
+            <div class="form-info-add">
+              <label class="control-label">Địa chỉ email</label>
+              <input class="form-info" type="text" id="email" required>
+            </div>
+            <div class="form-info-add">
+              <label class="control-label">Địa chỉ thường trú</label>
+              <input class="form-info" type="text" id="address" required>
+            </div>
+            <div class="form-info-add">
+              <label class="control-label">Số điện thoại</label>
+              <input class="form-info" type="number" id="phone" required>
+            </div>
+            <div class="form-info-add">
+              <label class="control-label">Ngày sinh</label>
+              <input class="form-info" type="date" id="birthday" required>
+            </div>
+            <div class="form-info-add">
+              <label class="control-label">Nơi sinh</label>
+              <input class="form-info" type="text" id="born" required>
+            </div>
+            <div class="form-info-add">
+              <label class="control-label">Số CMND/CCCD</label>
+              <input class="form-info" type="number" id="cccd" required>
+            </div>
+            <div class="form-info-add">
+              <label class="control-label">Giới tính</label>
+              <select  id="ex-select1" class="form-info" required>
+                <option>-- Chọn giới tính --</option>
+                <option>Nam</option>
+                <option>Nữ</option>
+              </select>
+            </div>
+            <div class="form-info-add">
+              <label class="control-label">Chức vụ</label>
+              <select  id="ex-select2" class="form-info" required>
+                <option>-- Chọn chức vụ --</option>
+                <option>Bán hàng</option>
+                <option>Tư vấn</option>
+                <option>Dịch vụ</option>
+                <option>Thu Ngân</option>
+                <option>Quản kho</option>
+                <option>Bảo trì</option>
+                <option>Kiểm hàng</option>
+                <option>Bảo vệ</option>
+                <option>Tạp vụ</option>
+              </select>
+            </div>
+            <div class="form-info-add">
+              <label class="control-label">Bằng cấp</label>
+              <select  id="ex-select3" class="form-info" required>
+                <option>-- Chọn bằng cấp --</option>
+                <option>Tốt nghiệp Đại Học</option>
+                <option>Tốt nghiệp Cao Đẳng</option>
+                <option>Tốt nghiệp Phổ Thông</option>
+                <option>Chưa tốt nghiệp</option>
+                <option>Không bằng cấp</option>
+              </select>
+            </div>
+            <div class="form-info-add">
+              <label class="control-label">Ảnh 3x4</label>
+              <div class="myfileupload">
+                <img src="" alt="">
+                <input type="file" id="uploadfile" name="ImageUpLoad">
+              </div>
+            </div>
+            <div>
+              <button onclick="add()" class="btn-save">Lưu</button>
+              <button class="btn-close">Hủy</button>
+            </div>
+        </form>
+        <div class="table-sff">
+          <table class="table-manage-staffs" id="render">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th width="150">Họ và tên</th>
+                <th>Ảnh</th>
+                <th width="300">Địa chỉ</th>
+                <th width="140">Ngày sinh</th>
+                <th width="100">Giới tính</th>
+                <th width="150">SĐT</th>
+                <th width="160">Chức vụ</th>
+                <th width="100">Tính năng</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>101</td>
+                <td>Hồ Thị Thanh Ngân</td>
+                <td><img class="img-card-person" src="/admin/imgadmin/img.jpg" alt=""></td>
+                <td>155-157 Trần Quốc Thảo, Quận 3, Hồ Chí Minh </td>
+                <td>12/02/1999</td>
+                <td>Nữ</td>
+                <td>0926737168</td>
+                <td>Bán hàng</td>
+                <td class="table-td-center"><button class="btn btn-primary btn-sm trash" type="button" title="Xóa"
+                    onclick="myFunction(this)"><i class="fas fa-trash-alt"></i>
+                  </button>
+                  <button class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp"
+                    data-toggle="modal" data-target="#ModalUP"><i class="fas fa-edit"></i>
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td>102</td>
+                <td>Trần Như Ý</td>
+                <td><img class="img-card-person" src="/admin/imgadmin/img1.jpg" alt=""></td>
+                <td>155-157 Trần Quốc Thảo, Quận 5, Hồ Chí Minh </td>
+                <td>12/02/2000</td>
+                <td>Nữ</td>
+                <td>0926778878</td>
+                <td>Bán hàng</td>
+                <td class="table-td-center"><button class="btn btn-primary btn-sm trash" type="button" title="Xóa"
+                    onclick="myFunction(this)"><i class="fas fa-trash-alt"></i>
+                  </button>
+                  <button class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp"
+                    data-toggle="modal" data-target="#ModalUP"><i class="fas fa-edit"></i>
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td>103</td>
+                <td>Nguyễn Bảo Lộc</td>
+                <td><img class="img-card-person" src="/admin/imgadmin/img2.webp" alt=""></td>
+                <td>155 Trần Quốc Thảo, Quận 10, Hồ Chí Minh </td>
+                <td>1/02/1999</td>
+                <td>Nam</td>
+                <td>0926737998</td>
+                <td>Bán hàng</td>
+                <td class="table-td-center"><button class="btn btn-primary btn-sm trash" type="button" title="Xóa"
+                    onclick="myFunction(this)"><i class="fas fa-trash-alt"></i>
+                  </button>
+                  <button class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp"
+                    data-toggle="modal" data-target="#ModalUP"><i class="fas fa-edit"></i>
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td>104</td>
+                <td>Trần Thái Thành</td>
+                <td><img class="img-card-person" src="/admin/imgadmin/img3.jpg" alt=""></td>
+                <td>906 đường 3/2, Quận 11, Hồ Chí Minh </td>
+                <td>11/10/1999</td>
+                <td>Nam</td>
+                <td>0926737168</td>
+                <td>Bán hàng</td>
+                <td class="table-td-center"><button class="btn btn-primary btn-sm trash" type="button" title="Xóa"
+                    onclick="myFunction(this)"><i class="fas fa-trash-alt"></i>
+                  </button>
+                  <button class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp"
+                    data-toggle="modal" data-target="#ModalUP"><i class="fas fa-edit"></i>
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td>105</td>
+                <td>Hồ Văn Hùng</td>
+                <td><img class="img-card-person" src="/admin/imgadmin/img4.jpg" alt=""></td>
+                <td>155-157 Trần Quốc Thảo, Quận 3, Hồ Chí Minh </td>
+                <td>25/02/1997</td>
+                <td>Nam</td>
+                <td>0926737168</td>
+                <td>Bán hàng</td>
+                <td class="table-td-center"><button class="btn btn-primary btn-sm trash" type="button" title="Xóa"
+                    onclick="myFunction(this)"><i class="fas fa-trash-alt"></i>
+                  </button>
+                  <button class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp"
+                    data-toggle="modal" data-target="#ModalUP"><i class="fas fa-edit"></i>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="assets/js/admin.js"></script>
+    <script src="assets/js/qlnhanvien.js"></script>
+
+  </body> 
+</html>

@@ -14,11 +14,24 @@ const userArr = [
         "changsub",
         "changsub",
         "leechangsub@gmail.com",
-        "0814099714",
+        // "0814099714",
+        "",
         "Lee Changsub",
-        "South Korea",
+        "",
+        // "South Korea",
         "",
         false,
+        true
+    ),
+    new User(
+        "nakunnamcuong",
+        "nakunnamcuong",
+        "nakunnamcuong@gmail.com",
+        "0814099714",
+        "Nguyễn Nam Cường",
+        "Đà Nẵng, Việt Nam",
+        "",
+        true,
         true
     )
     

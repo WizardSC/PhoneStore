@@ -200,6 +200,13 @@ function LoginFunction(event) {
     };
     loginFormDataObj.username = loginFormData.get("username");
     loginFormDataObj.password = loginFormData.get("password");
+    if (User.checkIsAdmin() == true) {
+        console.log("Xin chao")
+        closeFormLogin()
+        // location.reload(); //tải lại trang
+        redirectToAdminPage()
+        return;
+    }
     closeFormLogin()
     location.reload(); //tải lại trang
 
@@ -254,8 +261,9 @@ function changeNoneLoggedUser() {
 }
 
 const logOutBtn = $('#logout__btn')
-logOutBtn.addEventListener('click',() => {
+logOutBtn.addEventListener('click', () => {
     User.logOut();
-    location.reload()
+
+    location.reload();
 })
 
