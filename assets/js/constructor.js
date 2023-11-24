@@ -48,6 +48,7 @@ class Product {
         if (!myList || myList.length === 0) return null;
         return myList[myList.length - 1].productID;
     }
+    // Thêm sản phẩm mới
     static addProduct(name, price_old, price_current, img, brand, ram, rom, sale){
         const product = new Product(name, price_old, price_current,img, brand, ram, rom, sale)
         const list = Product.getProducts();
@@ -56,7 +57,7 @@ class Product {
         return true;
         
     }
-
+    //Cập nhật sản phẩm
     static updateProduct(productID, name, price_old, price_current, img, brand, ram, rom, sale){
         const listProduct = Product.getProducts();
 
@@ -75,6 +76,19 @@ class Product {
         })
         Product.loadProducts(listProduct)
         return true
+    }
+    // Xóa sản phẩm bằng cách truyền vào productID 
+    static deleteProduct(productID){
+        const listProduct = Product.getProducts();
+        if(!listProduct || listProduct.length === 0) return false
+        let isDeleted = false;
+        listProduct.forEach((product,index) =>{
+            if(product.productID === productID){
+                listProduct.splice(index, 1)
+                if(Product.loadProducts(listProduct)) isDeleted = true;
+            }
+        })
+        return isDeleted;
     }
 }
 class ProductInCart {
