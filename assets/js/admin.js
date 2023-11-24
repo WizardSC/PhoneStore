@@ -1,43 +1,13 @@
-// Khi load giao diện sẽ cập nhật thông tin user
 const usernameLabel = $('.info__name')
-
-const btnSave = $('#btn-save')
-const btnCancel = $('#btn-cancel')
-const btnUpdate = $('.product-table__update-btn')
-const btnDelete = $('.product-table__delete-btn')
-const functionList = $$('.function__item')
-
-
+const contentContainer = $('#content')
+const listControlItems = $$('.nav-links__item')
 function loadForm() {
     const userID = User.checkLoginId()
     const username = User.getUserID(userID)
     usernameLabel.innerText = username.full_name
-    renderProductToTable()
-
 }
 
 loadForm()
-
-// Khi nhấn nút thêm thì active nút thêm
-Array.from(functionList).forEach(item => {
-    item.addEventListener('click', () => {
-        // Loại bỏ lớp 'active' từ tất cả các phần tử
-        Array.from(functionList).forEach(otherItem => {
-            if (otherItem !== item && otherItem.classList.contains('active')) {
-                otherItem.classList.remove('active');
-            }
-        });
-
-        // Thêm lớp 'active' cho phần tử được kích hoạt có giá trị là 'add'
-        if (item.getAttribute('value') === 'add') {
-            item.classList.add('active');
-        }
-    });
-})
-
-
-const contentContainer = $('#content')
-const listControlItems = $$('.nav-links__item')
 
 Array.from(listControlItems).forEach((item) => {
     const titleFunc = $('.top-line__heading')
@@ -594,204 +564,348 @@ Array.from(listControlItems).forEach((item) => {
                 </tbody>
             </table>
             `
-            renderProductToTable()
+            initProductPage()
         }
     })
 })
 
-function renderProductToTable() {
-    const tableBody = $('.product-table__list')
-    const productList = Product.getProducts()
-    let html = ''
-    if (productList) {
-        Array.from(productList).forEach(product => {
 
-            html +=
-                `
-            <tr class="product-table__row">
-                        <td>${product.productID}</td>
-                        <td>${product.name}</td>
-                        <td>${money.formatCurrencytoVND(product.price_old)}</td>
-                        <td>${money.formatCurrencytoVND(product.price_current)}</td>
-                        <td>${product.sale}</td>
-                        <td style="text-transform: capitalize;">${product.brand}</td>
-                        <td>${product.ram}</td>
-                        <td>${product.rom}</td>
-                        <td><img class="product-table__img" src="${product.img}" alt=""></td>
-                        <td>
-                            <button class="product-table__update-btn product-table-btn" data-product-id="${product.productID}">Sửa</button>
-                            <button class="product-table__delete-btn product-table-btn" data-product-id="${product.productID}">Xóa</button>
-                        </td>
-                    </tr>
-            `
-        })
-        tableBody.innerHTML = html
-        const productRowList = $$('.product-table__row')
-        Array.from(productRowList).forEach(row => {
-            const updateButton = row.querySelector('.product-table__update-btn')
-            const deleteButton = row.querySelector('.product-table__delete-btn')
-            updateButton.addEventListener('click', () => {
-                const productID = updateButton.getAttribute('data-product-id')
-                const productItem = Product.getProductID(parseInt(productID))
-                renderProduct(productItem, true)
+function initProductPage() {
+    const usernameLabel = $('.info__name')
+    const btnSave = $('#btn-save')
+    const btnCancel = $('#btn-cancel')
+    const btnUpdate = $('.product-table__update-btn')
+    const btnDelete = $('.product-table__delete-btn')
+    const functionList = $$('.function__item')
+    const contentContainer = $('#content')
+    const listControlItems = $$('.nav-links__item')
 
-            })
-
-            deleteButton.addEventListener('click', () => {
-                const productID = deleteButton.getAttribute('data-product-id')
-                const productItem = Product.getProductID(parseInt(productID))
-                renderProduct(productItem, false)
-                deleteProduct(parseInt(productID))
-            })
-
-
-        })
-    }
-
-
-}
-let listROM = [];
-let listRAM = [];
-let productId = document.getElementById('product-id');
-let productName = document.getElementById('product-name');
-let productPriceOld = document.getElementById('product-price-old');
-let productPriceCurrent = document.getElementById('product-price-current');
-let productBrand = document.getElementById('product-brand');
-let productSale = document.getElementById('product-sale');
-let productIMG = document.getElementById('product-img');
-let listROMCheckbox = $$('.checkbox-group-rom input[type="checkbox"]')
-let listRAMCheckbox = $$('.checkbox-group-ram input[type="checkbox"]')
-function resetValue() {
-    productId.value = '';
-    productName.value = '';
-    productPriceOld.value = '';
-    productPriceCurrent.value = '';
-    productBrand.selectedIndex = -1; // Bỏ chọn option trong select
-    productSale.value = '';
-    productIMG.value = '';
-    listRAM = []
-    listROM = []
-    Array.from(listROMCheckbox).forEach(item => item.checked = false)
-    Array.from(listRAMCheckbox).forEach(item => item.checked = false)
-
-}
-function addProduct() {
-    // Lấy giá trị của các input
-    Array.from(listROMCheckbox).forEach((item, index) => {
-        if (item.checked) {
-            listROM.push(romValues[index])
-        }
-    })
-    Array.from(listRAMCheckbox).forEach((item, index) => {
-        if (item.checked) {
-            listRAM.push(ramValues[index])
-        }
-
-    })
-    Product.addProduct(productName.value, productPriceOld.value, productPriceCurrent.value, productIMG.value, productBrand.value, listRAM, listROM, productSale.value)
-
-    resetValue()
     renderProductToTable()
 
+    function renderProductToTable() {
+        const tableBody = $('.product-table__list')
+        const productList = Product.getProducts()
+        let html = ''
+        if (productList) {
+            Array.from(productList).forEach(product => {
+
+                html +=
+                    `
+                <tr class="product-table__row">
+                            <td>${product.productID}</td>
+                            <td>${product.name}</td>
+                            <td>${money.formatCurrencytoVND(product.price_old)}</td>
+                            <td>${money.formatCurrencytoVND(product.price_current)}</td>
+                            <td>${product.sale}</td>
+                            <td style="text-transform: capitalize;">${product.brand}</td>
+                            <td>${product.ram}</td>
+                            <td>${product.rom}</td>
+                            <td><img class="product-table__img" src="${product.img}" alt=""></td>
+                            <td>
+                                <button class="product-table__update-btn product-table-btn" data-product-id="${product.productID}">Sửa</button>
+                                <button class="product-table__delete-btn product-table-btn" data-product-id="${product.productID}">Xóa</button>
+                            </td>
+                        </tr>
+                `
+            })
+            tableBody.innerHTML = html
+            const productRowList = $$('.product-table__row')
+            Array.from(productRowList).forEach(row => {
+                const updateButton = row.querySelector('.product-table__update-btn')
+                const deleteButton = row.querySelector('.product-table__delete-btn')
+                updateButton.addEventListener('click', () => {
+                    const productID = updateButton.getAttribute('data-product-id')
+                    const productItem = Product.getProductID(parseInt(productID))
+                    renderProduct(productItem, true)
+
+                })
+
+                deleteButton.addEventListener('click', () => {
+                    const productID = deleteButton.getAttribute('data-product-id')
+                    const productItem = Product.getProductID(parseInt(productID))
+                    renderProduct(productItem, false)
+                    deleteProduct(parseInt(productID))
+                })
 
 
-}
-function renderProduct(productItem, isUpdate) {
-    resetValue()
-    //active cho thẻ sửa
+            })
+        }
+    }
+    let listROM = [];
+    let listRAM = [];
+    let productId = document.getElementById('product-id');
+    let productName = document.getElementById('product-name');
+    let productPriceOld = document.getElementById('product-price-old');
+    let productPriceCurrent = document.getElementById('product-price-current');
+    let productBrand = document.getElementById('product-brand');
+    let productSale = document.getElementById('product-sale');
+    let productIMG = document.getElementById('product-img');
+    let listROMCheckbox = $$('.checkbox-group-rom input[type="checkbox"]');
+    let listRAMCheckbox = $$('.checkbox-group-ram input[type="checkbox"]');
+    function resetValue() {
+        productId.value = '';
+        productName.value = '';
+        productPriceOld.value = '';
+        productPriceCurrent.value = '';
+        productBrand.selectedIndex = -1; // Bỏ chọn option trong select
+        productSale.value = '';
+        productIMG.value = '';
+        listRAM = []
+        listROM = []
+        Array.from(listROMCheckbox).forEach(item => item.checked = false)
+        Array.from(listRAMCheckbox).forEach(item => item.checked = false)
+
+    }
+    // Khi nhấn nút thêm thì active nút thêm
     Array.from(functionList).forEach(item => {
-        if (item.classList.contains('active')) item.classList.remove('active')
-        if (item.getAttribute('value') === 'update' && isUpdate == true) {
+        item.addEventListener('click', () => {
+            // Loại bỏ lớp 'active' từ tất cả các phần tử
+            Array.from(functionList).forEach(otherItem => {
+                if (otherItem !== item && otherItem.classList.contains('active')) {
+                    otherItem.classList.remove('active');
+                }
+            });
 
-            item.classList.add('active')
-        }
-        if (item.getAttribute('value') === 'delete' && isUpdate == false) {
-            item.classList.add('active')
-        }
+            // Thêm lớp 'active' cho phần tử được kích hoạt có giá trị là 'add'
+            if (item.getAttribute('value') === 'add') {
+                item.classList.add('active');
+                resetValue()
+            }
+        });
     })
 
-    //Render thông tin sản phẩm lên form
-    productId.value = productItem.productID
-    productName.value = productItem.name
-    productPriceCurrent.value = productItem.price_current
-    productPriceOld.value = productItem.price_old
-    productIMG.value = productItem.img
-    const indexToSelect = Array.from(productBrand.options).findIndex(option => option.value.toLowerCase() === productItem.brand.toLowerCase());
-    if (indexToSelect !== -1) {
-        // Chọn option bằng cách gán giá trị cho selectedIndex
-        productBrand.selectedIndex = indexToSelect;
-    } else {
-        console.error(`Không tìm thấy option với giá trị ${productItem.brand}`);
-    }
-    productSale.value = productItem.sale
-    Array.from(listROMCheckbox).forEach((item) => {
-        productItem.rom.forEach((value) => {
-            if (item.getAttribute('data-value') === value) {
-                item.checked = true
-                listROM.push(value)
+
+    function addProduct() {
+        // Lấy giá trị của các input
+        Array.from(listROMCheckbox).forEach((item, index) => {
+            if (item.checked) {
+                listROM.push(romValues[index])
             }
         })
-    })
+        Array.from(listRAMCheckbox).forEach((item, index) => {
+            if (item.checked) {
+                listRAM.push(ramValues[index])
+            }
 
-    Array.from(listRAMCheckbox).forEach((item) => {
-        productItem.ram.forEach((value) => {
-            if (item.getAttribute('data-value') === value) item.checked = true
-            listRAM.push(value)
         })
-    })
+        Product.addProduct(productName.value, productPriceOld.value, productPriceCurrent.value, productIMG.value, productBrand.value, listRAM, listROM, productSale.value)
 
-}
-
-btnSave.addEventListener('click', (e) => {
-    e.preventDefault();
-    const isUpdateActive = Array.from(functionList).some(item => {
-        if (item.getAttribute('value') === 'update' && item.classList.contains('active')) {
-
-            updateProduct();
-            renderProductToTable();
-            return true;
-        }
-        if (item.getAttribute('value') === 'add' && item.classList.contains('active')) {
-
-            addProduct();
-            renderProductToTable();
-            return true;
-        }
-        return false;
-    });
-
-    // You can perform additional logic here if needed
-    if (!isUpdateActive) {
-        console.log('No active "update" item found.');
-    }
-});
-
-function updateProduct() {
-    listRAM = []
-    listROM = []
-    //chỉnh sửa thông tin sản phẩm
-    Array.from(listROMCheckbox).forEach((item, index) => {
-        if (item.checked) {
-            listROM.push(romValues[index])
-        }
-    })
-    Array.from(listRAMCheckbox).forEach((item, index) => {
-        if (item.checked) {
-            listRAM.push(ramValues[index])
-        }
-
-    })
-
-    Product.updateProduct(productId.value, productName.value, productPriceOld.value, productPriceCurrent.value, productIMG.value, productBrand.value, listRAM, listROM, productSale.value)
-}
-
-function deleteProduct(productID) {
-    if (confirm('Bạn có muốn xóa sản phẩm này?')) {
-        Product.deleteProduct(productID)
+        resetValue()
         renderProductToTable()
-    }
-}
-// Hành động cho nút lưu
 
-// contentContainer.innerHTML = ''
-/*thoi gian*/
+
+
+    }
+    function renderProduct(productItem, isUpdate) {
+        resetValue()
+        //active cho thẻ sửa
+        Array.from(functionList).forEach(item => {
+            if (item.classList.contains('active')) item.classList.remove('active')
+            if (item.getAttribute('value') === 'update' && isUpdate == true) {
+
+                item.classList.add('active')
+            }
+            if (item.getAttribute('value') === 'delete' && isUpdate == false) {
+                item.classList.add('active')
+            }
+        })
+
+        //Render thông tin sản phẩm lên form
+        productId.value = productItem.productID
+        productName.value = productItem.name
+        productPriceCurrent.value = productItem.price_current
+        productPriceOld.value = productItem.price_old
+        productIMG.value = productItem.img
+        const indexToSelect = Array.from(productBrand.options).findIndex(option => option.value.toLowerCase() === productItem.brand.toLowerCase());
+        if (indexToSelect !== -1) {
+            // Chọn option bằng cách gán giá trị cho selectedIndex
+            productBrand.selectedIndex = indexToSelect;
+        } else {
+            console.error(`Không tìm thấy option với giá trị ${productItem.brand}`);
+        }
+        productSale.value = productItem.sale
+        Array.from(listROMCheckbox).forEach((item) => {
+            productItem.rom.forEach((value) => {
+                if (item.getAttribute('data-value') === value) {
+                    item.checked = true
+                    listROM.push(value)
+                }
+            })
+        })
+
+        Array.from(listRAMCheckbox).forEach((item) => {
+            productItem.ram.forEach((value) => {
+                if (item.getAttribute('data-value') === value) item.checked = true
+                listRAM.push(value)
+            })
+        })
+
+    }
+
+    btnSave.addEventListener('click', (e) => {
+        e.preventDefault();
+        const isUpdateActive = Array.from(functionList).some(item => {
+            if (item.getAttribute('value') === 'update' && item.classList.contains('active')) {
+
+                updateProduct();
+                renderProductToTable();
+                return true;
+            }
+            if (item.getAttribute('value') === 'add' && item.classList.contains('active')) {
+
+                addProduct();
+                renderProductToTable();
+                return true;
+            }
+            return false;
+        });
+
+        // You can perform additional logic here if needed
+        if (!isUpdateActive) {
+            console.log('No active "update" item found.');
+        }
+    });
+    btnCancel.addEventListener('click', (e) => {
+        e.preventDefault();
+        resetValue();
+    })
+    function updateProduct() {
+        listRAM = []
+        listROM = []
+        //chỉnh sửa thông tin sản phẩm
+        Array.from(listROMCheckbox).forEach((item, index) => {
+            if (item.checked) {
+                listROM.push(romValues[index])
+            }
+        })
+        Array.from(listRAMCheckbox).forEach((item, index) => {
+            if (item.checked) {
+                listRAM.push(ramValues[index])
+            }
+
+        })
+
+        Product.updateProduct(productId.value, productName.value, productPriceOld.value, productPriceCurrent.value, productIMG.value, productBrand.value, listRAM, listROM, productSale.value)
+    }
+
+    function deleteProduct(productID) {
+        if (confirm('Bạn có muốn xóa sản phẩm này?')) {
+            Product.deleteProduct(productID)
+            renderProductToTable()
+        }
+    }
+
+}
+
+function initInvoicePage() {
+    const invoiceList = Invoice.getInvoices()
+    const invoiceIDInput = $('#invoice-id')
+    const invoiceUserIDInput = $('#invoice-user-id')
+    const invoiceOrderTimeInput = $('#invoice-order-time')
+    const invoiceTotalPriceInput = $('#invoice-total-price')
+    const invoiceStatusInput = $('#invoice-status')
+    const message = $('.invoice-label')
+    const processBtn = $('#btn-process')
+    const cancelBtn = $('#btn-cancel')
+    renderInvoice(invoiceList)
+    function renderInvoice(listInvoice) {
+        const tableBody = $('.product-table__list')
+        let html = ''
+        Array.from(listInvoice).forEach(invoice => {
+            let status = ''
+            if (invoice.status === false) {
+                status = 'Chưa xử lý'
+            } else if (invoice.status === true) {
+                status = 'Đã xử lý'
+            }
+            html += `
+            <tr class="product-table__row product-table__row--clicked">
+                            <td>${invoice.invoiceID}</td>
+                            <td>${time.getDateTime(invoice.orderTime)}</td>
+                            <td>${invoice.userID}</td>
+                            <td>${money.formatCurrencytoVND(Invoice.getTotalPriceOfInvoice(invoice.invoiceID))}</td>
+                            <td>${status}</td>
+                        </tr>
+            `
+        })
+
+        tableBody.innerHTML = html
+        clickedRow()
+
+
+    }
+    const filterButton = $('.filter__button')
+    const startDateInput = $('#filter__start-date')
+    const endDateInput = $('#filter__end-date')
+    filterButton.addEventListener('click', () => {
+        const startDate = time.getDateTime(startDateInput.value)
+        const endDate = time.getDateTime(endDateInput.value)
+
+        const filterList = Invoice.getInvoiceByDateTime(startDate, endDate)
+        renderInvoice(filterList)
+    })
+    function resetValue() {
+
+        invoiceIDInput.value = ''
+        invoiceUserIDInput.value = ''
+        invoiceOrderTimeInput.value = ''
+        invoiceTotalPriceInput.value = ''
+        invoiceStatusInput.value = ''
+        message.classList.remove('active')
+    }
+
+    function clickedRow() {
+        const rowTable = $$('.product-table__row--clicked')
+        Array.from(rowTable).forEach(row => {
+            row.addEventListener('click', () => {
+                const invoiceID = row.cells[0].innerText;
+                clickedRow.selectedInvoiceID = invoiceID;
+                const invoiceOrderTime = row.cells[1].innerText;
+                const invoiceUserID = row.cells[2].innerText;
+                const invoiceTotalPrice = row.cells[3].innerText;
+                const invoiceStatus = row.cells[4].innerText;
+
+                if (invoiceStatus === 'Chưa xử lý') {
+
+                    message.classList.add('active')
+                    processBtn.disabled = false;
+                }
+                else {
+                    processBtn.disabled = true;
+                    message.classList.remove('active')
+
+                    // processBtn.style.backgroundColor = '#999'
+
+
+                }
+                invoiceIDInput.value = invoiceID
+                invoiceOrderTimeInput.value = invoiceOrderTime
+                invoiceUserIDInput.value = invoiceUserID
+                invoiceTotalPriceInput.value = invoiceTotalPrice
+                invoiceStatusInput.value = invoiceStatus
+            })
+        })
+
+
+
+    }
+
+
+
+    processBtn.addEventListener('click', (e) => {
+
+        e.preventDefault()
+
+        const invoiceID = clickedRow.selectedInvoiceID;
+        Invoice.updateInvoiceStatus(parseInt(invoiceID), true)
+        const newList = Invoice.getInvoices()
+        renderInvoice(newList)
+    })
+
+    cancelBtn.addEventListener('click', (e) => {
+        resetValue()
+        e.preventDefault()
+    })
+}
+
+initInvoicePage()

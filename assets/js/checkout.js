@@ -41,6 +41,7 @@ function renderListInvoices() {
     let html = ''
     const list = Invoice.getInvoiceByUserID(User.checkLoginId())
     list.forEach(invoice => {
+        let status = (invoice.status === true) ? 'Đã xử lý' : 'Chưa xử lý';
         html += `
         <div class="info-invoice__item">
             <div class="info-invoice__header">
@@ -53,7 +54,7 @@ function renderListInvoices() {
                     </span>
                 </div>
                 <div class="info-invoice__status">
-                    Chưa xử lý
+                    ${status}
                 </div>
             </div>
             <div class="info-invoice__wrapper">
