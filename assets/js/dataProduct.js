@@ -511,9 +511,9 @@ const productArr = [
         22190000.0,
         ['https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:80/plain/https://cellphones.com.vn/media/catalog/product/i/p/iphone-14-pro_2__4.png'],
         "iPhone",
+        
         ["128GB","256GB"],
         ["512GB","1TB"],
-        ["iPhone"],
         14
     ),
     new Product(
@@ -608,4 +608,5 @@ const productArr = [
     ),
 
 ]
+
 

@@ -1,20 +1,5 @@
 
-/* Heading */
-.top-line{
-  /* width: 100%; */
-  margin-left: 17%;
-  background-color:var(--white-color);
-  border-bottom: 1px solid black;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Thêm đường bóng */
-  /* margin-bottom: 10px; */
-}
 
-.top-line__heading{
-  display: block;
-  font-size: 3rem;
-  text-align: center;
-  height: auto;
-}
 .sidebar{
   position: fixed;
   height: 100%;

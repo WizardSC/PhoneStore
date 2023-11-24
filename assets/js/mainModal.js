@@ -30,7 +30,7 @@ function openDetailProduct(productID) {
     showModal()
     productDetail.classList.add('active')
     if (!productID) return;
-    const list = data.getProducts()
+    const list = Product.getProducts()
     if (!list || list.length == 0) return null;
     let product = null;
 
