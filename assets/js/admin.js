@@ -10,11 +10,12 @@ function loadForm() {
 loadForm()
 
 Array.from(listControlItems).forEach((item) => {
-    const titleFunc = $('.top-line__heading')
     item.addEventListener('click', () => {
-
+        const activeItem = $('.nav-links__item.active');
+        if (activeItem) {
+            activeItem.classList.remove('active')
+        }
         if (item.getAttribute('data-value') === 'trang-chu') {
-            titleFunc.innerText = 'TRANG CHỦ'
             contentContainer.innerHTML =
                 `
             <section class="home-section">
@@ -164,208 +165,156 @@ Array.from(listControlItems).forEach((item) => {
                 </section>
             `
         }
-        if (item.getAttribute('data-value') === 'ql-taikhoan') {
-            titleFunc.innerText = 'QUẢN LÝ TÀI KHOẢN'
+        if (item.getAttribute('data-value') === 'ql-nguoidung') {
             contentContainer.innerHTML =
                 `
-            <div class="row-time">
-          <ul class="time-line">
-            <li class="title-ad"><a href="#"><b>Quản lý nhân viên</b></a></li>
-          </ul>
-          <div id="clock"></div>
-        </div>
-        <div class="btn-add-staffs">
-          <a class="btn-add-staff" href="#">
-            Tạo mới nhân viên
-          </a>
-        </div>
-        <form class="add">
-            <div class="form-info-add">
-              <label class="control-label">ID nhân viên</label>
-              <input id="id" class="form-info" type="text"  required>
+                <div class="top-line">
+                <h1 class="top-line__heading">QUẢN LÝ NGƯỜI DÙNG</h1>
             </div>
-            <div class="form-info-add">
-              <label class="control-label">Họ và tên</label>
-              <input class="form-info" type="text" id="name" required>
+
+
+            <div class="content__container">
+                <ul class="function__list">
+                    <li class="function__item active" data-value="add">
+                        <span class="function__item-title">
+                            Thêm mới
+                        </span>
+                    </li>
+                    <li class="function__item" data-value="update">
+                        <span class="function__item-title">
+                            Chỉnh sửa
+                        </span>
+                    </li>
+                    <li class="function__item" data-value="delete">
+                        <span class="function__item-title">
+                            Xóa
+                        </span>
+                    </li>
+
+
+                </ul>
+                <form id="form-admin">
+                    <div class="form-container">
+
+                        <div class="form-group">
+                            <label for="user-id" class="form-label">Mã người dùng</label>
+
+                            <input id="user-id" name="user-id" type="text" class="form-control" disabled="true">
+
+                            <span class="form-message"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="user-full_name" class="form-label">Họ tên người dùng</label>
+
+                            <input id="user-full_name" name="user-full_name" type="text" class="form-control">
+
+                            <span class="form-message"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="user-username" class="form-label">Tên đăng nhập</label>
+
+                            <input id="user-username" name="user-username" type="text" class="form-control">
+
+                            <span class="form-message"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="user-password" class="form-label">Mật khẩu</label>
+
+                            <input id="user-password" name="user-password" type="text" class="form-control">
+
+                            <span class="form-message"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="user-email" class="form-label">Email</label>
+
+                            <input id="user-email" name="user-email" type="text" class="form-control">
+
+                            <span class="form-message"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="user-phone" class="form-label">Số ĐT</label>
+
+                            <input id="user-phone" name="user-phone" type="text" class="form-control">
+
+                            <span class="form-message"></span>
+                        </div>
+                        <div class="form-group form-group--full">
+                            <label for="user-address" class="form-label">Địa chỉ</label>
+
+                            <input id="user-address" name="user-address" type="text" class="form-control">
+
+                            <span class="form-message"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="user-permission" class="form-label">Quyền</label>
+                            <select name="user-permission" id="user-permission" class="form-control">
+                                <option value="">--Chọn quyền--</option>
+                                <option value="customer">Khách hàng</option>
+                                <option value="admin">Admin</option>
+
+                            </select>
+                            <span class="form-message"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="user-status" class="form-label">Trạng thái</label>
+                            <select name="user-status" id="user-status" class="form-control">
+                                <option value="">--Chọn trạng thái--</option>
+
+                                <option value="active">Hoạt động</option>
+                                <option value="inactive">Không hoạt động</option>
+
+                            </select>
+                            <span class="form-message"></span>
+                        </div>
+
+
+
+                    </div>
+                    <div class="form-controls">
+                        <button class="btn-control" id="btn-save">Lưu</button>
+                        <button class="btn-control" id="btn-cancel">Hủy</button>
+                    </div>
+                </form>
+                <table id="product-table">
+                    <thead>
+                        <tr class="product-table__heading">
+                            <th>Mã User</th>
+                            <th>Tên đăng nhập</th>
+                            <th>Mật khẩu</th>
+                            <th>Họ tên người dùng</th>
+                            <th>Email</th>
+                            <th>Số ĐT</th>
+                            <th style="width: 250px;">Địa chỉ</th>
+                            <th>Hành động</th>
+                            <!-- <th></th> -->
+
+                        </tr>
+                    </thead>
+                    <tbody class="product-table__list">
+                        <tr class="product-table__row product-table__row--clicked">
+                            <td>1</td>
+                            <td>Samsung Galaxy S23 Ultra 256GB</td>
+                            <td>10000000</td>
+                            <td>9000000</td>
+                            <td>Đã xử lý</td>
+                            <td>
+                                <button class="product-table__update-btn product-table-btn">Sửa</button>
+                                <button class="product-table__delete-btn product-table-btn">Xóa</button>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+
             </div>
-            <div class="form-info-add">
-              <label class="control-label">Địa chỉ email</label>
-              <input class="form-info" type="text" id="email" required>
-            </div>
-            <div class="form-info-add">
-              <label class="control-label">Địa chỉ thường trú</label>
-              <input class="form-info" type="text" id="address" required>
-            </div>
-            <div class="form-info-add">
-              <label class="control-label">Số điện thoại</label>
-              <input class="form-info" type="number" id="phone" required>
-            </div>
-            <div class="form-info-add">
-              <label class="control-label">Ngày sinh</label>
-              <input class="form-info" type="date" id="birthday" required>
-            </div>
-            <div class="form-info-add">
-              <label class="control-label">Nơi sinh</label>
-              <input class="form-info" type="text" id="born" required>
-            </div>
-            <div class="form-info-add">
-              <label class="control-label">Số CMND/CCCD</label>
-              <input class="form-info" type="number" id="cccd" required>
-            </div>
-            <div class="form-info-add">
-              <label class="control-label">Giới tính</label>
-              <select  id="ex-select1" class="form-info" required>
-                <option>-- Chọn giới tính --</option>
-                <option>Nam</option>
-                <option>Nữ</option>
-              </select>
-            </div>
-            <div class="form-info-add">
-              <label class="control-label">Chức vụ</label>
-              <select  id="ex-select2" class="form-info" required>
-                <option>-- Chọn chức vụ --</option>
-                <option>Bán hàng</option>
-                <option>Tư vấn</option>
-                <option>Dịch vụ</option>
-                <option>Thu Ngân</option>
-                <option>Quản kho</option>
-                <option>Bảo trì</option>
-                <option>Kiểm hàng</option>
-                <option>Bảo vệ</option>
-                <option>Tạp vụ</option>
-              </select>
-            </div>
-            <div class="form-info-add">
-              <label class="control-label">Bằng cấp</label>
-              <select  id="ex-select3" class="form-info" required>
-                <option>-- Chọn bằng cấp --</option>
-                <option>Tốt nghiệp Đại Học</option>
-                <option>Tốt nghiệp Cao Đẳng</option>
-                <option>Tốt nghiệp Phổ Thông</option>
-                <option>Chưa tốt nghiệp</option>
-                <option>Không bằng cấp</option>
-              </select>
-            </div>
-            <div class="form-info-add">
-              <label class="control-label">Ảnh 3x4</label>
-              <div class="myfileupload">
-                <img src="" alt="">
-                <input type="file" id="uploadfile" name="ImageUpLoad">
-              </div>
-            </div>
-            <div>
-              <button onclick="add()" class="btn-save">Lưu</button>
-              <button class="btn-close">Hủy</button>
-            </div>
-        </form>
-        <div class="table-sff">
-          <table class="table-manage-staffs" id="render">
-            <thead>
-              <tr>
-                <th>ID</th>
-                <th width="150">Họ và tên</th>
-                <th>Ảnh</th>
-                <th width="300">Địa chỉ</th>
-                <th width="140">Ngày sinh</th>
-                <th width="100">Giới tính</th>
-                <th width="150">SĐT</th>
-                <th width="160">Chức vụ</th>
-                <th width="100">Tính năng</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>101</td>
-                <td>Hồ Thị Thanh Ngân</td>
-                <td><img class="img-card-person" src="/admin/imgadmin/img.jpg" alt=""></td>
-                <td>155-157 Trần Quốc Thảo, Quận 3, Hồ Chí Minh </td>
-                <td>12/02/1999</td>
-                <td>Nữ</td>
-                <td>0926737168</td>
-                <td>Bán hàng</td>
-                <td class="table-td-center"><button class="btn btn-primary btn-sm trash" type="button" title="Xóa"
-                    onclick="myFunction(this)"><i class="fas fa-trash-alt"></i>
-                  </button>
-                  <button class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp"
-                    data-toggle="modal" data-target="#ModalUP"><i class="fas fa-edit"></i>
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <td>102</td>
-                <td>Trần Như Ý</td>
-                <td><img class="img-card-person" src="/admin/imgadmin/img1.jpg" alt=""></td>
-                <td>155-157 Trần Quốc Thảo, Quận 5, Hồ Chí Minh </td>
-                <td>12/02/2000</td>
-                <td>Nữ</td>
-                <td>0926778878</td>
-                <td>Bán hàng</td>
-                <td class="table-td-center"><button class="btn btn-primary btn-sm trash" type="button" title="Xóa"
-                    onclick="myFunction(this)"><i class="fas fa-trash-alt"></i>
-                  </button>
-                  <button class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp"
-                    data-toggle="modal" data-target="#ModalUP"><i class="fas fa-edit"></i>
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <td>103</td>
-                <td>Nguyễn Bảo Lộc</td>
-                <td><img class="img-card-person" src="/admin/imgadmin/img2.webp" alt=""></td>
-                <td>155 Trần Quốc Thảo, Quận 10, Hồ Chí Minh </td>
-                <td>1/02/1999</td>
-                <td>Nam</td>
-                <td>0926737998</td>
-                <td>Bán hàng</td>
-                <td class="table-td-center"><button class="btn btn-primary btn-sm trash" type="button" title="Xóa"
-                    onclick="myFunction(this)"><i class="fas fa-trash-alt"></i>
-                  </button>
-                  <button class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp"
-                    data-toggle="modal" data-target="#ModalUP"><i class="fas fa-edit"></i>
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <td>104</td>
-                <td>Trần Thái Thành</td>
-                <td><img class="img-card-person" src="/admin/imgadmin/img3.jpg" alt=""></td>
-                <td>906 đường 3/2, Quận 11, Hồ Chí Minh </td>
-                <td>11/10/1999</td>
-                <td>Nam</td>
-                <td>0926737168</td>
-                <td>Bán hàng</td>
-                <td class="table-td-center"><button class="btn btn-primary btn-sm trash" type="button" title="Xóa"
-                    onclick="myFunction(this)"><i class="fas fa-trash-alt"></i>
-                  </button>
-                  <button class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp"
-                    data-toggle="modal" data-target="#ModalUP"><i class="fas fa-edit"></i>
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <td>105</td>
-                <td>Hồ Văn Hùng</td>
-                <td><img class="img-card-person" src="/admin/imgadmin/img4.jpg" alt=""></td>
-                <td>155-157 Trần Quốc Thảo, Quận 3, Hồ Chí Minh </td>
-                <td>25/02/1997</td>
-                <td>Nam</td>
-                <td>0926737168</td>
-                <td>Bán hàng</td>
-                <td class="table-td-center"><button class="btn btn-primary btn-sm trash" type="button" title="Xóa"
-                    onclick="myFunction(this)"><i class="fas fa-trash-alt"></i>
-                  </button>
-                  <button class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp"
-                    data-toggle="modal" data-target="#ModalUP"><i class="fas fa-edit"></i>
-                  </button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
             `
+            initUserPage()
         }
         if (item.getAttribute('data-value') === 'ql-sanpham') {
-            titleFunc.innerText = 'QUẢN LÝ SẢN PHẨM'
+            item.classList.add('active')
+
+
             contentContainer.innerHTML =
                 `
                 <div class="top-line">
@@ -509,7 +458,7 @@ Array.from(listControlItems).forEach((item) => {
                             </div>
                             <span class="form-message"></span>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group form-group--full">
                             <label for="product-img" class="form-label">Ảnh (Nhập đường dẫn)</label>
 
                             <input id="product-img" name="product-img" type="text"
@@ -566,6 +515,117 @@ Array.from(listControlItems).forEach((item) => {
             `
             initProductPage()
         }
+        if (item.getAttribute('data-value') === 'ql-hoadon') {
+            item.classList.add('active')
+
+            contentContainer.innerHTML =
+                `<div class="top-line">
+            <h1 class="top-line__heading">QUẢN LÝ HÓA ĐƠN</h1>
+        </div>
+
+        <div class="search">
+        </div>
+
+        <div class="filter">
+            <div class="filter__item">
+                <label class="filter__label" for="filter__start-date">Chọn ngày bắt đầu:</label>
+                <input type="datetime-local" class="filter__input" id="filter__start-date" name="filter__start-date"
+                    placeholder="Chọn ngày bắt đầu">
+            </div>
+            <div class="filter__item">
+                <label class="filter__label" for="filter__end-date">Chọn ngày kết thúc:</label>
+                <input type="datetime-local" class="filter__input" id="filter__end-date" name="filter__end-date"
+                    placeholder="Chọn ngày bắt đầu">
+            </div>
+            <div class="filter__item">
+                <div class="filter__button">Lọc</div>
+            </div>
+        </div>
+        <div class="content__container">
+            <form id="form-admin">
+                <div class="form-container">
+
+                    <div class="form-group">
+                        <label for="invoice-id" class="form-label">Mã HĐ</label>
+
+                        <input id="invoice-id" name="invoice-id" type="text" class="form-control" disabled="true">
+
+                        <span class="form-message"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="invoice-user-id" class="form-label">Mã KH</label>
+
+                        <input id="invoice-user-id" name="invoice-user-id" type="text" class="form-control">
+
+                        <span class="form-message"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="invoice-order-time" class="form-label">Thời gian đặt hàng</label>
+
+                        <input id="invoice-order-time" name="invoice-order-time" type="text" class="form-control">
+
+                        <span class="form-message"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="invoice-total-price" class="form-label">Tổng tiền</label>
+
+                        <input id="invoice-total-price" name="invoice-total-price" type="text" class="form-control">
+
+                        <span class="form-message"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="invoice-status" class="form-label">Tình trạng</label>
+
+                        <input id="invoice-status" name="invoice-status" type="text" class="form-control">
+
+                        <span class="form-message"></span>
+                    </div>
+
+                    <div class="form-label">
+                        <div class="invoice-label">Đơn hàng chưa được xử lý! Nhấn nút để xử lý ngay</div>
+                    </div>
+
+
+                </div>
+                <div class="form-controls">
+                    <button class="btn-control" id="btn-process">Xử lý</button>
+                    <button class="btn-control" id="btn-cancel">Hủy</button>
+                </div>
+            </form>
+            <table id="product-table">
+                <thead>
+                    <tr class="product-table__heading">
+                        <th>Mã HD</th>
+                        <th>Thời gian đặt hàng </th>
+                        <th>Mã KH</th>
+                        <th>Tổng tiền</th>
+                        <th>Tình trạng</th>
+                    </tr>
+                </thead>
+                <tbody class="product-table__list">
+                    <tr class="product-table__row product-table__row--clicked">
+                        <td>1</td>
+                        <td>Samsung Galaxy S23 Ultra 256GB</td>
+                        <td>10000000</td>
+                        <td>9000000</td>
+                        <td>Đã xử lý</td>
+                    </tr>
+
+                </tbody>
+            </table>
+
+        </div>`
+            initInvoicePage()
+        }
+        if (item.getAttribute('data-value') === 'product-page') {
+            redirectToProductPage()
+        }
+        const logOutBtn = $('#log-out-btn')
+        logOutBtn.addEventListener('click', (e) => {
+            e.preventDefault()
+            User.logOut()
+            redirectToProductPage()
+        })
     })
 })
 
@@ -760,7 +820,6 @@ function initProductPage() {
             return false;
         });
 
-        // You can perform additional logic here if needed
         if (!isUpdateActive) {
             console.log('No active "update" item found.');
         }
@@ -865,13 +924,21 @@ function initInvoicePage() {
                 const invoiceTotalPrice = row.cells[3].innerText;
                 const invoiceStatus = row.cells[4].innerText;
 
+                invoiceIDInput.disabled = true
+                invoiceUserIDInput.disabled = true
+                invoiceOrderTimeInput.disabled = true
+                invoiceTotalPriceInput.disabled = true
+                invoiceStatusInput.disabled = true
+
                 if (invoiceStatus === 'Chưa xử lý') {
 
                     message.classList.add('active')
                     processBtn.disabled = false;
+
                 }
                 else {
                     processBtn.disabled = true;
+
                     message.classList.remove('active')
 
                     // processBtn.style.backgroundColor = '#999'
@@ -900,6 +967,7 @@ function initInvoicePage() {
         Invoice.updateInvoiceStatus(parseInt(invoiceID), true)
         const newList = Invoice.getInvoices()
         renderInvoice(newList)
+        resetValue()
     })
 
     cancelBtn.addEventListener('click', (e) => {
@@ -908,4 +976,187 @@ function initInvoicePage() {
     })
 }
 
-initInvoicePage()
+// initInvoicePage()
+
+function initUserPage() {
+    const userList = User.getUsers()
+    const tableBody = $('.product-table__list')
+    const userIDInput = $('#user-id')
+    const fullNameInput = $('#user-full_name')
+    const usernameInput = $('#user-username')
+    const passwordInput = $('#user-password')
+    const emailInput = $('#user-email')
+    const phoneInput = $('#user-phone')
+    const addressInput = $('#user-address')
+    const permissionInput = $('#user-permission')
+    const statusInput = $('#user-status')
+    const functionList = $$('.function__item')
+
+    const btnSave = $('#btn-save')
+    const btnCancel = $('#btn-cancel')
+
+    renderUserList(userList)
+
+    function renderUserList(listUser) {
+        userIDInput.value = User.getLastUserID() + 1
+        let html = ''
+        Array.from(listUser).forEach(user => {
+
+
+            html += `
+            <tr class="product-table__row" data-value=${user.userID}>
+                <td>${user.userID}</td>
+                <td>${user.username}</td>
+                <td>${user.password}</td>
+                <td>${user.full_name}</td>
+                <td>${user.email}</td>
+                <td>${user.phone}</td>
+                <td>${user.address}</td>
+                <td>
+                            <button class="product-table__update-btn product-table-btn">Sửa</button>
+                            <button class="product-table__delete-btn product-table-btn">Xóa</button>
+                        </td>
+            </tr>
+             `
+        })
+
+        tableBody.innerHTML = html
+        const tableRow = $$('.product-table__row')
+        Array.from(tableRow).forEach(row => {
+            const userID = row.getAttribute('data-value')
+            const user = User.getUserID(parseInt(userID))
+            const btnUpdate = row.querySelector('.product-table__update-btn')
+            const btnDelete = row.querySelector('.product-table__delete-btn')
+
+            const username = row.cells[1].innerText
+            const password = row.cells[2].innerText
+            const fullName = row.cells[3].innerText
+            const email = row.cells[4].innerText
+            const phone = row.cells[5].innerText
+            const address = row.cells[6].innerText
+            const permission = user.isAdmin ? 'admin' : 'customer'
+            const status = user.isActive ? 'active' : 'inactive'
+            btnUpdate.addEventListener('click', () => {
+                userIDInput.value = userID
+                fullNameInput.value = fullName
+                passwordInput.value = password
+                usernameInput.value = username
+                emailInput.value = email
+                phoneInput.value = phone
+                addressInput.value = address
+                permissionInput.value = permission
+                statusInput.value = status
+                Array.from(functionList).forEach(item => {
+                    if (item.classList.contains('active')) {
+                        item.classList.remove('active')
+                    }
+                    if (item.dataset.value === 'update') {
+                        item.classList.add('active')
+                    }
+                })
+
+            })
+
+            btnDelete.addEventListener('click', () => {
+                deleteUser(userID)
+                resetValue()
+            })
+        })
+
+    }
+    function deleteUser(userID) {
+
+        if (confirm('Bạn có muốn xóa người dùng này?')) {
+            const user = User.getUserID(parseInt(userID))
+            console.log(user.username)
+            console.log(user.full_name)
+            console.log(user.isAdmin)
+            if (user.isAdmin === true) {
+
+                alert('Không thể xóa người dùng quản trị (admin)');
+                return
+            } else {
+                User.deleteUser(userID)
+                resetValue()
+                const newList = User.getUsers()
+                renderUserList(newList)
+            }
+
+
+
+        }
+
+
+    }
+    function updateUser() {
+        const userID = userIDInput.value
+        const username = usernameInput.value
+        const password = passwordInput.value
+        const fullName = fullNameInput.value
+        const email = emailInput.value
+        const phone = phoneInput.value
+        const address = addressInput.value
+        const status = (statusInput.value === 'active') ? true : false
+        User.updateUser(userID, username, password, email, phone, fullName, address, status)
+        const newList = User.getUsers()
+
+        User.loadUsers(newList)
+        renderUserList(newList)
+    }
+    function addUser() {
+        // const userID = userIDInput.value
+        const username = usernameInput.value
+        const password = passwordInput.value
+        const fullName = fullNameInput.value
+        const email = emailInput.value
+        const phone = phoneInput.value
+        const address = addressInput.value
+        const permission = (permissionInput.value === 'admin') ? true : false
+        const status = (statusInput.value === 'active') ? true : false
+        User.addUser(username, password, email, phone, fullName, address, permission, status)
+        const newList = User.getUsers()
+        User.loadUsers(newList)
+        renderUserList(newList)
+    }
+    btnSave.addEventListener('click', (e) => {
+        e.preventDefault()
+        Array.from(functionList).forEach(item => {
+            if (item.classList.contains('active') && item.dataset.value === 'update') {
+                updateUser()
+                resetValue()
+
+            } else if (item.classList.contains('active') && item.dataset.value === 'add') {
+                addUser()
+                resetValue()
+            }
+        })
+
+    })
+    btnCancel.addEventListener('click', (e) => {
+        e.preventDefault();
+        resetValue();
+    })
+
+    function resetValue() {
+        functionList.forEach(item => {
+            if (item.classList.contains('active')) {
+                item.classList.remove('active')
+            }
+            if (item.dataset.value === 'add') {
+                item.classList.add('active')
+            }
+
+        })
+        userIDInput.value = ''
+        usernameInput.value = ''
+        passwordInput.value = ''
+        fullNameInput.value = ''
+        emailInput.value = ''
+        phoneInput.value = ''
+        addressInput.value = ''
+        statusInput.value = ""
+        permissionInput.value = ""
+    }
+}
+
+

@@ -1,3 +1,88 @@
+/* Sidebar */
+.sidebar {
+    position: fixed;
+    height: 100%;
+    width: 17%;
+    background-color: var(--white-color);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.5s ease;
+}
+
+.info__detail {
+    padding: 30px 0px;
+}
+
+.info__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.info__hello {
+    font-size: 1.5rem;
+}
+
+.info__name {
+    padding-top: 6px;
+    font-size: 1.6rem;
+    font-weight: 600;
+
+}
+
+.info__img {
+    margin-bottom: 15px;
+}
+
+.nav-links {
+    height: 100%;
+    flex: 1;
+    margin-top: 30px;
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+}
+
+.nav-links__item
+ {
+    display: flex;
+    align-items: center;
+    padding: 0 25px;
+    height: 60px;
+    width: 100%;
+    cursor: pointer;
+
+}
+.nav-links__item a{
+    display: flex;
+    align-items: center;
+    height: 60px;
+    width: 100%;
+    cursor: pointer;
+    text-decoration: none;
+    color: black;
+}
+.nav-links__item.active {
+    background-color: #F38377;
+}
+
+.nav-links__item:hover {
+    background-color: #F38377;
+}
+
+.nav-links__img {
+    margin-right: 20px;
+}
+
+.nav-links__name {
+    font-size: 1.5rem;
+    font-weight: 600;
+    padding-left: 5px;
+}
+
+.nav-links__change {
+    margin-top: 150px;
+}
+
 /* Quản lý sản phẩm */
 /* Content */
 #content {
@@ -9,7 +94,7 @@
 }
 
 .content__container {
-    padding: 10px;
+    padding: 10px 20px;
 }
 
 /* Heading */
@@ -44,10 +129,12 @@
     border-top-right-radius: 5px;
     background-color: var(--white-color);
 }
-.function__item.active{
+
+.function__item.active {
     background-color: var(--primary-color);
     color: var(--white-color);
 }
+
 .function__item:hover {
     cursor: pointer;
     /* font-weight: 550; */
@@ -81,6 +168,9 @@
     padding: 0 10px;
 }
 
+.form-group.form-group--full{
+    flex-basis: 100%;
+}
 .form-label,
 .form-message {
     text-align: left;
@@ -144,29 +234,33 @@
     margin-right: 10%;
     padding-bottom: 10px;
 }
-.btn-control{
+
+.btn-control {
     padding: 8px 20px;
     margin-right: 10px;
     background-color: var(--white-color);
     border: none;
     border-radius: 5px;
     cursor: pointer;
-}   
-
-#btn-save{
-    background-color: #49CB3F;
-    
 }
 
-#btn-save:hover{
+#btn-save {
+    background-color: #49CB3F;
+
+}
+
+#btn-save:hover {
     opacity: 0.8;
 }
-#btn-cancel{
+
+#btn-cancel {
     border: 1px solid var(--primary-color);
 }
-#btn-cancel:hover{
+
+#btn-cancel:hover {
     background-color: var(--primary-color);
 }
+
 /* Table */
 #product-table {
     width: 100%;
@@ -200,12 +294,15 @@ td:nth-child(7),
 td:nth-child(8) {
     text-align: center;
 }
+
 #product-table tbody tr td {
     border-top: 1px solid black;
 }
+
 #product-table tbody tr:nth-child(odd) {
     background-color: var(--white-color);
 }
+
 #product-table tbody tr:hover {
     cursor: pointer;
     background-color: var(--filter-item-color);
@@ -238,39 +335,40 @@ td:nth-child(8) {
     background-color: var(--filter-item-color);
 }
 
-.product-table__row td:nth-child(2){
+.product-table__row td:nth-child(2) {
     width: 200px;
 }
 
-.product-table__row td:nth-child(7), td:nth-child(8){
+.product-table__row td:nth-child(7),
+td:nth-child(8) {
     width: 100px;
 }
 
 /* Quản lý sản phẩm */
 /* Quản lý hóa đơn */
-.filter{
+.filter {
     display: flex;
-    
+
 }
 
-.filter__item{
+.filter__item {
     padding: 8px 16px;
     display: flex;
     align-items: center;
 }
 
-.filter__label{
+.filter__label {
     font-size: 1.6rem;
     padding-right: 10px;
 }
 
-.filter__input{
+.filter__input {
     padding: 4px;
     font-size: 1.5rem;
     border: 1px solid var(--primary-color);
 }
 
-.filter__button{
+.filter__button {
     margin-left: 20px;
     border: 1px solid var(--primary-color);
     border-radius: 5px;
@@ -281,35 +379,37 @@ td:nth-child(8) {
     user-select: none;
 }
 
-.filter__button:hover{
+.filter__button:hover {
     background-color: var(--filter-item-color);
 }
 
-.form-label{
+.form-label {
     margin-bottom: 16px;
-    padding-left: 30px;
+    
     flex: 1;
     text-align: center;
     display: flex;
     align-items: center;
 }
-.invoice-label{
+
+.invoice-label {
     font-size: 1.6rem;
-    height:auto;
+    height: auto;
     display: none;
 }
 
-.invoice-label.active{
+.invoice-label.active {
     display: block
 }
 
 
-#btn-process{
+#btn-process {
     background-color: #49CB3F;
-    
+
 }
 
-#btn-process:hover{
+#btn-process:hover {
     opacity: 0.8;
 }
+
 /* Quản lý hóa đơn */

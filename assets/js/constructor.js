@@ -5,7 +5,7 @@ let ramValues = ['1 GB', '2 GB', '3 GB', '4 GB', '6 GB', '8 GB', '12 GB']
 class Product {
     static lastProductID = 0;
     constructor(name, price_old, price_current, img, brand, ram, rom, sale) {
-        this.productID = Product.getProducts() === null ? ++Product.lastProductID : (Product.getLastProductID() + 1);
+        this.productID = (Product.getProducts() === null) ? ++Product.lastProductID : Product.getLastProductID() + 1;
         this.name = name;
         this.price_old = price_old;
         this.price_current = price_current;
@@ -106,8 +106,8 @@ class ProductInCart {
 class User {
     static userID = 0;
     cartList = [];
-    constructor(username, password, email, phone, full_name, address, ngay_lap, is_admin, is_active) {
-        this.userID = ++User.userID;
+    constructor(username, password, email, phone, full_name, address, is_admin, is_active) {
+        this.userID = (User.getUsers() === null) ? ++User.userID : User.getLastUserID() + 1;
         this.username = username;
         this.password = password;
         this.email = email;
@@ -133,6 +133,7 @@ class User {
         }
         return null;
     }
+    //Lấy ra 1 user bằng cách truyền vào 1 userID
     static getUserID(userID) {
         const listUsers = User.getUsers();
         if (!listUsers || listUsers.length === 0) return null;
@@ -143,6 +144,12 @@ class User {
             }
         })
         return accountz;
+    }
+    // Load mã user mới nhất
+    static getLastUserID(){
+        const myList = User.getUsers()
+        if (!myList || myList.length === 0) return null;
+        return myList[myList.length - 1].userID;
     }
     static setLoginState(userid) {
         if (userid == null || userid == undefined) {
@@ -229,6 +236,7 @@ class User {
     static logOut() {
         User.setLoginState(null);
         User.setIsAdmin(null);
+        redirectToProductPage()
     }
 
     // Cập nhật địa chỉ và số ĐT
@@ -242,9 +250,55 @@ class User {
             }
         })
         User.loadUsers(list)
+
         return true;
     }
 
+    static addUser( username, password, email, phone, fullName, address, isAdmin, isActive){
+        const user = new User(username, password, email, phone, fullName,address, isAdmin, isActive,isAdmin,isActive)
+        const list = User.getUsers()
+        if (!list || list.length === 0) return false
+        list.push(user)
+
+        User.loadUsers(list)
+        return true;
+    }
+    //cập nhật thông tin của user
+    static updateUser(userID, username, password, email, phone, fullName, address, isActive){
+        const listUser = User.getUsers()
+        if(!listUser || listUser.length === 0) return false
+        listUser.forEach(user => {
+            if(parseInt(userID) === user.userID ){
+                user.username = username
+                user.password = password
+                user.email = email
+                user.phone = phone
+                user.full_name = fullName
+                user.address = address
+                user.isActive = isActive
+            }
+        })
+        User.loadUsers(listUser)
+        return true
+
+    }
+    //Xóa user
+    static deleteUser(userID){
+        const listUser = User.getUsers()
+        if(!listUser || listUser.length === 0) return false
+        let isDeleted = false
+
+        listUser.forEach((user,index) => {
+            if(user.userID === parseInt(userID)){
+                listUser.splice(index, 1)
+                if(User.loadUsers(listUser)) isDeleted = true
+                
+            }
+        })
+        return isDeleted
+    }
+
+   
 
 }
 // Load data users lên localStorage
@@ -474,7 +528,48 @@ class Invoice {
         
         return false
     }
+    //lấy ra danh sách hóa đơn trong 1 tháng
 
+    static getInvoiceListByMonth(month){
+        const list = Invoice.getInvoices()
+        if(!list || list.length === 0) return null
+        let resultList = []
+        Array.from(list).forEach(invoice => {
+            if(time.getMonth(invoice.orderTime) === month){
+                resultList.push(invoice)
+            }
+        })
+        return resultList
+    }
+    // Các hàm thống kê
+    //Tổng doanh thu theo tháng
+    static calculateRevenueByMonth(month){
+        const invoiceList = Invoice.getInvoiceListByMonth(month)
+        if(!invoiceList || invoiceList.length === 0) return 0
+        let total = 0
+        invoiceList.forEach(invoice => {
+            invoice.cartList.forEach(item => {
+                total += item.totalPrice
+            })
+        })
+        return total
+    }
+    //Tính tổng doanh thu theo loại sản phẩm
+    static calculateRevenueByCategoryAndMonth(category,month){
+        const invoiceList = Invoice.getInvoices()
+        if(!invoiceList || invoiceList.length === 0) return 0
+        let total = 0
+        invoiceList.forEach(item => {
+            item.cartList.forEach(item => {
+                if(item.storeProduct.brand.includes(category)){
+                    total += item.totalPrice
+                }
+            })
+        })
+        return total
+    }
+    //Tổng số sản phẩm đã bán ra trong tháng
+    //Số lượng sản phẩm 
 }
 
 class time {
@@ -488,6 +583,11 @@ class time {
         var seconds = date.getSeconds();
         var formattedDateTime
         return formattedDateTime = day + '/' + month + '/' + year + ' ' + hours + ':' + minutes + ':' + seconds;
+    }
+
+    static getMonth(timestamp){
+        var date = new Date(timestamp)
+        return date.getMonth() + 1
     }
 }
 

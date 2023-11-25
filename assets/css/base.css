@@ -336,6 +336,10 @@ h6{
 .header__navbar-dropdown-item{
     padding: 10px 12px;
 }
+
+.header__navbar-dropdown-item.inactive{
+    display: none;
+}
 .header__navbar-dropdown-item:hover{
     color: var(--text-primary-color)
 }
