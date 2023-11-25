@@ -23,9 +23,9 @@ class Product {
         return null;
     }
     //Load danh sách sản phẩm lên localStorage
-    static loadProducts(list){
+    static loadProducts(list) {
         localStorage.listProducts = JSON.stringify(list);
-        if(localStorage.listProducts)
+        if (localStorage.listProducts)
             return true;
         return false;
     }
@@ -48,21 +48,22 @@ class Product {
         if (!myList || myList.length === 0) return null;
         return myList[myList.length - 1].productID;
     }
-    static addProduct(name, price_old, price_current, img, brand, ram, rom, sale){
-        const product = new Product(name, price_old, price_current,img, brand, ram, rom, sale)
+    // Thêm sản phẩm mới
+    static addProduct(name, price_old, price_current, img, brand, ram, rom, sale) {
+        const product = new Product(name, price_old, price_current, img, brand, ram, rom, sale)
         const list = Product.getProducts();
         list.push(product);
         Product.loadProducts(list);
         return true;
-        
-    }
 
-    static updateProduct(productID, name, price_old, price_current, img, brand, ram, rom, sale){
+    }
+    //Cập nhật sản phẩm
+    static updateProduct(productID, name, price_old, price_current, img, brand, ram, rom, sale) {
         const listProduct = Product.getProducts();
 
-        if(!listProduct || listProduct.length === 0) return null;
+        if (!listProduct || listProduct.length === 0) return null;
         listProduct.forEach(product => {
-            if(product.productID === parseInt(productID)){
+            if (product.productID === parseInt(productID)) {
                 product.name = name;
                 product.price_old = price_old
                 product.price_current = price_current
@@ -75,6 +76,19 @@ class Product {
         })
         Product.loadProducts(listProduct)
         return true
+    }
+    // Xóa sản phẩm bằng cách truyền vào productID 
+    static deleteProduct(productID) {
+        const listProduct = Product.getProducts();
+        if (!listProduct || listProduct.length === 0) return false
+        let isDeleted = false;
+        listProduct.forEach((product, index) => {
+            if (product.productID === productID) {
+                listProduct.splice(index, 1)
+                if (Product.loadProducts(listProduct)) isDeleted = true;
+            }
+        })
+        return isDeleted;
     }
 }
 class ProductInCart {
@@ -148,8 +162,8 @@ class User {
     }
     static checkIsAdmin() {
         if (localStorage.isAdmin) {
-           let isAdmin = localStorage.isAdmin === 'true'
-           return isAdmin
+            let isAdmin = localStorage.isAdmin === 'true'
+            return isAdmin
         }
         return null
     }
@@ -432,6 +446,34 @@ class Invoice {
         cart.removeAllCartItems()
         return true;
     }
+    //Lấy ra các hóa đơn thỏa điều kiện về ngày tháng
+    static getInvoiceByDateTime(startDate, endDate) {
+        const list = Invoice.getInvoices()
+        if (!list || list.length === 0) return false
+        let myList = []
+        list.forEach(invoice => {
+            let currentDate = time.getDateTime(invoice.orderTime)
+            if (startDate <= currentDate && currentDate <= endDate) {
+                myList.push(invoice)
+            }
+        })
+        return myList
+    }
+    //cập nhật trạng thái của đơn hàng
+    static updateInvoiceStatus(invoiceID, status){
+        const list = Invoice.getInvoices()
+        if(!list || list.length === 0) return false
+        for(const invoice of list) {
+            if(invoice.invoiceID === invoiceID){
+
+                invoice.status = status
+                Invoice.loadInvoices(list)
+                return true
+            }
+        }
+        
+        return false
+    }
 
 }
 
@@ -451,7 +493,7 @@ class time {
 
 class admin {
     static redirectToAdmin(isAdmin) {
-        if(isAdmin == false){
+        if (isAdmin == false) {
             console.log("admin")
         }
     }
