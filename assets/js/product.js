@@ -436,7 +436,7 @@ function filterProductBrand(productArr, productBrand) {
     let result = []
     productBrand = productBrand.toLowerCase();
     productArr.forEach(item => {
-        if (item.brand.toLowerCase() === (productBrand)) {
+        if (item.brand === (productBrand)) {
             result.push(item)
         }
     })
