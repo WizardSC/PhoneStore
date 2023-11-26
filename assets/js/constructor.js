@@ -175,6 +175,13 @@ class User {
         }
         return null
     }
+    static checkIsActive(){
+        if(localStorage.isActive){
+            let isActive = localStorage.isActive === 'true'
+            return isActive
+        }
+        return null
+    }
     static setIsAdmin(isAdmin) {
         if (isAdmin == null || isAdmin == undefined) {
             localStorage.isAdmin = false;
@@ -183,6 +190,17 @@ class User {
                 localStorage.isAdmin = true;
             } else {
                 localStorage.isAdmin = false;
+            }
+        }
+    }
+    static setIsActive(isActive){
+        if (isActive == null || isActive == undefined) {
+            localStorage.isActive = false;
+        } else {
+            if (isActive === true) {
+                localStorage.isActive = true;
+            } else {
+                localStorage.isActive = false;
             }
         }
     }
@@ -221,22 +239,26 @@ class User {
         if (!list || list.length === 0) return false;
         let userID
         let isAdmin = false;
+        let isActive = false;
         list.forEach((user) => {
             if (user.username === username && user.password === password) {
                 userID = user.userID;
                 (user.isAdmin == 1) ? isAdmin = true : false;
+                (user.isActive == 1) ? isActive = true : false;
             }
         })
         console.log(isAdmin)
         if (!userID) return false;
         User.setLoginState(userID)
         User.setIsAdmin(isAdmin)
+        User.setIsActive(isActive)
         return true;
     }
     //Đăng xuất
     static logOut() {
         User.setLoginState(null);
         User.setIsAdmin(null);
+        User.setIsActive(null)
         redirectToProductPage()
     }
 

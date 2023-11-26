@@ -8,6 +8,7 @@ if (Product.getProducts() === null) {
 if(User.checkLoginId() === null){
     User.setLoginState()
     User.setIsAdmin()
+    User.setIsActive()
 }
 
 if(Invoice.getInvoices() === null){

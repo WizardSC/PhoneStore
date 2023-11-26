@@ -275,9 +275,8 @@ Array.from(listControlItems).forEach((item) => {
             item.classList.add('active')
 
 
-            contentContainer.innerHTML =
-                `
-                <div class="top-line">
+            contentContainer.innerHTML = `
+            <div class="top-line">
                 <h1 class="top-line__heading">QUẢN LÝ SẢN PHẨM</h1>
             </div>
 
@@ -308,7 +307,7 @@ Array.from(listControlItems).forEach((item) => {
                         <div class="form-group">
                             <label for="product-id" class="form-label">Mã SP</label>
 
-                            <input id="product-id" name="product-id" type="text" placeholder="VD: Mã SP: 1"
+                            <input id="product-id" name="product-id" type="text" placeholder="VD: 1"
                                 class="form-control" disabled="true">
 
                             <span class="form-message"></span>
@@ -316,7 +315,7 @@ Array.from(listControlItems).forEach((item) => {
                         <div class="form-group">
                             <label for="product-name" class="form-label">Tên SP</label>
 
-                            <input id="product-name" name="product-name" type="text" placeholder="VD: Mã SP: 1"
+                            <input id="product-name" name="product-name" type="text" placeholder="VD: Samsung Galaxy S23 Ultra 256GB"
                                 class="form-control">
 
                             <span class="form-message"></span>
@@ -325,7 +324,7 @@ Array.from(listControlItems).forEach((item) => {
                             <label for="product-price-old" class="form-label">Giá trước KM</label>
 
                             <input id="product-price-old" name="product-price-old" type="text"
-                                placeholder="VD: Mã SP: 1" class="form-control">
+                                placeholder="VD: 31990000" class="form-control">
 
                             <span class="form-message"></span>
                         </div>
@@ -333,7 +332,7 @@ Array.from(listControlItems).forEach((item) => {
                             <label for="product-price-current" class="form-label">Giá sau KM</label>
 
                             <input id="product-price-current" name="product-price-current" type="text"
-                                placeholder="VD: Mã SP: 1" class="form-control">
+                                placeholder="VD: 22190000" class="form-control">
 
                             <span class="form-message"></span>
                         </div>
@@ -356,7 +355,7 @@ Array.from(listControlItems).forEach((item) => {
                         <div class="form-group">
                             <label for="product-sale" class="form-label">Phần trăm KM</label>
 
-                            <input id="product-sale" name="product-sale" type="text" placeholder="VD: Mã SP: 1"
+                            <input id="product-sale" name="product-sale" type="text" placeholder="VD: 30"
                                 class="form-control">
 
                             <span class="form-message"></span>
@@ -472,7 +471,8 @@ Array.from(listControlItems).forEach((item) => {
 
                 </tbody>
             </table>
-            `
+            8`
+
             initProductPage()
         }
         if (item.getAttribute('data-value') === 'ql-hoadon') {
@@ -602,7 +602,7 @@ Array.from(listControlItems).forEach((item) => {
     })
 })
 
-initProductPage()
+initUserPage()
 // Các hàm validate
 const validate = {
     validateProductName: function (name) {
@@ -625,7 +625,7 @@ const validate = {
         }
         return { value, message };
     },
-    
+
     showErrMessage: function (errorLabel, message) {
         errorLabel.innerText = message
         errorLabel.classList.add('active')
@@ -648,12 +648,12 @@ const validate = {
         errorLabel.innerText = ''
         errorLabel.classList.remove('active')
     },
-    hideAllErrMessage:function(listErrorMessage){
+    hideAllErrMessage: function (listErrorMessage) {
         listErrorMessage.forEach(mess => {
             mess.innerText = ''
             mess.classList.remove('active')
         })
-        
+
     },
     validateProductList: function (list) {
         let value = true;
@@ -665,7 +665,7 @@ const validate = {
         return { value, message }
 
     },
-    validateValue: function(input){
+    validateValue: function (input) {
         let value = true;
         let message = 'Hợp lệ'
         if (input.trim() === '') {
@@ -674,27 +674,85 @@ const validate = {
         }
         return { value, message }
     },
-    validateUserFullName: function(fullName){
+    validateUserFullName: function (fullName) {
         let value = true;
         let message = 'Hợp lệ'
         if (fullName.trim() === '') {
             value = false;
-            message = 'Tên sản phẩm không được để trống';
+            message = 'Họ tên không được để trống';
             return { value, message };
         }
-        if (fullName.length < 7) {
-            value = false
-            message = 'Tên sản phẩm phải ít nhất 7 ký tự'
-            return { value, message }
-        }
+
         if (/^\d+$/.test(fullName)) {
             value = false;
-            message = 'Tên sản phẩm không được chứa toàn bộ là số';
+            message = 'Họ tên không được chứa toàn bộ là số';
             return { value, message }
         }
         return { value, message };
-    }
+    },
+    validateUserUsername: function (username) {
+        let value = true;
+        let message = 'Hợp lệ'
+        if (username.trim() === '') {
+            value = false;
+            message = 'Tên đăng nhập không được để trống';
+            return { value, message };
+        }
+        if (username.length < 6) {
+            value = false;
+            message = 'Tên đăng nhập tối thiểu 6 ký tự';
+            return { value, message };
+        }
 
+        if (/^\d+$/.test(username)) {
+            value = false;
+            message = 'Tên đăng nhập không được chứa toàn bộ là số';
+            return { value, message }
+        }
+        return { value, message };
+
+    },
+    validateUserPassword: function (password) {
+        let value = true;
+        let message = 'Hợp lệ'
+        if (password.trim() === '') {
+            value = false;
+            message = 'Mật khẩu không được để trống';
+            return { value, message };
+        }
+        if (password.length < 6) {
+            value = false;
+            message = 'Mật khẩu tối thiểu 6 ký tự';
+            return { value, message };
+        }
+        return { value, message };
+
+    },
+    validateUserEmail: function (email) {
+        let value = true;
+        let message = 'Hợp lệ'
+        if (email.trim() === '') {
+            value = false;
+            message = 'Email không được để trống';
+            return { value, message };
+        }
+        if (!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email))) {
+            value = false;
+            message = 'Email phải đúng định dạng. VD: wizardsc1111@gmail.com';
+            return { value, message };
+        }
+        return { value, message };
+    },
+    validateUserPhone: function (phone) {
+        let value = true;
+        let message = 'Hợp lệ'
+        if (/\D/.test(phone)) {
+            value = false;
+            message = 'SĐT không được chứa ký tự chữ';
+        }
+        return { value, message };
+
+    }
 }
 
 
@@ -1136,7 +1194,7 @@ function initUserPage() {
     const permissionInput = $('#user-permission')
     const statusInput = $('#user-status')
     const functionList = $$('.function__item')
-
+    const listErrorMessage = $$('.form-message')
     const btnSave = $('#btn-save')
     const btnCancel = $('#btn-cancel')
 
@@ -1250,18 +1308,38 @@ function initUserPage() {
     }
     function addUser() {
         // const userID = userIDInput.value
-        const username = usernameInput.value
-        const password = passwordInput.value
-        const fullName = fullNameInput.value
-        const email = emailInput.value
-        const phone = phoneInput.value
-        const address = addressInput.value
-        const permission = (permissionInput.value === 'admin') ? true : false
-        const status = (statusInput.value === 'active') ? true : false
-        User.addUser(username, password, email, phone, fullName, address, permission, status)
-        const newList = User.getUsers()
-        User.loadUsers(newList)
-        renderUserList(newList)
+        const validateAndDisplayError = (input, errorMessageElement, validationFunction) => {
+            const validationResult = validationFunction(input);
+            if (!validationResult.value) {
+                validate.showErrMessage(errorMessageElement, validationResult.message);
+                return false
+            } else {
+                validate.hideErrMessage(errorMessageElement);
+                return true
+            }
+        };
+        const isValidFullname = validateAndDisplayError(fullNameInput.value.toString(), listErrorMessage[1], validate.validateUserFullName);
+        const isValidUsername = validateAndDisplayError(usernameInput.value.toString(), listErrorMessage[2], validate.validateUserUsername);
+        const isValidPassword = validateAndDisplayError(passwordInput.value.toString(), listErrorMessage[3], validate.validateUserPassword);
+        const isValidEmail = validateAndDisplayError(emailInput.value.toString(), listErrorMessage[4], validate.validateUserEmail);
+        const isValidPhone = validateAndDisplayError(phoneInput.value.toString(), listErrorMessage[5], validate.validateUserPhone);
+        if (isValidFullname && isValidUsername && isValidPassword && isValidEmail && isValidPhone && isValidPassword) {
+            const username = usernameInput.value
+            const password = passwordInput.value
+            const fullName = fullNameInput.value
+            const email = emailInput.value
+            const phone = phoneInput.value
+            const address = addressInput.value
+            const permission = (permissionInput.value === 'admin') ? true : false
+            const status = (statusInput.value === 'active') ? true : false
+            User.addUser(username, password, email, phone, fullName, address, permission, status)
+            const newList = User.getUsers()
+            User.loadUsers(newList)
+            renderUserList(newList)
+        }
+        return;
+
+
     }
     btnSave.addEventListener('click', (e) => {
         e.preventDefault()
@@ -1272,7 +1350,7 @@ function initUserPage() {
 
             } else if (item.classList.contains('active') && item.dataset.value === 'add') {
                 addUser()
-                resetValue()
+                // resetValue()
             }
         })
 

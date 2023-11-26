@@ -115,8 +115,8 @@ function ValidateUsername(username, alertUsername) {
     if (username.value == "") {
         alertUsername.innerHTML = `*Tên đăng nhập không được bỏ trống`;
         check = check * 0;
-    } else if (username.value.length < 8 || username.value.length > 30) {
-        alertUsername.innerHTML = `*Tên đăng nhập cần có độ dài từ 8-30 kí tự`;
+    } else if (username.value.length < 6 || username.value.length > 30) {
+        alertUsername.innerHTML = `*Tên đăng nhập cần có độ dài từ 6-30 kí tự`;
         check = check * 0;
     } else if (username.value.match(usernameRegex) == null) {
         alertUsername.innerHTML = `*Các kí tự được chấp nhận là a-z, A-Z và 0-9`;
@@ -155,8 +155,8 @@ function ValidatePassword(password, alertPassword) {
     if (password.value == "") {
         alertPassword.innerHTML = `*Mật khẩu không được bỏ trống`;
         check = check * 0;
-    } else if (password.value.length < 8 || password.value.length > 30) {
-        alertPassword.innerHTML = `*Mật khẩu cần có độ dài từ 8-30 kí tự`;
+    } else if (password.value.length < 6 || password.value.length > 30) {
+        alertPassword.innerHTML = `*Mật khẩu cần có độ dài từ 6-30 kí tự`;
         check = check * 0;
     } else if (password.value.match(passwordRegex) == null) {
         alertPassword.innerHTML = `*Các kí tự được chấp nhận là a-z, A-Z và 0-9`;
@@ -200,6 +200,10 @@ function LoginFunction(event) {
     };
     loginFormDataObj.username = loginFormData.get("username");
     loginFormDataObj.password = loginFormData.get("password");
+    if(User.checkIsActive() == false){
+        alert('Tài khoản không hoạt động. Vui lòng liên hệ quản trị viên và thử lại!')
+        return
+    }
     if (User.checkIsAdmin() == true) {
         closeFormLogin()
         // location.reload(); //tải lại trang
