@@ -1,5 +1,4 @@
-const $ = document.querySelector.bind(document)
-const $$ = document.querySelectorAll.bind(document)
+
 
 const productContainer = $('.product.row')
 
@@ -60,7 +59,7 @@ function renderProduct(listProduct) {
 
 
 }
-renderProduct(data.getProducts())
+renderProduct(Product.getProducts())
 
 function getDetailProduct() {
     const productItem = $$('.product-item')
@@ -378,7 +377,7 @@ Array.from(listROMItems).forEach(function (rom) {
 })
 
 function applyFilters() {
-    let result = data.getProducts();
+    let result = Product.getProducts();
     if (!isNaN(myPriceRange[0]) && !isNaN(myPriceRange[1])) {
         let tempListProduct = [];
 
@@ -437,7 +436,7 @@ function filterProductBrand(productArr, productBrand) {
     let result = []
     productBrand = productBrand.toLowerCase();
     productArr.forEach(item => {
-        if (item.brand === (productBrand)) {
+        if (item.brand.toLowerCase() === (productBrand)) {
             result.push(item)
         }
     })

@@ -1,37 +1,37 @@
-class data {
-    //load sản phẩm lên localstorage
-    static loadProducts(listData){ //nhận tham số là 1 ds sản phẩm
-        localStorage.listProducts = JSON.stringify(listData);
-        if(localStorage.listProducts){
-            return true;
-        }
-        return false;
-    }
-    //Lấy sản phẩm từ localStorage
-    static getProducts(){
-        if(localStorage.listProducts){
-            return JSON.parse(localStorage.listProducts);
-        }
-        return null;
-    }
-}
 
-class user {
-    static loadUsers(listUser){
-        localStorage.listUsers = JSON.stringify(listUser);
-        if(localStorage.listUsers){
-            return true;
-        }
-        return false;
-    }
-}
+
 //Load data lên localStorage
 if (Product.getProducts() === null) {
-    data.loadProducts(productArr);
+    Product.loadProducts(productArr);
 }
+
+if(User.checkLoginId() === null){
+    User.setLoginState()
+    User.setIsAdmin()
+}
+
+if(Invoice.getInvoices() === null){
+    Invoice.loadInvoices([])
+    //truyền vào 1 mảng rỗng
+}
+
+function redirectToOrderPage() {
+    location.href = './checkout.html'
+}
+
+function redirectToAdminPage() {
+    location.href = './admin.html'
+}
+
+function redirectToProductPage() {
+    location.href = './product.html'
+}
+
+function redirectToIndexPage(){
+    location.href = './index.html'
+}
+
 if (User.getUsers() === null) {
     User.loadUsers(userArr);
 }
-if(User.checkLoginId() === null){
-    User.setLoginState()
-}
+

@@ -215,7 +215,14 @@ function LoginFunction(event) {
     };
     loginFormDataObj.username = loginFormData.get("username");
     loginFormDataObj.password = loginFormData.get("password");
-    closeFormLogin();
+    
+    if (User.checkIsAdmin() == true) {
+        closeFormLogin()
+        // location.reload(); //tải lại trang
+        redirectToAdminPage()
+        return;
+    }
+    closeFormLogin()
     location.reload(); //tải lại trang
 
 };
@@ -256,9 +263,14 @@ function changeLoggedUser() {
     const noneLoggedUser = $('.header__navbar-item--none-logged')
     const loggedUser = $('.header__navbar-item--logged')
     const username = $('.header__navbar-username')
-    username.innerText = User.getUserID(User.checkLoginId()).full_name
+    const adminPageItem = document.querySelector('.header__navbar-dropdown-item[data-value="admin-page"]');
+    const user = User.getUserID(User.checkLoginId())
+    username.innerText = user.full_name
     noneLoggedUser.classList.remove('active')
     loggedUser.classList.add('active')
+    if(user.isAdmin === false){
+        adminPageItem.classList.add('inactive')
+    }
 }
 
 function changeNoneLoggedUser() {
@@ -271,6 +283,10 @@ function changeNoneLoggedUser() {
 const logOutBtn = $('#logout__btn')
 logOutBtn.addEventListener('click', () => {
     User.logOut();
-    location.reload()
+    location.reload();
+    redirectToProductPage();
+
 })
+
+
 

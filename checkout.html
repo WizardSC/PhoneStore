@@ -6,18 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-
-    <link rel="stylesheet" href="assets/css/slider.css">
-    <link rel="stylesheet" href="assets/css/grid.css">
-    <link rel="stylesheet" href="assets/css/login.css">
     <link rel="stylesheet" href="assets/css/base.css">
+    <link rel="stylesheet" href="assets/css/login.css">
+    <link rel="stylesheet" href="assets/css/checkout.css">
     <link rel="stylesheet" href="assets/css/product.css">
 
+    <!-- <link rel="stylesheet" href="assets/"> -->
 </head>
 
 <body>
     <div class="app">
-        <!-- Phần header -->
+        <!-- Start: Phần header -->
         <header class="header">
             <div class="grid wide header__navbar">
                 <a href="#">
@@ -55,9 +54,9 @@
                                     <div class="header__navbar-username">Lee Changsub</div>
                                 </div>
                                 <div class="header__navbar-dropdown">
-                                    <div class="header__navbar-dropdown-item" onclick="redirectToOrderPage()" data-value="order-page">Đơn hàng mua</div>
-                                    <div class="header__navbar-dropdown-item " onclick="redirectToAdminPage()" data-value="admin-page">Trang quản trị</div>
-                                    <div class="header__navbar-dropdown-item" id="logout__btn" data-value="log-out">Đăng xuất</div>
+                                    <div class="header__navbar-dropdown-item" onclick="redirectToOrderPage()">Đơn hàng mua</div>
+                                    <div class="header__navbar-dropdown-item header__navbar-dropdown-item--disabled" onclick="redirectToAdminPage()">Trang quản trị</div>
+                                    <div class="header__navbar-dropdown-item" id="logout__btn">Đăng xuất</div>
 
                                 </div>
                             </div>
@@ -92,289 +91,212 @@
                 </nav>
             </div>
         </header>
-        <!-- Phần slider -->
-        <section class="slider-product-one">
-            <div class="container">
-                <div class="slider-product-one-content">
-                    <div class="slider-product-one-content-btn">
-                        <i onmouseover="stopSlider()" class="prev-btn"><ion-icon
-                                name="chevron-back-outline"></ion-icon></i>
-                        <i class="next-btn"><ion-icon name="chevron-forward-outline"></ion-icon></i>
-                    </div>
-                    <div class="slider-product-one-content-container">
-                        <div class="slider-product-one-content-items-content">
-                            <div class="slider-product-one-content-items">
-                                <div class="slider-product-one-content-item">
-                                    <a href="">
-                                        <img src="assets/img/imgSlider/img1.webp" width="100%" alt="">
-                                    </a>
-                                </div>
-                                <div class="slider-product-one-content-item">
-                                    <a href="">
-                                        <img src="assets/img/imgSlider/img2.webp" alt="">
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="slider-product-one-content-items">
-                                <div class="slider-product-one-content-item">
-                                    <a href="">
-                                        <img src="assets/img/imgSlider/img3.webp" alt="">
-                                    </a>
-                                </div>
-                                <div class="slider-product-one-content-item">
-                                    <a href="">
-                                        <img src="assets/img/imgSlider/img4.webp" alt="">
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="slider-product-one-content-items">
-                                <div class="slider-product-one-content-item">
-                                    <a href="">
-                                        <img src="assets/img/imgSlider/img5.webp" alt="">
-                                    </a>
-                                </div>
-                                <div class="slider-product-one-content-item">
-                                    <a href="">
-                                        <img src="assets/img/imgSlider/img6.webp" alt="">
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="slider-product-one-content-items">
-                                <div class="slider-product-one-content-item">
-                                    <a href="">
-                                        <img src="assets/img/imgSlider/img7.webp" alt="">
-                                    </a>
-                                </div>
-                                <div class="slider-product-one-content-item">
-                                    <a href="">
-                                        <img src="assets/img/imgSlider/img8.webp" alt="">
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- Phần nội dung -->
+        <!-- End: Phần header -->
+        <!-- Start: Phần content -->
         <div class="content">
             <div class="grid wide">
-                <!-- Thanh tìm kiếm -->
-                <div class="search">
-                    <i class="fa-solid fa-magnifying-glass search__icon-search"></i>
-                    <input type="text" class="search__input" placeholder="Nhập thông tin tìm kiếm">
-                    <i class="fa-solid fa-x search__icon-close"></i>
+                <div class="info-account active">
+                    <div class="info-account__heading">
+                        Thông tin khách hàng
+                    </div>
+                    <div class="info-account__content">
+                        <div class="info-account__wrapper">
+                            <div class="info-account__label">
+                                Số điện thoại
+                            </div>
+                            <input name="phone" type="text" id="info-account__input--phone" class=" info-account__input"
+                                placeholder="Nhập số điện thoại">
+                        </div>
+                        <div class="info-account__wrapper">
+                            <div class="info-account__label">
+                                Địa chỉ nhận hàng
+                            </div>
+                            <input name="address" type="text" id="info-account__input--address"
+                                class=" info-account__input" placeholder="Nhập địa chỉ nhận hàng">
+
+                        </div>
+                    </div>
+                    <div class="info-account__btn-wrapper">
+                        <div class="info-account__btn">
+                            Cập nhật
+                        </div>
+                    </div>
                 </div>
-                <!-- filter -->
-                <div class="filter">
-                    <div class="filter__label">
-                        <i class="filter__label-icon fa-solid fa-filter"></i>
-                        <span class="filter__label-heading">Bộ lọc</span>
-                        <ul class="filter__list">
-                            <li class="filter__item">
-                                <span class="filter__item-name">Hãng</span>
-                                <i class="filter__item-icon fa-solid fa-sort-down"></i>
+                <div class="info-address">
+                    <div class="info-address__header">
+                        <i class="fa-solid fa-location-dot"></i>
+                        Địa chỉ nhận hàng
+                    </div>
+                    <div class="info-address__content">
+                        <div class="info-address__left">
+                            <div class="info-address__label">
+                                <span>Số ĐT</span>
+                                <div class="info-address__title info-address__title--phone">0814099714</div>
+                            </div>
+                            <div class="info-address__label">
+                                <span>Địa chỉ</span>
+                                <div class="info-address__title info-address__title--address">118 CN1, phường Sơn Kỳ,
+                                    quận Tân Phú, TP.HCM</div>
 
-                                <div class="filter__brand">
-                                    <ul class="filter__brand-list">
-                                        <li class="filter__brand-item" data-value="Iphone">
-                                            <img class="filter__brand-img"
-                                                src=" https://cdn.tgdd.vn/Brand/1/logo-iphone-220x48.png" alt=""
-                                                width="68" height="30">
-                                        </li>
-                                        <li class="filter__brand-item" data-value="Samsung">
-                                            <img class="filter__brand-img"
-                                                src="https://cdn.tgdd.vn/Brand/1/samsungnew-220x48-1.png" alt=""
-                                                width="68" height="30">
-                                        </li>
-                                        <li class="filter__brand-item" data-value="Oppo">
-                                            <img class="filter__brand-img"
-                                                src="https://cdn.tgdd.vn/Brand/1/OPPO42-b_5.jpg" alt="" width="68"
-                                                height="30">
-                                        </li>
-                                        <li class="filter__brand-item" data-value="Xiaomi">
-                                            <img class="filter__brand-img"
-                                                src="https://cdn.tgdd.vn/Brand/1/logo-xiaomi-220x48-5.png" alt=""
-                                                width="68" height="30">
-                                        </li>
-                                        <li class="filter__brand-item" data-value="Vivo">
-                                            <img class="filter__brand-img"
-                                                src="https://cdn.tgdd.vn/Brand/1/vivo-logo-220-220x48-3.png" alt=""
-                                                width="68" height="30">
-                                        </li>
-                                        <li class="filter__brand-item" data-value="Realme">
-                                            <img class="filter__brand-img"
-                                                src="https://cdn.tgdd.vn/Brand/1/Realme42-b_37.png" alt="" width="68"
-                                                height="30">
-                                        </li>
-                                        <li class="filter__brand-item" data-value="Nokia">
-                                            <img class="filter__brand-img"
-                                                src="https://cdn.tgdd.vn/Brand/1/Nokia42-b_21.jpg" alt="" width="68"
-                                                height="30">
-                                        </li>
-                                        <li class="filter__brand-item" data-value="Masstel">
-                                            <img class="filter__brand-img"
-                                                src="https://cdn.tgdd.vn/Brand/1/Masstel42-b_0.png" alt="" width="68"
-                                                height="30">
-                                        </li>
-                                        <li class="filter__brand-item" data-value="Itel">
-                                            <img class="filter__brand-img"
-                                                src="https://cdn.tgdd.vn/Brand/1/Itel42-b_54.jpg" alt="" width="68"
-                                                height="30">
-                                        </li>
-                                        <li class="filter__brand-item" data-value="Mobell">
-                                            <img class="filter__brand-img"
-                                                src="https://cdn.tgdd.vn/Brand/1/Mobell42-b_19.jpg" alt="" width="68"
-                                                height="30">
-                                        </li>
+                            </div>
+                        </div>
+                        <div class="info-address__button">
+                            Thay đổi
+                        </div>
+                    </div>
+                </div>
+                <div class="info-invoice">
+                    <div class="info-invoice__heading">
+                        Đơn hàng đã mua
+                    </div>
 
-                                    </ul>
+                    <div class="info-invoice__content">
+                        <div class="info-invoice__item">
+                            <div class="info-invoice__header">
+                                <div class="info-invoice__wrapper">
+                                    <span class="info-invoice__label">
+                                        Đơn hàng
+                                    </span>
+                                    <span class="info-invoice__number">
+                                        #HD001
+                                    </span>
                                 </div>
-                            </li>
-                            <li class="filter__item">
-                                <span class="filter__item-name">Giá</span>
-
-                                <i class="filter__item-icon fa-solid fa-sort-down"></i>
-
-                                <div class="filter__price">
-                                    <div class="filter__price-wrap">
-                                        <i class="filter__price-icon fa-solid fa-bars-staggered"></i>
-                                        <div class="filter__price-label">Lựa chọn mức giá phù hợp</div>
-
+                                <div class="info-invoice__status">
+                                    Đã xử lý
+                                </div>
+                            </div>
+                            <div class="info-invoice__wrapper">
+                                <div class="info-invoice__container">
+                                    <div class="info-invoice__order-date-wrap">
+                                        <span class="info-invoice__order-date-label">
+                                            Ngày đặt:
+                                        </span>
+                                        <span class="info-invoice__order-time">21/12/2023 16:44:03 PM</span>
                                     </div>
-                                    <div class="filter__price-range">
-                                        <input type="tel" id="filter__price-min-price" name="filter__price-min-price"
-                                            placeholder="Giá tối thiểu">
-                                        ---------
-                                        <input type="tel" id="filter__price-max-price" name="filter__price-max-price"
-                                            placeholder="Giá tối đa">
+                                    <div class="info-invoice__total-wrap">
+                                        <span class="info-invoice__total-label">
+                                            Tổng tiền:
+                                        </span>
+                                        <span class="info-invoice__total-price">
+                                            2990000
+                                        </span>
                                     </div>
                                 </div>
-                            </li>
-                            <li class="filter__item">
-                                <span class="filter__item-name">RAM</span>
-                                <i class="filter__item-icon fa-solid fa-sort-down"></i>
-
-                                <div class="filter__ram">
-                                    <ul class="filter__ram-list">
-                                        <li class="filter__ram-item" data-value="1 GB">1 GB</li>
-                                        <li class="filter__ram-item" data-value="2 GB">2 GB</li>
-                                        <li class="filter__ram-item" data-value="3 GB">3 GB</li>
-                                        <li class="filter__ram-item" data-value="4 GB">4 GB</li>
-                                        <li class="filter__ram-item" data-value="6 GB">6 GB</li>
-                                        <li class="filter__ram-item" data-value="8 GB">8 GB</li>
-                                        <li class="filter__ram-item" data-value="12 GB">12 GB</li>
-                                    </ul>
+                                <div class="info-invoice__details-btn">
+                                    Xem chi tiết
                                 </div>
-                            </li>
-                            <li class="filter__item">
-                                <span class="filter__item-name">Bộ nhớ trong</span>
-                                <i class="filter__item-icon fa-solid fa-sort-down"></i>
+                            </div>
 
-                                <div class="filter__rom">
-                                    <ul class="filter__rom-list">
-                                        <li class="filter__rom-item" data-value="16 GB">16 GB</li>
-                                        <li class="filter__rom-item" data-value="32 GB">32 GB</li>
-                                        <li class="filter__rom-item" data-value="64 GB">64 GB</li>
-                                        <li class="filter__rom-item" data-value="128 GB">128 GB</li>
-                                        <li class="filter__rom-item" data-value="256 GB">256 GB</li>
-                                        <li class="filter__rom-item" data-value="512 GB">512 GB</li>
-                                        <li class="filter__rom-item" data-value="1 TB">1 TB</li>
-                                    </ul>
+                            <div class="info-invoice__detail">
+                                <div class="info-invoice__detail-item">
+                                    <img class="info-invoice__detail-img"
+                                        src="https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:80/plain/https://cellphones.com.vn/media/catalog/product/s/a/samsung-galaxy-s23-ultra.png"
+                                        alt="">
+                                    <div class="info-invoice__detail-content">
+                                        <div class="info-invoice__detail-name">
+                                            Samsung Galaxy S23 Ultra 256GB
+                                        </div>
+                                        <div class="info-invoice__detail-price-wrapper">
+                                            <span class="info-invoice__detail-label">
+                                                Đơn giá:
+                                            </span>
+                                            <span class="info-invoice__detail-price">
+                                                22190000
+                                            </span>
+                                        </div>
+                                        <div class="info-invoice__detail-quantity-wrapper">
+                                            <span class="info-invoice__detail-label">
+                                                Số lượng:
+                                            </span>
+                                            <span class="info-invoice__detail-quantity">
+                                                2
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="info-invoice__detail-content-right">
+                                        <span class="info-invoice__detail-price-label">
+                                            Tổng tiền:
+                                        </span>
+                                        <span class="info-invoice__detail-total-price">
+                                            44380000
+                                        </span>
+                                    </div>
                                 </div>
-                            </li>
-                        </ul>
-                        <div class="filter__space">
-
+                                <div class="info-invoice__detail-item">
+                                    <img class="info-invoice__detail-img"
+                                        src="https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:80/plain/https://cellphones.com.vn/media/catalog/product/s/a/samsung-galaxy-s23-ultra.png"
+                                        alt="">
+                                    <div class="info-invoice__detail-content">
+                                        <div class="info-invoice__detail-name">
+                                            Samsung Galaxy S23 Ultra 256GB
+                                        </div>
+                                        <div class="info-invoice__detail-price-wrapper">
+                                            <span class="info-invoice__detail-label">
+                                                Đơn giá:
+                                            </span>
+                                            <span class="info-invoice__detail-price">
+                                                22190000
+                                            </span>
+                                        </div>
+                                        <div class="info-invoice__detail-quantity-wrapper">
+                                            <span class="info-invoice__detail-label">
+                                                Số lượng:
+                                            </span>
+                                            <span class="info-invoice__detail-quantity">
+                                                2
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="info-invoice__detail-content-right">
+                                        <span class="info-invoice__detail-price-label">
+                                            Tổng tiền:
+                                        </span>
+                                        <span class="info-invoice__detail-total-price">
+                                            44380000
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="info-invoice__detail-item">
+                                    <img class="info-invoice__detail-img"
+                                        src="https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:80/plain/https://cellphones.com.vn/media/catalog/product/s/a/samsung-galaxy-s23-ultra.png"
+                                        alt="">
+                                    <div class="info-invoice__detail-content">
+                                        <div class="info-invoice__detail-name">
+                                            Samsung Galaxy S23 Ultra 256GB
+                                        </div>
+                                        <div class="info-invoice__detail-price-wrapper">
+                                            <span class="info-invoice__detail-label">
+                                                Đơn giá:
+                                            </span>
+                                            <span class="info-invoice__detail-price">
+                                                22190000
+                                            </span>
+                                        </div>
+                                        <div class="info-invoice__detail-quantity-wrapper">
+                                            <span class="info-invoice__detail-label">
+                                                Số lượng:
+                                            </span>
+                                            <span class="info-invoice__detail-quantity">
+                                                2
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="info-invoice__detail-content-right">
+                                        <span class="info-invoice__detail-price-label">
+                                            Tổng tiền:
+                                        </span>
+                                        <span class="info-invoice__detail-total-price">
+                                            44380000
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="filter__limit-product">
-                            <span class="filter__limit-product-label">Số lượng sản phẩm trên 1 trang:</span>
-                            <input type="text" class="filter__limit-product-input">
-                        </div>
+
                     </div>
-
-
-                </div>
-                <!-- Thanh sắp xếp -->
-                <div class="sort">
-                    <div class="sort__heading">Sắp xếp</div>
-                    <div class="sort__item" data-value="asc">
-                        <i class="fa-solid fa-arrow-up-wide-short"></i>
-                        <span class="sort__item-label">Giá Thấp - Cao</span>
-                    </div>
-                    <div class="sort__item" data-value="desc">
-                        <i class="fa-solid fa-arrow-down-wide-short"></i>
-                        <span class="sort__item-label">Giá Cao - Thấp</span>
-                    </div>
-                </div>
-                <div class="product row">
-
-                    <!-- <div class="col l-2-4 m-4 c-12">
-                        <div class="product-item">
-                            <div class="product-item__img-wrap">
-                                <img class="product-item__img"
-                                    src="https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:80/plain/https://cellphones.com.vn/media/catalog/product/s/a/samsung-galaxy-s23-ultra.png"
-                                    alt="" width="358" height="358">
-                            </div>
-                            <div class="product-item__name">
-                                <h3>Samsung Galaxy S23 Ultra 256GB</h3>
-
-                            </div>
-                            <div class="product-item__price">
-                                <div class="product-item__price-new">21.790.000đ</div>
-                                <div class="product-item__price-old">31.990.000đ</div>
-
-                            </div>
-                            <div class="product-item__action">
-                                <div class="product-item__rating">
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                </div>
-                                <div class="product-item__like">
-                                    <i class="fa-regular fa-heart" style="color: #d70119;"></i>
-                                </div>
-                            </div>
-                            <div class="product-item__sale">
-                                <p class="product-item__sale-detail">Giảm 32%</p>
-                            </div>
-
-                        </div>
-                    </div> -->
                 </div>
             </div>
-        </div>
 
-        <!-- Phần pagination -->
-        <div class="grid wide">
-            <div class="pagination">
-                <ul class="pagination__list">
-                    <!-- <li class="pagination__item button pagination__item-btn-prev"><span><i class="fa-solid fa-angle-left"></i>Trước đó</span></li>
-                    <li class="pagination__item numb active"><span>1</span></li>
-                    <li class="pagination__item numb"><span>2</span></li>
-                    <li class="pagination__item dots"><span>...</span></li>
-                    <li class="pagination__item numb"><span>4</span></li>
-                    <li class="pagination__item numb"><span>5</span></li>
-                    <li class="pagination__item dots"><span>...</span></li>
-                    <li class="pagination__item numb"><span>7</span></li>
-                    <li class="pagination__item button pagination__item-btn-next"><span>Kế tiếp<i class="fa-solid fa-angle-right"></i></span></li> -->
-                </ul>
-                <!-- <div class="pagination__btn-prev">
-                    <i class="fa-solid fa-angle-left"></i>
-                </div>
-                <ul class="pagination__list">
-                    <li class="pagination__item active" data-value="1">1</li>
-                    <li class="pagination__item" data-value="2">2</li>
-                    <li class="pagination__item" data-value="3">3</li>
-                    <li class="pagination__item" data-value="4">4</li>
-                    <li class="pagination__item" data-value="5">5</li>
-                </ul>
-                <div class="pagination__btn-next">
-                    <i class="fa-solid fa-angle-right"></i>
-                </div> -->
-            </div>
         </div>
         <div class="modal">
             <!-- <div class="modal__overlay">
@@ -532,6 +454,11 @@
                 <div class="toast__progress"></div>
             </div>
         </div>
+        <!-- End: Phần content -->
+
+        <!-- Phần footer -->
+
+        <!-- Phần footer -->
         <div class="form" id="form">
             <div class="login-container center">
                 <div class="container__left">
@@ -629,23 +556,16 @@
                 </div>
             </div>
         </div>
-
-
-        <script src="assets/js/slider.js"></script>
-        <script src="assets/js/constructor.js"></script>
-        <script src="assets/js/dataProduct.js"> </script>
-        <script src="assets/js/dataUser.js"></script>
-        <script src="assets/js/localStorage.js"></script>
-        <script src="assets/js/product.js"></script>
-        <script src="assets/js/mainModal.js"></script>
-        <script src="assets/js/login.js"></script>
-        <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-        <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     </div>
 
-
-
-
 </body>
+<script src="assets/js/constructor.js"></script>
+<script src="assets/js/dataProduct.js"> </script>
+<script src="assets/js/dataUser.js"></script>
+<script src="assets/js/localStorage.js"></script>
+<script src="assets/js/mainModal.js"></script>
+<script src="assets/js/checkout.js"></script>
+<script src="assets/js/login.js"></script>
+<script src="assets/js/loginModal.js"></script>
 
 </html>

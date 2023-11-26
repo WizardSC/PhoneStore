@@ -513,7 +513,6 @@ const productArr = [
         "iPhone",
         ["128GB","256GB"],
         ["512GB","1TB"],
-        ["iPhone"],
         14
     ),
     new Product(
