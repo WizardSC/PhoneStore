@@ -1,20 +1,10 @@
 
-class user {
-    static loadUsers(listUser){
-        localStorage.listUsers = JSON.stringify(listUser);
-        if(localStorage.listUsers){
-            return true;
-        }
-        return false;
-    }
-}
+
 //Load data lên localStorage
 if (Product.getProducts() === null) {
     Product.loadProducts(productArr);
 }
-if (User.getUsers() === null) {
-    User.loadUsers(userArr);
-}
+
 if(User.checkLoginId() === null){
     User.setLoginState()
     User.setIsAdmin()
@@ -31,5 +21,17 @@ function redirectToOrderPage() {
 
 function redirectToAdminPage() {
     location.href = './admin.html'
+}
+
+function redirectToProductPage() {
+    location.href = './product.html'
+}
+
+function redirectToIndexPage(){
+    location.href = './index.html'
+}
+
+if (User.getUsers() === null) {
+    User.loadUsers(userArr);
 }
 
