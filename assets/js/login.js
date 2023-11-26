@@ -10,6 +10,7 @@ var alertEmail = document.getElementsByClassName("alert-email");
 var passwordRegex = /^[a-zA-Z0-9!@#$%&*]+$/;
 var alertPassword = document.getElementsByClassName("alert-password");
 var alertRepeatPassword = document.getElementsByClassName("alert-repeat-password");
+let isRegister = false
 
 // Mo/Tat popup
 function LoginPopupOpen() {
@@ -18,6 +19,8 @@ function LoginPopupOpen() {
     login[1].style.display = "block";
     register[0].style.display = "none";
     register[1].style.display = "none";
+    isRegister = false;
+
 }
 
 function RegisterPopupOpen() {
@@ -26,6 +29,8 @@ function RegisterPopupOpen() {
     login[1].style.display = "none";
     register[0].style.display = "block";
     register[1].style.display = "block";
+    isRegister = true;
+
 }
 window.onclick = function (event) {
     let modal = document.getElementById('form');
@@ -123,16 +128,19 @@ function ValidateUsername(username, alertUsername) {
         check = check * 0;
     }
     else {
-        alertUsername.innerHTML = "";
-    }
-    if (!User.isExistUsername(username.value)) {
-        alertUsername.innerHTML = `*Tên đăng nhập không tồn tại trên hệ thống`;
-        usernameLogin = null;
-        check = check * 0;
-    }
-    else {
-        alertUsername.innerHTML = "";
         usernameLogin = username.value;
+        alertUsername.innerHTML = "";
+    }
+    if (isRegister === false) {
+        if (!User.isExistUsername(username.value)) {
+            alertUsername.innerHTML = `*Tên đăng nhập không tồn tại trên hệ thống`;
+            usernameLogin = null;
+            check = check * 0;
+        }
+        else {
+            alertUsername.innerHTML = "";
+            usernameLogin = username.value;
+        }
     }
     return check;
 }
@@ -164,12 +172,14 @@ function ValidatePassword(password, alertPassword) {
     } else {
         alertPassword.innerHTML = "";
     }
-    if (usernameLogin != null) {
-        if (User.checkUserToLogin(usernameLogin, password.value)) {
-            alertPassword.innerHTML = "";
-        } else {
-            alertPassword.innerHTML = `*Sai mật khẩu`;
-            check = check * 0;
+    if (isRegister === false) {
+        if (usernameLogin != null) {
+            if (User.checkUserToLogin(usernameLogin, password.value)) {
+                alertPassword.innerHTML = "";
+            } else {
+                alertPassword.innerHTML = `*Sai mật khẩu`;
+                check = check * 0;
+            }
         }
     }
     return check;
@@ -200,8 +210,10 @@ function LoginFunction(event) {
     };
     loginFormDataObj.username = loginFormData.get("username");
     loginFormDataObj.password = loginFormData.get("password");
-    if(User.checkIsActive() == false){
+    if (User.checkIsActive() == false) {
         alert('Tài khoản không hoạt động. Vui lòng liên hệ quản trị viên và thử lại!')
+        User.logOut();
+        location.reload();
         return
     }
     if (User.checkIsAdmin() == true) {
@@ -219,17 +231,21 @@ registerForm.addEventListener('submit', RegisterFunction);
 function RegisterFunction(event) {
     event.preventDefault();
     const myFormData = new FormData(event.target);
-    newUser = new User(
+    User.addUser(
         username = myFormData.get("username"),
         password = myFormData.get("password"),
         email = myFormData.get("email"),
         phone = "",
         full_name = myFormData.get("full-name"),
         address = "",
-        is_admin = "",
+        is_admin = false,
+        isActive = true
     );
-    userArr.push(newUser);
-    console.log(userArr[0]);
+    const newList = User.getUsers()
+    User.loadUsers(newList)
+    closeFormLogin();
+    location.reload();
+
 };
 
 // Close form
@@ -256,7 +272,7 @@ function changeLoggedUser() {
     username.innerText = user.full_name
     noneLoggedUser.classList.remove('active')
     loggedUser.classList.add('active')
-    if(user.isAdmin === false){
+    if (user.isAdmin === false) {
         adminPageItem.classList.add('inactive')
     }
 }

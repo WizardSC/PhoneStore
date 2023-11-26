@@ -1,16 +1,11 @@
 
-console.log(productArr)
 // Sắp xếp giảm dần theo sale
 productArr.sort((a,b)=>b.sale-a.sale)
-for( let i=0;i<productArr.length;i++){
-    console.log(productArr[i])
-}
+
 // Lấy ra 8 phần tử đầu
 const top8Products = productArr.slice(0, 8);
-console.log(top8Products)
 
 const container=document.querySelector('.content__product-container')
-console.log(container)
 
 function renderProduct(top8Products){
     const htmls=top8Products.map(function(product){

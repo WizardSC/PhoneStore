@@ -8,6 +8,7 @@ function loadForm() {
 }
 
 loadForm()
+initDashboardPage()
 
 Array.from(listControlItems).forEach((item) => {
     item.addEventListener('click', () => {
@@ -597,12 +598,11 @@ Array.from(listControlItems).forEach((item) => {
         logOutBtn.addEventListener('click', (e) => {
             e.preventDefault()
             User.logOut()
-            redirectToProductPage()
+            // redirectToProductPage()
         })
     })
 })
 
-initUserPage()
 // Các hàm validate
 const validate = {
     validateProductName: function (name) {
