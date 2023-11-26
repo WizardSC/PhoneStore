@@ -542,6 +542,14 @@ class Invoice {
         return resultList
     }
     // Các hàm thống kê
+    //Tổng hóa đơn trong 1 tháng
+    static getTotalInvoiceByMonth(month){
+        const list = Invoice.getInvoiceListByMonth(month)
+        if(!list || list.length === 0) return 0
+        let count = list.length
+        return count
+
+    }
     //Tổng doanh thu theo tháng
     static calculateRevenueByMonth(month){
         const invoiceList = Invoice.getInvoiceListByMonth(month)
@@ -553,6 +561,23 @@ class Invoice {
             })
         })
         return total
+    }
+    //Tổng số khách hàng 'độc nhất' trong 1 tháng
+    static getTotalCustomerByMonth(month){
+        const list = Invoice.getInvoiceListByMonth(month)
+        if(!list || list.length === 0) return 0
+        let count = 0
+        let existUserID = []
+        list.forEach(invoice => {
+            const userID = invoice.userID
+            if(!existUserID.includes(userID)) {
+                count = count + 1
+                existUserID.push(userID)
+                console.log(invoice.userID)
+            }
+        })
+        return count
+
     }
     //Tính tổng doanh thu theo loại sản phẩm
     static calculateRevenueByCategoryAndMonth(category,month){
@@ -569,7 +594,32 @@ class Invoice {
         return total
     }
     //Tổng số sản phẩm đã bán ra trong tháng
-    //Số lượng sản phẩm 
+    static getTotalSoldProductsInMonth(month){
+        const invoiceList = Invoice.getInvoiceListByMonth(month)
+        if(!invoiceList || invoiceList.length === 0) return 0
+        let count = 0
+        invoiceList.forEach(invoice =>{
+            invoice.cartList.forEach(item => {
+                count = count + item.quantity
+            })
+
+        })
+        return count
+    }
+    //Tổng số sản phẩm đã bán ra trong tháng theo loại
+    static getTotalSoldProductsInMonthByBrand(brand, month){
+        const invoiceList = Invoice.getInvoiceListByMonth(month)
+        if(!invoiceList || invoiceList.length == 0) return 0
+        let count = 0
+        invoiceList.forEach(invoice =>{
+            invoice.cartList.forEach(item => {
+                if(item.storeProduct.brand.includes(brand)){
+                    count = count + item.quantity
+                }
+            })
+        })
+        return count;
+    }
 }
 
 class time {
