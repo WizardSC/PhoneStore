@@ -18,152 +18,112 @@ Array.from(listControlItems).forEach((item) => {
         if (item.getAttribute('data-value') === 'trang-chu') {
             contentContainer.innerHTML =
                 `
-            <section class="home-section">
-                    
-                    <div class="home-content">
-                        <div class="content-left">
-                            <div class="box-content">
-                                <div class="box1">
-                                    <div class="icon-ad">
-                                        <img width="96" height="96"
-                                            src="https://img.icons8.com/external-flaticons-lineal-color-flat-icons/64/external-clients-home-based-business-flaticons-lineal-color-flat-icons.png"
-                                            alt="external-clients-home-based-business-flaticons-lineal-color-flat-icons" />
-                                    </div>
-                                    <div class="info">
-                                        <h4>Tổng khách hàng</h4>
-                                        <p><b>99 khách hàng</b></p>
-                                        <p class="info-tong">Tổng khách hàng được quản lý.</p>
-                                    </div>
-                                </div>
-                                <div class="box1">
-                                    <div class="icon-ad">
-                                        <img
-                                            src="data:image/png;base64,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">
-                                    </div>
-                                    <div class="info">
-                                        <h4>Tổng sản phẩm</h4>
-                                        <p><b>1000 sản phẩm</b></p>
-                                        <p class="info-tong">Tổng số sản phẩm được quản lý.</p>
-                                    </div>
-                                </div>
-                                <div class="box1">
-                                    <div class="icon-ad">
-                                        <img
-                                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAACXBIWXMAAAsTAAALEwEAmpwYAAADiUlEQVR4nO2Yz0tUURTHz18S1tpWLdS1ucmN/djXIqJaTLOKFjVgC7NOC4OCDNtkVJC0SBM0smBgBBGs8MdEtmiiHzP9msjG1Jm5cR9TcN9ENfPu49y83w8cGJ5yZt7n6zn3OUQAAAAAAAAAAABoAk7vUj4VuYa0EEYA8lIYEyAvhrGC/ChyDWkhjADkpTAmQF4MYwU1LuH0ZJfq6WtVbYmWoPTr1HinNZlx9CfXiCKnI7lV7TiyxSh9rXeiy4r8OPqTazR7Iz19rYGQE0NH1YcvhaCOXzkcXNvdvz1yAHH1J9do9kbaEi2BDC3mJ++L+eBae6IlcgBx9SfXaPZG2muCwtgKIK7+5BpRV0QYfU3/LGoAcfUn12j2RlLjnaojua1OkD4kU+M7IwcQV39yjSiSeie66gTZkB9nf3KNqJLC2JIfV39yDdcEMQJoTNB6uWQEMJDZa03+hcw+o/da+RsmICzpU+m1IWlo9qC1AK7OHjJ6fyy9QgBhSbniU0PS3aUz1gIYzfYbvV8WnyCAsKTp3C1D0mJhyloAS4VHRu9M7gYCCEu6/jhpSNqorKnBmf2RRQ3OHFDlyrrR+9pcAgHUy+pWxdW3hqiF/IPIohYLD42en1ffBO8VtS+5ho1Vce8ZqzCTzy823e/+8qW6fqPZs1bWGrmGjZs6n+5W+ZUXhrBKdaOpELT8SrVs9Hr3dTl4DwTwl0fG7xsrdX+5C/kpdfkfzgR9boTXjkb31L1tyN+0E8C1GplPqWq1UidRH8xa7uhSfyBzILMnKP1aP2rqpx39O2F0r5H5U9Y+36YPgNO71O35k7+dhEZZK5fUnYVeq5/NiwC4to7CZ0Ij6J1vc+14FwDXDuaxLNc9ov4J/ag5lj1n7cD1OgD+Vd1qeC4Z/Mesv7bQ3+esl1eD0q/11wvTuZtqeO6Yled8BJCOO1AEoKQlYgLS8iKxgtL/Z5FrSAthBCAvhTEB8mIYK8iPIteQFsIIQF4KYwLkxTBWkB9FriEthBGAvBTGBMiLYawgP4pcQ1oIIwB5KYwJkBfDWEF+FLmGtBBGAPJSGBMgL4axgvwocg1pIYwA5KUwJkBeDGMF+VHkGtJCGAHIS2FMgLwYxgryo8g1pIUwApCXwpgAeTGMFeRHkWtIC2EEIC+FMQHyYhgryI8i15AWwghAXgpjAuTFMFaQH0UAAAAAAAAAAACgxvkBQeEZRUjseSYAAAAASUVORK5CYII=">
-                                    </div>
-                                    <div class="info">
-                                        <h4>Tổng đơn hàng</h4>
-                                        <p><b>350 đơn hàng</b></p>
-                                        <p class="info-tong">Tổng số hóa đơn bán hàng trong tháng.</p>
-                                    </div>
-                                </div>
-                                <div class="box1">
-                                    <div class="icon-ad">
-                                        <img
-                                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAACXBIWXMAAAsTAAALEwEAmpwYAAACtUlEQVR4nO2dz2oUQRCHKwjm4km8eUzw4Cmw6SLgYbV7IkLOe9En0CdIXkCfQJ/AvEEewIP3nAWPuYgIcboEBXFklJw7f2anqqt/H9R9uoqZ3Z2vqpYIAAAAAAAAAAAAAAAAwMRIxweSeDAdHR+4LPywenhbIn9ST3Aqxufh2fYmeUMSHxlI7nC5uyAckid+xL37kkJWT2y6bIQ8XjN5QSIf6yeVrxaR35MH+seLRznxH/WEpqvFeM19t7ukmhlWq1s58ql2MuW6RYh8Op6BaqVPu6+0kyg3jL4LL6lGzp/u3ZXEX7UTKDeNGL71y8U9qg2J/E49eWmqIvBbqgnZDzs5ht/qiUvTxL+z7IcdqoGBaEMif9BOmkx/F3wcz0bWySm8UE9WWtOd0IXnZJkvy+WdnMKZ2wKkcDaekaySI79ZdxJKrL0IMbwmi5w/WWzlyD/9F4B/fU/hAVkjx3Ayx2OgxBzXMJ6VWhUtJZoTN3OLFjMFsCJu5hYtJZoSNxqixVQBtMWNhmgp0Yy40RItJZoQN5qipUQT4kZTtJRwL260RUsJ9+JGW7SUcC1uLIiWEm7FjRXRUsKtuLEiWkpoX99axI0l0VLCpbiZQ7SIowJMKm7mEi3irgATiZu5RIs4K8Bk4gYFYN0C4BHEuo+g/3cBPoRFs3sCX0NZv38IP8RYt4MOryJYv4fUwss4ab2LWvt1tLQ+R6AtZMRqzDlJ42H2S2qeJat9+lE8TFPWOv8rnuaJ0ZjFuhP1aE0M+jsl0JyrDNrTDYABDQNgREkZDOkZAGOqylgSN9LioLYlcSMtriqwJG6k1WUdHsVNrmldjUtxEytb2ORK3MRKV5Z5ETd9rUv7PIibXPvayprFTfawuPUCrC5WBsu7DYD19crgDxwMgL8wAQAAAAAAAAAAAAAAAGqUvyfH1jHCJGfpAAAAAElFTkSuQmCC">
-                                    </div>
-                                    <div class="info">
-                                        <h4>Sắp hết hàng</h4>
-                                        <p><b>5 sản phẩm</b></p>
-                                        <p class="info-tong">Số sản phẩm cảnh báo hết cần nhập thêm.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="table-tab">
-                                <h3 class="title-table">Tình trạng đơn hàng</h3>
-                                <div>
-                                    <table class="table-border">
-                                        <thead>
-                                            <tr>
-                                                <th>ID đơn hàng</th>
-                                                <th>Tên khách hàng</th>
-                                                <th>Tổng tiền</th>
-                                                <th>Trạng thái</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>MM1001</td>
-                                                <td>Nguyễn Ngọc Ngạn</td>
-                                                <td>19.990.000 đ</td>
-                                                <td>Đã hoàn thành</td>
-                                            </tr>
-                                            <tr>
-                                                <td>MM1001</td>
-                                                <td>Nguyễn Ngọc Ngạn</td>
-                                                <td>19.990.000 đ</td>
-                                                <td>Đã hoàn thành</td>
-                                            </tr>
-                                            <tr>
-                                                <td>MM1001</td>
-                                                <td>Nguyễn Ngọc Ngạn</td>
-                                                <td>19.990.000 đ</td>
-                                                <td>Đã hoàn thành</td>
-                                            </tr>
-                                            <tr>
-                                                <td>MM1001</td>
-                                                <td>Nguyễn Ngọc Ngạn</td>
-                                                <td>19.990.000 đ</td>
-                                                <td>Đã hoàn thành</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                            <div class="table-tab">
-                                <h3 class="title-table">Khách hàng mới</h3>
-                                <div>
-                                    <table class="table-border">
-                                        <thead>
-                                            <tr>
-                                                <th>ID</th>
-                                                <th>Tên khách hàng</th>
-                                                <th>Ngày sinh</th>
-                                                <th>Số điện thoại</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>#111</td>
-                                                <td>Nguyễn Ngọc Ngạn</td>
-                                                <td>11/11/2000</td>
-                                                <td>0909118119</td>
-                                            </tr>
-                                            <tr>
-                                                <td>#111</td>
-                                                <td>Nguyễn Ngọc Ngạn</td>
-                                                <td>11/11/2000</td>
-                                                <td>0909118119</td>
-                                            </tr>
-                                            <tr>
-                                                <td>#111</td>
-                                                <td>Nguyễn Ngọc Ngạn</td>
-                                                <td>11/11/2000</td>
-                                                <td>0909118119</td>
-                                            </tr>
-                                            <tr>
-                                                <td>#111</td>
-                                                <td>Nguyễn Ngọc Ngạn</td>
-                                                <td>11/11/2000</td>
-                                                <td>0909118119</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
+                <div class="top-line">
+                <h1 class="top-line__heading">TRANG CHỦ</h1>
+            </div>
+            <div class="filter">
+                <div class="filter__container">
+                    <label for="" class="filter__label">Chọn tháng cần xem</label>
+                    <select name="filter__select" id="filter__select" class="filter__control">
+                        <option value="">--Chọn tháng--</option>
+                        <option value="customer">Khách hàng</option>
+                        <option value="admin">Admin</option>
+
+                    </select>
+                    <div class="filter__button">Lọc</div>
+                </div>
+
+
+            </div>
+
+
+
+            <div class="box-analysis__container">
+                <div class="box-analysis__item" data-value="total-customer">
+                    <div class="box-analysis__heading">
+                        <div class="box-analysis__icon">
+                            <i class="fa-solid fa-money-bill"></i>
                         </div>
-                        <div class="content-right">
-                            <div class="chart-table">
-                                <h3 class="title-table">Dữ liệu 6 tháng đầu vào</h3>
-                                <canvas id="myChart" style="width:100%;max-width:650px"></canvas>
-                            </div>
-                            <div class="chart-table">
-                                <h3 class="title-table">Thống kê 6 tháng doanh thu</h3>
-                                <canvas id="myChart1" style="width:100%;max-width:650px"></canvas>
-                            </div>
+                        <div class="box-analysis__label">Khách hàng</div>
+                    </div>
+                    <div class="box-analysis__number">100000</div>
+
+
+                </div>
+                <div class="box-analysis__item" data-value="total-invoice">
+                    <div class="box-analysis__heading">
+                        <div class="box-analysis__icon">
+                            <i class="fa-solid fa-money-bill"></i>
                         </div>
-                </section>
+                        <div class="box-analysis__label">Tổng hóa đơn</div>
+                    </div>
+                    <div class="box-analysis__number">100000</div>
+                </div>
+                <div class="box-analysis__item" data-value="total-price">
+                    <div class="box-analysis__heading">
+                        <div class="box-analysis__icon">
+                            <i class="fa-solid fa-money-bill"></i>
+                        </div>
+                        <div class="box-analysis__label">Tổng doanh thu</div>
+                    </div>
+                    <div class="box-analysis__number">100000</div>
+                </div>
+                <div class="box-analysis__item" data-value="total-product">
+                    <div class="box-analysis__heading">
+                        <div class="box-analysis__icon">
+                            <i class="fa-solid fa-money-bill"></i>
+                        </div>
+                        <div class="box-analysis__label">Tổng sản phẩm bán ra</div>
+                    </div>
+                    <div class="box-analysis__number">100000</div>
+                </div>
+            </div>
+            <div id="table_wrapper">
+
+                <div class="table__container" data-value="1">
+                    <div class="table__title">
+                        TỔNG SẢN PHẨM BÁN RA THEO THƯƠNG HIỆU
+                    </div>
+                    <table class="analysis-table">
+                        <thead>
+                            <tr class="analysis-table__heading">
+                                <th>Tên thương hiệu</th>
+                                <th>Số lượng</th>
+                            </tr>
+                        </thead>
+                        <tbody class="analysis-table__list">
+                            <tr class="analysis-table__row">
+                                <td>Samsung</td>
+                                <td>2</td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+                <div class="table__container" data-value="2">
+                    <div class="table__title">
+                        TỔNG DOANH THU BÁN RA THEO THƯƠNG HIỆU
+                    </div>
+                    <table class="analysis-table">
+                        <thead>
+                            <tr class="analysis-table__heading">
+                                <th>Tên thương hiệu</th>
+                                <th>Số lượng</th>
+                            </tr>
+                        </thead>
+                        <tbody class="analysis-table__list">
+                            <tr class="analysis-table__row">
+                                <td>Samsung</td>
+                                <td>2</td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
             `
+            initDashboardPage()
+
         }
         if (item.getAttribute('data-value') === 'ql-nguoidung') {
             contentContainer.innerHTML =
@@ -518,103 +478,116 @@ Array.from(listControlItems).forEach((item) => {
         if (item.getAttribute('data-value') === 'ql-hoadon') {
             item.classList.add('active')
 
-            contentContainer.innerHTML =
-                `<div class="top-line">
-            <h1 class="top-line__heading">QUẢN LÝ HÓA ĐƠN</h1>
-        </div>
-
-        <div class="search">
-        </div>
-
-        <div class="filter">
-            <div class="filter__item">
-                <label class="filter__label" for="filter__start-date">Chọn ngày bắt đầu:</label>
-                <input type="datetime-local" class="filter__input" id="filter__start-date" name="filter__start-date"
-                    placeholder="Chọn ngày bắt đầu">
+            contentContainer.innerHTML = `
+            <div class="top-line">
+                <h1 class="top-line__heading">QUẢN LÝ HÓA ĐƠN</h1>
             </div>
-            <div class="filter__item">
-                <label class="filter__label" for="filter__end-date">Chọn ngày kết thúc:</label>
-                <input type="datetime-local" class="filter__input" id="filter__end-date" name="filter__end-date"
-                    placeholder="Chọn ngày bắt đầu">
+
+            <div class="search">
             </div>
-            <div class="filter__item">
-                <div class="filter__button">Lọc</div>
-            </div>
-        </div>
-        <div class="content__container">
-            <form id="form-admin">
-                <div class="form-container">
 
-                    <div class="form-group">
-                        <label for="invoice-id" class="form-label">Mã HĐ</label>
-
-                        <input id="invoice-id" name="invoice-id" type="text" class="form-control" disabled="true">
-
-                        <span class="form-message"></span>
-                    </div>
-                    <div class="form-group">
-                        <label for="invoice-user-id" class="form-label">Mã KH</label>
-
-                        <input id="invoice-user-id" name="invoice-user-id" type="text" class="form-control">
-
-                        <span class="form-message"></span>
-                    </div>
-                    <div class="form-group">
-                        <label for="invoice-order-time" class="form-label">Thời gian đặt hàng</label>
-
-                        <input id="invoice-order-time" name="invoice-order-time" type="text" class="form-control">
-
-                        <span class="form-message"></span>
-                    </div>
-                    <div class="form-group">
-                        <label for="invoice-total-price" class="form-label">Tổng tiền</label>
-
-                        <input id="invoice-total-price" name="invoice-total-price" type="text" class="form-control">
-
-                        <span class="form-message"></span>
-                    </div>
-                    <div class="form-group">
-                        <label for="invoice-status" class="form-label">Tình trạng</label>
-
-                        <input id="invoice-status" name="invoice-status" type="text" class="form-control">
-
-                        <span class="form-message"></span>
-                    </div>
-
-                    <div class="form-label">
-                        <div class="invoice-label">Đơn hàng chưa được xử lý! Nhấn nút để xử lý ngay</div>
-                    </div>
-
-
+            <div class="filter">
+                <div class="filter__item">
+                    <label class="filter__label" for="filter__start-date">Chọn ngày bắt đầu:</label>
+                    <input type="datetime-local" class="filter__input" id="filter__start-date" name="filter__start-date"
+                        placeholder="Chọn ngày bắt đầu">
                 </div>
-                <div class="form-controls">
-                    <button class="btn-control" id="btn-process">Xử lý</button>
-                    <button class="btn-control" id="btn-cancel">Hủy</button>
+                <div class="filter__item">
+                    <label class="filter__label" for="filter__end-date">Chọn ngày kết thúc:</label>
+                    <input type="datetime-local" class="filter__input" id="filter__end-date" name="filter__end-date"
+                        placeholder="Chọn ngày bắt đầu">
                 </div>
-            </form>
-            <table id="product-table">
-                <thead>
-                    <tr class="product-table__heading">
-                        <th>Mã HD</th>
-                        <th>Thời gian đặt hàng </th>
-                        <th>Mã KH</th>
-                        <th>Tổng tiền</th>
-                        <th>Tình trạng</th>
-                    </tr>
-                </thead>
-                <tbody class="product-table__list">
-                    <tr class="product-table__row product-table__row--clicked">
-                        <td>1</td>
-                        <td>Samsung Galaxy S23 Ultra 256GB</td>
-                        <td>10000000</td>
-                        <td>9000000</td>
-                        <td>Đã xử lý</td>
-                    </tr>
+                <div class="filter__item">
+                    <div class="filter__button">Lọc</div>
+                </div>
+            </div>
+            <div class="content__container">
+                <form id="form-admin">
+                    <div class="form-container">
 
-                </tbody>
-            </table>
+                        <div class="form-group">
+                            <label for="invoice-id" class="form-label">Mã HĐ</label>
 
-        </div>`
+                            <input id="invoice-id" name="invoice-id" type="text" class="form-control" disabled="true">
+
+                            <span class="form-message"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="invoice-user-id" class="form-label">Mã KH</label>
+
+                            <input id="invoice-user-id" name="invoice-user-id" type="text" class="form-control">
+
+                            <span class="form-message"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="invoice-order-time" class="form-label">Thời gian đặt hàng</label>
+
+                            <input id="invoice-order-time" name="invoice-order-time" type="text" class="form-control">
+
+                            <span class="form-message"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="invoice-total-price" class="form-label">Tổng tiền</label>
+
+                            <input id="invoice-total-price" name="invoice-total-price" type="text" class="form-control">
+
+                            <span class="form-message"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="invoice-status" class="form-label">Tình trạng</label>
+
+                            <input id="invoice-status" name="invoice-status" type="text" class="form-control">
+
+                            <span class="form-message"></span>
+                        </div>
+
+                        <div class="form-label">
+                            <div class="invoice-label">Đơn hàng chưa được xử lý! Nhấn nút để xử lý ngay</div>
+                        </div>
+
+
+                    </div>
+                    <div class="form-controls">
+                        <button class="btn-control" id="btn-process">Xử lý</button>
+                        <button class="btn-control" id="btn-cancel">Hủy</button>
+                    </div>
+                </form>
+                <table id="product-table">
+                    <thead>
+                        <tr class="product-table__heading">
+                            <th>Mã HD</th>
+                            <th>Thời gian đặt hàng </th>
+                            <th>Mã KH</th>
+                            <th>Tổng tiền</th>
+                            <th>Tình trạng</th>
+                            <th>Chi tiết hóa đơn</th>
+                        </tr>
+                    </thead>
+                    <tbody class="product-table__list">
+                        <tr class="product-table__row product-table__row--clicked">
+                            <td>1</td>
+                            <td>Samsung Galaxy S23 Ultra 256GB</td>
+                            <td>10000000</td>
+                            <td>9000000</td>
+                            <td>Đã xử lý</td>
+                            <td>
+                                <button class="product-table__see-btn product-table-btn">Xem</button>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+                <div class="invoice-details">
+                    <div class="invoice-details__header">
+                        CHI TIẾT HÓA ĐƠN
+                    </div>
+                    <div class="invoice-details__list">
+                        
+                    </div>
+                </div>
+            </div>
+            `
+
             initInvoicePage()
         }
         if (item.getAttribute('data-value') === 'product-page') {
@@ -629,6 +602,101 @@ Array.from(listControlItems).forEach((item) => {
     })
 })
 
+initProductPage()
+// Các hàm validate
+const validate = {
+    validateProductName: function (name) {
+        let value = true;
+        let message = 'Hợp lệ'
+        if (name.trim() === '') {
+            value = false;
+            message = 'Tên sản phẩm không được để trống';
+            return { value, message };
+        }
+        if (name.length < 7) {
+            value = false
+            message = 'Tên sản phẩm phải ít nhất 7 ký tự'
+            return { value, message }
+        }
+        if (/^\d+$/.test(name)) {
+            value = false;
+            message = 'Tên sản phẩm không được chứa toàn bộ là số';
+            return { value, message }
+        }
+        return { value, message };
+    },
+    
+    showErrMessage: function (errorLabel, message) {
+        errorLabel.innerText = message
+        errorLabel.classList.add('active')
+    },
+    validateProductInt: function (input) {
+        let value = true;
+        let message = 'Hợp lệ'
+        if (input.toString().trim() === '') {
+            value = false;
+            message = 'Không được để trống';
+            return { value, message };
+        }
+        if (/\D/.test(input)) {
+            value = false;
+            message = 'Không được chứa ký tự chữ';
+        }
+        return { value, message }
+    },
+    hideErrMessage: function (errorLabel) {
+        errorLabel.innerText = ''
+        errorLabel.classList.remove('active')
+    },
+    hideAllErrMessage:function(listErrorMessage){
+        listErrorMessage.forEach(mess => {
+            mess.innerText = ''
+            mess.classList.remove('active')
+        })
+        
+    },
+    validateProductList: function (list) {
+        let value = true;
+        let message = 'Hợp lệ'
+        if (!list || list.length === 0) {
+            value = false;
+            message = 'Phải chọn ít nhất 1 giá trị';
+        }
+        return { value, message }
+
+    },
+    validateValue: function(input){
+        let value = true;
+        let message = 'Hợp lệ'
+        if (input.trim() === '') {
+            value = false;
+            message = 'Phải chọn ít nhất 1 giá trị';
+        }
+        return { value, message }
+    },
+    validateUserFullName: function(fullName){
+        let value = true;
+        let message = 'Hợp lệ'
+        if (fullName.trim() === '') {
+            value = false;
+            message = 'Tên sản phẩm không được để trống';
+            return { value, message };
+        }
+        if (fullName.length < 7) {
+            value = false
+            message = 'Tên sản phẩm phải ít nhất 7 ký tự'
+            return { value, message }
+        }
+        if (/^\d+$/.test(fullName)) {
+            value = false;
+            message = 'Tên sản phẩm không được chứa toàn bộ là số';
+            return { value, message }
+        }
+        return { value, message };
+    }
+
+}
+
 
 function initProductPage() {
     const usernameLabel = $('.info__name')
@@ -639,7 +707,7 @@ function initProductPage() {
     const functionList = $$('.function__item')
     const contentContainer = $('#content')
     const listControlItems = $$('.nav-links__item')
-
+    const listErrorMessage = $$('.form-message')
     renderProductToTable()
 
     function renderProductToTable() {
@@ -714,7 +782,7 @@ function initProductPage() {
         listROM = []
         Array.from(listROMCheckbox).forEach(item => item.checked = false)
         Array.from(listRAMCheckbox).forEach(item => item.checked = false)
-
+        validate.hideAllErrMessage(listErrorMessage)
     }
     // Khi nhấn nút thêm thì active nút thêm
     Array.from(functionList).forEach(item => {
@@ -748,13 +816,31 @@ function initProductPage() {
             }
 
         })
-        Product.addProduct(productName.value, productPriceOld.value, productPriceCurrent.value, productIMG.value, productBrand.value, listRAM, listROM, productSale.value)
-
-        resetValue()
-        renderProductToTable()
-
-
-
+        //Kiểm tra dữ liệu
+        // console.log(productPriceOld.value)
+        const validateAndDisplayError = (input, errorMessageElement, validationFunction) => {
+            const validationResult = validationFunction(input);
+            if (!validationResult.value) {
+                validate.showErrMessage(errorMessageElement, validationResult.message);
+                return false
+            } else {
+                validate.hideErrMessage(errorMessageElement);
+                return true
+            }
+        };
+        const isValidProductName = validateAndDisplayError(productName.value.toString(), listErrorMessage[1], validate.validateProductName);
+        const isValidProductPriceOld = validateAndDisplayError(parseInt(productPriceOld.value), listErrorMessage[2], validate.validateProductInt);
+        const isValidProductPriceCurrent = validateAndDisplayError(parseInt(productPriceCurrent.value), listErrorMessage[3], validate.validateProductInt);
+        const isValidProductSale = validateAndDisplayError(parseInt(productSale.value), listErrorMessage[5], validate.validateProductInt);
+        const isValidListROM = validateAndDisplayError(listROM, listErrorMessage[6], validate.validateProductList);
+        const isValidListRAM = validateAndDisplayError(listRAM, listErrorMessage[7], validate.validateProductList);
+        const isValidBrand = validateAndDisplayError(productBrand.value.toString(), listErrorMessage[4], validate.validateValue)
+        if (isValidProductName && isValidProductPriceOld && isValidProductPriceCurrent && isValidProductSale && isValidBrand && isValidListROM && isValidListRAM) {
+            // Nếu không có lỗi, thêm sản phẩm
+            Product.addProduct(productName.value, productPriceOld.value, productPriceCurrent.value, productIMG.value, productBrand.value, listRAM, listROM, productSale.value);
+            resetValue();
+            renderProductToTable();
+        }
     }
     function renderProduct(productItem, isUpdate) {
         resetValue()
@@ -853,8 +939,8 @@ function initProductPage() {
             renderProductToTable()
         }
     }
-
 }
+
 
 function initInvoicePage() {
     const invoiceList = Invoice.getInvoices()
@@ -866,9 +952,44 @@ function initInvoicePage() {
     const message = $('.invoice-label')
     const processBtn = $('#btn-process')
     const cancelBtn = $('#btn-cancel')
+    function handleInvoiceActions() {
+
+        //Nút lọc hóa đơn
+        const filterButton = $('.filter__button')
+        const startDateInput = $('#filter__start-date')
+        const endDateInput = $('#filter__end-date')
+        filterButton.addEventListener('click', () => {
+            const startDate = time.getDateTime(startDateInput.value)
+            const endDate = time.getDateTime(endDateInput.value)
+
+            const filterList = Invoice.getInvoiceByDateTime(startDate, endDate)
+            renderInvoice(filterList)
+        })
+
+        processBtn.addEventListener('click', (e) => {
+
+            e.preventDefault()
+
+            const invoiceID = clickedRow.selectedInvoiceID;
+            Invoice.updateInvoiceStatus(parseInt(invoiceID), true)
+            const newList = Invoice.getInvoices()
+            renderInvoice(newList)
+            resetValue()
+        })
+
+        cancelBtn.addEventListener('click', (e) => {
+            resetValue()
+            e.preventDefault()
+        })
+
+    }
+    handleInvoiceActions()
     renderInvoice(invoiceList)
+
+
     function renderInvoice(listInvoice) {
         const tableBody = $('.product-table__list')
+
         let html = ''
         Array.from(listInvoice).forEach(invoice => {
             let status = ''
@@ -878,31 +999,35 @@ function initInvoicePage() {
                 status = 'Đã xử lý'
             }
             html += `
-            <tr class="product-table__row product-table__row--clicked">
+            <tr class="product-table__row product-table__row--clicked" data-value="${invoice.invoiceID}">
                             <td>${invoice.invoiceID}</td>
                             <td>${time.getDateTime(invoice.orderTime)}</td>
                             <td>${invoice.userID}</td>
                             <td>${money.formatCurrencytoVND(Invoice.getTotalPriceOfInvoice(invoice.invoiceID))}</td>
                             <td>${status}</td>
+                            <td>
+                                <button class="product-table__see-btn product-table-btn">Xem</button>
+                            </td>
                         </tr>
             `
         })
 
         tableBody.innerHTML = html
+        const productRowList = $$('.product-table__row')
+        Array.from(productRowList).forEach((row) => {
+            const seeButton = row.querySelector('.product-table__see-btn')
+            console.log(seeButton)
+            seeButton.addEventListener('click', (e) => {
+                e.preventDefault();
+                renderDetailProduct(parseInt(row.dataset.value))
+            })
+
+        })
         clickedRow()
 
 
     }
-    const filterButton = $('.filter__button')
-    const startDateInput = $('#filter__start-date')
-    const endDateInput = $('#filter__end-date')
-    filterButton.addEventListener('click', () => {
-        const startDate = time.getDateTime(startDateInput.value)
-        const endDate = time.getDateTime(endDateInput.value)
 
-        const filterList = Invoice.getInvoiceByDateTime(startDate, endDate)
-        renderInvoice(filterList)
-    })
     function resetValue() {
 
         invoiceIDInput.value = ''
@@ -959,21 +1084,41 @@ function initInvoicePage() {
 
 
 
-    processBtn.addEventListener('click', (e) => {
 
-        e.preventDefault()
+    function renderDetailProduct(invoiceID) {
+        const invoiceDetailList = $('.invoice-details__list')
+        const listDetailInvoice = Invoice.getDetailInvoice(invoiceID)
+        let html = ''
+        listDetailInvoice.forEach(detailInvoice => {
+            html += `
+            <div class="invoice-details__item">
+                <img class="invoice-details__img"
+                    src="${detailInvoice.productIMG}"
+                    alt="">
+                <div class="invoice-details__item-wrapper">
+                    <div class="invoice-details__name">
+                       ${detailInvoice.storeProduct.name}
+                    </div>
+                    <div class="invoice-details__price">
+                        <span class="invoice-details__price-label">Đơn giá: </span>
+                        ${money.formatCurrencytoVND(detailInvoice.product_price)}
+                    </div>
+                    <div class="invoice-details__quantity">
+                        <span class="invoice-details__quantity-label">Số lượng: </span>
+                        ${detailInvoice.quantity}
+                    </div>
+                    <div class="invoice-details__total-price">
+                        <span class="invoice-details__total-price-label">Tổng tiền: </span>
+                        ${money.formatCurrencytoVND(detailInvoice.totalPrice)}
+                    </div>
+                </div>
+            </div>
+            `
+        })
+        invoiceDetailList.innerHTML = html
+    }
 
-        const invoiceID = clickedRow.selectedInvoiceID;
-        Invoice.updateInvoiceStatus(parseInt(invoiceID), true)
-        const newList = Invoice.getInvoices()
-        renderInvoice(newList)
-        resetValue()
-    })
 
-    cancelBtn.addEventListener('click', (e) => {
-        resetValue()
-        e.preventDefault()
-    })
 }
 
 // initInvoicePage()
@@ -1159,4 +1304,121 @@ function initUserPage() {
     }
 }
 
+function initDashboardPage() {
+    const boxItem = $$('.box-analysis__item')
+    const filterSelect = document.getElementById('filter__select');
+    const filterButton = $('.filter__button')
+    const defaultMonth = 11
+    loadBoxAnalysis()
+    loadOptionMonth()
+    filterMonth()
+    function loadBoxAnalysis(month = 11) {
+        boxItem.forEach(item => {
+            if (item.dataset.value === 'total-customer') {
+                const a = Invoice.getTotalCustomerByMonth(month)
+                item.querySelector('.box-analysis__number').innerText = a
+            }
+            if (item.dataset.value === 'total-price') {
+                const a = Invoice.calculateRevenueByMonth(month)
+                item.querySelector('.box-analysis__number').innerText = a
+            }
+            if (item.dataset.value === 'total-invoice') {
+                const a = Invoice.getTotalInvoiceByMonth(month)
+                item.querySelector('.box-analysis__number').innerText = a
 
+            }
+            if (item.dataset.value === 'total-product') {
+                const a = Invoice.getTotalSoldProductsInMonth(month)
+                item.querySelector('.box-analysis__number').innerText = a
+            }
+        })
+
+    }
+    function loadOptionMonth() {
+        filterSelect.innerHTML = ''
+        for (let i = 1; i <= 12; i++) {
+            // Tạo một option
+            const option = document.createElement('option');
+
+            // Đặt giá trị và văn bản cho option
+            option.value = i.toString(); // Giá trị từ 1 đến 12
+            option.textContent = `Tháng ${i}`;
+            if (i === defaultMonth) {
+                option.selected = true;
+            }
+            // Thêm option vào thẻ select
+            filterSelect.appendChild(option);
+        }
+
+    }
+
+    function filterMonth() {
+        filterButton.addEventListener('click', () => {
+            loadBoxAnalysis(parseInt(filterSelect.value));
+            renderTable(parseInt(filterSelect.value));
+        })
+    }
+
+    function renderTable(month = defaultMonth) {
+        const table = $$('.table__container')
+        table.forEach(tb => {
+
+            if (parseInt(tb.dataset.value) === 1) {
+                const tableBody = tb.querySelector('.analysis-table__list')
+                tableBody.innerHTML = ''
+                renderTable1(tableBody)
+            }
+            if (parseInt(tb.dataset.value) === 2) {
+                const tableBody = tb.querySelector('.analysis-table__list')
+                tableBody.innerHTML = ''
+                renderTable2(tableBody)
+            }
+        })
+        function renderTable1(tableBody) {
+            brandValues.forEach(item => {
+                // Tạo một dòng mới
+                const row = document.createElement('tr');
+                row.classList.add('analysis-table__row');
+
+                // Tạo và thêm các ô (td) cho dòng
+                const brandCell = document.createElement('td');
+                brandCell.textContent = item;
+
+                const quantityCell = document.createElement('td');
+
+                quantityCell.textContent = Invoice.getTotalSoldProductsInMonthByBrand(item.toLowerCase(), month)
+
+                row.appendChild(brandCell);
+                row.appendChild(quantityCell);
+
+                // Thêm dòng vào tbody
+                tableBody.appendChild(row);
+            });
+        }
+
+        function renderTable2(tableBody) {
+            brandValues.forEach(item => {
+                // Tạo một dòng mới
+                const row = document.createElement('tr');
+                row.classList.add('analysis-table__row');
+
+                // Tạo và thêm các ô (td) cho dòng
+                const brandCell = document.createElement('td');
+                brandCell.textContent = item;
+
+                const quantityCell = document.createElement('td');
+
+                quantityCell.textContent = Invoice.calculateRevenueByCategoryAndMonth(item.toLowerCase(), month)
+                row.appendChild(brandCell);
+                row.appendChild(quantityCell);
+
+                // Thêm dòng vào tbody
+                tableBody.appendChild(row);
+            });
+        }
+
+    }
+    renderTable()
+}
+
+// initInvoicePage()
