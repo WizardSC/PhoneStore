@@ -21,8 +21,25 @@ Array.from(listControlItems).forEach((item) => {
                 <div class="top-line">
                 <h1 class="top-line__heading">TRANG CHỦ</h1>
             </div>
+            <div class="filter">
+                <div class="filter__container">
+                    <label for="" class="filter__label">Chọn tháng cần xem</label>
+                    <select name="filter__select" id="filter__select" class="filter__control">
+                        <option value="">--Chọn tháng--</option>
+                        <option value="customer">Khách hàng</option>
+                        <option value="admin">Admin</option>
+
+                    </select>
+                    <div class="filter__button">Lọc</div>
+                </div>
+
+
+            </div>
+
+
+
             <div class="box-analysis__container">
-                <div class="box-analysis__item">
+                <div class="box-analysis__item" data-value="total-customer">
                     <div class="box-analysis__heading">
                         <div class="box-analysis__icon">
                             <i class="fa-solid fa-money-bill"></i>
@@ -33,7 +50,7 @@ Array.from(listControlItems).forEach((item) => {
 
 
                 </div>
-                <div class="box-analysis__item">
+                <div class="box-analysis__item" data-value="total-invoice">
                     <div class="box-analysis__heading">
                         <div class="box-analysis__icon">
                             <i class="fa-solid fa-money-bill"></i>
@@ -42,7 +59,7 @@ Array.from(listControlItems).forEach((item) => {
                     </div>
                     <div class="box-analysis__number">100000</div>
                 </div>
-                <div class="box-analysis__item">
+                <div class="box-analysis__item" data-value="total-price">
                     <div class="box-analysis__heading">
                         <div class="box-analysis__icon">
                             <i class="fa-solid fa-money-bill"></i>
@@ -51,7 +68,7 @@ Array.from(listControlItems).forEach((item) => {
                     </div>
                     <div class="box-analysis__number">100000</div>
                 </div>
-                <div class="box-analysis__item">
+                <div class="box-analysis__item" data-value="total-product">
                     <div class="box-analysis__heading">
                         <div class="box-analysis__icon">
                             <i class="fa-solid fa-money-bill"></i>
@@ -61,7 +78,52 @@ Array.from(listControlItems).forEach((item) => {
                     <div class="box-analysis__number">100000</div>
                 </div>
             </div>
+            <div id="table_wrapper">
+
+                <div class="table__container" data-value="1">
+                    <div class="table__title">
+                        TỔNG SẢN PHẨM BÁN RA THEO THƯƠNG HIỆU
+                    </div>
+                    <table class="analysis-table">
+                        <thead>
+                            <tr class="analysis-table__heading">
+                                <th>Tên thương hiệu</th>
+                                <th>Số lượng</th>
+                            </tr>
+                        </thead>
+                        <tbody class="analysis-table__list">
+                            <tr class="analysis-table__row">
+                                <td>Samsung</td>
+                                <td>2</td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+                <div class="table__container" data-value="2">
+                    <div class="table__title">
+                        TỔNG DOANH THU BÁN RA THEO THƯƠNG HIỆU
+                    </div>
+                    <table class="analysis-table">
+                        <thead>
+                            <tr class="analysis-table__heading">
+                                <th>Tên thương hiệu</th>
+                                <th>Số lượng</th>
+                            </tr>
+                        </thead>
+                        <tbody class="analysis-table__list">
+                            <tr class="analysis-table__row">
+                                <td>Samsung</td>
+                                <td>2</td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
             `
+            initDashboardPage()
+
         }
         if (item.getAttribute('data-value') === 'ql-nguoidung') {
             contentContainer.innerHTML =
@@ -416,103 +478,116 @@ Array.from(listControlItems).forEach((item) => {
         if (item.getAttribute('data-value') === 'ql-hoadon') {
             item.classList.add('active')
 
-            contentContainer.innerHTML =
-                `<div class="top-line">
-            <h1 class="top-line__heading">QUẢN LÝ HÓA ĐƠN</h1>
-        </div>
-
-        <div class="search">
-        </div>
-
-        <div class="filter">
-            <div class="filter__item">
-                <label class="filter__label" for="filter__start-date">Chọn ngày bắt đầu:</label>
-                <input type="datetime-local" class="filter__input" id="filter__start-date" name="filter__start-date"
-                    placeholder="Chọn ngày bắt đầu">
+            contentContainer.innerHTML = `
+            <div class="top-line">
+                <h1 class="top-line__heading">QUẢN LÝ HÓA ĐƠN</h1>
             </div>
-            <div class="filter__item">
-                <label class="filter__label" for="filter__end-date">Chọn ngày kết thúc:</label>
-                <input type="datetime-local" class="filter__input" id="filter__end-date" name="filter__end-date"
-                    placeholder="Chọn ngày bắt đầu">
+
+            <div class="search">
             </div>
-            <div class="filter__item">
-                <div class="filter__button">Lọc</div>
-            </div>
-        </div>
-        <div class="content__container">
-            <form id="form-admin">
-                <div class="form-container">
 
-                    <div class="form-group">
-                        <label for="invoice-id" class="form-label">Mã HĐ</label>
-
-                        <input id="invoice-id" name="invoice-id" type="text" class="form-control" disabled="true">
-
-                        <span class="form-message"></span>
-                    </div>
-                    <div class="form-group">
-                        <label for="invoice-user-id" class="form-label">Mã KH</label>
-
-                        <input id="invoice-user-id" name="invoice-user-id" type="text" class="form-control">
-
-                        <span class="form-message"></span>
-                    </div>
-                    <div class="form-group">
-                        <label for="invoice-order-time" class="form-label">Thời gian đặt hàng</label>
-
-                        <input id="invoice-order-time" name="invoice-order-time" type="text" class="form-control">
-
-                        <span class="form-message"></span>
-                    </div>
-                    <div class="form-group">
-                        <label for="invoice-total-price" class="form-label">Tổng tiền</label>
-
-                        <input id="invoice-total-price" name="invoice-total-price" type="text" class="form-control">
-
-                        <span class="form-message"></span>
-                    </div>
-                    <div class="form-group">
-                        <label for="invoice-status" class="form-label">Tình trạng</label>
-
-                        <input id="invoice-status" name="invoice-status" type="text" class="form-control">
-
-                        <span class="form-message"></span>
-                    </div>
-
-                    <div class="form-label">
-                        <div class="invoice-label">Đơn hàng chưa được xử lý! Nhấn nút để xử lý ngay</div>
-                    </div>
-
-
+            <div class="filter">
+                <div class="filter__item">
+                    <label class="filter__label" for="filter__start-date">Chọn ngày bắt đầu:</label>
+                    <input type="datetime-local" class="filter__input" id="filter__start-date" name="filter__start-date"
+                        placeholder="Chọn ngày bắt đầu">
                 </div>
-                <div class="form-controls">
-                    <button class="btn-control" id="btn-process">Xử lý</button>
-                    <button class="btn-control" id="btn-cancel">Hủy</button>
+                <div class="filter__item">
+                    <label class="filter__label" for="filter__end-date">Chọn ngày kết thúc:</label>
+                    <input type="datetime-local" class="filter__input" id="filter__end-date" name="filter__end-date"
+                        placeholder="Chọn ngày bắt đầu">
                 </div>
-            </form>
-            <table id="product-table">
-                <thead>
-                    <tr class="product-table__heading">
-                        <th>Mã HD</th>
-                        <th>Thời gian đặt hàng </th>
-                        <th>Mã KH</th>
-                        <th>Tổng tiền</th>
-                        <th>Tình trạng</th>
-                    </tr>
-                </thead>
-                <tbody class="product-table__list">
-                    <tr class="product-table__row product-table__row--clicked">
-                        <td>1</td>
-                        <td>Samsung Galaxy S23 Ultra 256GB</td>
-                        <td>10000000</td>
-                        <td>9000000</td>
-                        <td>Đã xử lý</td>
-                    </tr>
+                <div class="filter__item">
+                    <div class="filter__button">Lọc</div>
+                </div>
+            </div>
+            <div class="content__container">
+                <form id="form-admin">
+                    <div class="form-container">
 
-                </tbody>
-            </table>
+                        <div class="form-group">
+                            <label for="invoice-id" class="form-label">Mã HĐ</label>
 
-        </div>`
+                            <input id="invoice-id" name="invoice-id" type="text" class="form-control" disabled="true">
+
+                            <span class="form-message"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="invoice-user-id" class="form-label">Mã KH</label>
+
+                            <input id="invoice-user-id" name="invoice-user-id" type="text" class="form-control">
+
+                            <span class="form-message"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="invoice-order-time" class="form-label">Thời gian đặt hàng</label>
+
+                            <input id="invoice-order-time" name="invoice-order-time" type="text" class="form-control">
+
+                            <span class="form-message"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="invoice-total-price" class="form-label">Tổng tiền</label>
+
+                            <input id="invoice-total-price" name="invoice-total-price" type="text" class="form-control">
+
+                            <span class="form-message"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="invoice-status" class="form-label">Tình trạng</label>
+
+                            <input id="invoice-status" name="invoice-status" type="text" class="form-control">
+
+                            <span class="form-message"></span>
+                        </div>
+
+                        <div class="form-label">
+                            <div class="invoice-label">Đơn hàng chưa được xử lý! Nhấn nút để xử lý ngay</div>
+                        </div>
+
+
+                    </div>
+                    <div class="form-controls">
+                        <button class="btn-control" id="btn-process">Xử lý</button>
+                        <button class="btn-control" id="btn-cancel">Hủy</button>
+                    </div>
+                </form>
+                <table id="product-table">
+                    <thead>
+                        <tr class="product-table__heading">
+                            <th>Mã HD</th>
+                            <th>Thời gian đặt hàng </th>
+                            <th>Mã KH</th>
+                            <th>Tổng tiền</th>
+                            <th>Tình trạng</th>
+                            <th>Chi tiết hóa đơn</th>
+                        </tr>
+                    </thead>
+                    <tbody class="product-table__list">
+                        <tr class="product-table__row product-table__row--clicked">
+                            <td>1</td>
+                            <td>Samsung Galaxy S23 Ultra 256GB</td>
+                            <td>10000000</td>
+                            <td>9000000</td>
+                            <td>Đã xử lý</td>
+                            <td>
+                                <button class="product-table__see-btn product-table-btn">Xem</button>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+                <div class="invoice-details">
+                    <div class="invoice-details__header">
+                        CHI TIẾT HÓA ĐƠN
+                    </div>
+                    <div class="invoice-details__list">
+                        
+                    </div>
+                </div>
+            </div>
+            `
+
             initInvoicePage()
         }
         if (item.getAttribute('data-value') === 'product-page') {
@@ -527,6 +602,101 @@ Array.from(listControlItems).forEach((item) => {
     })
 })
 
+initProductPage()
+// Các hàm validate
+const validate = {
+    validateProductName: function (name) {
+        let value = true;
+        let message = 'Hợp lệ'
+        if (name.trim() === '') {
+            value = false;
+            message = 'Tên sản phẩm không được để trống';
+            return { value, message };
+        }
+        if (name.length < 7) {
+            value = false
+            message = 'Tên sản phẩm phải ít nhất 7 ký tự'
+            return { value, message }
+        }
+        if (/^\d+$/.test(name)) {
+            value = false;
+            message = 'Tên sản phẩm không được chứa toàn bộ là số';
+            return { value, message }
+        }
+        return { value, message };
+    },
+    
+    showErrMessage: function (errorLabel, message) {
+        errorLabel.innerText = message
+        errorLabel.classList.add('active')
+    },
+    validateProductInt: function (input) {
+        let value = true;
+        let message = 'Hợp lệ'
+        if (input.toString().trim() === '') {
+            value = false;
+            message = 'Không được để trống';
+            return { value, message };
+        }
+        if (/\D/.test(input)) {
+            value = false;
+            message = 'Không được chứa ký tự chữ';
+        }
+        return { value, message }
+    },
+    hideErrMessage: function (errorLabel) {
+        errorLabel.innerText = ''
+        errorLabel.classList.remove('active')
+    },
+    hideAllErrMessage:function(listErrorMessage){
+        listErrorMessage.forEach(mess => {
+            mess.innerText = ''
+            mess.classList.remove('active')
+        })
+        
+    },
+    validateProductList: function (list) {
+        let value = true;
+        let message = 'Hợp lệ'
+        if (!list || list.length === 0) {
+            value = false;
+            message = 'Phải chọn ít nhất 1 giá trị';
+        }
+        return { value, message }
+
+    },
+    validateValue: function(input){
+        let value = true;
+        let message = 'Hợp lệ'
+        if (input.trim() === '') {
+            value = false;
+            message = 'Phải chọn ít nhất 1 giá trị';
+        }
+        return { value, message }
+    },
+    validateUserFullName: function(fullName){
+        let value = true;
+        let message = 'Hợp lệ'
+        if (fullName.trim() === '') {
+            value = false;
+            message = 'Tên sản phẩm không được để trống';
+            return { value, message };
+        }
+        if (fullName.length < 7) {
+            value = false
+            message = 'Tên sản phẩm phải ít nhất 7 ký tự'
+            return { value, message }
+        }
+        if (/^\d+$/.test(fullName)) {
+            value = false;
+            message = 'Tên sản phẩm không được chứa toàn bộ là số';
+            return { value, message }
+        }
+        return { value, message };
+    }
+
+}
+
 
 function initProductPage() {
     const usernameLabel = $('.info__name')
@@ -537,7 +707,7 @@ function initProductPage() {
     const functionList = $$('.function__item')
     const contentContainer = $('#content')
     const listControlItems = $$('.nav-links__item')
-
+    const listErrorMessage = $$('.form-message')
     renderProductToTable()
 
     function renderProductToTable() {
@@ -612,7 +782,7 @@ function initProductPage() {
         listROM = []
         Array.from(listROMCheckbox).forEach(item => item.checked = false)
         Array.from(listRAMCheckbox).forEach(item => item.checked = false)
-
+        validate.hideAllErrMessage(listErrorMessage)
     }
     // Khi nhấn nút thêm thì active nút thêm
     Array.from(functionList).forEach(item => {
@@ -646,13 +816,31 @@ function initProductPage() {
             }
 
         })
-        Product.addProduct(productName.value, productPriceOld.value, productPriceCurrent.value, productIMG.value, productBrand.value, listRAM, listROM, productSale.value)
-
-        resetValue()
-        renderProductToTable()
-
-
-
+        //Kiểm tra dữ liệu
+        // console.log(productPriceOld.value)
+        const validateAndDisplayError = (input, errorMessageElement, validationFunction) => {
+            const validationResult = validationFunction(input);
+            if (!validationResult.value) {
+                validate.showErrMessage(errorMessageElement, validationResult.message);
+                return false
+            } else {
+                validate.hideErrMessage(errorMessageElement);
+                return true
+            }
+        };
+        const isValidProductName = validateAndDisplayError(productName.value.toString(), listErrorMessage[1], validate.validateProductName);
+        const isValidProductPriceOld = validateAndDisplayError(parseInt(productPriceOld.value), listErrorMessage[2], validate.validateProductInt);
+        const isValidProductPriceCurrent = validateAndDisplayError(parseInt(productPriceCurrent.value), listErrorMessage[3], validate.validateProductInt);
+        const isValidProductSale = validateAndDisplayError(parseInt(productSale.value), listErrorMessage[5], validate.validateProductInt);
+        const isValidListROM = validateAndDisplayError(listROM, listErrorMessage[6], validate.validateProductList);
+        const isValidListRAM = validateAndDisplayError(listRAM, listErrorMessage[7], validate.validateProductList);
+        const isValidBrand = validateAndDisplayError(productBrand.value.toString(), listErrorMessage[4], validate.validateValue)
+        if (isValidProductName && isValidProductPriceOld && isValidProductPriceCurrent && isValidProductSale && isValidBrand && isValidListROM && isValidListRAM) {
+            // Nếu không có lỗi, thêm sản phẩm
+            Product.addProduct(productName.value, productPriceOld.value, productPriceCurrent.value, productIMG.value, productBrand.value, listRAM, listROM, productSale.value);
+            resetValue();
+            renderProductToTable();
+        }
     }
     function renderProduct(productItem, isUpdate) {
         resetValue()
@@ -751,8 +939,8 @@ function initProductPage() {
             renderProductToTable()
         }
     }
-
 }
+
 
 function initInvoicePage() {
     const invoiceList = Invoice.getInvoices()
@@ -764,9 +952,44 @@ function initInvoicePage() {
     const message = $('.invoice-label')
     const processBtn = $('#btn-process')
     const cancelBtn = $('#btn-cancel')
+    function handleInvoiceActions() {
+
+        //Nút lọc hóa đơn
+        const filterButton = $('.filter__button')
+        const startDateInput = $('#filter__start-date')
+        const endDateInput = $('#filter__end-date')
+        filterButton.addEventListener('click', () => {
+            const startDate = time.getDateTime(startDateInput.value)
+            const endDate = time.getDateTime(endDateInput.value)
+
+            const filterList = Invoice.getInvoiceByDateTime(startDate, endDate)
+            renderInvoice(filterList)
+        })
+
+        processBtn.addEventListener('click', (e) => {
+
+            e.preventDefault()
+
+            const invoiceID = clickedRow.selectedInvoiceID;
+            Invoice.updateInvoiceStatus(parseInt(invoiceID), true)
+            const newList = Invoice.getInvoices()
+            renderInvoice(newList)
+            resetValue()
+        })
+
+        cancelBtn.addEventListener('click', (e) => {
+            resetValue()
+            e.preventDefault()
+        })
+
+    }
+    handleInvoiceActions()
     renderInvoice(invoiceList)
+
+
     function renderInvoice(listInvoice) {
         const tableBody = $('.product-table__list')
+
         let html = ''
         Array.from(listInvoice).forEach(invoice => {
             let status = ''
@@ -776,31 +999,35 @@ function initInvoicePage() {
                 status = 'Đã xử lý'
             }
             html += `
-            <tr class="product-table__row product-table__row--clicked">
+            <tr class="product-table__row product-table__row--clicked" data-value="${invoice.invoiceID}">
                             <td>${invoice.invoiceID}</td>
                             <td>${time.getDateTime(invoice.orderTime)}</td>
                             <td>${invoice.userID}</td>
                             <td>${money.formatCurrencytoVND(Invoice.getTotalPriceOfInvoice(invoice.invoiceID))}</td>
                             <td>${status}</td>
+                            <td>
+                                <button class="product-table__see-btn product-table-btn">Xem</button>
+                            </td>
                         </tr>
             `
         })
 
         tableBody.innerHTML = html
+        const productRowList = $$('.product-table__row')
+        Array.from(productRowList).forEach((row) => {
+            const seeButton = row.querySelector('.product-table__see-btn')
+            console.log(seeButton)
+            seeButton.addEventListener('click', (e) => {
+                e.preventDefault();
+                renderDetailProduct(parseInt(row.dataset.value))
+            })
+
+        })
         clickedRow()
 
 
     }
-    const filterButton = $('.filter__button')
-    const startDateInput = $('#filter__start-date')
-    const endDateInput = $('#filter__end-date')
-    filterButton.addEventListener('click', () => {
-        const startDate = time.getDateTime(startDateInput.value)
-        const endDate = time.getDateTime(endDateInput.value)
 
-        const filterList = Invoice.getInvoiceByDateTime(startDate, endDate)
-        renderInvoice(filterList)
-    })
     function resetValue() {
 
         invoiceIDInput.value = ''
@@ -857,21 +1084,41 @@ function initInvoicePage() {
 
 
 
-    processBtn.addEventListener('click', (e) => {
 
-        e.preventDefault()
+    function renderDetailProduct(invoiceID) {
+        const invoiceDetailList = $('.invoice-details__list')
+        const listDetailInvoice = Invoice.getDetailInvoice(invoiceID)
+        let html = ''
+        listDetailInvoice.forEach(detailInvoice => {
+            html += `
+            <div class="invoice-details__item">
+                <img class="invoice-details__img"
+                    src="${detailInvoice.productIMG}"
+                    alt="">
+                <div class="invoice-details__item-wrapper">
+                    <div class="invoice-details__name">
+                       ${detailInvoice.storeProduct.name}
+                    </div>
+                    <div class="invoice-details__price">
+                        <span class="invoice-details__price-label">Đơn giá: </span>
+                        ${money.formatCurrencytoVND(detailInvoice.product_price)}
+                    </div>
+                    <div class="invoice-details__quantity">
+                        <span class="invoice-details__quantity-label">Số lượng: </span>
+                        ${detailInvoice.quantity}
+                    </div>
+                    <div class="invoice-details__total-price">
+                        <span class="invoice-details__total-price-label">Tổng tiền: </span>
+                        ${money.formatCurrencytoVND(detailInvoice.totalPrice)}
+                    </div>
+                </div>
+            </div>
+            `
+        })
+        invoiceDetailList.innerHTML = html
+    }
 
-        const invoiceID = clickedRow.selectedInvoiceID;
-        Invoice.updateInvoiceStatus(parseInt(invoiceID), true)
-        const newList = Invoice.getInvoices()
-        renderInvoice(newList)
-        resetValue()
-    })
 
-    cancelBtn.addEventListener('click', (e) => {
-        resetValue()
-        e.preventDefault()
-    })
 }
 
 // initInvoicePage()
@@ -1096,21 +1343,82 @@ function initDashboardPage() {
             // Đặt giá trị và văn bản cho option
             option.value = i.toString(); // Giá trị từ 1 đến 12
             option.textContent = `Tháng ${i}`;
-            if(i === defaultMonth){
+            if (i === defaultMonth) {
                 option.selected = true;
             }
             // Thêm option vào thẻ select
             filterSelect.appendChild(option);
         }
-        
+
     }
 
-    function filterMonth(){
+    function filterMonth() {
         filterButton.addEventListener('click', () => {
             loadBoxAnalysis(parseInt(filterSelect.value));
+            renderTable(parseInt(filterSelect.value));
         })
     }
+
+    function renderTable(month = defaultMonth) {
+        const table = $$('.table__container')
+        table.forEach(tb => {
+
+            if (parseInt(tb.dataset.value) === 1) {
+                const tableBody = tb.querySelector('.analysis-table__list')
+                tableBody.innerHTML = ''
+                renderTable1(tableBody)
+            }
+            if (parseInt(tb.dataset.value) === 2) {
+                const tableBody = tb.querySelector('.analysis-table__list')
+                tableBody.innerHTML = ''
+                renderTable2(tableBody)
+            }
+        })
+        function renderTable1(tableBody) {
+            brandValues.forEach(item => {
+                // Tạo một dòng mới
+                const row = document.createElement('tr');
+                row.classList.add('analysis-table__row');
+
+                // Tạo và thêm các ô (td) cho dòng
+                const brandCell = document.createElement('td');
+                brandCell.textContent = item;
+
+                const quantityCell = document.createElement('td');
+
+                quantityCell.textContent = Invoice.getTotalSoldProductsInMonthByBrand(item.toLowerCase(), month)
+
+                row.appendChild(brandCell);
+                row.appendChild(quantityCell);
+
+                // Thêm dòng vào tbody
+                tableBody.appendChild(row);
+            });
+        }
+
+        function renderTable2(tableBody) {
+            brandValues.forEach(item => {
+                // Tạo một dòng mới
+                const row = document.createElement('tr');
+                row.classList.add('analysis-table__row');
+
+                // Tạo và thêm các ô (td) cho dòng
+                const brandCell = document.createElement('td');
+                brandCell.textContent = item;
+
+                const quantityCell = document.createElement('td');
+
+                quantityCell.textContent = Invoice.calculateRevenueByCategoryAndMonth(item.toLowerCase(), month)
+                row.appendChild(brandCell);
+                row.appendChild(quantityCell);
+
+                // Thêm dòng vào tbody
+                tableBody.appendChild(row);
+            });
+        }
+
+    }
+    renderTable()
 }
 
-initDashboardPage()
-
+// initInvoicePage()

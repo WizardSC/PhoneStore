@@ -180,9 +180,9 @@
 
 .form-label {
     font-weight: 700;
-    padding-bottom: 6px;
     line-height: 1.8rem;
     font-size: 1.4rem;
+    margin-bottom: 16px;
 }
 
 .form-control {
@@ -208,11 +208,18 @@
 }
 
 .form-message {
-    font-size: 1.2rem;
+    height: 1.6rem;
+    font-size: 1.3rem;
     line-height: 1.6rem;
     padding: 4px 0 0;
+    color: #DC4543;
+    font-style: italic;
+    display: none;
 }
 
+.form-message.active{
+    display: block;
+}
 .checkbox-group {
     padding: 10px;
 }
@@ -265,8 +272,11 @@
 
 /* Table */
 #product-table {
+    margin-top: 20px;
     width: 100%;
     border-collapse: collapse;
+    border: 3px solid var(--primary-color);
+    border-radius: 4px;
     text-align: center;
 }
 
@@ -275,6 +285,7 @@
     background-color: transparent;
     text-align: center;
     font-size: 1.5rem;
+    height: 40px;
 
 }
 
@@ -385,14 +396,6 @@ td:nth-child(8) {
     background-color: var(--filter-item-color);
 }
 
-.form-label {
-    margin-bottom: 16px;
-
-    flex: 1;
-    text-align: center;
-    display: flex;
-    align-items: center;
-}
 
 .invoice-label {
     font-size: 1.6rem;
@@ -413,6 +416,76 @@ td:nth-child(8) {
 #btn-process:hover {
     opacity: 0.8;
 }
+
+.invoice-details {
+    margin-top: 20px;
+}
+
+.invoice-details {
+    background-color: var(--white-color);
+    border-radius: 5px;
+    padding: 12px;
+}
+
+.invoice-details__header {
+    font-size: 2rem;
+    text-align: center;
+    font-weight: 550;
+}
+
+.invoice-details__list {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.invoice-details__item {
+    margin-top: 12px;
+    
+    padding: 8px;
+    display: flex;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 1px 2px 0 rgba(60, 64, 67, .1), 0 2px 6px 2px rgba(60, 64, 67, .15);
+    overflow: hidden;
+    flex-basis: calc(50% - 8px);
+    /* 50% width for each item with padding considered */
+
+    /* width: 00px; */
+}
+
+.invoice-details__img {
+    height: 150px;
+    width: 150px;
+}
+
+.invoice-details__item-wrapper {
+    padding-left: 8px;
+    width: max-content;
+    flex-grow: 1;
+}
+
+.invoice-details__name {
+    font-size: 1.6rem;
+    font-weight: bold;
+    padding-top: 10px;
+    padding-bottom: 25px;
+}
+
+.invoice-details__price-label,
+.invoice-details__price,
+.invoice-details__quantity,
+.invoice-details__quantity-label,
+.invoice-details__total-price,
+.invoice-details__total-price-label {
+    font-size: 1.5rem;
+    padding-bottom: 10px;
+}
+
+.invoice-details__quantity {}
+
+.invoice-details__total-price {}
 
 /* Quản lý hóa đơn */
 
@@ -485,3 +558,86 @@ td:nth-child(8) {
     padding: 8px 8px;
 }
 
+#table_wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.table__container {
+    display: flex;
+    flex-direction: column;
+    padding: 8px;
+    width: 550px;
+    align-items: center;
+}
+
+.table__title {
+    padding-top: 15px;
+    font-size: 1.7rem;
+    font-weight: bold;
+    padding-bottom: 15px;
+}
+
+.analysis-table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 2px solid var(--border-hover-color);
+    text-align: center;
+}
+
+.analysis-table__heading {
+    font-size: 1.9rem;
+    font-weight: 300;
+    height: 40px;
+}
+
+
+.analysis-table .analysis-table__heading {
+    color: var(--primary-color);
+    background-color: transparent;
+    text-align: center;
+    font-size: 1.5rem;
+
+}
+
+.analysis-table .product-table__heading th:hover {
+    cursor: pointer;
+    background-color: var(--white-color);
+    transition: 0.3s;
+}
+
+
+.analysis-table tr td {
+    padding: 4px 15px;
+    color: var(--text-color)
+}
+
+.analysis-table tr td:nth-child(1),
+td:nth-child(2),
+td:nth-child(7),
+td:nth-child(8) {
+    text-align: center;
+}
+
+.analysis-table tbody tr td {
+    border-top: 1px solid black;
+}
+
+.analysis-table tbody tr:nth-child(odd) {
+    background-color: var(--white-color);
+}
+
+.analysis-table tbody tr:hover {
+    cursor: pointer;
+    background-color: var(--filter-item-color);
+}
+
+
+
+
+
+.analysis-table tr td {
+    font-size: 1.5rem;
+    line-height: 1.5;
+}

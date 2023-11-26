@@ -1,5 +1,6 @@
 const $ = document.querySelector.bind(document)
 const $$ = document.querySelectorAll.bind(document)
+let brandValues = ['IPhone','Samsung','Oppo','Xiaomi','Vivo','Realme','Nokia','Masstel','Itel','Mobell']
 let romValues = ['16 GB', '32 GB', '64 GB', '128 GB', '256 GB', '512 GB', '1 TB'];
 let ramValues = ['1 GB', '2 GB', '3 GB', '4 GB', '6 GB', '8 GB', '12 GB']
 class Product {
@@ -541,6 +542,18 @@ class Invoice {
         })
         return resultList
     }
+    //Lấy ra chi tiết hóa đơn của 1 hóa đơn
+    static getDetailInvoice(invoiceID){
+        const list = Invoice.getInvoices()
+        if(!list || list.length === 0) return null
+        let detailInvoice
+        list.forEach(invoice => {
+            if(invoice.invoiceID === invoiceID){
+                detailInvoice = invoice.cartList
+            }
+        })
+        return detailInvoice
+    }
     // Các hàm thống kê
     //Tổng hóa đơn trong 1 tháng
     static getTotalInvoiceByMonth(month){
@@ -581,7 +594,7 @@ class Invoice {
     }
     //Tính tổng doanh thu theo loại sản phẩm
     static calculateRevenueByCategoryAndMonth(category,month){
-        const invoiceList = Invoice.getInvoices()
+        const invoiceList = Invoice.getInvoiceListByMonth(month)
         if(!invoiceList || invoiceList.length === 0) return 0
         let total = 0
         invoiceList.forEach(item => {
@@ -648,3 +661,4 @@ class admin {
         }
     }
 }
+
