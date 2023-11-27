@@ -607,4 +607,5 @@ const productArr = [
     ),
 
 ]
+console.log
 
