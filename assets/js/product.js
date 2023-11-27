@@ -1,7 +1,7 @@
 
 
 const productContainer = $('.product.row')
-
+if(productContainer){
 //Render product lên giao diện
 function renderProduct(listProduct) {
 
@@ -60,7 +60,7 @@ function renderProduct(listProduct) {
 
 }
 renderProduct(Product.getProducts())
-
+}
 function getDetailProduct() {
     const productItem = $$('.product-item')
     productItem.forEach(item => {
@@ -225,6 +225,7 @@ Array.from(listFilterItems).forEach(function (filterItem, index) {
 
 
 });
+function initInputPrice(){
 minPriceInput.addEventListener('keyup', function (e) {
     let inputValue = minPriceInput.value;
     inputValue = inputValue.replace(/[^0-9]/g, '');
@@ -236,6 +237,8 @@ maxPriceInput.addEventListener('keyup', function (e) {
     inputValue = inputValue.replace(/[^0-9]/g, '');
     maxPriceInput.value = inputValue;
 });
+}
+
 
 function checkPriceRange(value) {
     let minPrice = parseInt(minPriceInput.value);

@@ -10,10 +10,13 @@ function renderProductIndex(listProductIndex) {
     const top8Products = listProductIndex.slice(0, 8);
     console.log(top8Products)
 
-    // Tạo HTML từ danh sách sản phẩm và hiển thị trong container
-    const htmls = top8Products.map(function (product, index) {
-        const money1 = money.formatCurrencytoVND(product.price_current);
-        const money2 = money.formatCurrencytoVND(product.price_old);
+const container=document.querySelector('.content__product-container')
+console.log(container)
+
+function renderProduct(top8Products){
+    const htmls=top8Products.map(function(product){
+        const money1 = money.formatCurrencytoVND(product.price_current)
+        const money2 = money.formatCurrencytoVND(product.price_old)
 
         return `
         <div class="pro" id="${product.productID}">

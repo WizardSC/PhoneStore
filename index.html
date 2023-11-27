@@ -9,8 +9,10 @@
     <link rel="stylesheet" href="assets/css/main.css">
     <link rel="stylesheet" href="assets/css/footer.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <link rel="stylesheet" href="assets/css/slider.css">
     <link rel="stylesheet" href="assets/css/login.css">
+    <link rel="stylesheet" href="assets/css/product.css">
+    <link rel="stylesheet" href="assets/css/slider.css">
+
 </head>
 
 <body>
@@ -32,10 +34,10 @@
 
                 <!-- Navbar khi PC -->
                 <ul class="header__navbar-list">
-                    <li><a href="index.html" class="active">Trang chủ</a></li>
-                    <li><a href="product.html" >Sản phẩm</a></li>
+                    <li><a href="index.html">Trang chủ</a></li>
+                    <li><a href="product.html" class="active">Sản phẩm</a></li>
                     <li><a href="contact.html">Liên lạc</a></li>
-                    
+
                     <li class="header__navbar-item">
                         <div class="header__navbar-item--none-logged active">
                             <div class="header__navbar-login" id="btnDangNhap" onclick="LoginPopupOpen()">
@@ -47,13 +49,19 @@
                             <i class="fa-solid fa-basket-shopping header__navbar-cart-icon"></i>
                             <div class="header__navbar-user-wrap">
                                 <div class="header__navbar-user">
-                                    <img class="header__navbar-user-img" src="https://down-vn.img.susercontent.com/file/57c388a98552051b188b48864e95a4bf_tn" alt="">
+                                    <img class="header__navbar-user-img"
+                                        src="https://down-vn.img.susercontent.com/file/57c388a98552051b188b48864e95a4bf_tn"
+                                        alt="">
                                     <div class="header__navbar-username">Lee Changsub</div>
                                 </div>
                                 <div class="header__navbar-dropdown">
-                                    <div class="header__navbar-dropdown-item">Đơn hàng mua</div>
-                                    <div class="header__navbar-dropdown-item" id="logout__btn">Đăng xuất</div>
-    
+                                    <div class="header__navbar-dropdown-item" onclick="redirectToOrderPage()"
+                                        data-value="order-page">Đơn hàng mua</div>
+                                    <div class="header__navbar-dropdown-item " onclick="redirectToAdminPage()"
+                                        data-value="admin-page">Trang quản trị</div>
+                                    <div class="header__navbar-dropdown-item" id="logout__btn" data-value="log-out">Đăng
+                                        xuất</div>
+
                                 </div>
                             </div>
                         </div>
@@ -158,10 +166,10 @@
             <div class="grid">
                 <!-- PHAN PRODUCT -->
                 <section class="content__product">
-                    <h2 class="flashsale blinking-text">FLASH SALE   <span class="lastweek"> This Weekend Only</span></h2>
+                    <h2 class="flashsale blinking-text">FLASH SALE <span class="lastweek"> This Weekend Only</span></h2>
                     <div class="content__product-container">
-                      
-                    <!-- </div>
+
+                        <!-- </div>
                     <!-- <div class="content__product-container">
                         <!-- <div class="pro">
                             <img src="https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:80/plain/https://cellphones.com.vn/media/catalog/product/i/p/iphone-15-pro-max_3.png"
@@ -339,7 +347,7 @@
                                 </div>
                             </div>
                         </div> -->
-                    </div>  -->
+                    </div> -->
                 </section>
                 <section class="content__news">
                     <h3>BẢN TIN CÔNG NGHỆ</h3>
@@ -347,289 +355,460 @@
                         <div class="content__news-banner">
                             <h4>Sự kiện ra mắt</h4>
                             <h2>Xiaomi 14 Series</h2>
-                            <button class="white" >Xem thêm</button>
-                        </div>  
+                            <button class="white">Xem thêm</button>
+                        </div>
                         <div class="content__news-banner banner1">
                             <h4>Sự kiện</h4>
                             <h2>Apple Scary fast</h2>
                             <button class="white apple">Xem thêm</button>
-                        </div> 
-                    </div>  
+                        </div>
+                    </div>
                     <div class="content__news-new2">
                         <div class="content__news-box">
-                            <img src="https://cdn.sforum.vn/sforum/wp-content/uploads/2023/10/ma-iphone-vca-2.jpeg" alt="">
+                            <img src="https://cdn.sforum.vn/sforum/wp-content/uploads/2023/10/ma-iphone-vca-2.jpeg"
+                                alt="">
                             <div class="button__news-button">
                                 <h4>iPhone VC/A của nước nào?</h4>
-                                <p>Mã VC/A thường được tìm thấy trên hộp sản phẩm hoặc trong phần cài đặt của điện thoại, là một mã định danh đặc...</p>
+                                <p>Mã VC/A thường được tìm thấy trên hộp sản phẩm hoặc trong phần cài đặt của điện
+                                    thoại, là một mã định danh đặc...</p>
                                 <button class="normal">Xem thêm</button>
                             </div>
-                        </div >
+                        </div>
                         <div class="content__news-box">
-                            <img src="https://cdn2.cellphones.com.vn/insecure/rs:fill:385:0/q:100/plain/https://cellphones.com.vn/sforum/wp-content/uploads/2023/10/Xiaomi-HyperOS-1-1.jpeg" alt="">
+                            <img src="https://cdn2.cellphones.com.vn/insecure/rs:fill:385:0/q:100/plain/https://cellphones.com.vn/sforum/wp-content/uploads/2023/10/Xiaomi-HyperOS-1-1.jpeg"
+                                alt="">
                             <div class="button__news-button">
                                 <h4>Mẹo trên Xiaomi Hyper OS</h4>
-                                <p>Xiaomi đã dập tắt tin đồn bằng cách xác nhận rằng họ sẽ không phát hành MIUI 15 và nó được thay thế bằng...</p>
+                                <p>Xiaomi đã dập tắt tin đồn bằng cách xác nhận rằng họ sẽ không phát hành MIUI 15 và nó
+                                    được thay thế bằng...</p>
                                 <button class="normal">Xem thêm</button>
                             </div>
                         </div>
                         <div class="content__news-box">
-                            <img src="https://cdn2.cellphones.com.vn/insecure/rs:fill:385:0/q:100/plain/https://cellphones.com.vn/sforum/wp-content/uploads/2023/10/xiaomi-14-pro-ra-mat.jpg" alt="">
+                            <img src="https://cdn2.cellphones.com.vn/insecure/rs:fill:385:0/q:100/plain/https://cellphones.com.vn/sforum/wp-content/uploads/2023/10/xiaomi-14-pro-ra-mat.jpg"
+                                alt="">
                             <div class="button__news-button">
                                 <h4>Xiaomi 14 Pro ra mắt</h4>
-                                <p>Xiaomi 14 Pro không nhỏ gọn như Xiaomi 14. Tuy nhiên, nó chia sẻ cùng một ngôn ngữ thiết kế với...</p>
+                                <p>Xiaomi 14 Pro không nhỏ gọn như Xiaomi 14. Tuy nhiên, nó chia sẻ cùng một ngôn ngữ
+                                    thiết kế với...</p>
                                 <button class="normal">Xem thêm</button>
                             </div>
                         </div>
-                    </div>          
+                    </div>
                 </section>
             </div>
         </section>
         <div class="footer">
-            <footer >
-            <div class="footer-top">
-              <div class="footer-top-column">
-                <div class="footer-icon">URPHONE</div>
-                <p id="brand">Siêu thị chính hãng - uy tín số 1 Việt Nam</p>
-              </div>
-              <div class="footer-top-column">
-                <h3 class="h3">BẠN CẦN HỖ TRỢ</h3>
-                <div class="phone-support">1900 9696</div>
-                <p class="pcol2">Địa chỉ: 273 An Dương Vương, Phường 3, Quận 5 , Thành Phố Hồ Chí Minh</p>
-                <p class="pcol2">Email: ursupport@gmail.com</p>
-                <h4 class="h4">Theo dõi chúng tôi trên</h4>
-                <div class="footer-social-logo">
-                  <ul class="ul-list">
-                    <li class="social-logo">
-                      <a class="acol3" href="">
-                        <ion-icon class="inner-icon" name="logo-facebook"></ion-icon>
-                      </a>
-                    </li>
-                    <li class="social-logo">
-                      <a class="acol3" href="">
-                        <ion-icon class="inner-icon" name="logo-twitter"></ion-icon>
-                      </a>
-                    </li>
-                    <li class="social-logo">
-                      <a class="acol3" href="">
-                        <ion-icon class="inner-icon" name="logo-youtube"></ion-icon>
-                      </a>
-                    </li>
-                    <li class="social-logo">
-                      <a class="acol3" href="">
-                        <ion-icon class="inner-icon" name="logo-instagram"></ion-icon>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <div class="footer-top-column">
-                <h3 class="h3">HƯỚNG DẪN MUA HÀNG</h3>
-                <ul class="ul-list">
-                  <li class="link">
-                    <a class="link-col3" href="">Trang chủ</a>
-                  </li>
-                  <li class="link">
-                    <a class="link-col3" href="">Giới thiệu</a>
-                  </li>
-                  <li class="link">
-                    <a class="link-col3" href="">Danh mục</a>
-                  </li>
-                  <li class="link">
-                    <a class="link-col3" href="">Tin tức</a>
-                  </li>
-                  <li class="link">
-                    <a class="link-col3" href="">Liên hệ</a>
-                  </li>
-                  <li class="link">
-                    <a class="link-col3" href="">Hướng dẫn sử dụng</a>
-                  </li>
-                </ul>
-                <div class="footer-payment-methods">
-                  <div class="container-paymentmethods">
-                    <h4 class="h4">Thanh toán</h4>
-                    <ul class="link-paymentmethods">
-                      <li class="link-paymentmethod">
-                        <a  href="">
-                          <img src="assets/img/imageFooter/stripe1.jpg" alt="">
-                        </a>
-                      </li>
-                      <li class="link-paymentmethod">
-                        <a href="">
-                          <img src="assets/img/imageFooter/mastercard1.png" alt="">
-                        </a>
-                      </li>
-                      <li class="link-paymentmethod">
-                        <a href="">
-                          <img  id="discover-img" src="assets/img/imageFooter/discover1.png" alt="">
-                        </a>
-                      </li>
-                    </ul>
-                    <ul class="link-paymentmethods">
-                      <li class="link-paymentmethod">
-                        <a href="">
-                          <img src="assets/img/imageFooter/paypal1.png" alt="">
-                        </a>
-                      </li>
-                      <li class="link-paymentmethod">
-                        <a href="">
-                          <img src="assets/img/imageFooter/applePay.png" alt="">
-                        </a>
-                      </li>
-                      <li class="link-paymentmethod">
-                        <a href="">
-                          <img src="assets/img/imageFooter/visa1.png" alt="">
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <div class="footer-top-column">
-                <h3 class="h3">CHÍNH SÁCH CHUNG</h3>
-                <ul class="ul-list">
-                  <li class="link">
-                    <a class="link-col3" href="">Bảo trì - Bảo hành - Đổi trả</a>
-                  </li>
-                  <li class="link">
-                    <a class="link-col3" href="">Quy định giao hàng</a>
-                  </li>
-                  <li class="link">
-                    <a class="link-col3" href="">Điều khoản sử dụng</a>
-                  </li>
-                  <li class="link">
-                    <a class="link-col3" href="">Thỏa thuận người dùng</a>
-                  </li>
-                  <li class="link">
-                    <a class="link-col3" href="">Chính sách hoàn tiền</a>
-                  </li>
-                  <li class="link">
+            <footer>
+                <div class="footer-top">
+                    <div class="footer-top-column">
+                        <div class="footer-icon">URPHONE</div>
+                        <p id="brand">Siêu thị chính hãng - uy tín số 1 Việt Nam</p>
+                    </div>
+                    <div class="footer-top-column">
+                        <h3 class="h3">BẠN CẦN HỖ TRỢ</h3>
+                        <div class="phone-support">1900 9696</div>
+                        <p class="pcol2">Địa chỉ: 273 An Dương Vương, Phường 3, Quận 5 , Thành Phố Hồ Chí Minh</p>
+                        <p class="pcol2">Email: ursupport@gmail.com</p>
+                        <h4 class="h4">Theo dõi chúng tôi trên</h4>
+                        <div class="footer-social-logo">
+                            <ul class="ul-list">
+                                <li class="social-logo">
+                                    <a class="acol3" href="">
+                                        <ion-icon class="inner-icon" name="logo-facebook"></ion-icon>
+                                    </a>
+                                </li>
+                                <li class="social-logo">
+                                    <a class="acol3" href="">
+                                        <ion-icon class="inner-icon" name="logo-twitter"></ion-icon>
+                                    </a>
+                                </li>
+                                <li class="social-logo">
+                                    <a class="acol3" href="">
+                                        <ion-icon class="inner-icon" name="logo-youtube"></ion-icon>
+                                    </a>
+                                </li>
+                                <li class="social-logo">
+                                    <a class="acol3" href="">
+                                        <ion-icon class="inner-icon" name="logo-instagram"></ion-icon>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="footer-top-column">
+                        <h3 class="h3">HƯỚNG DẪN MUA HÀNG</h3>
+                        <ul class="ul-list">
+                            <li class="link">
+                                <a class="link-col3" href="">Trang chủ</a>
+                            </li>
+                            <li class="link">
+                                <a class="link-col3" href="">Giới thiệu</a>
+                            </li>
+                            <li class="link">
+                                <a class="link-col3" href="">Danh mục</a>
+                            </li>
+                            <li class="link">
+                                <a class="link-col3" href="">Tin tức</a>
+                            </li>
+                            <li class="link">
+                                <a class="link-col3" href="">Liên hệ</a>
+                            </li>
+                            <li class="link">
+                                <a class="link-col3" href="">Hướng dẫn sử dụng</a>
+                            </li>
+                        </ul>
+                        <div class="footer-payment-methods">
+                            <div class="container-paymentmethods">
+                                <h4 class="h4">Thanh toán</h4>
+                                <ul class="link-paymentmethods">
+                                    <li class="link-paymentmethod">
+                                        <a href="">
+                                            <img src="assets/img/imageFooter/stripe1.jpg" alt="">
+                                        </a>
+                                    </li>
+                                    <li class="link-paymentmethod">
+                                        <a href="">
+                                            <img src="assets/img/imageFooter/mastercard1.png" alt="">
+                                        </a>
+                                    </li>
+                                    <li class="link-paymentmethod">
+                                        <a href="">
+                                            <img id="discover-img" src="assets/img/imageFooter/discover1.png" alt="">
+                                        </a>
+                                    </li>
+                                </ul>
+                                <ul class="link-paymentmethods">
+                                    <li class="link-paymentmethod">
+                                        <a href="">
+                                            <img src="assets/img/imageFooter/paypal1.png" alt="">
+                                        </a>
+                                    </li>
+                                    <li class="link-paymentmethod">
+                                        <a href="">
+                                            <img src="assets/img/imageFooter/applePay.png" alt="">
+                                        </a>
+                                    </li>
+                                    <li class="link-paymentmethod">
+                                        <a href="">
+                                            <img src="assets/img/imageFooter/visa1.png" alt="">
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="footer-top-column">
+                        <h3 class="h3">CHÍNH SÁCH CHUNG</h3>
+                        <ul class="ul-list">
+                            <li class="link">
+                                <a class="link-col3" href="">Bảo trì - Bảo hành - Đổi trả</a>
+                            </li>
+                            <li class="link">
+                                <a class="link-col3" href="">Quy định giao hàng</a>
+                            </li>
+                            <li class="link">
+                                <a class="link-col3" href="">Điều khoản sử dụng</a>
+                            </li>
+                            <li class="link">
+                                <a class="link-col3" href="">Thỏa thuận người dùng</a>
+                            </li>
+                            <li class="link">
+                                <a class="link-col3" href="">Chính sách hoàn tiền</a>
+                            </li>
+                            <li class="link">
 
-                    <a class="link-col3" href="">Chính sách xử lý dữ lệu cá nhân</a>
+                                <a class="link-col3" href="">Chính sách xử lý dữ lệu cá nhân</a>
 
-                  </li>
-                </ul>
-                <ul>
-                  <li>
-                    <a href="">
-                      <img class="protected" src="assets/img/imageFooter/logoSaleNoti.png" alt="">
-                    </a>
-                  </li>
-                </ul>
-                <ul>
-                  <li>
-                    <a href="">
-                      <img id="dmca" class="protected" src="assets/img/imageFooter/icon_protected.png" alt="">
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div class="footer-bottom"></div>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>
+                                <a href="">
+                                    <img class="protected" src="assets/img/imageFooter/logoSaleNoti.png" alt="">
+                                </a>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>
+                                <a href="">
+                                    <img id="dmca" class="protected" src="assets/img/imageFooter/icon_protected.png"
+                                        alt="">
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-bottom"></div>
             </footer>
         </div>
         <!-- -------------- Phần login ----------------------- -->
+        <div class="modal">
+            <!-- <div class="modal__overlay">
+
+            </div> -->
+            <div class="modal__body">
+                <!-- Chi tiết sản phẩm -->
+                <div class="product-detail">
+                    <div class="product-detail__header">
+                        <div class="product-detail__text">
+                            <i class="fa-solid fa-circle-info"></i>
+                            Chi tiết sản phẩm
+                        </div>
+                        <div class="product-detail__btn-close">
+                            <i class="fa-solid fa-x"></i>
+                        </div>
+                    </div>
+                    <div class="product-detail__body">
+                        <img src="https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:80/plain/https://cellphones.com.vn/media/catalog/product/s/a/samsung-galaxy-s23-ultra.png"
+                            alt="" class="product-detail__img">
+                        <div class="product-detail__info">
+                            <h3 class="product-detail__info-name">
+                                Samsung Galaxy S23 Ultra 256GB
+                            </h3>
+                            <span class="product-detail__info-label product-detail__info-label--ram">
+                                <span class="product-detail__info-label-name">RAM</span>
+
+                                <!-- <div class="product-detail__info-ram">
+                                    8 GB
+                                </div>
+                                <div class="product-detail__info-ram">
+                                    12 GB
+                                </div> -->
+                            </span>
+                            <span class="product-detail__info-label product-detail__info-label--rom">
+                                <span class="product-detail__info-label-name">ROM</span>
+                                <div class="product-detail__info-rom">
+                                    512 GB
+                                </div>
+                                <div class="product-detail__info-rom">
+                                    1 TB
+                                </div>
+                            </span>
+                            <div class="product-detail__info-price">
+                                <span class="product-detail__info-price-old">30.990.000đ</span>
+                                <span class="product-detail__info-price-current">16.990.000đ</span>
+                            </div>
+                            <div class="product-detail__info-img">
+                                <img src="https://cdn2.cellphones.com.vn/insecure/rs:fill:0:120/q:80/plain/https://dashboard.cellphones.com.vn/storage/dt-ss-sv-2-productbanner.jpg"
+                                    alt="">
+                            </div>
+                            <div class="product-detail__info-promotion">
+                                <h4 class="product-detail__info-promotion-heading">
+                                    <i class="fa-solid fa-gift"></i>
+                                    <span>Khuyến mãi</span>
+                                </h4>
+                                <div class="product-detail__info-promotion-content">
+                                    <div class="product-detail__info-promotion-wrap">
+                                        <p>1</p>
+                                        <span>Trả góp 12 tháng 0 lãi, 0đ trả trước qua Samsung Finance+ (Xem chi
+                                            tiết)</span>
+                                    </div>
+                                    <div class="product-detail__info-promotion-wrap">
+                                        <p>2</p>
+                                        <span>Nhận ngay ưu đãi YouTube Premium dành cho chủ sở hữu Samsung Galaxy</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-detail__info-btn">
+                                <button class="product-detail__btn-buy-now">MUA NGAY</button>
+                                <button class="product-detail__btn-add-to-cart">
+                                    <i class="fa-solid fa-cart-shopping"></i><span>Thêm vào giỏ</span></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Chi tiết sản phẩm -->
+                <!-- Giỏ hàng -->
+                <div class="modal__cart">
+                    <div class="modal__cart-wrapper">
+                        <div class="modal__cart-head">
+                            <div class="modal__cart-title">
+                                Giỏ hàng
+                            </div>
+                            <div class="modal__cart-close">
+                                <i class="fa-solid fa-xmark"></i>
+                            </div>
+                        </div>
+
+                        <div class="modal__cart-container">
+                            <div class="modal__cart-item" data-value="1">
+                                <div class="modal__cart-left">
+                                    <img src="https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:80/plain/https://cellphones.com.vn/media/catalog/product/s/a/samsung-galaxy-s23-ultra.png"
+                                        alt="" class="modal__cart-item-img">
+                                </div>
+                                <div class="model__cart-right">
+                                    <div class="modal__cart-item-title">
+                                        Samsung Galaxy S23 Ultra 256GB
+                                    </div>
+                                    <div class="modal__cart-item-counter">
+                                        <div class="modal__cart-item-decrease">
+                                            <i class="fa-solid fa-angle-left"></i>
+                                        </div>
+                                        <div class="modal__cart-item-quantity">1</div>
+                                        <div class="modal__cart-item-increase">
+                                            <i class="fa-solid fa-angle-right"></i>
+                                        </div>
+                                    </div>
+
+                                    <div class="modal__cart-item-price">
+                                        22,190,000đ
+                                    </div>
+                                </div>
+                                <div class="modal__cart-item-close">
+                                    <i class="fa-solid fa-trash"></i>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="modal__cart-footer">
+                            <div class="modal__cart-info">
+                                <div class="modal__cart-info-label">Tổng tiền</div>
+                                <div class="modal__cart-info-price">22,190,000đ</div>
+                            </div>
+                            <div class="modal__cart-checkout">
+                                <i class="fa-solid fa-credit-card"></i>Thanh toán
+                            </div>
+                            <div class="modal__cart-view-invoice">
+                                <i class="fa-solid fa-file-invoice"></i>Xem hóa đơn
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- Giỏ hàng -->
+            </div>
+
+        </div>
+        <!-- Alert -->
+        <div class="toast">
+            <div class="toast__wrapper">
+                <div class="toast__content">
+                    <i class="fa-solid fa-check toast__icon-info"></i>
+
+                    <div class="toast__message">
+                        <div class="toast__message-title">
+                            Thành công
+                        </div>
+                        <div class="toast__message-desc">
+                            Sản phẩm đã được thêm vào giỏ của bạn
+                        </div>
+                    </div>
+                </div>
+                <i class="fa-solid fa-xmark toast__icon-close"></i>
+                <div class="toast__progress"></div>
+            </div>
+        </div>
         <div class="form" id="form">
-          <div class="login-container center">
-              <div class="container__left">
-                  <div class="container__form center">
-                      <div class="form-content__login login-form center" id="login">
-                          <h3 class="form-content__title title">Đăng nhập</h3>
-                          <div class="span"></div>
-                          <form name="login-form" id="login-form">
-                              <div class="form-content__input">
-                                  <div class="icon"><i class="fa-solid fa-user"></i></div>
-                                  <input name="username" type="text" placeholder="Tên đăng nhập">
-                              </div>
-                              <div class="alert-username alert"></div>
-                              <div class="form-content__input">
-                                  <div class="icon"><i class="fa-solid fa-lock"></i></div>
-                                  <input name="password" type="password" placeholder="Mật khẩu" class="password">
-                                  <div class="icon">
-                                      <i class="fa-solid fa-eye hide-password" onclick="HidePassword()"></i>
-                                      <i class="fa-solid fa-eye-slash show-password" onclick="ShowPassword()"></i>
-                                  </div>
-                              </div>
-                              <div class="alert-password alert"></div>
-                              <button type="submit" class="btn" onclick="return ValidateFormLogin()">Đăng nhập</button>
-                          </form>
-                          <div class="question-responsive">
-                              <p>Bạn chưa có tài khoản? <a href="#" onclick="RegisterPopupOpen()">Đăng ký</a></p>
-                          </div>
-                      </div>
-                      <div class="form-content__register register-form center" id="register">
-                          <h3 class="form-content__title title">Đăng ký</h3>
-                          <div class="span"></div>
-                          <form name="register-form" id="register-form">
-                              <div class="form-content__input">
-                                  <i class="fa-solid fa-id-card"></i>
-                                  <input name="full-name" type="text" placeholder="Họ và tên">
-                              </div>
-                              <div class="alert-full-name alert"></div>
-                              <div class="form-content__input">
-                                  <i class="fa-solid fa-user"></i>
-                                  <input name="username" type="text" placeholder="Tên đăng nhập">
-                              </div>
-                              <div class="alert-username alert"></div>
-                              <div class="form-content__input">
-                                  <i class="fa-solid fa-envelope"></i>
-                                  <input name="email" type="text" placeholder="Email">
-                              </div>
-                              <div class="alert-email alert"></div>
-                              <div class="form-content__input">
-                                  <i class="fa-solid fa-lock"></i>
-                                  <input name="password" type="password" placeholder="Mật khẩu" class="password">
-                                  <i class="fa-solid fa-eye hide-password" onclick="HidePassword()"></i>
-                                  <i class="fa-solid fa-eye-slash show-password" onclick="ShowPassword()"></i>
-                              </div>
-                              <div class="alert-password alert"></div>
-                              <div class="form-content__input">
-                                  <i class="fa-solid fa-lock"></i>
-                                  <input name="repeat-password" type="password" placeholder="Nhập lại mật khẩu" class="repeat-password">
-                                  <i class="fa-solid fa-eye hide-password" onclick="HideRepeatPassword()"></i>
-                                  <i class="fa-solid fa-eye-slash show-password" onclick="ShowRepeatPassword()"></i>
-                              </div>
-                              <div class="alert-repeat-password alert"></div>
-                              <button type="submit" class="btn" onclick="return ValidateFormRegister()">Đăng ký</button>
-                          </form>
-                          <div class="question-responsive">
-                              <p>Bạn đã có tài khoản? <a href="#" onclick="LoginPopupOpen()">Đăng nhập</a></p>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-              <div class="container__right">
-                  <div class="container__sidebar center">
-                      <div class="form-sidebar__login login-form center" id="login">
-                          <h3 class="form-sidebar__title title">Bạn chưa có tài khoản?</h3>
-                          <div class="form-sidebar__description">
-                              <p>Đăng ký thành viên để nhận được những ưu đãi tốt nhất của chúng tôi!</p>
-                          </div>
-                          <button class="btn" onclick="RegisterPopupOpen()">Đăng ký</button>
-                      </div>
-                      <div class="form-sidebar__register register-form center" id="register">
-                          <h3 class="form-sidebar__title title">Bạn đã có tài khoản?</h3>
-                          <div class="form-sidebar__description">
-                              <p>Đăng nhập để tiếp tục trải nghiệm mua sắm không giới hạn ngay nào!!</p>
-                          </div>
-                          <button class="btn" onclick="LoginPopupOpen()">Đăng nhập</button>
-                      </div>
-                  </div>
-              </div>
-              <div class="close-button" onclick="document.getElementById('form').style.display = 'none';">
-                  <i class="fa-solid fa-x"></i>
-              </div>
-          </div>
-    </div>
+            <div class="login-container center">
+                <div class="container__left">
+                    <div class="container__form center">
+                        <div class="form-content__login login-form center" id="login">
+                            <h3 class="form-content__title title">Đăng nhập</h3>
+                            <div class="span"></div>
+                            <form name="login-form" id="login-form">
+                                <div class="form-content__input">
+                                    <div class="icon"><i class="fa-solid fa-user"></i></div>
+                                    <input id="login__field-username" name="username" type="text"
+                                        placeholder="Tên đăng nhập">
+                                </div>
+                                <div class="alert-username alert"></div>
+                                <div class="form-content__input">
+                                    <div class="icon"><i class="fa-solid fa-lock"></i></div>
+                                    <input id="login__field-password" name="password" type="password"
+                                        placeholder="Mật khẩu" class="password">
+                                    <div class="icon">
+                                        <i class="fa-solid fa-eye hide-password" onclick="HidePassword()"></i>
+                                        <i class="fa-solid fa-eye-slash show-password" onclick="ShowPassword()"></i>
+                                    </div>
+                                </div>
+                                <div class="alert-password alert"></div>
+                                <button id="login__btn" type="submit" class="btn"
+                                    onclick="return ValidateFormLogin()">Đăng nhập</button>
+                            </form>
+                            <div class="question-responsive">
+                                <p>Bạn chưa có tài khoản? <a href="#" onclick="RegisterPopupOpen()">Đăng ký</a></p>
+                            </div>
+                        </div>
+                        <div class="form-content__register register-form center" id="register">
+                            <h3 class="form-content__title title">Đăng ký</h3>
+                            <div class="span"></div>
+                            <form name="register-form" id="register-form">
+                                <div class="form-content__input">
+                                    <i class="fa-solid fa-id-card"></i>
+                                    <input name="full-name" type="text" placeholder="Họ và tên">
+                                </div>
+                                <div class="alert-full-name alert"></div>
+                                <div class="form-content__input">
+                                    <i class="fa-solid fa-user"></i>
+                                    <input name="username" type="text" placeholder="Tên đăng nhập">
+                                </div>
+                                <div class="alert-username alert"></div>
+                                <div class="form-content__input">
+                                    <i class="fa-solid fa-envelope"></i>
+                                    <input name="email" type="text" placeholder="Email">
+                                </div>
+                                <div class="alert-email alert"></div>
+                                <div class="form-content__input">
+                                    <i class="fa-solid fa-lock"></i>
+                                    <input name="password" type="password" placeholder="Mật khẩu" class="password">
+                                    <i class="fa-solid fa-eye hide-password" onclick="HidePassword()"></i>
+                                    <i class="fa-solid fa-eye-slash show-password" onclick="ShowPassword()"></i>
+                                </div>
+                                <div class="alert-password alert"></div>
+                                <div class="form-content__input">
+                                    <i class="fa-solid fa-lock"></i>
+                                    <input name="repeat-password" type="password" placeholder="Nhập lại mật khẩu"
+                                        class="repeat-password">
+                                    <i class="fa-solid fa-eye hide-password" onclick="HideRepeatPassword()"></i>
+                                    <i class="fa-solid fa-eye-slash show-password" onclick="ShowRepeatPassword()"></i>
+                                </div>
+                                <div class="alert-repeat-password alert"></div>
+                                <button type="submit" class="btn" onclick="return ValidateFormRegister()">Đăng
+                                    ký</button>
+                            </form>
+                            <div class="question-responsive">
+                                <p>Bạn đã có tài khoản? <a href="#" onclick="LoginPopupOpen()">Đăng nhập</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container__right">
+                    <div class="container__sidebar center">
+                        <div class="form-sidebar__login login-form center" id="login">
+                            <h3 class="form-sidebar__title title">Bạn chưa có tài khoản?</h3>
+                            <div class="form-sidebar__description">
+                                <p>Đăng ký thành viên để nhận được những ưu đãi tốt nhất của chúng tôi!</p>
+                            </div>
+                            <button class="btn" onclick="RegisterPopupOpen()">Đăng ký</button>
+                        </div>
+                        <div class="form-sidebar__register register-form center" id="register">
+                            <h3 class="form-sidebar__title title">Bạn đã có tài khoản?</h3>
+                            <div class="form-sidebar__description">
+                                <p>Đăng nhập để tiếp tục trải nghiệm mua sắm không giới hạn ngay nào!!</p>
+                            </div>
+                            <button class="btn" onclick="LoginPopupOpen()">Đăng nhập</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="login__close-form-btn close-button">
+                    <i class="fa-solid fa-x"></i>
+                </div>
+            </div>
+        </div>
+        <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+        <script src="assets/js/slider.js"></script>
+        <script src="assets/js/constructor.js"></script>
+        <script src="assets/js/dataProduct.js"> </script>
+        <script src="assets/js/dataUser.js"></script>
+        <script src="assets/js/localStorage.js"></script>
+        <script src="assets/js/index.js"></script>
+        <!-- <script src="assets/js/product.js"></script> -->
+        <script src="assets/js/mainModal.js"></script>
+        <script src="assets/js/login.js"></script>
 </body>
-<!-- <script src="footer.js"></script> -->
-<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-<script src="assets/js/slider.js"></script>
-<!-- <script src="assets/js/navbar.js"></script> -->
-<script src="assets/js/constructor.js"></script>
-<script src="assets/js/dataProduct.js"></script>
-<script src="assets/js/product.js"></script>
-<script src="assets/js/mainModal.js"></script>
-<script src="assets/js/index.js"></script>
-<script src="assets/js/login.js"></script>
+
+
+
 </html>
