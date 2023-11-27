@@ -312,8 +312,13 @@
         justify-content: center;    
         margin:  5px 0;
     }
+    
     .logo{
         justify-content: center;
+    }
+    .logo-item{
+        margin-right: 0;
+       padding: 5px;
     }
     .text-rule{
         line-height: 1.6;
@@ -330,7 +335,10 @@
         background-image: none;
     }
     .map{
-        display : none;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        background-color: none;
     }
     .form-support{
         width: 100%;

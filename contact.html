@@ -504,7 +504,10 @@
                     Validator.isPhone('#phone'),
                     Validator.minLength('#address'),
                     Validator.isFeedBack('#feedback')
-                ]
+                ],
+                onSubmit : function(data){
+                    console.log(data);
+                }
             });
     </script>
     <script src="assets/js/constructor.js"></script>
