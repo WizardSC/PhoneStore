@@ -46,7 +46,7 @@
                 <!-- Navbar khi PC -->
                 <ul class="header__navbar-list">
                     <li><a href="index.html">Trang chủ</a></li>
-                    <li><a href="product.html" class="active">Sản phẩm</a></li>
+                    <li><a href="product.html" >Sản phẩm</a></li>
                     <li><a href="contact.html">Liên lạc</a></li>
 
                     <li class="header__navbar-item">
@@ -505,7 +505,10 @@
                     Validator.isPhone('#phone'),
                     Validator.minLength('#address'),
                     Validator.isFeedBack('#feedback')
-                ]
+                ],
+                onSubmit : function(data){
+                    console.log(data);
+                }
             });
     </script>
     <script src="assets/js/constructor.js"></script>

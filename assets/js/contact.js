@@ -1,19 +1,40 @@
 function Validator(option) {
+  var formElement = document.querySelector(option.form);
+  // Trường hợp submit khi chưa điền thông tin hoặc thông tin sai
+  if (formElement) {
+    formElement.onsubmit = function (e) {
+      e.preventDefault();
+      var hasErorr = false ;
+      option.rules.forEach(function (rule) {  
+        var inputElement = formElement.querySelector(rule.selector);
+        var errorElement = inputElement.parentElement.querySelector(".form-message");
 
-  // const btnSubmitInContactForm = document.querySelector(".contact-btn__submit");
-  // console.log(btnSubmitInContactForm);
-  // btnSubmitInContactForm.addEventListener("click", function (e) {
-  //   // e.preventDefault();
-  // });
+        if (inputElement) {
+          var errorMessage = rule.test(inputElement.value);
 
-  var formElenment = document.querySelector(option.form);
-  if (formElenment) {
+          if (errorMessage) {
+            hasErorr = true ;
+            errorElement.innerText = errorMessage;
+            inputElement.parentElement.classList.add("message");  
+            inputElement.parentElement.classList.add("invalid");
+          } else {
+            errorElement.innerText = "";
+            inputElement.parentElement.classList.remove("message");
+            inputElement.parentElement.classList.remove("invalid");
+          }
+        }
+      });
+      if(!hasErorr){
+        formElement.reset();
+      }
+    };
+
     option.rules.forEach(function (rule) {
-      var inputElement = formElenment.querySelector(rule.selector);
-      var errorElement =
-        inputElement.parentElement.querySelector(".form-message");
+      var inputElement = formElement.querySelector(rule.selector);
+      var errorElement = inputElement.parentElement.querySelector(".form-message");
+
       if (inputElement) {
-        // xử lí trường hợp khi blur ra khỏi input mà chưa nhập đúng dữ liệu
+        // Trường hợp blur ra khỏi ô input
         inputElement.onblur = function () {
           var errorMessage = rule.test(inputElement.value);
           if (errorMessage) {
@@ -26,31 +47,16 @@ function Validator(option) {
             inputElement.parentElement.classList.remove("invalid");
           }
         };
-        // xử lí trường hợp khi nhập vào ô input
+
+        // Trường hợp focus vào ô input
         inputElement.oninput = function () {
           errorElement.innerHTML = "";
         };
-        // Trường hợp khi click nút submit 
-        inputElement.onsubmit = function(e){
-          // e.preventDefault();
-            option.rules.forEach(function(rule){
-              inputElement.parentElement.querySelector(".form-message");
-              var errorMessage = rule.test(inputElement.value);
-              if (errorMessage) {
-                errorElement.innerText = errorMessage;
-                inputElement.parentElement.classList.add("message");
-                inputElement.parentElement.classList.add("invalid");
-              } else {
-                errorElement.innerText = "";
-                inputElement.parentElement.classList.remove("message");
-                inputElement.parentElement.classList.remove("invalid");
-              }
-            })
-        }
       }
     });
   }
 }
+
 Validator.isRequire = function (selector) {
   return {
     selector: selector,

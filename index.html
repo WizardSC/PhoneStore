@@ -34,8 +34,8 @@
 
                 <!-- Navbar khi PC -->
                 <ul class="header__navbar-list">
-                    <li><a href="index.html">Trang chủ</a></li>
-                    <li><a href="product.html" class="active">Sản phẩm</a></li>
+                    <li><a href="index.html" class="active">Trang chủ</a></li>
+                    <li><a href="product.html" >Sản phẩm</a></li>
                     <li><a href="contact.html">Liên lạc</a></li>
 
                     <li class="header__navbar-item">
@@ -711,20 +711,35 @@
                             <form name="login-form" id="login-form">
                                 <div class="form-content__input">
                                     <div class="icon"><i class="fa-solid fa-user"></i></div>
+<<<<<<< HEAD
                                     <input name="username" type="text" placeholder="Tên đăng nhập">
+=======
+                                    <input id="login__field-username" name="username" type="text"
+                                        placeholder="Tên đăng nhập">
+>>>>>>> 41558cb23f92b9757e3a3cafe917c2cd5d07030f
                                 </div>
                                 <div class="alert-username alert"></div>
                                 <div class="form-content__input">
                                     <div class="icon"><i class="fa-solid fa-lock"></i></div>
+<<<<<<< HEAD
                                     <input name="password" type="password" placeholder="Mật khẩu" class="password">
+=======
+                                    <input id="login__field-password" name="password" type="password"
+                                        placeholder="Mật khẩu" class="password">
+>>>>>>> 41558cb23f92b9757e3a3cafe917c2cd5d07030f
                                     <div class="icon">
                                         <i class="fa-solid fa-eye hide-password" onclick="HidePassword()"></i>
                                         <i class="fa-solid fa-eye-slash show-password" onclick="ShowPassword()"></i>
                                     </div>
                                 </div>
                                 <div class="alert-password alert"></div>
+<<<<<<< HEAD
                                 <button type="submit" class="btn" onclick="return ValidateFormLogin()">Đăng
                                     nhập</button>
+=======
+                                <button id="login__btn" type="submit" class="btn"
+                                    onclick="return ValidateFormLogin()">Đăng nhập</button>
+>>>>>>> 41558cb23f92b9757e3a3cafe917c2cd5d07030f
                             </form>
                             <div class="question-responsive">
                                 <p>Bạn chưa có tài khoản? <a href="#" onclick="RegisterPopupOpen()">Đăng ký</a></p>
@@ -791,11 +806,16 @@
                         </div>
                     </div>
                 </div>
+<<<<<<< HEAD
                 <div class="close-button" onclick="document.getElementById('form').style.display = 'none';">
+=======
+                <div class="login__close-form-btn close-button">
+>>>>>>> 41558cb23f92b9757e3a3cafe917c2cd5d07030f
                     <i class="fa-solid fa-x"></i>
                 </div>
             </div>
         </div>
+<<<<<<< HEAD
     </div>
     <script src="assets/js/index.js"></script>
     <script src="assets/js/slider.js"></script>
@@ -809,4 +829,22 @@
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
 
+=======
+        <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+        <script src="assets/js/slider.js"></script>
+        <script src="assets/js/constructor.js"></script>
+        <script src="assets/js/dataProduct.js"> </script>
+        <script src="assets/js/dataUser.js"></script>
+        <script src="assets/js/localStorage.js"></script>
+        <script src="assets/js/product.js"></script>
+        <script src="assets/js/mainModal.js"></script>
+        <script src="assets/js/index.js"></script>
+       
+        <script src="assets/js/login.js"></script>
+</body>
+
+
+
+>>>>>>> 41558cb23f92b9757e3a3cafe917c2cd5d07030f
 </html>

@@ -13,7 +13,6 @@
     margin-top: 110px;
     height: 180px;
 }
-
 /* Product item */
 
 .product {
@@ -1471,5 +1470,30 @@
     .filter__rom-list {
         flex-direction: column;
 
+    }
+    /* Thanh Sort */
+    .sort{
+        margin-top:100px;
+    }
+    /* Giỏ hàng */
+    .modal__cart{
+     width:80vw;
+    }
+    /* Trang thanh toán */
+    .info-invoice__detail-item{
+        padding-left:0;
+        line-height:22px;
+        display:grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .info-invoice__detail-content{
+        display:inline-block;
+        margin-left:10px;
+        max-width:90px;    }
+    .info-invoice__detail-content-right{
+        padding-left:2px;
+        display:block;
+        margin-top:14px;
+        max-width:100px; 
     }
 }
