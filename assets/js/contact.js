@@ -4,6 +4,7 @@ function Validator(option) {
   if (formElement) {
     formElement.onsubmit = function (e) {
       e.preventDefault();
+      var hasErorr = false ;
       option.rules.forEach(function (rule) {  
         var inputElement = formElement.querySelector(rule.selector);
         var errorElement = inputElement.parentElement.querySelector(".form-message");
@@ -12,8 +13,9 @@ function Validator(option) {
           var errorMessage = rule.test(inputElement.value);
 
           if (errorMessage) {
+            hasErorr = true ;
             errorElement.innerText = errorMessage;
-            inputElement.parentElement.classList.add("message");
+            inputElement.parentElement.classList.add("message");  
             inputElement.parentElement.classList.add("invalid");
           } else {
             errorElement.innerText = "";
@@ -22,6 +24,9 @@ function Validator(option) {
           }
         }
       });
+      if(!hasErorr){
+        formElement.reset();
+      }
     };
 
     option.rules.forEach(function (rule) {
