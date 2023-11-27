@@ -127,11 +127,7 @@ function ValidateUsernameLogin(username, alertUsername) {
         alertUsername.innerHTML = `*Các kí tự được chấp nhận là a-z, A-Z và 0-9`;
         check = check * 0;
     }
-    else {
-        usernameLogin = username.value;
-        alertUsername.innerHTML = "";
-    }
-    if (isRegister === false) {
+    else if (isRegister === false) {
         if (!User.isExistUsername(username.value)) {
             alertUsername.innerHTML = `*Tên đăng nhập không tồn tại trên hệ thống`;
             usernameLogin = null;
