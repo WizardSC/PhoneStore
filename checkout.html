@@ -54,9 +54,9 @@
                                     <div class="header__navbar-username">Lee Changsub</div>
                                 </div>
                                 <div class="header__navbar-dropdown">
-                                    <div class="header__navbar-dropdown-item" onclick="redirectToOrderPage()">Đơn hàng mua</div>
-                                    <div class="header__navbar-dropdown-item header__navbar-dropdown-item--disabled" onclick="redirectToAdminPage()">Trang quản trị</div>
-                                    <div class="header__navbar-dropdown-item" id="logout__btn">Đăng xuất</div>
+                                    <div class="header__navbar-dropdown-item" onclick="redirectToOrderPage()" data-value="order-page">Đơn hàng mua</div>
+                                    <div class="header__navbar-dropdown-item " onclick="redirectToAdminPage()" data-value="admin-page">Trang quản trị</div>
+                                    <div class="header__navbar-dropdown-item" id="logout__btn" data-value="log-out">Đăng xuất</div>
 
                                 </div>
                             </div>
@@ -557,15 +557,14 @@
             </div>
         </div>
     </div>
-
+    <script src="assets/js/constructor.js"></script>
+    <script src="assets/js/dataProduct.js"> </script>
+    <script src="assets/js/dataUser.js"></script>
+    <script src="assets/js/localStorage.js"></script>
+    <script src="assets/js/mainModal.js"></script>
+    <script src="assets/js/checkout.js"></script>
+    <script src="assets/js/login.js"></script>
 </body>
-<script src="assets/js/constructor.js"></script>
-<script src="assets/js/dataProduct.js"> </script>
-<script src="assets/js/dataUser.js"></script>
-<script src="assets/js/localStorage.js"></script>
-<script src="assets/js/mainModal.js"></script>
-<script src="assets/js/checkout.js"></script>
-<script src="assets/js/login.js"></script>
-<script src="assets/js/loginModal.js"></script>
+
 
 </html>
