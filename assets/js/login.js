@@ -278,8 +278,10 @@ function closeFormLogin() {
 // Các hàm giúp Đăng nhập hiện thông tin user, đăng xuất hiện nút đăng nhập
 if (User.checkLoginId()) {
     changeLoggedUser()
+    changeLoggedUserResponsive()
 } else {
     changeNoneLoggedUser()
+    changeNoneLoggedUserResponsive()
 }
 
 function changeLoggedUser() {
@@ -296,9 +298,30 @@ function changeLoggedUser() {
     }
 }
 
+function changeLoggedUserResponsive() {
+    const noneLoggedUser = $('.header__navbar-item--none-logged--responsive')
+    const loggedUser = $('.header__navbar-item--logged--responsive')
+    const username = $('.header__navbar-username')
+    const adminPageItem = document.querySelector('.header__navbar-dropdown-item--responsive[data-value="admin-page"]');
+    const user = User.getUserID(User.checkLoginId())
+    username.innerText = user.full_name
+    noneLoggedUser.classList.remove('active')
+    loggedUser.classList.add('active')
+    if (user.isAdmin === false) {
+        adminPageItem.classList.add('inactive')
+    }
+}
+
 function changeNoneLoggedUser() {
     const noneLoggedUser = $('.header__navbar-item--none-logged')
     const loggedUser = $('.header__navbar-item--logged')
+    noneLoggedUser.classList.add('active')
+    loggedUser.classList.remove('active')
+}
+
+function changeNoneLoggedUser() {
+    const noneLoggedUser = $('.header__navbar-item--none-logged--responsive')
+    const loggedUser = $('.header__navbar-item--logged--responsive')
     noneLoggedUser.classList.add('active')
     loggedUser.classList.remove('active')
 }
@@ -308,8 +331,14 @@ logOutBtn.addEventListener('click', () => {
     User.logOut();
     location.reload();
     redirectToProductPage();
-
+    
 })
 
+const logOutBtnResponsive = $('#logout__btn--responsive')
+logOutBtnResponsive.addEventListener('click', () => {
+    User.logOut();
+    location.reload();
+    redirectToProductPage();
+})
 
 
