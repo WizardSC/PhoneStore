@@ -88,7 +88,8 @@
                         </li>
                         <li><a href="" class="navbar-link-responsive"><i class="fa-solid fa-cart-shopping"></i> Giỏ
                                 hàng</a></li>
-                        <li id="btnDangNhap" onclick="LoginPopupOpen()">Đăng nhập</li>
+                        <li><a href="" class="navbar-link-responsive" id="btnDangNhap" onclick="LoginPopupOpen()">Đăng
+                                nhập</a></li>
                         <!-- <li><a href="" class="navbar-link-responsive user1"><i
                                     class="fa-solid fa-circle-user"></i><span> Nguyen </span></a></li> -->
                     </ul>
@@ -709,22 +710,20 @@
                             <form name="login-form" id="login-form">
                                 <div class="form-content__input">
                                     <div class="icon"><i class="fa-solid fa-user"></i></div>
-                                    <input id="login__field-username" name="username" type="text"
-                                        placeholder="Tên đăng nhập">
+                                    <input name="username" type="text" placeholder="Tên đăng nhập">
                                 </div>
                                 <div class="alert-username alert"></div>
                                 <div class="form-content__input">
                                     <div class="icon"><i class="fa-solid fa-lock"></i></div>
-                                    <input id="login__field-password" name="password" type="password"
-                                        placeholder="Mật khẩu" class="password">
+                                    <input name="password" type="password" placeholder="Mật khẩu" class="password">
                                     <div class="icon">
                                         <i class="fa-solid fa-eye hide-password" onclick="HidePassword()"></i>
                                         <i class="fa-solid fa-eye-slash show-password" onclick="ShowPassword()"></i>
                                     </div>
                                 </div>
                                 <div class="alert-password alert"></div>
-                                <button id="login__btn" type="submit" class="btn"
-                                    onclick="return ValidateFormLogin()">Đăng nhập</button>
+                                <button type="submit" class="btn" onclick="return ValidateFormLogin()">Đăng
+                                    nhập</button>
                             </form>
                             <div class="question-responsive">
                                 <p>Bạn chưa có tài khoản? <a href="#" onclick="RegisterPopupOpen()">Đăng ký</a></p>
@@ -791,24 +790,24 @@
                         </div>
                     </div>
                 </div>
-                <div class="login__close-form-btn close-button">
+                <div class="close-button" onclick="document.getElementById('form').style.display = 'none';">
                     <i class="fa-solid fa-x"></i>
                 </div>
             </div>
         </div>
-        <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-        <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-        <script src="assets/js/slider.js"></script>
-        <script src="assets/js/constructor.js"></script>
-        <script src="assets/js/dataProduct.js"> </script>
-        <script src="assets/js/dataUser.js"></script>
-        <script src="assets/js/localStorage.js"></script>
-        <script src="assets/js/index.js"></script>
-        <!-- <script src="assets/js/product.js"></script> -->
-        <script src="assets/js/mainModal.js"></script>
-        <script src="assets/js/login.js"></script>
 </body>
+<script src="footer.js"></script>
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+<script src="assets/js/slider.js"></script>
+<script src="assets/js/navbar.js"></script>
+<script src="assets/js/constructor.js"></script>
+<script src="assets/js/dataProduct.js"></script>
+<script src="assets/js/localStorage.js"></script>
+<script src="assets/js/product.js"></script>
+<script src="assets/js/mainModal.js"></script>
+<script src="assets/js/index.js"></script>
 
-
+<script src="assets/js/login.js"></script>
 
 </html>
