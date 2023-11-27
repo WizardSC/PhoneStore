@@ -1,32 +1,14 @@
-// index.js
-
-// Hàm xử lý sự kiện khi chuyển trang
-document.addEventListener('DOMContentLoaded', () => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const productId = urlParams.get('id');
-
-    if (productId) {
-        // Nếu có tham số id trong URL, mở chi tiết sản phẩm
-        openProductSide(productId);
-    } else {
-        // Nếu không có tham số id, gọi hàm renderProductIndex với danh sách sản phẩm từ hàm Product.getProducts()
-        renderProductIndex(Product.getProducts());
-    }
-});
-
-function openProductSide(productId) {
-    // Chuyển hướng đến trang product.html với tham số id
-    window.location.href = `product.html?id=${productId}`;
-}
-
 const container = document.querySelector('.content__product-container');
+console.log(container);
 
 function renderProductIndex(listProductIndex) {
+    
     // Sắp xếp mảng theo giảm dần của thuộc tính sale
     listProductIndex.sort((a, b) => b.sale - a.sale);
 
     // Lấy ra 8 sản phẩm đầu tiên
     const top8Products = listProductIndex.slice(0, 8);
+    console.log(top8Products)
 
     // Tạo HTML từ danh sách sản phẩm và hiển thị trong container
     const htmls = top8Products.map(function (product, index) {
@@ -62,15 +44,39 @@ function renderProductIndex(listProductIndex) {
     });
 
     container.innerHTML = htmls.join('');
-    attachClickEventToProducts();
+    attachClickEventToProducts()
 }
+
+// Gọi hàm renderProductIndex với danh sách sản phẩm từ hàm Product.getProducts()
+renderProductIndex(Product.getProducts());
 
 function attachClickEventToProducts() {
     const productItems = document.querySelectorAll('.pro');
+    console.log(productItems)
     productItems.forEach(item => {
         item.addEventListener('click', () => {
-            const productId = item.id;
+            const productId = item.dataset.id;
+            console.log(productId)
             openProductSide(productId);
         });
     });
 }
+
+function openProductSide(productId) {
+    // Chuyển hướng đến trang product.html với tham số id
+    window.location.href = `product.html?id=${productId}`;
+    console.log(productId)
+}
+function getDetailProductIndex() {
+    const productItem = $$('.pro')
+    productItem.forEach(item => {
+        item.addEventListener('click', () => {
+            openDetailProduct(item.dataset.id)
+        })
+    })
+}
+
+
+
+
+
