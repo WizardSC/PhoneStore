@@ -38,7 +38,7 @@
 /* body */
 .container{
     display: flex;
-    padding-top:50px ;
+    padding-top:90px ;
     padding-bottom: 20px;
     position: relative;
     isolation: isolate;

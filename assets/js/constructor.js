@@ -1,5 +1,6 @@
 const $ = document.querySelector.bind(document)
 const $$ = document.querySelectorAll.bind(document)
+let brandValues = ['IPhone','Samsung','Oppo','Xiaomi','Vivo','Realme','Nokia','Masstel','Itel','Mobell']
 let romValues = ['16 GB', '32 GB', '64 GB', '128 GB', '256 GB', '512 GB', '1 TB'];
 let ramValues = ['1 GB', '2 GB', '3 GB', '4 GB', '6 GB', '8 GB', '12 GB']
 class Product {
@@ -174,6 +175,13 @@ class User {
         }
         return null
     }
+    static checkIsActive(){
+        if(localStorage.isActive){
+            let isActive = localStorage.isActive === 'true'
+            return isActive
+        }
+        return null
+    }
     static setIsAdmin(isAdmin) {
         if (isAdmin == null || isAdmin == undefined) {
             localStorage.isAdmin = false;
@@ -182,6 +190,17 @@ class User {
                 localStorage.isAdmin = true;
             } else {
                 localStorage.isAdmin = false;
+            }
+        }
+    }
+    static setIsActive(isActive){
+        if (isActive == null || isActive == undefined) {
+            localStorage.isActive = false;
+        } else {
+            if (isActive === true) {
+                localStorage.isActive = true;
+            } else {
+                localStorage.isActive = false;
             }
         }
     }
@@ -220,22 +239,26 @@ class User {
         if (!list || list.length === 0) return false;
         let userID
         let isAdmin = false;
+        let isActive = false;
         list.forEach((user) => {
             if (user.username === username && user.password === password) {
                 userID = user.userID;
                 (user.isAdmin == 1) ? isAdmin = true : false;
+                (user.isActive == 1) ? isActive = true : false;
             }
         })
         console.log(isAdmin)
         if (!userID) return false;
         User.setLoginState(userID)
         User.setIsAdmin(isAdmin)
+        User.setIsActive(isActive)
         return true;
     }
     //Đăng xuất
     static logOut() {
         User.setLoginState(null);
         User.setIsAdmin(null);
+        User.setIsActive(null)
         redirectToProductPage()
     }
 
@@ -541,7 +564,27 @@ class Invoice {
         })
         return resultList
     }
+    //Lấy ra chi tiết hóa đơn của 1 hóa đơn
+    static getDetailInvoice(invoiceID){
+        const list = Invoice.getInvoices()
+        if(!list || list.length === 0) return null
+        let detailInvoice
+        list.forEach(invoice => {
+            if(invoice.invoiceID === invoiceID){
+                detailInvoice = invoice.cartList
+            }
+        })
+        return detailInvoice
+    }
     // Các hàm thống kê
+    //Tổng hóa đơn trong 1 tháng
+    static getTotalInvoiceByMonth(month){
+        const list = Invoice.getInvoiceListByMonth(month)
+        if(!list || list.length === 0) return 0
+        let count = list.length
+        return count
+
+    }
     //Tổng doanh thu theo tháng
     static calculateRevenueByMonth(month){
         const invoiceList = Invoice.getInvoiceListByMonth(month)
@@ -554,9 +597,26 @@ class Invoice {
         })
         return total
     }
+    //Tổng số khách hàng 'độc nhất' trong 1 tháng
+    static getTotalCustomerByMonth(month){
+        const list = Invoice.getInvoiceListByMonth(month)
+        if(!list || list.length === 0) return 0
+        let count = 0
+        let existUserID = []
+        list.forEach(invoice => {
+            const userID = invoice.userID
+            if(!existUserID.includes(userID)) {
+                count = count + 1
+                existUserID.push(userID)
+                console.log(invoice.userID)
+            }
+        })
+        return count
+
+    }
     //Tính tổng doanh thu theo loại sản phẩm
     static calculateRevenueByCategoryAndMonth(category,month){
-        const invoiceList = Invoice.getInvoices()
+        const invoiceList = Invoice.getInvoiceListByMonth(month)
         if(!invoiceList || invoiceList.length === 0) return 0
         let total = 0
         invoiceList.forEach(item => {
@@ -569,7 +629,32 @@ class Invoice {
         return total
     }
     //Tổng số sản phẩm đã bán ra trong tháng
-    //Số lượng sản phẩm 
+    static getTotalSoldProductsInMonth(month){
+        const invoiceList = Invoice.getInvoiceListByMonth(month)
+        if(!invoiceList || invoiceList.length === 0) return 0
+        let count = 0
+        invoiceList.forEach(invoice =>{
+            invoice.cartList.forEach(item => {
+                count = count + item.quantity
+            })
+
+        })
+        return count
+    }
+    //Tổng số sản phẩm đã bán ra trong tháng theo loại
+    static getTotalSoldProductsInMonthByBrand(brand, month){
+        const invoiceList = Invoice.getInvoiceListByMonth(month)
+        if(!invoiceList || invoiceList.length == 0) return 0
+        let count = 0
+        invoiceList.forEach(invoice =>{
+            invoice.cartList.forEach(item => {
+                if(item.storeProduct.brand.includes(brand)){
+                    count = count + item.quantity
+                }
+            })
+        })
+        return count;
+    }
 }
 
 class time {
@@ -598,3 +683,4 @@ class admin {
         }
     }
 }
+
