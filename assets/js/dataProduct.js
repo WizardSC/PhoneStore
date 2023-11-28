@@ -605,7 +605,38 @@ const productArr = [
         ["64GB"],
         5
     ),
-
+    new Product(
+        "Vivo Y36 128GB",
+        6200000,
+        5790000,
+        
+        ['https://cdn.tgdd.vn/Products/Images/42/311120/vivo-y36-xanh-thumbnew-600x600.jpg'],
+        "Vivo",
+        ["8GB"],
+        ["128GB, 256GB"],
+        7
+    ),
+    new Product(
+        "Vivo V27e",
+        8990000,
+        8290000,
+        
+        ['https://img.tgdd.vn/imgt/f_webp,fit_outside,quality_75/https://cdn.tgdd.vn/Products/Images/42/297026/vivo-v27e-1-200x200.jpg'],
+        "Vivo",
+        ["8GB"],
+        ["256GB"],
+        7
+    ),
+    new Product(
+        "vivo Y22s ",
+        5990000,
+        4390000,
+        
+        ['https://img.tgdd.vn/imgt/f_webp,fit_outside,quality_75/https://cdn.tgdd.vn/Products/Images/42/285224/vivo-y22s-thumb-200x200.jpg'],
+        "Vivo",
+        ["4GB","8GB"],
+        ["128GB"],
+        7
+    ),
 ]
-console.log
 

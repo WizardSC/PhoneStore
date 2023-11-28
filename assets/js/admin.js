@@ -8,7 +8,7 @@ function loadForm() {
 }
 
 loadForm()
-initDashboardPage()
+
 
 Array.from(listControlItems).forEach((item) => {
     item.addEventListener('click', () => {
