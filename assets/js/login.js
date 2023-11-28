@@ -297,7 +297,7 @@ function changeLoggedUser() {
 function changeLoggedUserResponsive() {
     const noneLoggedUser = $('.header__navbar-item--none-logged--responsive')
     const loggedUser = $('.header__navbar-item--logged--responsive')
-    const username = $('.header__navbar-username')
+    const username = $('.header__navbar-username--responsive')
     const adminPageItem = document.querySelector('.header__navbar-dropdown-item--responsive[data-value="admin-page"]');
     const user = User.getUserID(User.checkLoginId())
     username.innerText = user.full_name
