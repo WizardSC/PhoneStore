@@ -273,3 +273,10 @@ headerCartBtn.addEventListener("click", e => {
     openCartModal();
 })
 
+// Click giỏ hàng responsive
+const headerCartBtnResponsive = $('.header__navbar-cart-icon--responsive')
+
+headerCartBtnResponsive.addEventListener("click", e => {
+    e.preventDefault();
+    openCartModal();
+})

@@ -45,9 +45,11 @@
 
                 <!-- Navbar khi PC -->
                 <ul class="header__navbar-list">
+
                     <li><a href="index.html">Trang chủ</a></li>
                     <li><a href="product.html" >Sản phẩm</a></li>
                     <li><a href="contact.html"  class="active">Liên lạc</a></li>
+
 
                     <li class="header__navbar-item">
                         <div class="header__navbar-item--none-logged active">
@@ -86,22 +88,68 @@
                 </ul>
 
                 <!-- Navbar khi responsive -->
-                <nav class="nav__list">
+                <!-- <nav class="nav__list">
                     <label for="nav-input" class="nav-close">
                         <i class="fa-solid fa-xmark"></i>
                     </label>
                     <ul class="header__navbar-list-responsive">
                         <li><a href="index.html" class="navbar-link-responsive active"><i class="fa-solid fa-house"></i>
                                 Trang chủ</a></li>
-                        <li><a href="product.html" class="navbar-link-responsive"><i class="fa-solid fa-list"></i> Sản
+                        <li><a href="product.html" class="navbar-link-responsive"><i class="fa-solid fa-list"></i>Sản
                                 phẩm</a></li>
-                        <li><a href="" class="navbar-link-responsive"><i class="fa-solid fa-phone"></i> Liên lạc</a>
+                        <li><a href="contact.html" class="navbar-link-responsive"><i class="fa-solid fa-phone"></i>Liên
+                                lạc</a>
                         </li>
                         <li><a href="" class="navbar-link-responsive"><i class="fa-solid fa-cart-shopping"></i> Giỏ
                                 hàng</a></li>
-                        <li id="btnDangNhap" onclick="LoginPopupOpen()">Đăng nhập</li>
+                        <li><a href="" class="navbar-link-responsive" id="btnDangNhap" onclick="LoginPopupOpen()">Đăng
+                                nhập</a></li>
                         <!-- <li><a href="" class="navbar-link-responsive user1"><i
                                     class="fa-solid fa-circle-user"></i><span> Nguyen </span></a></li> -->
+                <!-- </ul>
+                </nav> -->
+                <nav class="nav__list">
+                    <label for="nav-input" class="nav-close">
+                        <i class="fa-solid fa-xmark"></i>
+                    </label>
+                    <ul class="header__navbar-list-responsive">
+                        <li><a href="index.html" class="navbar-link-responsive"><i class="fa-solid fa-house"></i> Trang
+                                chủ</a></li>
+                        <li><a href="product.html" class="navbar-link-responsive"><i class="fa-solid fa-list"></i> Sản
+                                phẩm</a></li>
+                        <li><a href="contact.html" class="navbar-link-responsive"><i class="fa-solid fa-phone"></i> Liên
+                                lạc</a></li>
+                        <li>
+                            <div class="header__navbar-item--none-logged--responsive active">
+                                <div class="navbar-link-responsive" id="btnDangNhap" onclick="LoginPopupOpen()">
+                                    Đăng nhập
+                                </div>
+                            </div>
+
+                            <div class="header__navbar-item--logged--responsive ">
+                                <div><a href="" class="navbar-link-responsive header__navbar-cart-icon--responsive"><i
+                                            class="fa-solid fa-basket-shopping"></i>
+                                        Giỏ hàng</a></div>
+                                <div class="header__navbar-user-wrap navbar-link-responsive">
+                                    <div class="header__navbar-user">
+                                        <img class="header__navbar-user-img"
+                                            src="https://down-vn.img.susercontent.com/file/57c388a98552051b188b48864e95a4bf_tn"
+                                            alt="">
+                                        <div class="header__navbar-username">Lee Changsub</div>
+                                    </div>
+                                    <div class="header__navbar-dropdown">
+                                        <div class="header__navbar-dropdown-item" onclick="redirectToOrderPage()"
+                                            data-value="order-page">Đơn hàng mua</div>
+                                        <div class="header__navbar-dropdown-item header__navbar-dropdown-item--responsive" onclick="redirectToAdminPage()"
+                                            data-value="admin-page">Trang quản trị</div>
+                                        <div class="header__navbar-dropdown-item" id="logout__btn--responsive"
+                                            data-value="log-out">
+                                            Đăng
+                                            xuất</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
                     </ul>
                 </nav>
             </div>
@@ -409,16 +457,16 @@
                             <div class="alert-username alert"></div>
                             <div class="form-content__input">
                                 <div class="icon"><i class="fa-solid fa-lock"></i></div>
-                                <input id="login__field-password" name="password" type="password"
-                                    placeholder="Mật khẩu" class="password">
+                                <input id="login__field-password" name="password" type="password" placeholder="Mật khẩu"
+                                    class="password">
                                 <div class="icon">
                                     <i class="fa-solid fa-eye hide-password" onclick="HidePassword()"></i>
                                     <i class="fa-solid fa-eye-slash show-password" onclick="ShowPassword()"></i>
                                 </div>
                             </div>
                             <div class="alert-password alert"></div>
-                            <button id="login__btn" type="submit" class="btn"
-                                onclick="return ValidateFormLogin()">Đăng nhập</button>
+                            <button id="login__btn" type="submit" class="btn" onclick="return ValidateFormLogin()">Đăng
+                                nhập</button>
                         </form>
                         <div class="question-responsive">
                             <p>Bạn chưa có tài khoản? <a href="#" onclick="RegisterPopupOpen()">Đăng ký</a></p>

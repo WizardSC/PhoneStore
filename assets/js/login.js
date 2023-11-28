@@ -72,7 +72,7 @@ function ValidateFormLogin() {
     let check = [2], result = 1;
     let username = document.forms["login-form"]["username"];
     let password = document.forms["login-form"]["password"];
-    check[0] = ValidateUsername(username, alertUsername[0]);
+    check[0] = ValidateUsernameLogin(username, alertUsername[0]);
     check[1] = ValidatePassword(password, alertPassword[0]);
     result = check[0] * check[1];
     if (result == 0) {
@@ -88,7 +88,7 @@ function ValidateFormRegister() {
     let password = document.forms["register-form"]["password"];
     let repeat_password = document.forms["register-form"]["repeat-password"];
     check[0] = ValidateFullName(fullName, alertFullName[0]);
-    check[1] = ValidateUsername(username, alertUsername[1]);
+    check[1] = ValidateUsernameRegister(username, alertUsername[1]);
     check[2] = ValidateEmail(email, alertEmail[0]);
     check[3] = ValidatePassword(password, alertPassword[1]);
     check[4] = ValidateRepeatPassword(password, repeat_password, alertRepeatPassword[0]);
@@ -115,7 +115,7 @@ function ValidateFullName(fullName, alertFullName) {
     return check;
 }
 let usernameLogin
-function ValidateUsername(username, alertUsername) {
+function ValidateUsernameLogin(username, alertUsername) {
     let check = 1;
     if (username.value == "") {
         alertUsername.innerHTML = `*Tên đăng nhập không được bỏ trống`;
@@ -127,11 +127,7 @@ function ValidateUsername(username, alertUsername) {
         alertUsername.innerHTML = `*Các kí tự được chấp nhận là a-z, A-Z và 0-9`;
         check = check * 0;
     }
-    else {
-        usernameLogin = username.value;
-        alertUsername.innerHTML = "";
-    }
-    if (isRegister === false) {
+    else if (isRegister === false) {
         if (!User.isExistUsername(username.value)) {
             alertUsername.innerHTML = `*Tên đăng nhập không tồn tại trên hệ thống`;
             usernameLogin = null;
@@ -141,6 +137,25 @@ function ValidateUsername(username, alertUsername) {
             alertUsername.innerHTML = "";
             usernameLogin = username.value;
         }
+    }
+    return check;
+}
+function ValidateUsernameRegister(username, alertUsername) {
+    let check = 1;
+    if (username.value == "") {
+        alertUsername.innerHTML = `*Tên đăng nhập không được bỏ trống`;
+        check = check * 0;
+    } else if (username.value.length < 8 || username.value.length > 30) {
+        alertUsername.innerHTML = `*Tên đăng nhập cần có độ dài từ 8-30 kí tự`;
+        check = check * 0;
+    } else if (username.value.match(usernameRegex) == null) {
+        alertUsername.innerHTML = `*Các kí tự được chấp nhận là a-z, A-Z và 0-9`;
+        check = check * 0;
+    } else if (User.isExistUsername(username.value)) {
+        alertUsername.innerHTML = `*Tên đăng nhập đã tồn tại`;
+        check = check * 0;
+    } else {
+        alertUsername.innerHTML = "";
     }
     return check;
 }
@@ -259,8 +274,10 @@ function closeFormLogin() {
 // Các hàm giúp Đăng nhập hiện thông tin user, đăng xuất hiện nút đăng nhập
 if (User.checkLoginId()) {
     changeLoggedUser()
+    changeLoggedUserResponsive()
 } else {
     changeNoneLoggedUser()
+    changeNoneLoggedUserResponsive()
 }
 
 function changeLoggedUser() {
@@ -277,9 +294,30 @@ function changeLoggedUser() {
     }
 }
 
+function changeLoggedUserResponsive() {
+    const noneLoggedUser = $('.header__navbar-item--none-logged--responsive')
+    const loggedUser = $('.header__navbar-item--logged--responsive')
+    const username = $('.header__navbar-username')
+    const adminPageItem = document.querySelector('.header__navbar-dropdown-item--responsive[data-value="admin-page"]');
+    const user = User.getUserID(User.checkLoginId())
+    username.innerText = user.full_name
+    noneLoggedUser.classList.remove('active')
+    loggedUser.classList.add('active')
+    if (user.isAdmin === false) {
+        adminPageItem.classList.add('inactive')
+    }
+}
+
 function changeNoneLoggedUser() {
     const noneLoggedUser = $('.header__navbar-item--none-logged')
     const loggedUser = $('.header__navbar-item--logged')
+    noneLoggedUser.classList.add('active')
+    loggedUser.classList.remove('active')
+}
+
+function changeNoneLoggedUser() {
+    const noneLoggedUser = $('.header__navbar-item--none-logged--responsive')
+    const loggedUser = $('.header__navbar-item--logged--responsive')
     noneLoggedUser.classList.add('active')
     loggedUser.classList.remove('active')
 }
@@ -289,8 +327,14 @@ logOutBtn.addEventListener('click', () => {
     User.logOut();
     location.reload();
     redirectToProductPage();
-
+    
 })
 
+const logOutBtnResponsive = $('#logout__btn--responsive')
+logOutBtnResponsive.addEventListener('click', () => {
+    User.logOut();
+    location.reload();
+    redirectToProductPage();
+})
 
 
