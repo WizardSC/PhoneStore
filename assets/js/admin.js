@@ -889,9 +889,9 @@ function initProductPage() {
             }
         };
         const isValidProductName = validateAndDisplayError(productName.value.toString(), listErrorMessage[1], validate.validateProductName);
-        const isValidProductPriceOld = validateAndDisplayError(parseInt(productPriceOld.value), listErrorMessage[2], validate.validateProductInt);
-        const isValidProductPriceCurrent = validateAndDisplayError(parseInt(productPriceCurrent.value), listErrorMessage[3], validate.validateProductInt);
-        const isValidProductSale = validateAndDisplayError(parseInt(productSale.value), listErrorMessage[5], validate.validateProductInt);
+        const isValidProductPriceOld = validateAndDisplayError(productPriceOld.value, listErrorMessage[2], validate.validateProductInt);
+        const isValidProductPriceCurrent = validateAndDisplayError(productPriceCurrent.value, listErrorMessage[3], validate.validateProductInt);
+        const isValidProductSale = validateAndDisplayError(productSale.value, listErrorMessage[5], validate.validateProductInt);
         const isValidListROM = validateAndDisplayError(listROM, listErrorMessage[6], validate.validateProductList);
         const isValidListRAM = validateAndDisplayError(listRAM, listErrorMessage[7], validate.validateProductList);
         const isValidBrand = validateAndDisplayError(productBrand.value.toString(), listErrorMessage[4], validate.validateValue)
