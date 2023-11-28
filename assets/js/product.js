@@ -1,65 +1,66 @@
 
 
 const productContainer = $('.product.row')
-if(productContainer){
-//Render product lên giao diện
-function renderProduct(listProduct) {
+if (productContainer) {
+    //Render product lên giao diện
+    renderProduct(Product.getProducts())
+    function renderProduct(listProduct) {
 
-    if (listProduct == null || listProduct.length == 0) {
-        productContainer.innerHTML =
-            `<div class="product__not-found">
-            <img class="product__not-found-img" src="assets/img/sad-face.png" alt="Không có ảnh">
-            <p class="product__not-found-label">Không có sản phẩm phù hợp với tiêu chí bạn tìm</p> 
-        </div>
-        `
-        return;
+        if (listProduct == null || listProduct.length == 0) {
+            productContainer.innerHTML =`
+            <div class="product__not-found">
+                <img class="product__not-found-img" src="assets/img/sad-face.png" alt="Không có ảnh">
+                <p class="product__not-found-label">Không có sản phẩm phù hợp với tiêu chí bạn tìm</p> 
+             </div>
+            `
+            return;
+        }
+        let html = ''
+        listProduct.forEach((product, index) => {
+            html += `
+                <div class="col l-2-4 m-4 c-6">
+                <div class="product-item" data-id="${product.productID}">
+                    <div class="product-item__img-wrap">
+                        <img class="product-item__img"
+                            src="${product.img}"
+                            alt="" width="358" height="358">
+                    </div>
+                    <div class="product-item__name">
+                        <h3>${product.name}</h3>
+
+                    </div>
+                    <div class="product-item__price">
+                        <div class="product-item__price-new">${money.formatCurrencytoVND(product.price_current)}</div>
+                        <div class="product-item__price-old">${money.formatCurrencytoVND(product.price_old)}</div>
+
+                    </div>
+                    <div class="product-item__action">
+                        <div class="product-item__rating">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <div class="product-item__like">
+                            <i class="fa-regular fa-heart" style="color: #d70119;"></i>
+                        </div>
+                    </div>
+                    <div class="product-item__sale">
+                        <p class="product-item__sale-detail">Giảm ${product.sale}%</p>
+                    </div>
+
+                </div>
+            </div>
+            `
+        })
+        productContainer.innerHTML = html
+
+        //Add sự kiện cho những sản phẩm được render lên giao diện
+        getDetailProduct();
+
+
     }
-    const htmls = listProduct.map(function (product, index) {
-        return `
-        <div class="col l-2-4 m-4 c-6">
-        <div class="product-item" data-id="${product.productID}">
-            <div class="product-item__img-wrap">
-                <img class="product-item__img"
-                    src="${product.img}"
-                    alt="" width="358" height="358">
-            </div>
-            <div class="product-item__name">
-                <h3>${product.name}</h3>
-
-            </div>
-            <div class="product-item__price">
-                <div class="product-item__price-new">${money.formatCurrencytoVND(product.price_current)}</div>
-                <div class="product-item__price-old">${money.formatCurrencytoVND(product.price_old)}</div>
-
-            </div>
-            <div class="product-item__action">
-                <div class="product-item__rating">
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                </div>
-                <div class="product-item__like">
-                    <i class="fa-regular fa-heart" style="color: #d70119;"></i>
-                </div>
-            </div>
-            <div class="product-item__sale">
-                <p class="product-item__sale-detail">Giảm ${product.sale}%</p>
-            </div>
-
-        </div>
-    </div>
-    `
-    })
-    productContainer.innerHTML = htmls.join('')
-
-    //Add sự kiện cho những sản phẩm được render lên giao diện
-    getDetailProduct();
-
-
-}
-renderProduct(Product.getProducts())
 }
 function getDetailProduct() {
     const productItem = $$('.product-item')
@@ -180,417 +181,421 @@ function changePage(i) {
 }
 
 //Filter sản phẩm
-const listFilterItems = $$('.filter__item')
-const filterBrand = $('.filter__brand')
-const filterPrice = $('.filter__price')
-const filterRAM = $('.filter__ram')
-const filterROM = $('.filter__rom')
-const listBrandItems = $$('.filter__brand-item')
-const listRAMItems = $$('.filter__ram-item')
-const listROMItems = $$('.filter__rom-item')
-const minPriceInput = $('#filter__price-min-price')
-const maxPriceInput = $('#filter__price-max-price')
-
-//Array các giá trị filter của brand, ram, rom
-let myChoiceBrand = []
-let myChoiceRAM = []
-let myChoiceROM = []
-let myPriceRange = [NaN, NaN]
-let mySearchProduct = "";
-let mySort = "";
-//Hiển thị các thẻ filter khi nhấn vào từng item lọc
-Array.from(listFilterItems).forEach(function (filterItem, index) {
-    filterItem.addEventListener('click', function (e) {
-        listFilterItems.forEach(function (item, i) {
-            if (i !== index) {
-                item.classList.remove('filter__item--has-brand');
-                item.classList.remove('filter__item--has-price');
-                item.classList.remove('filter__item--has-ram');
-                item.classList.remove('filter__item--has-rom');
+filterProduct()
+function filterProduct(){
+    const listFilterItems = $$('.filter__item')
+    const filterBrand = $('.filter__brand')
+    const filterPrice = $('.filter__price')
+    const filterRAM = $('.filter__ram')
+    const filterROM = $('.filter__rom')
+    const listBrandItems = $$('.filter__brand-item')
+    const listRAMItems = $$('.filter__ram-item')
+    const listROMItems = $$('.filter__rom-item')
+    const minPriceInput = $('#filter__price-min-price')
+    const maxPriceInput = $('#filter__price-max-price')
+    
+    //Array các giá trị filter của brand, ram, rom
+    let myChoiceBrand = []
+    let myChoiceRAM = []
+    let myChoiceROM = []
+    let myPriceRange = [NaN, NaN]
+    let mySearchProduct = "";
+    let mySort = "";
+    //Hiển thị các thẻ filter khi nhấn vào từng item lọc
+    Array.from(listFilterItems).forEach(function (filterItem, index) {
+        filterItem.addEventListener('click', function (e) {
+            listFilterItems.forEach(function (item, i) {
+                if (i !== index) {
+                    item.classList.remove('filter__item--has-brand');
+                    item.classList.remove('filter__item--has-price');
+                    item.classList.remove('filter__item--has-ram');
+                    item.classList.remove('filter__item--has-rom');
+                }
+            });
+    
+            if (index === 0) {
+                filterItem.classList.toggle('filter__item--has-brand')
+            } else if (index === 1) {
+                filterItem.classList.toggle('filter__item--has-price');
+            } else if (index === 2) {
+                filterItem.classList.toggle('filter__item--has-ram');
+            } else if (index === 3) {
+                filterItem.classList.toggle('filter__item--has-rom');
             }
+    
         });
-
-        if (index === 0) {
-            filterItem.classList.toggle('filter__item--has-brand')
-        } else if (index === 1) {
-            filterItem.classList.toggle('filter__item--has-price');
-        } else if (index === 2) {
-            filterItem.classList.toggle('filter__item--has-ram');
-        } else if (index === 3) {
-            filterItem.classList.toggle('filter__item--has-rom');
-        }
-
+        // Ngăn chặn sự kiện "click" từ việc lan truyền lên từ các phần tử con trong .filter__brand
+    
+    
     });
-    // Ngăn chặn sự kiện "click" từ việc lan truyền lên từ các phần tử con trong .filter__brand
-
-
-});
-function initInputPrice(){
-minPriceInput.addEventListener('keyup', function (e) {
-    let inputValue = minPriceInput.value;
-    inputValue = inputValue.replace(/[^0-9]/g, '');
-    minPriceInput.value = inputValue;
-});
-
-maxPriceInput.addEventListener('keyup', function (e) {
-    let inputValue = maxPriceInput.value;
-    inputValue = inputValue.replace(/[^0-9]/g, '');
-    maxPriceInput.value = inputValue;
-});
-}
-
-
-function checkPriceRange(value) {
-    let minPrice = parseInt(minPriceInput.value);
-    let maxPrice = parseInt(maxPriceInput.value);
-
-    if (minPrice < 300000) {
-        minPriceInput.value = 300000;
-        myPriceRange[0] = 300000;
-    } else if (maxPrice > 48000000) {
-        maxPriceInput.value = 48000000;
-        myPriceRange[1] = 48000000;
-    } else if (minPrice > maxPrice) {
-        if (value === "minPrice") {
+    function initInputPrice() {
+        minPriceInput.addEventListener('keyup', function (e) {
+            let inputValue = minPriceInput.value;
+            inputValue = inputValue.replace(/[^0-9]/g, '');
+            minPriceInput.value = inputValue;
+        });
+    
+        maxPriceInput.addEventListener('keyup', function (e) {
+            let inputValue = maxPriceInput.value;
+            inputValue = inputValue.replace(/[^0-9]/g, '');
+            maxPriceInput.value = inputValue;
+        });
+    }
+    
+    
+    function checkPriceRange(value) {
+        let minPrice = parseInt(minPriceInput.value);
+        let maxPrice = parseInt(maxPriceInput.value);
+    
+        if (minPrice < 300000) {
             minPriceInput.value = 300000;
             myPriceRange[0] = 300000;
-        } else if (value === "maxPrice") {
+        } else if (maxPrice > 48000000) {
             maxPriceInput.value = 48000000;
             myPriceRange[1] = 48000000;
+        } else if (minPrice > maxPrice) {
+            if (value === "minPrice") {
+                minPriceInput.value = 300000;
+                myPriceRange[0] = 300000;
+            } else if (value === "maxPrice") {
+                maxPriceInput.value = 48000000;
+                myPriceRange[1] = 48000000;
+            }
+        } else {
+            myPriceRange[0] = minPrice;
+            myPriceRange[1] = maxPrice;
         }
-    } else {
-        myPriceRange[0] = minPrice;
-        myPriceRange[1] = maxPrice;
     }
-}
-minPriceInput.addEventListener('blur', function (e) {
-    checkPriceRange("minPrice");
-    console.log(myPriceRange[0], myPriceRange[1]);
-
-
-    applyFilters();
-
-
-});
-
-maxPriceInput.addEventListener('blur', function (e) {
-    checkPriceRange("maxPrice");
-    console.log(myPriceRange[0], myPriceRange[1]);
-    applyFilters();
-
-});
-//Ngăn chăn hành vi nổi bọt của các popup filter
-(function stopPropagationFilter() {
-    filterBrand.onclick = function (e) {
-        e.stopPropagation();
-    }
-    filterPrice.onclick = function (e) {
-        e.stopPropagation();
-    }
-    filterRAM.onclick = function (e) {
-        e.stopPropagation();
-    }
-    filterROM.onclick = function (e) {
-        e.stopPropagation();
-    }
-})();
-
-// Duyệt qua các brand item, khi click vào thì add active
-
-
-// Duyệt qua các brand item, khi click vào thì add active
-Array.from(listBrandItems).forEach(function (brand) {
-    brand.addEventListener("click", function (e) {
-        brand.classList.toggle('active');
-        let itemValue = brand.getAttribute("data-value");
-        if (brand.classList.contains('active')) {
-            let isExist = false;
+    minPriceInput.addEventListener('blur', function (e) {
+        checkPriceRange("minPrice");
+        console.log(myPriceRange[0], myPriceRange[1]);
+    
+    
+        applyFilters();
+    
+    
+    });
+    
+    maxPriceInput.addEventListener('blur', function (e) {
+        checkPriceRange("maxPrice");
+        console.log(myPriceRange[0], myPriceRange[1]);
+        applyFilters();
+    
+    });
+    //Ngăn chăn hành vi nổi bọt của các popup filter
+    (function stopPropagationFilter() {
+        filterBrand.onclick = function (e) {
+            e.stopPropagation();
+        }
+        filterPrice.onclick = function (e) {
+            e.stopPropagation();
+        }
+        filterRAM.onclick = function (e) {
+            e.stopPropagation();
+        }
+        filterROM.onclick = function (e) {
+            e.stopPropagation();
+        }
+    })();
+    
+    // Duyệt qua các brand item, khi click vào thì add active
+    
+    
+    // Duyệt qua các brand item, khi click vào thì add active
+    Array.from(listBrandItems).forEach(function (brand) {
+        brand.addEventListener("click", function (e) {
+            brand.classList.toggle('active');
+            let itemValue = brand.getAttribute("data-value");
+            if (brand.classList.contains('active')) {
+                let isExist = false;
+                for (let i = 0; i < myChoiceBrand.length; i++) {
+                    if (myChoiceBrand[i] === itemValue) {
+                        isExist = true;
+                        break;
+                    }
+                }
+                if (!isExist) {
+                    myChoiceBrand.push(itemValue);
+                }
+            } else {
+                for (let i = 0; i < myChoiceBrand.length; i++) {
+                    if (myChoiceBrand[i] === itemValue) {
+                        myChoiceBrand.splice(i, 1);
+                    }
+                }
+            }
+            applyFilters();
+        });
+    });
+    
+    // Duyệt qua các RAM item, khi click vào thì add active
+    Array.from(listRAMItems).forEach(function (ram) {
+        ram.addEventListener("click", function (e) {
+            ram.classList.toggle('active');
+            let itemValue = ram.getAttribute("data-value");
+            if (ram.classList.contains('active')) {
+                let isExist = false;
+                for (let i = 0; i < myChoiceRAM.length; i++) {
+                    if (myChoiceRAM[i] === itemValue) {
+                        isExist = true;
+                        break;
+                    }
+                }
+                if (!isExist) {
+                    myChoiceRAM.push(itemValue);
+                }
+            } else {
+                for (let i = 0; i < myChoiceRAM.length; i++) {
+                    if (myChoiceRAM[i] === itemValue) {
+                        myChoiceRAM.splice(i, 1);
+                        break; // Thêm break để ngăn xóa nhiều phần tử
+                    }
+                }
+            }
+            applyFilters();
+        });
+    });
+    Array.from(listROMItems).forEach(function (rom) {
+        rom.addEventListener("click", function (e) {
+            rom.classList.toggle('active');
+            let itemValue = rom.getAttribute("data-value");
+            if (rom.classList.contains('active')) {
+                let isExist = false;
+                for (let i = 0; i < myChoiceROM.length; i++) {
+                    if (myChoiceROM[i] === itemValue) {
+                        isExist = false;
+                        break;
+                    }
+                }
+                if (!isExist) {
+                    myChoiceROM.push(itemValue);
+                }
+            } else {
+                for (let i = 0; i < myChoiceROM.length; i++) {
+                    if (myChoiceROM[i] === itemValue) {
+                        myChoiceROM.splice(i, 1);
+                    }
+                }
+            }
+            applyFilters();
+    
+        })
+    })
+    
+    function applyFilters() {
+        let result = Product.getProducts();
+        if (!isNaN(myPriceRange[0]) && !isNaN(myPriceRange[1])) {
+            let tempListProduct = [];
+    
+            tempListProduct = tempListProduct.concat(filterProductPrice(result, myPriceRange[0], myPriceRange[1]));
+            result = tempListProduct;
+        }
+        if (searchProduct !== "") {
+            let tempListProduct = [];
+            tempListProduct = tempListProduct.concat(searchProduct(result, mySearchProduct))
+            result = tempListProduct
+        }
+        if (myChoiceBrand.length > 0) {
+            let tempListProduct = [];
             for (let i = 0; i < myChoiceBrand.length; i++) {
-                if (myChoiceBrand[i] === itemValue) {
-                    isExist = true;
-                    break;
-                }
+                tempListProduct = tempListProduct.concat(filterProductBrand(result, myChoiceBrand[i]));
             }
-            if (!isExist) {
-                myChoiceBrand.push(itemValue);
-            }
-        } else {
-            for (let i = 0; i < myChoiceBrand.length; i++) {
-                if (myChoiceBrand[i] === itemValue) {
-                    myChoiceBrand.splice(i, 1);
-                }
-            }
+            result = tempListProduct;
         }
-        applyFilters();
-    });
-});
-
-// Duyệt qua các RAM item, khi click vào thì add active
-Array.from(listRAMItems).forEach(function (ram) {
-    ram.addEventListener("click", function (e) {
-        ram.classList.toggle('active');
-        let itemValue = ram.getAttribute("data-value");
-        if (ram.classList.contains('active')) {
-            let isExist = false;
+        if (myChoiceRAM.length > 0) {
+            let tempProductSet = {};
             for (let i = 0; i < myChoiceRAM.length; i++) {
-                if (myChoiceRAM[i] === itemValue) {
-                    isExist = true;
-                    break;
-                }
+                const filteredProducts = filterProductRam(result, myChoiceRAM[i]);
+                filteredProducts.forEach(product => {
+                    tempProductSet[product.name] = product;
+                });
             }
-            if (!isExist) {
-                myChoiceRAM.push(itemValue);
-            }
-        } else {
-            for (let i = 0; i < myChoiceRAM.length; i++) {
-                if (myChoiceRAM[i] === itemValue) {
-                    myChoiceRAM.splice(i, 1);
-                    break; // Thêm break để ngăn xóa nhiều phần tử
-                }
-            }
+            result = Object.values(tempProductSet);
         }
-        applyFilters();
-    });
-});
-Array.from(listROMItems).forEach(function (rom) {
-    rom.addEventListener("click", function (e) {
-        rom.classList.toggle('active');
-        let itemValue = rom.getAttribute("data-value");
-        if (rom.classList.contains('active')) {
-            let isExist = false;
+    
+        if (myChoiceROM.length > 0) {
+            let tempProductSet = {};
             for (let i = 0; i < myChoiceROM.length; i++) {
-                if (myChoiceROM[i] === itemValue) {
-                    isExist = false;
-                    break;
-                }
+                const filteredProducts = filterProductRom(result, myChoiceROM[i]);
+                filteredProducts.forEach(product => {
+                    tempProductSet[product.name] = product;
+                })
+    
             }
-            if (!isExist) {
-                myChoiceROM.push(itemValue);
-            }
-        } else {
-            for (let i = 0; i < myChoiceROM.length; i++) {
-                if (myChoiceROM[i] === itemValue) {
-                    myChoiceROM.splice(i, 1);
-                }
-            }
+            result = Object.values(tempProductSet);
         }
-        applyFilters();
-
-    })
-})
-
-function applyFilters() {
-    let result = Product.getProducts();
-    if (!isNaN(myPriceRange[0]) && !isNaN(myPriceRange[1])) {
-        let tempListProduct = [];
-
-        tempListProduct = tempListProduct.concat(filterProductPrice(result, myPriceRange[0], myPriceRange[1]));
-        result = tempListProduct;
-    }
-    if (searchProduct !== "") {
-        let tempListProduct = [];
-        tempListProduct = tempListProduct.concat(searchProduct(result, mySearchProduct))
-        result = tempListProduct
-    }
-    if (myChoiceBrand.length > 0) {
-        let tempListProduct = [];
-        for (let i = 0; i < myChoiceBrand.length; i++) {
-            tempListProduct = tempListProduct.concat(filterProductBrand(result, myChoiceBrand[i]));
+        if (mySort !== "") {
+            let tempListProduct = [];
+            tempListProduct = tempListProduct.concat(sortProduct(result, mySort))
+            result = tempListProduct
         }
-        result = tempListProduct;
-    }
-    if (myChoiceRAM.length > 0) {
-        let tempProductSet = {};
-        for (let i = 0; i < myChoiceRAM.length; i++) {
-            const filteredProducts = filterProductRam(result, myChoiceRAM[i]);
-            filteredProducts.forEach(product => {
-                tempProductSet[product.name] = product;
-            });
-        }
-        result = Object.values(tempProductSet);
-    }
-
-    if (myChoiceROM.length > 0) {
-        let tempProductSet = {};
-        for (let i = 0; i < myChoiceROM.length; i++) {
-            const filteredProducts = filterProductRom(result, myChoiceROM[i]);
-            filteredProducts.forEach(product => {
-                tempProductSet[product.name] = product;
-            })
-
-        }
-        result = Object.values(tempProductSet);
-    }
-    if(mySort !== "") {
-        let tempListProduct = [];
-        tempListProduct = tempListProduct.concat(sortProduct(result, mySort))
-        result = tempListProduct
-    }
-
-
-
-    // Tương tự, áp dụng bộ lọc cho myChoiceROM nếu cần
-
-
-    renderProduct(result);
-    loadItem();
-}
-function filterProductBrand(productArr, productBrand) {
-    let result = []
-    productBrand = productBrand.toLowerCase();
-    productArr.forEach(item => {
-        if (item.brand === (productBrand)) {
-            result.push(item)
-        }
-    })
-    return result;
-}
-function filterProductPrice(productArr, productMinPrice, productMaxPrice) {
-    let result = []
-    productArr.forEach(item => {
-        if (item.price_current >= productMinPrice && item.price_current <= productMaxPrice) {
-            result.push(item)
-        }
-    })
-    return result;
-}
-function filterProductRam(productArr, productRAM) {
-    let result = [];
-    productArr.forEach(item => {
-        if (Array.isArray(item.ram)) {
-            if (item.ram.some(ram => ram.toLowerCase().trim() === productRAM.toLowerCase().trim())) {
-                result.push(item);
-            }
-        }
-    });
-    return result;
-}
-
-function filterProductRom(productArr, productROM) {
-    let result = [];
-    productArr.forEach(item => {
-        if (Array.isArray(item.rom)) {
-            if (item.rom.some(rom => rom.toLowerCase().trim() === productROM.toLowerCase().trim())) {
-                result.push(item);
-            }
-        }
-    })
-    return result
-}
-
-function searchProduct(productArr, input) {
-    let result = [];
-    input = input.toLowerCase(); // Chuyển đổi input và item.name thành chữ thường (không phân biệt chữ hoa/chữ thường)
-
-    productArr.forEach(item => {
-        if (item.name.toLowerCase().includes(input)) {
-            result.push(item);
-        }
-    });
-    return result;
-}
-
-// Duyệt qua sort item
-
-const sortItems = $$('.sort__item')
-Array.from(sortItems).forEach(sortItem => {
-    sortItem.addEventListener('click', () => {
-        if (sortItem.classList.contains('active')) {
-            // Nếu sortItem đã active, thì loại bỏ active và đặt mySort thành rỗng
-            sortItem.classList.remove('active');
-            mySort = '';
-        } else {
-            // Nếu sortItem chưa active, loại bỏ active từ tất cả các item khác và thêm active cho sortItem
-            sortItems.forEach(item => {
-                item.classList.remove('active');
-            });
-            sortItem.classList.add('active');
-            mySort = sortItem.getAttribute('data-value');
-        }
-        applyFilters();
-    })
-})
-
-function sortProduct(productArr, type) {
-    let result = [];
-    if (type === 'asc') {
-        result = productArr.sort((a, b) => a.price_current - b.price_current)
-    } else if (type === 'desc') {
-        result = productArr.sort((a, b) => b.price_current - a.price_current)
-
-    }
-    return result;
-}
-
-
-//Khi cuộn quá filter thì đặt filter là position fixed
-const filter = document.querySelector('.filter')
-const filterLabel = document.querySelector('.filter__label')
-const prevBtnSlider = document.querySelector('.prev-btn');
-const nextBtnSlider = document.querySelector('.next-btn');
-
-
-const filterTopOffset = filter.offsetTop;
-console.log(filterTopOffset)
-window.addEventListener("scroll", () => {
-    if(window.scrollY > 0){
-        prevBtnSlider.style.zIndex = "0";
-        nextBtnSlider.style.zIndex = "0";
-    } else {
-        prevBtnSlider.style.zIndex = "1";
-        nextBtnSlider.style.zIndex = "1";
-
-    }
-    if (window.scrollY >= filterTopOffset) {
-        // filter.style.position = "fixed";
-        // filter.style.top = "0";
-        // filter.style.marginTop = "74" + "px";
-
-    } else {
-        // filter.style.position = "static";
-        // filter.style.marginTop = "20" + "px";
-
-    }
-});
-// JS cho thanh search
-
-const searchInput = $('.search__input')
-const searchIconClose = $('.search__icon-close')
-
-
-searchInput.addEventListener('input', function (e) {
-    if (searchInput.value !== "") {
-        searchIconClose.classList.add('active')
-    } else {
-        searchIconClose.classList.remove('active')
-    }
-})
-
-searchIconClose.addEventListener('click', function () {
-    if (searchIconClose.classList.contains('active')) {
-        searchIconClose.classList.remove('active')
-        searchInput.value = ""
-    }
-})
-
-searchInput.addEventListener('keydown', function (e) {
-    if (e.key === "Enter") {
-        mySearchProduct = searchInput.value;
-    }
-
-    applyFilters()
-
-})
-
-// Thay đổi số lượng sản phẩm trên 1 trang
-const filterLimitProduct = $('.filter__limit-product-input')
-
-filterLimitProduct.addEventListener('keydown', function (e) {
-    if (e.key === "Enter") {
-        limit = filterLimitProduct.value
+    
+    
+    
+        // Tương tự, áp dụng bộ lọc cho myChoiceROM nếu cần
+    
+    
+        renderProduct(result);
         loadItem();
     }
-})
+    function filterProductBrand(productArr, productBrand) {
+        let result = []
+        productBrand = productBrand.toLowerCase();
+        productArr.forEach(item => {
+            if (item.brand === (productBrand)) {
+                result.push(item)
+            }
+        })
+        return result;
+    }
+    function filterProductPrice(productArr, productMinPrice, productMaxPrice) {
+        let result = []
+        productArr.forEach(item => {
+            if (item.price_current >= productMinPrice && item.price_current <= productMaxPrice) {
+                result.push(item)
+            }
+        })
+        return result;
+    }
+    function filterProductRam(productArr, productRAM) {
+        let result = [];
+        productArr.forEach(item => {
+            if (Array.isArray(item.ram)) {
+                if (item.ram.some(ram => ram.toLowerCase().trim() === productRAM.toLowerCase().trim())) {
+                    result.push(item);
+                }
+            }
+        });
+        return result;
+    }
+    
+    function filterProductRom(productArr, productROM) {
+        let result = [];
+        productArr.forEach(item => {
+            if (Array.isArray(item.rom)) {
+                if (item.rom.some(rom => rom.toLowerCase().trim() === productROM.toLowerCase().trim())) {
+                    result.push(item);
+                }
+            }
+        })
+        return result
+    }
+    
+    function searchProduct(productArr, input) {
+        let result = [];
+        input = input.toLowerCase(); // Chuyển đổi input và item.name thành chữ thường (không phân biệt chữ hoa/chữ thường)
+    
+        productArr.forEach(item => {
+            if (item.name.toLowerCase().includes(input)) {
+                result.push(item);
+            }
+        });
+        return result;
+    }
+    
+    // Duyệt qua sort item
+    
+    const sortItems = $$('.sort__item')
+    Array.from(sortItems).forEach(sortItem => {
+        sortItem.addEventListener('click', () => {
+            if (sortItem.classList.contains('active')) {
+                // Nếu sortItem đã active, thì loại bỏ active và đặt mySort thành rỗng
+                sortItem.classList.remove('active');
+                mySort = '';
+            } else {
+                // Nếu sortItem chưa active, loại bỏ active từ tất cả các item khác và thêm active cho sortItem
+                sortItems.forEach(item => {
+                    item.classList.remove('active');
+                });
+                sortItem.classList.add('active');
+                mySort = sortItem.getAttribute('data-value');
+            }
+            applyFilters();
+        })
+    })
+    
+    function sortProduct(productArr, type) {
+        let result = [];
+        if (type === 'asc') {
+            result = productArr.sort((a, b) => a.price_current - b.price_current)
+        } else if (type === 'desc') {
+            result = productArr.sort((a, b) => b.price_current - a.price_current)
+    
+        }
+        return result;
+    }
+    
+    
+    //Khi cuộn quá filter thì đặt filter là position fixed
+    const filter = document.querySelector('.filter')
+    const filterLabel = document.querySelector('.filter__label')
+    const prevBtnSlider = document.querySelector('.prev-btn');
+    const nextBtnSlider = document.querySelector('.next-btn');
+    
+    
+    const filterTopOffset = filter.offsetTop;
+    console.log(filterTopOffset)
+    window.addEventListener("scroll", () => {
+        if (window.scrollY > 0) {
+            prevBtnSlider.style.zIndex = "0";
+            nextBtnSlider.style.zIndex = "0";
+        } else {
+            prevBtnSlider.style.zIndex = "1";
+            nextBtnSlider.style.zIndex = "1";
+    
+        }
+        if (window.scrollY >= filterTopOffset) {
+            // filter.style.position = "fixed";
+            // filter.style.top = "0";
+            // filter.style.marginTop = "74" + "px";
+    
+        } else {
+            // filter.style.position = "static";
+            // filter.style.marginTop = "20" + "px";
+    
+        }
+    });
+    // JS cho thanh search
+    
+    const searchInput = $('.search__input')
+    const searchIconClose = $('.search__icon-close')
+    
+    
+    searchInput.addEventListener('input', function (e) {
+        if (searchInput.value !== "") {
+            searchIconClose.classList.add('active')
+        } else {
+            searchIconClose.classList.remove('active')
+        }
+    })
+    
+    searchIconClose.addEventListener('click', function () {
+        if (searchIconClose.classList.contains('active')) {
+            searchIconClose.classList.remove('active')
+            searchInput.value = ""
+        }
+    })
+    
+    searchInput.addEventListener('keydown', function (e) {
+        if (e.key === "Enter") {
+            mySearchProduct = searchInput.value;
+        }
+    
+        applyFilters()
+    
+    })
+    
+    // Thay đổi số lượng sản phẩm trên 1 trang
+    const filterLimitProduct = $('.filter__limit-product-input')
+    
+    filterLimitProduct.addEventListener('keydown', function (e) {
+        if (e.key === "Enter") {
+            limit = filterLimitProduct.value
+            loadItem();
+        }
+    })
+}
+
 
 // const navbarLogin = document.querySelector(".login")
 // const navbarUser = document.querySelector(".user")

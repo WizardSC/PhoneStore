@@ -1,6 +1,6 @@
 const $ = document.querySelector.bind(document)
 const $$ = document.querySelectorAll.bind(document)
-let brandValues = ['IPhone','Samsung','Oppo','Xiaomi','Vivo','Realme','Nokia','Masstel','Itel','Mobell']
+let brandValues = ['IPhone', 'Samsung', 'Oppo', 'Xiaomi', 'Vivo', 'Realme', 'Nokia', 'Masstel', 'Itel', 'Mobell']
 let romValues = ['16 GB', '32 GB', '64 GB', '128 GB', '256 GB', '512 GB', '1 TB'];
 let ramValues = ['1 GB', '2 GB', '3 GB', '4 GB', '6 GB', '8 GB', '12 GB']
 class Product {
@@ -147,7 +147,7 @@ class User {
         return accountz;
     }
     // Load mã user mới nhất
-    static getLastUserID(){
+    static getLastUserID() {
         const myList = User.getUsers()
         if (!myList || myList.length === 0) return null;
         return myList[myList.length - 1].userID;
@@ -175,8 +175,8 @@ class User {
         }
         return null
     }
-    static checkIsActive(){
-        if(localStorage.isActive){
+    static checkIsActive() {
+        if (localStorage.isActive) {
             let isActive = localStorage.isActive === 'true'
             return isActive
         }
@@ -193,7 +193,7 @@ class User {
             }
         }
     }
-    static setIsActive(isActive){
+    static setIsActive(isActive) {
         if (isActive == null || isActive == undefined) {
             localStorage.isActive = false;
         } else {
@@ -277,8 +277,8 @@ class User {
         return true;
     }
 
-    static addUser( username, password, email, phone, fullName, address, isAdmin, isActive){
-        const user = new User(username, password, email, phone, fullName,address, isAdmin, isActive,isAdmin,isActive)
+    static addUser(username, password, email, phone, fullName, address, isAdmin, isActive) {
+        const user = new User(username, password, email, phone, fullName, address, isAdmin, isActive, isAdmin, isActive)
         const list = User.getUsers()
         if (!list || list.length === 0) return false
         list.push(user)
@@ -287,11 +287,11 @@ class User {
         return true;
     }
     //cập nhật thông tin của user
-    static updateUser(userID, username, password, email, phone, fullName, address, isActive){
+    static updateUser(userID, username, password, email, phone, fullName, address, isActive) {
         const listUser = User.getUsers()
-        if(!listUser || listUser.length === 0) return false
+        if (!listUser || listUser.length === 0) return false
         listUser.forEach(user => {
-            if(parseInt(userID) === user.userID ){
+            if (parseInt(userID) === user.userID) {
                 user.username = username
                 user.password = password
                 user.email = email
@@ -306,22 +306,22 @@ class User {
 
     }
     //Xóa user
-    static deleteUser(userID){
+    static deleteUser(userID) {
         const listUser = User.getUsers()
-        if(!listUser || listUser.length === 0) return false
+        if (!listUser || listUser.length === 0) return false
         let isDeleted = false
 
-        listUser.forEach((user,index) => {
-            if(user.userID === parseInt(userID)){
+        listUser.forEach((user, index) => {
+            if (user.userID === parseInt(userID)) {
                 listUser.splice(index, 1)
-                if(User.loadUsers(listUser)) isDeleted = true
-                
+                if (User.loadUsers(listUser)) isDeleted = true
+
             }
         })
         return isDeleted
     }
 
-   
+
 
 }
 // Load data users lên localStorage
@@ -333,7 +333,7 @@ class cart {
         }
         return [];
     }
-    //Lấy ID cart muốn thực hiện các hành vi
+    //Lấy item trong cart muốn thực hiện các hành vi
     static getCartID(userID, cartID) {
         const list = cart.getCartList(userID);
         if (!list || list.length === 0) return null;
@@ -525,52 +525,63 @@ class Invoice {
     }
     //Lấy ra các hóa đơn thỏa điều kiện về ngày tháng
     static getInvoiceByDateTime(startDate, endDate) {
-        const list = Invoice.getInvoices()
-        if (!list || list.length === 0) return false
-        let myList = []
+        const list = Invoice.getInvoices();
+        if (!list || list.length === 0) return [];
+
+        let myList = [];
         list.forEach(invoice => {
-            let currentDate = time.getDateTime(invoice.orderTime)
-            if (startDate <= currentDate && currentDate <= endDate) {
-                myList.push(invoice)
+            let currentDate = invoice.orderTime;
+            if (time.parseDateTime(startDate) <= currentDate && currentDate <= time.parseDateTime(endDate)) {
+                console.log(invoice)
+                myList.push(invoice);
             }
-        })
-        return myList
+        });
+
+        return myList;
     }
     //cập nhật trạng thái của đơn hàng
-    static updateInvoiceStatus(invoiceID, status){
+    static updateInvoiceStatus(invoiceID, status) {
         const list = Invoice.getInvoices()
-        if(!list || list.length === 0) return false
-        for(const invoice of list) {
-            if(invoice.invoiceID === invoiceID){
-
+        if (!list || list.length === 0) return false
+        let customerInfoProvided = false;
+        list.forEach(invoice => {
+            if (invoice.invoiceID === invoiceID) {
+                const newUser = User.getUserID(invoice.userID)
+                invoice.userProfile.phone = newUser.phone
+                invoice.userProfile.phone = newUser.address
+                if (invoice.userProfile.phone === '' || invoice.userProfile.address === undefined) {
+                    alert("Khách hàng chưa cung cấp thông tin địa chỉ và số điện thoại giao hàng");
+                    customerInfoProvided = false;
+                    return;
+                }
                 invoice.status = status
                 Invoice.loadInvoices(list)
-                return true
+                customerInfoProvided = true;
             }
-        }
-        
-        return false
+        })
+
+        return customerInfoProvided;
     }
     //lấy ra danh sách hóa đơn trong 1 tháng
 
-    static getInvoiceListByMonth(month){
+    static getInvoiceListByMonth(month) {
         const list = Invoice.getInvoices()
-        if(!list || list.length === 0) return null
+        if (!list || list.length === 0) return null
         let resultList = []
         Array.from(list).forEach(invoice => {
-            if(time.getMonth(invoice.orderTime) === month){
+            if (time.getMonth(invoice.orderTime) === month) {
                 resultList.push(invoice)
             }
         })
         return resultList
     }
     //Lấy ra chi tiết hóa đơn của 1 hóa đơn
-    static getDetailInvoice(invoiceID){
+    static getDetailInvoice(invoiceID) {
         const list = Invoice.getInvoices()
-        if(!list || list.length === 0) return null
+        if (!list || list.length === 0) return null
         let detailInvoice
         list.forEach(invoice => {
-            if(invoice.invoiceID === invoiceID){
+            if (invoice.invoiceID === invoiceID) {
                 detailInvoice = invoice.cartList
             }
         })
@@ -578,17 +589,17 @@ class Invoice {
     }
     // Các hàm thống kê
     //Tổng hóa đơn trong 1 tháng
-    static getTotalInvoiceByMonth(month){
+    static getTotalInvoiceByMonth(month) {
         const list = Invoice.getInvoiceListByMonth(month)
-        if(!list || list.length === 0) return 0
+        if (!list || list.length === 0) return 0
         let count = list.length
         return count
 
     }
     //Tổng doanh thu theo tháng
-    static calculateRevenueByMonth(month){
+    static calculateRevenueByMonth(month) {
         const invoiceList = Invoice.getInvoiceListByMonth(month)
-        if(!invoiceList || invoiceList.length === 0) return 0
+        if (!invoiceList || invoiceList.length === 0) return 0
         let total = 0
         invoiceList.forEach(invoice => {
             invoice.cartList.forEach(item => {
@@ -598,14 +609,14 @@ class Invoice {
         return total
     }
     //Tổng số khách hàng 'độc nhất' trong 1 tháng
-    static getTotalCustomerByMonth(month){
+    static getTotalCustomerByMonth(month) {
         const list = Invoice.getInvoiceListByMonth(month)
-        if(!list || list.length === 0) return 0
+        if (!list || list.length === 0) return 0
         let count = 0
         let existUserID = []
         list.forEach(invoice => {
             const userID = invoice.userID
-            if(!existUserID.includes(userID)) {
+            if (!existUserID.includes(userID)) {
                 count = count + 1
                 existUserID.push(userID)
                 console.log(invoice.userID)
@@ -615,13 +626,13 @@ class Invoice {
 
     }
     //Tính tổng doanh thu theo loại sản phẩm
-    static calculateRevenueByCategoryAndMonth(category,month){
+    static calculateRevenueByCategoryAndMonth(category, month) {
         const invoiceList = Invoice.getInvoiceListByMonth(month)
-        if(!invoiceList || invoiceList.length === 0) return 0
+        if (!invoiceList || invoiceList.length === 0) return 0
         let total = 0
         invoiceList.forEach(item => {
             item.cartList.forEach(item => {
-                if(item.storeProduct.brand.includes(category)){
+                if (item.storeProduct.brand.includes(category)) {
                     total += item.totalPrice
                 }
             })
@@ -629,11 +640,11 @@ class Invoice {
         return total
     }
     //Tổng số sản phẩm đã bán ra trong tháng
-    static getTotalSoldProductsInMonth(month){
+    static getTotalSoldProductsInMonth(month) {
         const invoiceList = Invoice.getInvoiceListByMonth(month)
-        if(!invoiceList || invoiceList.length === 0) return 0
+        if (!invoiceList || invoiceList.length === 0) return 0
         let count = 0
-        invoiceList.forEach(invoice =>{
+        invoiceList.forEach(invoice => {
             invoice.cartList.forEach(item => {
                 count = count + item.quantity
             })
@@ -642,13 +653,13 @@ class Invoice {
         return count
     }
     //Tổng số sản phẩm đã bán ra trong tháng theo loại
-    static getTotalSoldProductsInMonthByBrand(brand, month){
+    static getTotalSoldProductsInMonthByBrand(brand, month) {
         const invoiceList = Invoice.getInvoiceListByMonth(month)
-        if(!invoiceList || invoiceList.length == 0) return 0
+        if (!invoiceList || invoiceList.length == 0) return 0
         let count = 0
-        invoiceList.forEach(invoice =>{
+        invoiceList.forEach(invoice => {
             invoice.cartList.forEach(item => {
-                if(item.storeProduct.brand.includes(brand)){
+                if (item.storeProduct.brand.includes(brand)) {
                     count = count + item.quantity
                 }
             })
@@ -670,7 +681,24 @@ class time {
         return formattedDateTime = day + '/' + month + '/' + year + ' ' + hours + ':' + minutes + ':' + seconds;
     }
 
-    static getMonth(timestamp){
+    static parseDateTime(dateTimeString) {
+        // Split the date and time components
+        const [datePart, timePart] = dateTimeString.split(' ');
+
+        // Split the date components
+        const [day, month, year] = datePart.split('/').map(Number);
+
+        // Split the time components
+        const [hours, minutes, seconds] = timePart.split(':').map(Number);
+
+        // Create a new Date object with the parsed values
+        const parsedDate = new Date(year, month - 1, day, hours, minutes, seconds);
+
+        // Return the timestamp
+        return parsedDate.getTime();
+    }
+
+    static getMonth(timestamp) {
         var date = new Date(timestamp)
         return date.getMonth() + 1
     }

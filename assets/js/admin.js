@@ -17,6 +17,7 @@ Array.from(listControlItems).forEach((item) => {
             activeItem.classList.remove('active')
         }
         if (item.getAttribute('data-value') === 'trang-chu') {
+            item.classList.add('active')
             contentContainer.innerHTML =
                 `
                 <div class="top-line">
@@ -127,6 +128,7 @@ Array.from(listControlItems).forEach((item) => {
 
         }
         if (item.getAttribute('data-value') === 'ql-nguoidung') {
+            item.classList.add('active')
             contentContainer.innerHTML =
                 `
                 <div class="top-line">
@@ -1074,7 +1076,6 @@ function initInvoicePage() {
         const productRowList = $$('.product-table__row')
         Array.from(productRowList).forEach((row) => {
             const seeButton = row.querySelector('.product-table__see-btn')
-            console.log(seeButton)
             seeButton.addEventListener('click', (e) => {
                 e.preventDefault();
                 renderDetailProduct(parseInt(row.dataset.value))
