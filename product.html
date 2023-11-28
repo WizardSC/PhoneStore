@@ -168,8 +168,11 @@
                 <!-- filter -->
                 <div class="filter">
                     <div class="filter__label">
-                        <i class="filter__label-icon fa-solid fa-filter"></i>
-                        <span class="filter__label-heading">Bộ lọc</span>
+                        <div class="filter__first">
+                            <i class="filter__label-icon fa-solid fa-filter"></i>
+                            <span class="filter__label-heading">Bộ lọc</span>
+                        </div>
+                        
                         <ul class="filter__list">
                             <li class="filter__item">
                                 <span class="filter__item-name">Hãng</span>
@@ -289,7 +292,15 @@
                         </div>
                         <div class="filter__limit-product">
                             <span class="filter__limit-product-label">Số lượng sản phẩm trên 1 trang:</span>
-                            <input type="text" class="filter__limit-product-input">
+                            <!-- <input type="text" class="filter__limit-product-input"> -->
+                            <div class="filter__limit-product-wrapper">
+                                <input type="number" class="filter__limit-product-input" id="numericInput" value="0" />
+                                <div class="filter__limit-product-button">
+                                    <input type="button" id="filter__limit-product-button--increase" value="+"/>
+                                    <input type="button" id="filter__limit-product-button--decrease" value="-"/>
+                                </div>
+                            </div>
+                            
                         </div>
                     </div>
 
